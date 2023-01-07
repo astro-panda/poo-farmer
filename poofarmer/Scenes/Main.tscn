@@ -129,7 +129,7 @@ centered = false
 [node name="Gnome" parent="Background" instance=ExtResource( 4 )]
 position = Vector2( 812, 447 )
 
-[node name="Control" parent="." instance=ExtResource( 3 )]
+[node name="HUD" parent="." instance=ExtResource( 3 )]
 margin_bottom = 8.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
