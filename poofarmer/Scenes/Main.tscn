@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Images/temporary-background.png" type="Texture" id=2]
+[ext_resource path="res://Images/PooFarmerMap.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/UI/Hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Gnome.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Audio/Poo Farmer Peacetime.mp3" type="AudioStream" id=5]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Scenes/Silo.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1024, 1024 )
+extents = Vector2( 1536, 1536 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -114,23 +114,23 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background"]
-position = Vector2( 1024, 1024 )
+position = Vector2( 1536, 1536 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Background"]
-scale = Vector2( 2.14, 3.2 )
+scale = Vector2( 1.5, 1.5 )
 z_index = -5
 frames = SubResource( 2 )
 centered = false
 
-[node name="Gnome" parent="Background" instance=ExtResource( 4 )]
-position = Vector2( 812, 447 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 352, 216 )
+position = Vector2( 672, 384 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
 
@@ -157,15 +157,23 @@ pause_mode = 2
 script = ExtResource( 10 )
 
 [node name="Goblin" parent="." instance=ExtResource( 13 )]
-position = Vector2( 504, 320 )
+position = Vector2( 912, 432 )
 speed = 2000
 
 [node name="Poo" parent="." instance=ExtResource( 12 )]
-position = Vector2( 472, 512 )
+position = Vector2( 792, 515 )
 
 [node name="Silo" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1024, 1024 )
+position = Vector2( 1560, 1560 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Gnome" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1184, 223 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
+[connection signal="store_opened" from="Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
+[connection signal="store_opened" from="Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]

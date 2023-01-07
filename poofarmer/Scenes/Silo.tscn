@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Silo.gd" type="Script" id=1]
-[ext_resource path="res://placeholder art/Silo Placeholder.png" type="Texture" id=2]
+[ext_resource path="res://Images/FarmHouse.png" type="Texture" id=2]
+[ext_resource path="res://Images/Silo.Png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 115.5, 54 )
+extents = Vector2( 80, 72 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -14,28 +15,39 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 102.5, 53.5 )
+extents = Vector2( 72, 30 )
 
 [node name="Silo" type="Area2D" groups=["silo"]]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="SiloCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -19.5, 90 )
+[node name="DropOffDetection" type="CollisionShape2D" parent="."]
+position = Vector2( -24, -32 )
 shape = SubResource( 1 )
 
-[node name="SiloSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
+[node name="BarnSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -32 )
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="SiloSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -72, -40 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 4 )
 
-[node name="RigidCollision" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="ImpassableArea2D" type="StaticBody2D" parent="."]
+
+[node name="RigidCollision" type="CollisionShape2D" parent="ImpassableArea2D"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -1.5, 68.5 )
+position = Vector2( -24, 0 )
 shape = SubResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="player_enters"]
