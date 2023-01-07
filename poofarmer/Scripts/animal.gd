@@ -11,6 +11,7 @@ onready var poo_timer = $PooTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
+	hide()
 	reset_poo_timer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,3 +32,5 @@ func do_poo():
 
 func set_type(type:Animal):
 	_type = type
+	$AnimatedSprite.animation = Animal.keys()[_type]
+	show()
