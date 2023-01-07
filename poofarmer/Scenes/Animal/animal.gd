@@ -21,3 +21,6 @@ func _ready():
 func reset_poo_timer():
 	poo_timer.wait = rand_range(poo_timer_min, poo_timer_max)
 	poo_timer.start()
+	
+func do_poo():
+	pass
