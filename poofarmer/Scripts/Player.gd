@@ -2,6 +2,7 @@ extends Area2D
 class_name Player
 
 signal playerFire(playerPosition, fireAngle)
+signal playerSendCurrentHoldAmount(currentHoldAmount)
 
 # Declare member variables here. Examples:
 export var speed = 300
@@ -59,6 +60,7 @@ func _on_Player_area_entered(body):
 		var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
 		currentHoldAmount += pooToAdd
 		totalPooAmount += pooToAdd
+		emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 		if(pooToAdd != poo.pooValue):
 			poo.pooValue -= pooToAdd
 		else:
