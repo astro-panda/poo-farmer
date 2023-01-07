@@ -10,5 +10,5 @@ func _ready():
 
 func player_enters(body):
 	print("Player entered silo")
-	# TODO: Add player poo carried to poo total
+	# TODO: Clear player hold capacity
 	pass
