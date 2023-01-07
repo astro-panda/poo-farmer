@@ -30,6 +30,7 @@ config/name="poofarmer"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+
 [autoload]
 
 Animal="*res://GlobalScripts/Animal.gd"
