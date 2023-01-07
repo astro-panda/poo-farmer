@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/temporary-background.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/UI/Hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Gnome.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/Poo Farmer Peacetime.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Audio/forest-background.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1024, 1024 )
@@ -43,3 +45,13 @@ margin_bottom = 8.0
 
 [node name="Gnome" parent="." instance=ExtResource( 4 )]
 position = Vector2( 812, 447 )
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+bus = "Bkgd Music"
+
+[node name="BackgroundEnvPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Environment"
