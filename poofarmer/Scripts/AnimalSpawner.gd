@@ -2,10 +2,12 @@ extends Node
 
 
 export(PackedScene) var animal_scene
+export var population: int
 onready var player = get_tree().get_nodes_in_group("player")[0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	population = 20
 	$SpawnTimer.start()
 
 
@@ -25,7 +27,8 @@ func _on_SpawnTimer_timeout():
 	animal.position = player.get_position()
 	animal.set_type(animalType)
 	add_child(animal)
-	$SpawnTimer.stop()
+	if(get_child_count() > population):
+		$SpawnTimer.stop()
 	
 
 

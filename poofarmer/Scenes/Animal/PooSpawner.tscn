@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/PooSpawner.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Poo.tscn" type="PackedScene" id=2]
+
+[node name="PooSpawner" type="Node" groups=["poo_spawner"]]
+script = ExtResource( 1 )
+poo_scene = ExtResource( 2 )
