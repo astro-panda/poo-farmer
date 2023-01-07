@@ -1,27 +1,27 @@
 extends Area2D
+class_name Poo
 
 signal collided
 
 export var pooValue = 1
-onready var Animal = get_node("/root/Animal")
-var _type: Animal
+export(AnimalType.values) var _type = AnimalType.values.Chicken
 
 var types_dict = {
-	Animal.Chicken: 1, 
-	Animal.Goat: 2,
-	Animal.Cow: 3,
-	Animal.Llama: 4,
-	Animal.Unicorn: 10
+	AnimalType.values.Chicken: 1, 
+	AnimalType.values.Goat: 2,
+	AnimalType.values.Cow: 3,
+	AnimalType.values.Llama: 4,
+	AnimalType.values.Unicorn: 10
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
 
-func set_type(type: Animal):
-	_type = type
+func set_type(type: AnimalType):
+	_type = type.current_value
 	pooValue = types_dict[_type]
-	$AnimatedSprite.animation = Animal.keys()[_type]
+	$AnimatedSprite.animation = AnimalType.values.keys()[_type]
 	show()
 
 func destroy():

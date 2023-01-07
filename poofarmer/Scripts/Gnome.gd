@@ -8,19 +8,19 @@ onready var sprite = $AnimatedSprite
 func _ready():
 	pass # Replace with function body.
 
-func _on_Area2D_body_entered(body: Node):
+func _on_Gnome_area_entered(body: Node):
 	if(body.is_in_group("player")):
 		sprite.animation = "glow"
 		player_in_range = true
 
 
-func _on_Area2D_body_exited(body: Node):	
+func _on_Gnome_area_exited(body: Node):	
 	if(body.is_in_group("player")):
 		sprite.animation = "default"
 		player_in_range = false
 
 
 func _unhandled_input(event):
-	var should_open_store = event is InputEventMouseButton && (event as InputEventMouseButton).button_index == 1 && player_in_range
+	var should_open_store = event is InputEventMouseButton && (event as InputEventMouseButton).button_index == 1 && player_in_range && event.is_pressed()
 	if(should_open_store):
 		print("clicky clicky");

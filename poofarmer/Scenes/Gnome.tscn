@@ -18,10 +18,13 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 138.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 17.0
+height = 52.0
 
-[node name="Area2D" type="Area2D"]
+[node name="Gnome" type="Area2D"]
 position = Vector2( 737, 423 )
 script = ExtResource( 2 )
 
@@ -37,5 +40,5 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 3 )
 
-[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_Area2D_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_Gnome_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Gnome_area_exited"]
