@@ -174,3 +174,10 @@ position = Vector2( 1024, 1024 )
 [connection signal="store_opened" from="Background/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
 [connection signal="store_opened" from="Background/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="Arsenal Wheel" parent="HUD/CanvasLayer" index="1"]
+rect_scale = Vector2( 1, 1 )
+
+[editable path="HUD"]

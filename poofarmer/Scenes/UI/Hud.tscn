@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=2]
@@ -9,18 +9,6 @@
 [sub_resource type="DynamicFont" id=1]
 size = 18
 font_data = ExtResource( 2 )
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Control
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.is_action_pressed(\"open_arsenal\"):
-			print_debug(\"Opening the arsenal!\")
-			Engine.time_scale = 0.2
-		if event.is_action_released(\"open_arsenal\"):
-			print_debug(\"Closing the arsenal..\")
-"
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -123,7 +111,6 @@ anchor_bottom = 0.5
 margin_top = 4.5
 margin_bottom = 4.5
 rect_scale = Vector2( 1e-05, 1e-05 )
-script = SubResource( 2 )
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
 margin_left = -32.0
