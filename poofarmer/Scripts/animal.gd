@@ -26,7 +26,6 @@ func do_poo():
 	poo_timer.stop()
 	print("Animal done pooed!💩💩💩💩");
 	var poo = poo_scene.instance()
-	poo.position = player.get_position()
 	poo.set_type(_type)
 	add_child(poo)
 	reset_poo_timer()

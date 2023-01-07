@@ -21,6 +21,7 @@ func _on_SpawnTimer_timeout():
 	print("Random number was: " + str(randi()))
 	print("Current Value: " + str(AnimalType.values.keys()[animalType.current_value]))
 	var animal = animal_scene.instance()
+#	TODO: get a better position for the animal spawn
 	animal.position = player.get_position()
 	animal.set_type(animalType)
 	add_child(animal)
