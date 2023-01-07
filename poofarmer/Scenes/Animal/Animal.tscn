@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/animal.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Poo.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -10,22 +11,22 @@ animations = [ {
 "name": "Chicken",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Cow",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Goat",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Llama",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Unicorn",
 "speed": 5.0
@@ -35,6 +36,7 @@ animations = [ {
 
 [node name="Animal" type="RigidBody2D"]
 script = ExtResource( 1 )
+poo_scene = ExtResource( 3 )
 
 [node name="PooTimer" type="Timer" parent="."]
 
