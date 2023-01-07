@@ -7,6 +7,7 @@ signal playerFire(playerPosition, fireAngle)
 export var speed = 300
 export var holdCapacity = 10
 var currentHoldAmount = 0
+var totalPooAmount = 0
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
@@ -57,4 +58,5 @@ func _on_Player_body_entered(body):
 	# TODO: Have a check that the body object is in a poo group
 	if (currentHoldAmount < holdCapacity):
 		currentHoldAmount += 1
+		totalPooAmount += 1
 		print("grabbed a poo")
