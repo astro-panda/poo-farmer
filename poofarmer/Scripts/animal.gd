@@ -3,9 +3,8 @@ extends RigidBody2D
 export(float) var poo_timer_min = 4.0
 export(float) var poo_timer_max = 20.0
 export(PackedScene) var poo_scene
-onready var Animal = get_node("/root/Animal")
 
-var _type: Animal
+var _type
 
 onready var poo_timer = $PooTimer
 
@@ -30,7 +29,7 @@ func do_poo():
 	poo.set_type(_type)
 	reset_poo_timer()
 
-func set_type(type:Animal):
-	_type = type
-	$AnimatedSprite.animation = Animal.keys()[_type]
+func set_type(type:AnimalType):
+	_type = type.current_value
+	$AnimatedSprite.animation = AnimalType.values.keys()[_type]
 	show()
