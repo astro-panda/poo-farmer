@@ -33,5 +33,5 @@ func do_poo():
 func set_type(type:AnimalType):
 	_type = type.current_value
 	print("Animal Type Selected: " + AnimalType.values.keys()[_type])
-	$Sprite.animation = AnimalType.values.keys()[_type]
+	$Sprite.animation = AnimalType.values.keys()[_type] + " - down"
 	print(_type)
