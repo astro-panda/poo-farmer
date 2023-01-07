@@ -9,6 +9,7 @@
 [ext_resource path="res://Audio/Poo Farmer Poo Store.mp3" type="AudioStream" id=7]
 [ext_resource path="res://Scenes/UI/ModalWindow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/MusicAutomaton.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Animal/AnimalSpawner.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1024, 1024 )
@@ -135,7 +136,6 @@ position = Vector2( 352, 216 )
 pause_mode = 2
 stream = ExtResource( 5 )
 autoplay = true
-bus = "Bkgd Music"
 
 [node name="BackgroundEnvPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
@@ -159,3 +159,5 @@ script = ExtResource( 10 )
 [connection signal="store_opened" from="Background/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
 [connection signal="store_opened" from="Background/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
+
+[node name="AnimalSpawner" parent="." instance=ExtResource( 7 )]

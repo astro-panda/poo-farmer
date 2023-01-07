@@ -7,10 +7,10 @@ export(PackedScene) var poo_scene
 export(AnimalType.values) var _type = AnimalType.values.Chicken
 
 onready var poo_timer = $PooTimer
+onready var player = get_tree().get_nodes_in_group("player")[0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	hide()
 	reset_poo_timer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,10 +26,13 @@ func do_poo():
 	poo_timer.stop()
 	print("Animal done pooed!💩💩💩💩");
 	var poo = poo_scene.instance()
+	poo.position = player.get_position()
 	poo.set_type(_type)
+	add_child(poo)
 	reset_poo_timer()
 
 func set_type(type:AnimalType):
 	_type = type.current_value
-	$AnimatedSprite.animation = AnimalType.values.keys()[_type]
-	show()
+	print("Animal Type Selected: " + AnimalType.values.keys()[_type])
+	$Sprite.animation = AnimalType.values.keys()[_type]
+	print(_type)

@@ -8,4 +8,4 @@ enum values {
 	Unicorn
 }
 
-var current_value: int = 0
+var current_value: int
