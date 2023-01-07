@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Silo.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Silo.gd" type="Script" id=1]
 [ext_resource path="res://placeholder art/Silo Placeholder.png" type="Texture" id=2]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 115.5, 54 )
