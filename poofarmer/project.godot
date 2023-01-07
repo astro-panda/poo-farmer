@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "AnimalType",
 "language": "GDScript",
-"path": "res://GlobalScripts/Animal.gd"
+"path": "res://GlobalScripts/AnimalType.gd"
 }, {
 "base": "Area2D",
 "class": "HitBox",
