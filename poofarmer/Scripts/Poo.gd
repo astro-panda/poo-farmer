@@ -16,13 +16,12 @@ var types_dict = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hide()
-
-func set_type(type: AnimalType):
-	_type = type.current_value
+	pass
+	
+func set_type(type: int):
+	_type = type
 	pooValue = types_dict[_type]
 	$AnimatedSprite.animation = AnimalType.values.keys()[_type]
-	show()
 
 func destroy():
 	queue_free()

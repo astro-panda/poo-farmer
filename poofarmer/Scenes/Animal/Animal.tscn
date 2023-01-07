@@ -35,7 +35,10 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Animal" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource( 1 )
+poo_timer_min = 1.0
+poo_timer_max = 3.0
 poo_scene = ExtResource( 3 )
 
 [node name="PooTimer" type="Timer" parent="."]

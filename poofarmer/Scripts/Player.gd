@@ -28,13 +28,17 @@ func _process(delta):
 		velocity.y -= 1
 
 	if velocity.x > 0:
-		print("play right animation")
+#		print("play right animation")
+		pass
 	elif velocity.x < 0:
-		print("play left animation")
+#		print("play left animation")
+		pass
 	elif velocity.y > 0:
-		print("play up animation")
+#		print("play up animation")
+		pass
 	elif velocity.y < 0:
-		print ("play down animation")
+#		print ("play down animation")
+		pass
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -55,13 +59,17 @@ func _unhandled_input(event):
 
 
 func _on_Player_area_entered(body):
-	if (body.is_in_group("poo") && currentHoldAmount < holdCapacity):
-		var poo = body as Poo
-		var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
-		currentHoldAmount += pooToAdd
-		totalPooAmount += pooToAdd
-		if(pooToAdd != poo.pooValue):
-			poo.pooValue -= pooToAdd
-		else:
-			poo.destroy()
-		print("grabbed a poo")
+	if (body.is_in_group("poo")):
+		if (currentHoldAmount < holdCapacity):
+			var poo = body as Poo
+			var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
+			currentHoldAmount += pooToAdd
+			totalPooAmount += pooToAdd
+			if(pooToAdd != poo.pooValue):
+				poo.pooValue -= pooToAdd
+			else:
+				poo.destroy()
+			print("grabbed a poo")
+		else: 
+			print("at poo capacity: " + str(totalPooAmount))
+
