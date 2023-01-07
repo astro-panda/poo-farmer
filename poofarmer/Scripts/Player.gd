@@ -27,6 +27,15 @@ func _process(delta):
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 
+	if velocity.x > 0:
+		print("play right animation")
+	elif velocity.x < 0:
+		print("play left animation")
+	elif velocity.y > 0:
+		print("play up animation")
+	elif velocity.y < 0:
+		print ("play down animation")
+
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$PlayerSprite.play()
@@ -36,15 +45,6 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-
-	if velocity.x > 0:
-		print("play right animation")
-	elif velocity.x < 0:
-		print("play left animation")
-	elif velocity.y > 0:
-		print("play up animation")
-	elif velocity.y < 0:
-		print ("play down animation")
 		
 func _unhandled_input(event):
 	if event.is_action_pressed("player_fire"):
