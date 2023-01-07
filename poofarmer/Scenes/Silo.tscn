@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/Silo.gd" type="Script" id=1]
 [ext_resource path="res://placeholder art/Silo Placeholder.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 115.5, 54 )
 
@@ -18,7 +17,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 102.5, 53.5 )
 
-[node name="Silo" type="Area2D"]
+[node name="Silo" type="Area2D" groups=["silo"]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

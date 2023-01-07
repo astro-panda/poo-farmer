@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/Nodes/HurtBox.gd"
 }, {
 "base": "Area2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/Player.gd"
+}, {
+"base": "Area2D",
 "class": "Poo",
 "language": "GDScript",
 "path": "res://Scripts/Poo.gd"
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "Goblin": "",
 "HitBox": "",
 "HurtBox": "",
+"Player": "",
 "Poo": ""
 }
 
