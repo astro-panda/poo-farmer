@@ -106,7 +106,6 @@ script = ExtResource( 1 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 17 )
 animation = "down"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -127,4 +126,5 @@ position = Vector2( 0, 20 )
 shape = SubResource( 20 )
 
 [connection signal="area_entered" from="Visibility" to="." method="_on_Visibility_area_entered"]
+[connection signal="area_exited" from="Visibility" to="." method="_on_Visibility_area_exited"]
 [connection signal="area_entered" from="PooPickupDetection" to="." method="_on_PooPickupDetection_area_entered"]

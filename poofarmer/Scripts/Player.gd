@@ -1,11 +1,12 @@
 extends Area2D
-
+class_name Player
 
 signal playerFire(playerPosition, fireAngle)
 
 # Declare member variables here. Examples:
 export var speed = 300
 export var holdCapacity = 10
+export var goblinStealAmount = 5
 var currentHoldAmount = 0
 var totalPooAmount = 0
 var screen_size
@@ -13,7 +14,6 @@ var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = Vector2(2048, 2048)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -45,14 +45,13 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-		
+
 func _unhandled_input(event):
 	if event.is_action_pressed("player_fire"):
 		var clickLocation = get_global_mouse_position()
 		var fireAngle = rad2deg(clickLocation.angle_to_point(position))
 		emit_signal("playerFire", position, fireAngle)
 		print("fire from ", position, " at an angle of ", fireAngle)
-
 
 func _on_Player_area_entered(body):
 	if (body.is_in_group("poo") && currentHoldAmount < holdCapacity):
@@ -69,3 +68,8 @@ func _on_Player_area_entered(body):
 				goblin.removePooFromTargets(body, false)
 			poo.destroy()
 		print("grabbed a poo")
+
+func _on_Player_body_entered(body):
+	if (body.is_in_group("goblin")):
+		currentHoldAmount = clamp(currentHoldAmount - goblinStealAmount, 0, currentHoldAmount)
+		print("stole your poo")
