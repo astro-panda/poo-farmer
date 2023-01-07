@@ -1,7 +1,11 @@
 extends Control
 
+onready var arsenal_wheel = get_node("CanvasLayer/Arsenal Wheel")
 onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPlayer")
 var arsenal_pressed: bool = false
+
+func _ready():
+	arsenal_wheel.rect_scale = Vector2(0, 0)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
