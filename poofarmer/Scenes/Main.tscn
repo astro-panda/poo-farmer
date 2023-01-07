@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/temporary-background.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Scenes/Gnome.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Audio/Poo Farmer Peacetime.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Audio/forest-background.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/Poo Farmer Poo Store.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/UI/ModalWindow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/MusicAutomaton.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1024, 1024 )
@@ -17,6 +20,86 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Main To Shop"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShopMusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1.66, 5.66 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BackgroundMusicPlayer:volume_db")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1.66, 5.66 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BackgroundEnvPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Poose Screen"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShopMusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1.66 ),
+"update": 1,
+"values": [ -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BackgroundMusicPlayer:volume_db")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1.66 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BackgroundEnvPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -80.0 ]
+}
 
 [node name="Main" type="Node"]
 
@@ -37,21 +120,42 @@ scale = Vector2( 2.14, 3.2 )
 frames = SubResource( 2 )
 centered = false
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 352, 216 )
+[node name="Gnome" parent="Background" instance=ExtResource( 4 )]
+position = Vector2( 812, 447 )
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
 margin_bottom = 8.0
 
-[node name="Gnome" parent="." instance=ExtResource( 4 )]
-position = Vector2( 812, 447 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 216 )
+
+[node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 5 )
 autoplay = true
 bus = "Bkgd Music"
 
 [node name="BackgroundEnvPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 6 )
 autoplay = true
 bus = "Environment"
+
+[node name="ShopMusicPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 7 )
+volume_db = -80.0
+autoplay = true
+bus = "Shop Music"
+
+[node name="MusicAutomaton" type="AnimationPlayer" parent="."]
+pause_mode = 2
+"anims/Main To Shop" = SubResource( 3 )
+"anims/Poose Screen" = SubResource( 4 )
+script = ExtResource( 10 )
+
+[connection signal="store_opened" from="Background/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
+[connection signal="store_opened" from="Background/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
+[connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
