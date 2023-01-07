@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Poo Farmer Poo Store.mp3-900b1137cd76396a7ef19e904bbbbba4.mp3str"
+
+[deps]
+
+source_file="res://Audio/Poo Farmer Poo Store.mp3"
+dest_files=[ "res://.import/Poo Farmer Poo Store.mp3-900b1137cd76396a7ef19e904bbbbba4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
