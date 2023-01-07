@@ -4,66 +4,82 @@
 [ext_resource path="res://Images/Goblin.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 64, 16, 32 )
 
@@ -126,6 +142,10 @@ shape = SubResource( 19 )
 position = Vector2( 0, 11 )
 shape = SubResource( 20 )
 
+[node name="StealTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="area_entered" from="Visibility" to="." method="_on_Visibility_area_entered"]
 [connection signal="area_exited" from="Visibility" to="." method="_on_Visibility_area_exited"]
 [connection signal="area_entered" from="PooPickupDetection" to="." method="_on_PooPickupDetection_area_entered"]
+[connection signal="timeout" from="StealTimer" to="." method="_on_StealTimer_timeout"]
