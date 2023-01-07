@@ -36,10 +36,7 @@ animations = [ {
 
 [node name="Animal" type="RigidBody2D"]
 script = ExtResource( 1 )
-poo_timer_min = null
-poo_timer_max = null
 poo_scene = ExtResource( 3 )
-_type = null
 
 [node name="PooTimer" type="Timer" parent="."]
 

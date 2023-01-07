@@ -4,7 +4,7 @@ export(float) var poo_timer_min = 4.0
 export(float) var poo_timer_max = 20.0
 export(PackedScene) var poo_scene
 
-var _type
+export(AnimalType.values) var _type = AnimalType.values.Chicken
 
 onready var poo_timer = $PooTimer
 
