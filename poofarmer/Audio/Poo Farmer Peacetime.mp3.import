@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Poo Farmer Peacetime.mp3-41dbfcc4110ea8a2faab71ba1452d737.mp3str"
+
+[deps]
+
+source_file="res://Audio/Poo Farmer Peacetime.mp3"
+dest_files=[ "res://.import/Poo Farmer Peacetime.mp3-41dbfcc4110ea8a2faab71ba1452d737.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
