@@ -110,7 +110,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_top = 4.5
 margin_bottom = 4.5
-rect_scale = Vector2( 1e-05, 1e-05 )
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
 margin_left = -32.0
