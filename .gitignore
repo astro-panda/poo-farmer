@@ -362,6 +362,6 @@ export_presets.cfg
 *.translation
 
 # Mono-specific ignores
-.mono/
+**/*.mono/
 data_*/
 mono_crash.*.json
