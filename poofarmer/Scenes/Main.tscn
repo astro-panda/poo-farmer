@@ -161,7 +161,7 @@ position = Vector2( 912, 432 )
 speed = 2000
 
 [node name="Poo" parent="." instance=ExtResource( 12 )]
-position = Vector2( 792, 515 )
+position = Vector2( 760, 472 )
 
 [node name="Silo" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1560, 1560 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Images/Crap-export.png" type="Texture" id=1]
+[ext_resource path="res://Images/Crap.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Poo.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -17,7 +17,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 28.0179
+radius = 12.0416
 
 [node name="Poo" type="Area2D" groups=["poo"]]
 scale = Vector2( 0.5, 0.5 )
@@ -25,11 +25,12 @@ z_index = -1
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "Unicorn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5 )
+position = Vector2( 0, 2 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_Poo_body_entered"]
