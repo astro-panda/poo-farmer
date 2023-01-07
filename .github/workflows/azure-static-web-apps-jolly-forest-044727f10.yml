@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install Godot
-        uses: paulloz/godot-action@v1.1
+        uses: paulloz/godot-action@v1.2
         with:
           version: 3.5.1
           mono: true          
