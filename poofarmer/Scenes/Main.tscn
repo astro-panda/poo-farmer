@@ -7,6 +7,7 @@
 [ext_resource path="res://Audio/Poo Farmer Peacetime.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Audio/forest-background.wav" type="AudioStream" id=6]
 [ext_resource path="res://Audio/Poo Farmer Poo Store.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/Silo.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/UI/ModalWindow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/MusicAutomaton.gd" type="Script" id=10]
@@ -159,6 +160,9 @@ pause_mode = 2
 script = ExtResource( 10 )
 
 [node name="AnimalSpawner" parent="." instance=ExtResource( 11 )]
+
+[node name="Silo" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1040, 952 )
 
 [connection signal="store_opened" from="Background/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
 [connection signal="store_opened" from="Background/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
