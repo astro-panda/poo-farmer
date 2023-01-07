@@ -54,9 +54,14 @@ func _unhandled_input(event):
 		print("fire from ", position, " at an angle of ", fireAngle)
 
 
-func _on_Player_body_entered(body):
-	# TODO: Have a check that the body object is in a poo group
-	if (currentHoldAmount < holdCapacity):
-		currentHoldAmount += 1
-		totalPooAmount += 1
+func _on_Player_area_entered(body):
+	if (body.is_in_group("poo") && currentHoldAmount < holdCapacity):
+		var poo = body as Poo
+		var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
+		currentHoldAmount += pooToAdd
+		totalPooAmount += pooToAdd
+		if(pooToAdd != poo.pooValue):
+			poo.pooValue -= pooToAdd
+		else:
+			poo.destroy()
 		print("grabbed a poo")
