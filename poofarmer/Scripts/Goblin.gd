@@ -9,6 +9,7 @@ var playerNearby = false
 var playerHasPoo = false
 var currentPooTargets = []
 var health = 5
+var stealAmount = 3
 
 
 # Called when the node enters the scene tree for the first time.
@@ -48,6 +49,7 @@ func _on_Visibility_area_entered(area):
 
 func _on_Visibility_area_exited(area):
 	playerNearby = false
+	$StealTimer.stop()
 	
 func _on_PooPickupDetection_area_entered(area):
 	removePooFromTargets(area, true)
@@ -58,3 +60,11 @@ func removePooFromTargets(poo, destroy):
 		currentPooTargets.erase(poo)
 		if (destroy):
 			pooInstance.destroy()
+
+func start_StealTimer():
+	$StealTimer.start()
+
+func _on_StealTimer_timeout():
+	player.steal_poo(stealAmount)
+	if(player.currentHoldAmount == 0):
+		playerNearby = false

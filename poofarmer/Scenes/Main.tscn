@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/PooFarmerMap.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/UI/ModalWindow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/MusicAutomaton.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Animal/AnimalSpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Poo.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Goblin.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Silo.tscn" type="PackedScene" id=14]
@@ -173,6 +174,8 @@ __meta__ = {
 position = Vector2( 1184, 223 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="AnimalSpawner" parent="." instance=ExtResource( 11 )]
 
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
 [connection signal="store_opened" from="Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]

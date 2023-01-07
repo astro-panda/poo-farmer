@@ -71,5 +71,9 @@ func _on_Player_area_entered(body):
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):
-		currentHoldAmount = clamp(currentHoldAmount - goblinStealAmount, 0, currentHoldAmount)
-		print("stole your poo")
+		steal_poo(body.stealAmount)
+		body.start_StealTimer()
+
+func steal_poo(stealAmount: int):
+	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)
+	print("stole your poo: " + str(currentHoldAmount))
