@@ -5,8 +5,6 @@ export(float) var poo_timer_max = 20
 
 onready var poo_timer = $PooTimer
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	reset_poo_timer()
