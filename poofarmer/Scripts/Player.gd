@@ -1,8 +1,8 @@
 extends Area2D
-class_name Player
 
-signal playerFire(playerPosition, fireAngle)
+signal playerFire(poo_pellets, playerPosition, fireAngle)
 signal playerSendCurrentHoldAmount(currentHoldAmount)
+export (PackedScene) var poo_pellets
 
 # Declare member variables here. Examples:
 export var speed = 300
@@ -11,6 +11,8 @@ export var goblinStealAmount = 5
 var currentHoldAmount = 0
 var totalPooAmount = 0
 var screen_size
+
+onready var end_of_gun = $EndOfGun
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,8 +53,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("player_fire"):
 		var clickLocation = get_global_mouse_position()
 		var fireAngle = rad2deg(clickLocation.angle_to_point(position))
-		emit_signal("playerFire", position, fireAngle)
 		print("fire from ", position, " at an angle of ", fireAngle)
+		shoot()
 
 func _on_Player_area_entered(body):
 	if (body.is_in_group("poo") && currentHoldAmount < holdCapacity):
@@ -79,3 +81,9 @@ func _on_Player_body_entered(body):
 func steal_poo(stealAmount: int):
 	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)
 	print("stole your poo: " + str(currentHoldAmount))
+
+func shoot():
+	var poo_pellets_instance = poo_pellets.instance()
+	var target = get_global_mouse_position()
+	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
+	emit_signal("playerFire", poo_pellets_instance, end_of_gun.global_position, direction_to_mouse)

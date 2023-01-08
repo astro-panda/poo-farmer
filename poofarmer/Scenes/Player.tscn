@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Images/Farmer.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 23.5 )
@@ -111,6 +112,7 @@ animations = [ {
 
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource( 1 )
+poo_pellets = ExtResource( 3 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
@@ -135,6 +137,9 @@ drag_margin_top = 0.3
 drag_margin_right = 0.4
 drag_margin_bottom = 0.3
 editor_draw_drag_margin = true
+
+[node name="EndOfGun" type="Position2D" parent="."]
+position = Vector2( 37, -14 )
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
