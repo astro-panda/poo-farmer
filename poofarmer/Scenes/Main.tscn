@@ -210,6 +210,7 @@ minSpawnTime = 0.1
 [node name="PooPelletsManager" type="Node2D" parent="."]
 script = ExtResource( 18 )
 
+[connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
