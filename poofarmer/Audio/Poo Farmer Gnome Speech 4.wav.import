@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Poo Farmer Gnome Speech 4.wav-85a79759b40b2a4f3b6bdf4ac5eb89f0.sample"
+
+[deps]
+
+source_file="res://Audio/Poo Farmer Gnome Speech 4.wav"
+dest_files=[ "res://.import/Poo Farmer Gnome Speech 4.wav-85a79759b40b2a4f3b6bdf4ac5eb89f0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

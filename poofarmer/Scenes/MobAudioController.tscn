@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/MobAudioController.gd" type="Script" id=1]
+
+[node name="MobAudioController" type="Node"]
+script = ExtResource( 1 )
+next_behavior_min = null
+next_behavior_max = null
+actions = null
+behaviors = null
+
+[node name="ActionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="BehaviorAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="BehaviorTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="BehaviorTimer" to="." method="_on_BehaviorTimer_timeout"]

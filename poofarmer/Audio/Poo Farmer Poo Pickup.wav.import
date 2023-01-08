@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Poo Farmer Poo Pickup.wav-146040a4fa69d1dae0616039a07c5814.sample"
+
+[deps]
+
+source_file="res://Audio/Poo Farmer Poo Pickup.wav"
+dest_files=[ "res://.import/Poo Farmer Poo Pickup.wav-146040a4fa69d1dae0616039a07c5814.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
