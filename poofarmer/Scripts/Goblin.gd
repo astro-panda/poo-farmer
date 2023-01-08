@@ -14,7 +14,7 @@ var stealAmount = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	currentPooTargets.append(silo)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +24,9 @@ func _process(delta):
 		velocity = (player.position - position).normalized() * speed * delta
 		velocity = move_and_slide(velocity)
 	elif currentPooTargets.size() != 0:
-		velocity = (currentPooTargets[0].position - position).normalized() * speed * delta
+		if currentPooTargets.size() > 2:
+			print("here")
+		velocity = (currentPooTargets.front().position - position).normalized() * speed * delta
 		velocity = move_and_slide(velocity)
 	else:
 		velocity = (silo.position - position).normalized() * speed * delta
@@ -42,7 +44,7 @@ func _process(delta):
 
 func _on_Visibility_area_entered(area):
 	if (area.is_in_group("poo")):
-		currentPooTargets.append(area)
+		currentPooTargets.insert(currentPooTargets.find(silo) - 1, area)
 	if (area.is_in_group("player")):
 		playerHasPoo = player.currentHoldAmount > 0
 		playerNearby = true
