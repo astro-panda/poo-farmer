@@ -33,7 +33,6 @@ func _on_SpawnTimer_timeout():
 		spawnLoc = Vector2(rndLoc, 3000)
 	
 	enemy.position = spawnLoc
-	print("spawning enemy at ", spawnLoc)
 	add_child(enemy)
 	
 	$SpawnTimer.wait_time = rand_range(minSpawnTime, maxSpawnTime)

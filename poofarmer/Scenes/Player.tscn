@@ -104,10 +104,9 @@ shape = SubResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "down"
-frame = 1
 playing = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 current = true
 limit_left = 0
 limit_top = 0

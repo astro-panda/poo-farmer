@@ -355,102 +355,102 @@ animations = [ {
 "frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
 "loop": true,
 "name": "Chicken - down",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
 "loop": true,
 "name": "Chicken - left",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
 "loop": true,
 "name": "Chicken - right",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
 "loop": true,
 "name": "Chicken - up",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "Cow - down",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "Cow - left",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "Cow - right",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "Cow - up",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ) ],
 "loop": true,
 "name": "Goat - down",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ) ],
 "loop": true,
 "name": "Goat - left",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ) ],
 "loop": true,
 "name": "Goat - right",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ) ],
 "loop": true,
 "name": "Goat - up",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "Llama - down",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
 "loop": true,
 "name": "Llama - left",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
 "loop": true,
 "name": "Llama - right",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
 "loop": true,
 "name": "Llama - up",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
 "loop": true,
 "name": "Unicorn - down",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
 "loop": true,
 "name": "Unicorn - left",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ) ],
 "loop": true,
 "name": "Unicorn - right",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ) ],
 "loop": true,
 "name": "Unicorn - up",
-"speed": 5.0
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -460,12 +460,15 @@ z_index = 1
 script = ExtResource( 1 )
 poo_timer_min = 1.0
 poo_timer_max = 3.0
+_type = 1
 
 [node name="PooTimer" type="Timer" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-animation = "Goat - right"
+animation = "Chicken - down"
+frame = 3
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -502,5 +505,8 @@ next_behavior_max = 30.0
 actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
 behaviors = [ ExtResource( 27 ), ExtResource( 28 ) ]
 
+[node name="ChangeDestinationTimer" type="Timer" parent="."]
+
 [connection signal="action_enacted" from="." to="AudioRouter" method="_on_Animal_action_enacted"]
 [connection signal="timeout" from="PooTimer" to="." method="do_poo"]
+[connection signal="timeout" from="ChangeDestinationTimer" to="." method="_on_ChangeDestinationTimer_timeout"]

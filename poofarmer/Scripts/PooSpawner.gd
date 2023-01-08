@@ -11,7 +11,6 @@ func _ready():
 #	pass
 
 func do_poo(animal):	
-	print(AnimalType.values.keys()[animal._type] + " Animal done pooed!💩💩💩💩");
 	var poo = poo_scene.instance()
 	poo.position = animal.position
 	poo.set_type(animal._type)
