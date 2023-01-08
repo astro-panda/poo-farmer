@@ -114,7 +114,7 @@ margin_right = 208.064
 margin_bottom = 20.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
-text = "9001"
+text = "0"
 align = 1
 valign = 1
 
