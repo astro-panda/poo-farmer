@@ -13,8 +13,15 @@ var currentHoldAmount = 0
 var totalPooAmount = 0
 var screen_size
 
+onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var end_of_gun = $EndOfGun
 onready var audio_ctrl = $MobAudioController
+onready var speech = $PlayerSprite/SpeechBubble
+onready var arrow_handle = $PlayerSprite/SpeechBubble/ArrowHandle
+
+onready var silo_subItem = $PlayerSprite/SpeechBubble/Silo
+
+var subItems = [silo_subItem]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -59,19 +66,25 @@ func _unhandled_input(event):
 		shoot()
 
 func _on_Player_area_entered(body):
-	if (body.is_in_group("poo") && currentHoldAmount < holdCapacity):
-		var poo = body as Poo
-		var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
-		currentHoldAmount += pooToAdd		
-		audio_ctrl.act(0) # the Poo pick up sound
-		if(pooToAdd != poo.pooValue):
-			poo.pooValue -= pooToAdd
+	if (body.is_in_group("poo")):
+		if (currentHoldAmount < holdCapacity):
+			var poo = body as Poo
+			var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
+			currentHoldAmount += pooToAdd		
+			audio_ctrl.act(0) # the Poo pick up sound
+			if(pooToAdd != poo.pooValue):
+				poo.pooValue -= pooToAdd
+				print("show silo")
+				show_speech(silo_subItem, silo)
+			else:
+				var goblins = get_tree().get_nodes_in_group("goblin")
+				for node in goblins:
+					var goblin = node as Goblin
+					goblin.removePooFromTargets(body, false)
+				poo.destroy()
 		else:
-			var goblins = get_tree().get_nodes_in_group("goblin")
-			for node in goblins:
-				var goblin = node as Goblin
-				goblin.removePooFromTargets(body, false)
-			poo.destroy()
+			print("show silo")
+			show_speech(silo_subItem, silo)
 	
 	if(body.is_in_group("silo")):
 		if currentHoldAmount > 0:
@@ -102,3 +115,19 @@ func shoot():
 func _on_Goblin_global_poo_stolen(stealAmount):
 	totalPooAmount = max(0, totalPooAmount - stealAmount)
 	emit_signal("update_global_poo_label", totalPooAmount)
+
+func show_speech(subitem, target):
+	for item in subItems:
+		if (is_instance_valid(item)):
+			item.visible = false
+	if (is_instance_valid(subitem)):
+		subitem.visible = true
+		speech.visible = true
+		$SpeechTimer.start()
+	if (is_instance_valid(target)):
+		#rotate arrow handle towards target
+		var angle = self.global_position.angle_to_point(target.position)
+		arrow_handle.rotation = -angle
+
+func _on_SpeechTimer_timeout():
+	speech.visible = false
