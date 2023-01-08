@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/EnemySpawner.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Goblin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/GoblinsGeneration.gd" type="Script" id=3]
 
-[node name="EnemySpawner" type="Node"]
+[node name="EnemySpawner" type="Node" groups=["spawner_enemy"]]
 script = ExtResource( 1 )
 enemy_scene = ExtResource( 2 )
 
@@ -12,5 +13,11 @@ enemy_scene = ExtResource( 2 )
 [node name="GenerationTimer" type="Timer" parent="."]
 wait_time = 120.0
 
+[node name="HudUpdateTimer" type="Timer" parent="."]
+
+[node name="Goblins" type="Node" parent="."]
+script = ExtResource( 3 )
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="GenerationTimer" to="." method="_on_GenerationTimer_timeout"]
+[connection signal="timeout" from="HudUpdateTimer" to="." method="_on_HudUpdateTimer_timeout"]

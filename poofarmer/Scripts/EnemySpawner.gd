@@ -1,6 +1,7 @@
 extends Node
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
+onready var goblins = $Goblins
 
 export(PackedScene) var enemy_scene
 export var maxEnemies = 20
@@ -14,6 +15,7 @@ var current_population
 func _ready():
 	current_population = goblin_populations.pop_front()
 	$SpawnTimer.start()
+	$HudUpdateTimer.start()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,7 +42,7 @@ func _on_SpawnTimer_timeout():
 		enemy.connect("global_poo_stolen", player, "_on_Goblin_global_poo_stolen")
 		
 		current_population -= 1
-		add_child(enemy)
+		goblins.add_child(enemy)
 		if current_population == 0:
 			$SpawnTimer.stop()
 			$GenerationTimer.start()
@@ -55,3 +57,5 @@ func _on_GenerationTimer_timeout():
 	else:
 		$GenerationTimer.stop()
 	
+func _on_HudUpdateTimer_timeout():
+	goblins.update_goblin_hud()

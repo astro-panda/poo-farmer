@@ -114,6 +114,7 @@ func shoot():
 
 func _on_Goblin_global_poo_stolen(stealAmount):
 	totalPooAmount = max(0, totalPooAmount - stealAmount)
+	hud.update_global_poo_label(totalPooAmount)
 	emit_signal("update_global_poo_label", totalPooAmount)
 
 func show_speech(subitem, target):
