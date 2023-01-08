@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://GlobalScripts/AnimalType.gd"
 }, {
+"base": "Area2D",
+"class": "Gnome",
+"language": "GDScript",
+"path": "res://Scripts/Gnome.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Goblin",
 "language": "GDScript",
@@ -41,6 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AnimalType": "",
+"Gnome": "",
 "Goblin": "",
 "HitBox": "",
 "HurtBox": "",
