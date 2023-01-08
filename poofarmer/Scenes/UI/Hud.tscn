@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Images/HUD.RocketLauncher.png" type="Texture" id=12]
 [ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=13]
 [ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=14]
+[ext_resource path="res://Images/Goblin.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -79,6 +80,9 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_vertical_guides_": [ 142.0, 8.0 ]
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -124,9 +128,9 @@ anchor_top = 0.128
 anchor_right = 0.012
 anchor_bottom = 0.128
 margin_left = 0.32
-margin_top = 7.92
+margin_top = 9.92
 margin_right = 128.32
-margin_bottom = 33.92
+margin_bottom = 35.92
 grow_horizontal = 2
 size_flags_horizontal = 3
 draw_center = false
@@ -154,6 +158,43 @@ margin_bottom = 16.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
+
+[node name="GoblinCountContainer" type="NinePatchRect" parent="CanvasLayer"]
+anchor_left = 0.012
+anchor_top = 0.128
+anchor_right = 0.012
+anchor_bottom = 0.128
+margin_left = 0.32
+margin_top = 46.92
+margin_right = 134.0
+margin_bottom = 72.92
+grow_horizontal = 2
+size_flags_horizontal = 3
+texture = ExtResource( 9 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="GoblinCountLabel" type="Label" parent="CanvasLayer/GoblinCountContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 125.0
+margin_bottom = 23.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="GoblinIcon" type="TextureRect" parent="CanvasLayer/GoblinCountContainer"]
+margin_left = -8.0
+margin_top = -18.0
+margin_right = 8.0
+margin_bottom = 18.0
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 2
 
 [node name="Arsenal Wheel" type="Control" parent="CanvasLayer"]
 anchor_left = 0.5

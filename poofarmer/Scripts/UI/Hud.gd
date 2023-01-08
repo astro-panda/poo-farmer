@@ -3,6 +3,7 @@ extends Control
 onready var arsenal_wheel = get_node("CanvasLayer/Arsenal Wheel")
 onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPlayer")
 onready var silo_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
+onready var goblin_counter = $CanvasLayer/GoblinCountContainer/GoblinCountLabel
 var arsenal_pressed: bool = false
 
 func _ready():
@@ -24,3 +25,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func update_global_poo_label(totalPooAmount):
 	silo_crud_points.text = str(totalPooAmount)
+
+func update_global_goblin_label(totalGoblins):
+	goblin_counter.text = str(totalGoblins)
