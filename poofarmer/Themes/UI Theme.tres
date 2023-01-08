@@ -1,6 +1,22 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Images/HUD.SquareFrame.1.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 19, 19 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 4.0
+margin_bottom = 3.0
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.4, 0.223529, 0.192157, 1 )
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -12,3 +28,7 @@ font_data = ExtResource( 1 )
 
 [resource]
 default_font = SubResource( 1 )
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/styles/bg = SubResource( 2 )
+ProgressBar/styles/fg = SubResource( 3 )

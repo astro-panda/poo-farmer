@@ -1,15 +1,24 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=3]
 [ext_resource path="res://Images/Crap-export.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/UI/Hud.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/UI/PocketCountContainer.gd" type="Script" id=6]
 [ext_resource path="res://Fonts/Silkscreen/slkscre.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Images/HUD.Silo.png" type="Texture" id=8]
+[ext_resource path="res://Images/HUD.SquareFrame.1.png" type="Texture" id=9]
+[ext_resource path="res://Images/HUD.Shovel.png" type="Texture" id=10]
+[ext_resource path="res://Images/HUD.Shotgun.png" type="Texture" id=11]
+[ext_resource path="res://Images/HUD.RocketLauncher.png" type="Texture" id=12]
+[ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=13]
+[ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -80,29 +89,28 @@ margin_right = 264.0
 margin_bottom = 48.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-texture = ExtResource( 3 )
-draw_center = false
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+texture = ExtResource( 9 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="SiloCrudIcon" type="TextureRect" parent="CanvasLayer/SiloCountContainer"]
 margin_top = -8.0
 margin_right = 40.0
 margin_bottom = 32.0
-texture = ExtResource( 4 )
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 1
 
 [node name="SiloCrudPoints" type="Label" parent="CanvasLayer/SiloCountContainer"]
-anchor_left = 0.187
+anchor_left = 0.156
 anchor_top = 0.5
-anchor_right = 0.187
+anchor_right = 0.156
 anchor_bottom = 0.5
-margin_left = 0.127998
+margin_left = 0.0639992
 margin_top = -20.0
-margin_right = 200.128
+margin_right = 208.064
 margin_bottom = 20.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
@@ -116,12 +124,11 @@ anchor_top = 0.128
 anchor_right = 0.012
 anchor_bottom = 0.128
 margin_left = 0.32
-margin_top = 8.0
+margin_top = 7.92
 margin_right = 128.32
-margin_bottom = 40.0
+margin_bottom = 33.92
 grow_horizontal = 2
 size_flags_horizontal = 3
-texture = ExtResource( 3 )
 draw_center = false
 patch_margin_left = 8
 patch_margin_top = 8
@@ -130,8 +137,10 @@ patch_margin_bottom = 8
 script = ExtResource( 6 )
 
 [node name="PocketCrudProgressBar" type="ProgressBar" parent="CanvasLayer/PocketCountContainer"]
-margin_right = 128.0
-margin_bottom = 32.0
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 131.0
+margin_bottom = 25.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 6 )
 max_value = 10.0
@@ -154,37 +163,125 @@ anchor_bottom = 0.5
 margin_top = 4.5
 margin_bottom = 4.5
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
+[node name="Shovel" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
 margin_left = -32.0
-margin_top = 24.0
+margin_top = 47.5
 margin_right = 32.0
-margin_bottom = 88.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
+margin_bottom = 111.5
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+expand = true
 
-[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Shovel"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 52.0
+margin_bottom = 52.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Pistol" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
+margin_left = 40.0
+margin_top = 7.5
+margin_right = 104.0
+margin_bottom = 71.5
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Pistol"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 52.0
+margin_bottom = 52.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shatgun" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
+margin_left = 40.0
+margin_top = -72.5
+margin_right = 104.0
+margin_bottom = -8.5
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Shatgun"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 52.0
+margin_bottom = 52.0
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ScatlingGun" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
 margin_left = -32.0
-margin_top = -104.0
+margin_top = -112.5
 margin_right = 32.0
-margin_bottom = -40.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
+margin_bottom = -48.5
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+expand = true
 
-[node name="TextureButton4" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = 32.0
-margin_top = -40.0
-margin_right = 96.0
-margin_bottom = 24.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/ScatlingGun"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 52.0
+margin_bottom = 52.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="TextureButton5" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = -96.0
-margin_top = -40.0
-margin_right = -32.0
-margin_bottom = 24.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
+[node name="RocketLauncher" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
+margin_left = -104.0
+margin_top = -72.5
+margin_right = -40.0
+margin_bottom = -8.5
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/RocketLauncher"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 52.0
+margin_bottom = 52.0
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Railgun" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
+margin_left = -104.0
+margin_top = 7.5
+margin_right = -40.0
+margin_bottom = 71.5
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Railgun"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 52.0
+margin_bottom = 52.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Arsenal Wheel"]
 pause_mode = 2
