@@ -200,6 +200,8 @@ minSpawnTime = 0.1
 script = ExtResource( 18 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
+margin_top = -366.0
+margin_bottom = -366.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 384 )
