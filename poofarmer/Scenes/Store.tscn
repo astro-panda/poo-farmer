@@ -1,0 +1,213 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=2]
+[ext_resource path="res://Images/HUD.Shotgun.png" type="Texture" id=3]
+[ext_resource path="res://Images/HUD.RocketLauncher.png" type="Texture" id=4]
+[ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=5]
+[ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=6]
+[ext_resource path="res://Images/HUD.Button.png" type="Texture" id=7]
+[ext_resource path="res://Images/temporary-store.png" type="Texture" id=8]
+[ext_resource path="res://Images/HUD.Button.Pressed.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Store.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "pistol",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "railgun",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "rocket-launcher",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "scatling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "shotgun",
+"speed": 5.0
+} ]
+
+[node name="Store" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="StoreBG" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.266667, 0.265879 )
+frames = SubResource( 1 )
+centered = false
+
+[node name="Pistol" type="Node2D" parent="."]
+position = Vector2( 85, 179 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Pistol"]
+position = Vector2( 36, 34 )
+scale = Vector2( 3, 3 )
+z_index = 1
+frames = SubResource( 2 )
+animation = "pistol"
+
+[node name="PistolButton" type="TextureButton" parent="Pistol"]
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="Pistol"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = 21.0
+margin_right = -6.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Shotgun" type="Node2D" parent="."]
+position = Vector2( 288, 179 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Shotgun"]
+position = Vector2( 36, 34 )
+scale = Vector2( 3, 3 )
+z_index = 1
+frames = SubResource( 2 )
+animation = "shotgun"
+
+[node name="ShotgunButton" type="TextureButton" parent="Shotgun"]
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="Shotgun"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = 21.0
+margin_right = -6.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+text = "20"
+align = 1
+valign = 1
+
+[node name="Rocket Launcher" type="Node2D" parent="."]
+position = Vector2( 488, 179 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Rocket Launcher"]
+position = Vector2( 36, 34 )
+scale = Vector2( 3, 3 )
+z_index = 1
+frames = SubResource( 2 )
+animation = "rocket-launcher"
+
+[node name="RocketLauncherButton" type="TextureButton" parent="Rocket Launcher"]
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="Rocket Launcher"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = 21.0
+margin_right = -6.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+text = "40"
+align = 1
+valign = 1
+
+[node name="Scatling" type="Node2D" parent="."]
+position = Vector2( 184, 272 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Scatling"]
+position = Vector2( 36, 34 )
+scale = Vector2( 3, 3 )
+z_index = 1
+frames = SubResource( 2 )
+animation = "scatling"
+
+[node name="ScatlingButton" type="TextureButton" parent="Scatling"]
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="Scatling"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = 21.0
+margin_right = -6.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+text = "60"
+align = 1
+valign = 1
+
+[node name="Railgun" type="Node2D" parent="."]
+position = Vector2( 392, 272 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Railgun"]
+position = Vector2( 36, 34 )
+scale = Vector2( 3, 3 )
+z_index = 1
+frames = SubResource( 2 )
+animation = "railgun"
+
+[node name="RailgunButton" type="TextureButton" parent="Railgun"]
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="Railgun"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = 21.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+text = "100"
+align = 1
+valign = 1
+
+[connection signal="button_down" from="Pistol/PistolButton" to="." method="_on_PistolButton_button_down"]
+[connection signal="button_down" from="Shotgun/ShotgunButton" to="." method="_on_ShotgunButton_button_down"]
+[connection signal="button_down" from="Rocket Launcher/RocketLauncherButton" to="." method="_on_RocketLauncherButton_button_down"]
+[connection signal="button_down" from="Scatling/ScatlingButton" to="." method="_on_ScatlingButton_button_down"]
+[connection signal="button_down" from="Railgun/RailgunButton" to="." method="_on_RailgunButton_button_down"]
