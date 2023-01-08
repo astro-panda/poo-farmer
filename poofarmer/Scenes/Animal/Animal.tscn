@@ -1,6 +1,7 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://Scripts/animal.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/AudioRouter.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/MobAudioController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/Cow.BrownSpotted.png" type="Texture" id=4]
 [ext_resource path="res://Images/Llama.png" type="Texture" id=5]
@@ -469,24 +470,37 @@ animation = "Goat - right"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="ChickenAudioController" parent="." instance=ExtResource( 3 )]
+[node name="AudioRouter" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="ChickenAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+next_behavior_min = 10.0
+next_behavior_max = 20.0
 actions = [ ExtResource( 9 ), ExtResource( 10 ) ]
 behaviors = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ) ]
 
-[node name="CowAudioController" parent="." instance=ExtResource( 3 )]
+[node name="CowAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+next_behavior_min = 5.0
+next_behavior_max = 30.0
 actions = [ ExtResource( 16 ), ExtResource( 17 ) ]
 behaviors = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
 
-[node name="GoatAudioController" parent="." instance=ExtResource( 3 )]
+[node name="GoatAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+next_behavior_max = 20.0
 actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
 behaviors = [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ]
 
-[node name="LlamaAudioController" parent="." instance=ExtResource( 3 )]
+[node name="LlamaAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+next_behavior_min = 5.0
+next_behavior_max = 20.0
 actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
 behaviors = [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
 
-[node name="UnicornAudioController" parent="." instance=ExtResource( 3 )]
+[node name="UnicornAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+next_behavior_min = 15.0
+next_behavior_max = 30.0
 actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
 behaviors = [ ExtResource( 27 ), ExtResource( 28 ) ]
 
+[connection signal="action_enacted" from="." to="AudioRouter" method="_on_Animal_action_enacted"]
 [connection signal="timeout" from="PooTimer" to="." method="do_poo"]

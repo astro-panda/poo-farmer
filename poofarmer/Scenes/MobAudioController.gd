@@ -13,13 +13,12 @@ onready var action_player = $ActionAudioPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause()
 	reset_behavior_timer()
-
 
 func reset_behavior_timer():
 	behavior_timer.wait_time = rand_range(next_behavior_min, next_behavior_max) as float
 	behavior_timer.start()
-
 
 func _on_BehaviorTimer_timeout():
 	reset_behavior_timer()	
@@ -28,7 +27,14 @@ func _on_BehaviorTimer_timeout():
 	behavior_player.play()
 
 func act(index: int):
-	action_player.stop()
 	var action: AudioStream = actions[clamp(index, 0, actions.size())]
 	action_player.stream = action
 	action_player.play()
+	
+func play():
+	action_player.playing = true
+	behavior_player.playing = true
+	
+func pause():
+	action_player.playing = false
+	behavior_player.playing = false
