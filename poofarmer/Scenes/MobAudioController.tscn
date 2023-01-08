@@ -4,10 +4,6 @@
 
 [node name="MobAudioController" type="Node"]
 script = ExtResource( 1 )
-next_behavior_min = null
-next_behavior_max = null
-actions = null
-behaviors = null
 
 [node name="ActionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 
