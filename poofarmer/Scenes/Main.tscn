@@ -197,6 +197,7 @@ rotate = false
 position = Vector2( 0.00170898, -24.0009 )
 
 [node name="AnimalSpawner" parent="." instance=ExtResource( 11 )]
+population = 100
 
 [node name="PooSpawner" parent="." instance=ExtResource( 15 )]
 

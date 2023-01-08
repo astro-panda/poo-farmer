@@ -21,7 +21,7 @@ func _ready():
 func set_type(type: int):
 	_type = type
 	pooValue = types_dict[_type]
-	$AnimatedSprite.animation = AnimalType.values.keys()[_type]
+	$AnimatedSprite.animation = "Unicorn" if (type == AnimalType.values.Unicorn) else "Normal"
 
 func destroy():
 	queue_free()
