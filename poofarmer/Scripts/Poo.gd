@@ -1,8 +1,6 @@
 extends Area2D
 class_name Poo
 
-signal collided
-
 export var pooValue = 1
 export(AnimalType.values) var _type = AnimalType.values.Chicken
 
@@ -26,5 +24,3 @@ func set_type(type: int):
 func destroy():
 	queue_free()
 
-func _on_Poo_body_entered(body):
-	emit_signal("collided")
