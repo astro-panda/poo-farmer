@@ -62,7 +62,6 @@ func _on_Player_area_entered(body):
 		var poo = body as Poo
 		var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
 		currentHoldAmount += pooToAdd		
-		emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 		if(pooToAdd != poo.pooValue):
 			poo.pooValue -= pooToAdd
 		else:
@@ -73,7 +72,11 @@ func _on_Player_area_entered(body):
 			poo.destroy()
 	
 	if(body.is_in_group("silo")):
-		emit_signal("update_global_poo_label", totalPooAmount)
+		totalPooAmount += currentHoldAmount
+		currentHoldAmount = 0
+		
+	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
+	emit_signal("update_global_poo_label", totalPooAmount)
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):
@@ -81,8 +84,7 @@ func _on_Player_body_entered(body):
 		body.start_StealTimer()
 
 func steal_poo(stealAmount: int):
-	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)
-	print("stole your poo: " + str(currentHoldAmount))
+	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)	
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 
 func shoot():
@@ -90,3 +92,8 @@ func shoot():
 	var target = get_global_mouse_position()
 	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
 	emit_signal("playerFire", poo_pellets_instance, end_of_gun.global_position, direction_to_mouse)
+
+
+func _on_Goblin_global_poo_stolen(stealAmount):
+	totalPooAmount -= stealAmount
+	emit_signal("update_global_poo_label", totalPooAmount)
