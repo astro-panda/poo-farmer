@@ -240,7 +240,6 @@ script = ExtResource( 2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "down"
-frame = 2
 playing = true
 
 [node name="Glow" type="AnimatedSprite" parent="AnimatedSprite"]
@@ -259,6 +258,8 @@ position = Vector2( 0.5, 12.5 )
 shape = SubResource( 19 )
 
 [node name="MobAudioController" parent="." instance=ExtResource( 4 )]
+next_behavior_min = 30.0
+next_behavior_max = 160.0
 behaviors = [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 10 ) ]
 
 [connection signal="area_entered" from="." to="." method="_on_Gnome_area_entered"]

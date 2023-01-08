@@ -135,25 +135,19 @@ z_index = -5
 frames = SubResource( 2 )
 centered = false
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 672, 384 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
-
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 5 )
 autoplay = true
 mix_target = 2
+bus = "Bkgd Music"
 
 [node name="BackgroundEnvPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 6 )
 autoplay = true
 mix_target = 2
+bus = "Environment"
 
 [node name="ShopMusicPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
@@ -161,6 +155,7 @@ stream = ExtResource( 7 )
 volume_db = -80.0
 autoplay = true
 mix_target = 2
+bus = "Shop Music"
 
 [node name="MusicAutomaton" type="AnimationPlayer" parent="."]
 pause_mode = 2
@@ -176,8 +171,6 @@ position = Vector2( 1560, 1560 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="GnomePath" type="Path2D" parent="."]
 position = Vector2( 2648, 384 )
@@ -205,7 +198,17 @@ minSpawnTime = 0.1
 [node name="PooPelletsManager" type="Node2D" parent="."]
 script = ExtResource( 18 )
 
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 384 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
+
+[connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
+[connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
-[connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
-[connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]

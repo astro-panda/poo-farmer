@@ -14,6 +14,7 @@ var totalPooAmount = 0
 var screen_size
 
 onready var end_of_gun = $EndOfGun
+onready var audio_ctrl = $MobAudioController
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,6 +63,7 @@ func _on_Player_area_entered(body):
 		var poo = body as Poo
 		var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
 		currentHoldAmount += pooToAdd		
+		audio_ctrl.act(0) # the Poo pick up sound
 		if(pooToAdd != poo.pooValue):
 			poo.pooValue -= pooToAdd
 		else:
@@ -72,6 +74,9 @@ func _on_Player_area_entered(body):
 			poo.destroy()
 	
 	if(body.is_in_group("silo")):
+		if currentHoldAmount > 0:
+			audio_ctrl.act(1) # the Poo drop sound
+			
 		totalPooAmount += currentHoldAmount
 		currentHoldAmount = 0
 		
@@ -95,5 +100,5 @@ func shoot():
 
 
 func _on_Goblin_global_poo_stolen(stealAmount):
-	totalPooAmount -= stealAmount
+	totalPooAmount = max(0, totalPooAmount - stealAmount)
 	emit_signal("update_global_poo_label", totalPooAmount)
