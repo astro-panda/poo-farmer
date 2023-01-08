@@ -15,20 +15,23 @@ var stealAmount = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentPooTargets.append(silo)
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2()
 	if playerNearby && playerHasPoo:
-		velocity = (player.position - position).normalized() * speed * delta
-		velocity = move_and_slide(velocity)
-	elif currentPooTargets.size() != 0:
-		if currentPooTargets.size() > 2:
-			print("here")
-		velocity = (currentPooTargets.front().position - position).normalized() * speed * delta
-		velocity = move_and_slide(velocity)
+		velocity = move_at_body(player, delta)
+	elif currentPooTargets.size() > 0:
+		var currentPoo = currentPooTargets.front()
+		while !is_instance_valid(currentPoo) && currentPooTargets.size() > 0:
+			currentPooTargets.pop_front()
+			currentPoo = currentPooTargets.front()
+			
+		if (is_instance_valid(currentPoo)):
+			velocity = move_at_body(currentPoo, delta)
+		else:
+			velocity = move_at_body(silo, delta)
 	else:
 		velocity = (silo.position - position).normalized() * speed * delta
 		velocity = move_and_slide(velocity)
@@ -45,7 +48,8 @@ func _process(delta):
 
 func _on_Visibility_area_entered(area):
 	if (area.is_in_group("poo")):
-		currentPooTargets.insert(currentPooTargets.find(silo) - 1, area)
+		if(is_instance_valid(area) && !currentPooTargets.has(area)):
+			currentPooTargets.push_back(area)
 	if (area.is_in_group("player")):
 		playerHasPoo = player.currentHoldAmount > 0
 		playerNearby = true
@@ -72,3 +76,7 @@ func _on_StealTimer_timeout():
 	audio_ctrl.act(0)
 	if(player.currentHoldAmount == 0):
 		playerNearby = false
+		
+func move_at_body(body, delta):
+	var velocity = (body.position - position).normalized() * speed * delta
+	return move_and_slide(velocity)	

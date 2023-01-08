@@ -4,6 +4,7 @@ class_name Gnome
 signal store_opened(opened)
 
 onready var sprite = $AnimatedSprite
+onready var glow = $AnimatedSprite/Glow
 
 var player_in_range = false
 
@@ -28,4 +29,6 @@ func _on_Gnome_area_exited(body: Node):
 		player_in_range = false
 
 func playAnimation(direction):
-	sprite.animation = ("glow-" if player_in_range else "") + direction
+	sprite.animation = direction
+	glow.animation = direction
+	glow.visible = player_in_range
