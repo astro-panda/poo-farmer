@@ -1,10 +1,11 @@
 extends Area2D
+class_name Gnome
 
 signal store_opened(opened)
 
-var player_in_range = false
-
 onready var sprite = $AnimatedSprite
+
+var player_in_range = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,12 +20,12 @@ func _unhandled_input(event):
 
 func _on_Gnome_area_entered(body: Node):
 	if(body.is_in_group("player")):
-		sprite.animation = "glow"
 		player_in_range = true
 
 
 func _on_Gnome_area_exited(body: Node):	
 	if(body.is_in_group("player")):
-		sprite.animation = "default"
 		player_in_range = false
-	
+
+func playAnimation(direction):
+	sprite.animation = ("glow-" if player_in_range else "") + direction
