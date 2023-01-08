@@ -49,5 +49,3 @@ frames = SubResource( 4 )
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -24, 0 )
 shape = SubResource( 3 )
-
-[connection signal="body_entered" from="." to="." method="player_enters"]

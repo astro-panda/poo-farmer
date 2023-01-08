@@ -5,18 +5,22 @@
 [ext_resource path="res://Images/Crap.Rainbow.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 16 )
 
@@ -45,11 +49,8 @@ script = ExtResource( 2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "Unicorn"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
 shape = SubResource( 2 )
-
-[connection signal="body_entered" from="." to="." method="_on_Poo_body_entered"]

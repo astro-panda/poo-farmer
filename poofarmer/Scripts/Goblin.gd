@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Goblin
 
+signal global_poo_stolen(stealAmount)
+
 # Declare member variables here. Examples:
 export var speed = 1500
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
@@ -26,7 +28,8 @@ func _process(delta):
 		var currentPoo = currentPooTargets.front()
 		while !is_instance_valid(currentPoo) && currentPooTargets.size() > 0:
 			currentPooTargets.pop_front()
-			currentPoo = currentPooTargets.front()
+			if(currentPooTargets.size() > 0):
+				currentPoo = currentPooTargets.front()
 			
 		if (is_instance_valid(currentPoo)):
 			velocity = move_at_body(currentPoo, delta)
@@ -59,8 +62,13 @@ func _on_Visibility_area_exited(area):
 	$StealTimer.stop()
 	
 func _on_PooPickupDetection_area_entered(area):
-	removePooFromTargets(area, true)
-		
+	if (area.is_in_group("poo")):
+		removePooFromTargets(area, true)
+	
+	if (area.is_in_group("silo")):
+		emit_signal("global_poo_stolen", stealAmount)
+
+
 func removePooFromTargets(poo, destroy):
 	if (poo.is_in_group("poo")):
 		var pooInstance = poo as Poo
