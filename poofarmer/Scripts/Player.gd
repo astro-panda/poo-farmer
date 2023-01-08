@@ -62,7 +62,6 @@ func _unhandled_input(event):
 	if event.is_action_pressed("player_fire"):
 		var clickLocation = get_global_mouse_position()
 		var fireAngle = rad2deg(clickLocation.angle_to_point(position))
-		print("fire from ", position, " at an angle of ", fireAngle)
 		shoot()
 
 func _on_Player_area_entered(body):
@@ -110,7 +109,6 @@ func shoot():
 	var target = get_global_mouse_position()
 	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
 	emit_signal("playerFire", poo_pellets_instance, end_of_gun.global_position, direction_to_mouse)
-
 
 func _on_Goblin_global_poo_stolen(stealAmount):
 	totalPooAmount = max(0, totalPooAmount - stealAmount)

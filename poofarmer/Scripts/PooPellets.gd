@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 
 export(float) var poo_speed = 10.0
 
@@ -16,3 +16,9 @@ func _physics_process(delta: float) -> void:
 
 func set_direction(new_direction: Vector2):
 	direction = new_direction
+
+func _on_PooPellets_body_entered(body):
+	print ("Poojectile hits")
+	if body.has_method("handle_hit"):
+		body.handle_hit()
+		queue_free()
