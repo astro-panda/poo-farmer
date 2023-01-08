@@ -25,3 +25,7 @@ func _on_StartButton_pressed():
 
 func _on_Gnome_store_opened(opened):
 	set_is_paused(opened)
+
+
+func _on_Store_close_store():
+	set_is_paused(false)

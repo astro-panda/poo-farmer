@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Images/temporary-store.png" type="Texture" id=8]
 [ext_resource path="res://Images/HUD.Button.Pressed.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Store.gd" type="Script" id=10]
+[ext_resource path="res://Images/exit-button.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -53,21 +54,22 @@ anchor_bottom = 1.0
 script = ExtResource( 10 )
 
 [node name="StoreBG" type="AnimatedSprite" parent="."]
+position = Vector2( -320, -176 )
 scale = Vector2( 0.266667, 0.265879 )
 frames = SubResource( 1 )
 centered = false
 
 [node name="Pistol" type="Node2D" parent="."]
-position = Vector2( 85, 179 )
+position = Vector2( -235, 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Pistol"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
-z_index = 1
+z_index = 3
 frames = SubResource( 2 )
 animation = "pistol"
 
-[node name="PistolButton" type="TextureButton" parent="Pistol"]
+[node name="Button" type="TextureButton" parent="Pistol"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
@@ -88,16 +90,16 @@ align = 1
 valign = 1
 
 [node name="Shotgun" type="Node2D" parent="."]
-position = Vector2( 288, 179 )
+position = Vector2( -32, 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Shotgun"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
-z_index = 1
+z_index = 3
 frames = SubResource( 2 )
 animation = "shotgun"
 
-[node name="ShotgunButton" type="TextureButton" parent="Shotgun"]
+[node name="Button" type="TextureButton" parent="Shotgun"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
@@ -117,24 +119,24 @@ text = "20"
 align = 1
 valign = 1
 
-[node name="Rocket Launcher" type="Node2D" parent="."]
-position = Vector2( 488, 179 )
+[node name="RocketLauncher" type="Node2D" parent="."]
+position = Vector2( 168, 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Rocket Launcher"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="RocketLauncher"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
-z_index = 1
+z_index = 3
 frames = SubResource( 2 )
 animation = "rocket-launcher"
 
-[node name="RocketLauncherButton" type="TextureButton" parent="Rocket Launcher"]
+[node name="Button" type="TextureButton" parent="RocketLauncher"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
 expand = true
 
-[node name="Label" type="Label" parent="Rocket Launcher"]
+[node name="Label" type="Label" parent="RocketLauncher"]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -148,16 +150,16 @@ align = 1
 valign = 1
 
 [node name="Scatling" type="Node2D" parent="."]
-position = Vector2( 184, 272 )
+position = Vector2( -136, 96 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Scatling"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
-z_index = 1
+z_index = 3
 frames = SubResource( 2 )
 animation = "scatling"
 
-[node name="ScatlingButton" type="TextureButton" parent="Scatling"]
+[node name="Button" type="TextureButton" parent="Scatling"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
@@ -178,16 +180,16 @@ align = 1
 valign = 1
 
 [node name="Railgun" type="Node2D" parent="."]
-position = Vector2( 392, 272 )
+position = Vector2( 72, 96 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Railgun"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
-z_index = 1
+z_index = 3
 frames = SubResource( 2 )
 animation = "railgun"
 
-[node name="RailgunButton" type="TextureButton" parent="Railgun"]
+[node name="Button" type="TextureButton" parent="Railgun"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
@@ -206,8 +208,17 @@ text = "100"
 align = 1
 valign = 1
 
-[connection signal="button_down" from="Pistol/PistolButton" to="." method="_on_PistolButton_button_down"]
-[connection signal="button_down" from="Shotgun/ShotgunButton" to="." method="_on_ShotgunButton_button_down"]
-[connection signal="button_down" from="Rocket Launcher/RocketLauncherButton" to="." method="_on_RocketLauncherButton_button_down"]
-[connection signal="button_down" from="Scatling/ScatlingButton" to="." method="_on_ScatlingButton_button_down"]
-[connection signal="button_down" from="Railgun/RailgunButton" to="." method="_on_RailgunButton_button_down"]
+[node name="ExitButton" type="TextureButton" parent="."]
+margin_left = 280.0
+margin_top = -160.0
+margin_right = 304.0
+margin_bottom = -136.0
+texture_normal = ExtResource( 11 )
+expand = true
+
+[connection signal="button_down" from="Pistol/Button" to="." method="_on_PistolButton_button_down"]
+[connection signal="button_down" from="Shotgun/Button" to="." method="_on_ShotgunButton_button_down"]
+[connection signal="button_down" from="RocketLauncher/Button" to="." method="_on_RocketLauncherButton_button_down"]
+[connection signal="button_down" from="Scatling/Button" to="." method="_on_ScatlingButton_button_down"]
+[connection signal="button_down" from="Railgun/Button" to="." method="_on_RailgunButton_button_down"]
+[connection signal="button_down" from="ExitButton" to="." method="_on_ExitButton_button_down"]
