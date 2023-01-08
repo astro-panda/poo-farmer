@@ -165,6 +165,7 @@ script = ExtResource( 10 )
 
 [node name="Poo" parent="." instance=ExtResource( 12 )]
 position = Vector2( 760, 472 )
+pooValue = 15
 
 [node name="Silo" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1560, 1560 )
@@ -210,5 +211,4 @@ __meta__ = {
 
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
-[connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
