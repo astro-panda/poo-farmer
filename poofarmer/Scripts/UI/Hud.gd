@@ -2,7 +2,7 @@ extends Control
 
 onready var arsenal_wheel = get_node("CanvasLayer/Arsenal Wheel")
 onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPlayer")
-onready var sild_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
+onready var silo_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
 var arsenal_pressed: bool = false
 
 func _ready():
@@ -22,5 +22,5 @@ func _unhandled_input(event: InputEvent) -> void:
 			Engine.time_scale = 1
 
 
-func _on_Player_update_global_poo_label(dump_amount):
-	sild_crud_points.text = str(dump_amount)
+func update_global_poo_label(totalPooAmount):
+	silo_crud_points.text = str(totalPooAmount)

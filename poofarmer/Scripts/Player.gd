@@ -13,6 +13,7 @@ var currentHoldAmount = 0
 var totalPooAmount = 0
 var screen_size
 
+onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var end_of_gun = $EndOfGun
 onready var audio_ctrl = $MobAudioController
@@ -91,6 +92,7 @@ func _on_Player_area_entered(body):
 			
 		totalPooAmount += currentHoldAmount
 		currentHoldAmount = 0
+		hud.update_global_poo_label(totalPooAmount)
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 	emit_signal("update_global_poo_label", totalPooAmount)

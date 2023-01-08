@@ -7,12 +7,14 @@ export var maxEnemies = 20
 export var maxSpawnTime = 30.0
 export var minSpawnTime = 10.0
 var rnd = RandomNumberGenerator.new()
-
+var goblin_populations = [20,20,40,60,60]
+var current_population
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	current_population = goblin_populations.pop_front()
 	$SpawnTimer.start()
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -37,6 +39,19 @@ func _on_SpawnTimer_timeout():
 		enemy.position = spawnLoc
 		enemy.connect("global_poo_stolen", player, "_on_Goblin_global_poo_stolen")
 		
+		current_population -= 1
 		add_child(enemy)
+		if current_population == 0:
+			$SpawnTimer.stop()
+			$GenerationTimer.start()
 		
 	$SpawnTimer.wait_time = rand_range(minSpawnTime, maxSpawnTime)
+
+
+func _on_GenerationTimer_timeout():
+	if goblin_populations.size() > 0:
+		current_population = goblin_populations.pop_front()
+		$SpawnTimer.start()
+	else:
+		$GenerationTimer.stop()
+	
