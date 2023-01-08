@@ -81,6 +81,7 @@ func _on_Player_body_entered(body):
 func steal_poo(stealAmount: int):
 	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)
 	print("stole your poo: " + str(currentHoldAmount))
+	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 
 func shoot():
 	var poo_pellets_instance = poo_pellets.instance()

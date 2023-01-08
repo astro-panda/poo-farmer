@@ -5,6 +5,7 @@ class_name Goblin
 export var speed = 1500
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var player = get_tree().get_nodes_in_group("player")[0]
+onready var audio_ctrl = $MobAudioController
 var playerNearby = false
 var playerHasPoo = false
 var currentPooTargets = []
@@ -68,5 +69,6 @@ func start_StealTimer():
 
 func _on_StealTimer_timeout():
 	player.steal_poo(stealAmount)
+	audio_ctrl.act(0)
 	if(player.currentHoldAmount == 0):
 		playerNearby = false
