@@ -126,8 +126,9 @@ func show_speech(subitem, target):
 		$SpeechTimer.start()
 	if (is_instance_valid(target)):
 		#rotate arrow handle towards target
-		var angle = self.global_position.angle_to_point(target.position)
-		arrow_handle.rotation = -angle
+		var angle = self.global_position.angle_to_point(target.global_position)
+		print("Angle to target: " + str(rad2deg(angle)))
+		arrow_handle.rotation = (angle)
 
 func _on_SpeechTimer_timeout():
 	speech.visible = false

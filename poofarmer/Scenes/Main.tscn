@@ -164,7 +164,31 @@ pause_mode = 2
 script = ExtResource( 10 )
 
 [node name="Poo" parent="." instance=ExtResource( 12 )]
-position = Vector2( 760, 472 )
+position = Vector2( 1231, 1754 )
+pooValue = 15
+
+[node name="Poo4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1247, 1324 )
+pooValue = 15
+
+[node name="Poo2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1820, 1313 )
+pooValue = 15
+
+[node name="Poo3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1806, 1779 )
+pooValue = 15
+
+[node name="Poo5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1616, 1827 )
+pooValue = 15
+
+[node name="Poo6" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1213, 1556 )
+pooValue = 15
+
+[node name="Poo7" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1602, 1298 )
 pooValue = 15
 
 [node name="Silo" parent="." instance=ExtResource( 14 )]
