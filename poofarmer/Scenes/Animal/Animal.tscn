@@ -1,12 +1,33 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=111 format=2]
 
 [ext_resource path="res://Scripts/animal.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Poo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/MobAudioController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/Cow.BrownSpotted.png" type="Texture" id=4]
 [ext_resource path="res://Images/Llama.png" type="Texture" id=5]
 [ext_resource path="res://Images/Unicorn.png" type="Texture" id=6]
 [ext_resource path="res://Images/Chicken.png" type="Texture" id=7]
+[ext_resource path="res://Audio/Poo Farmer Chicken Screech.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/Poo Farmer Chicken Poo 1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/Poo Farmer Chicken Poo 2.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/Poo Farmer Chicken Bok Bok.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/Poo Farmer Chicken Bok.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/Poo Farmer Cow 1.wav" type="AudioStream" id=13]
+[ext_resource path="res://Audio/Poo Farmer Cow 2.wav" type="AudioStream" id=14]
+[ext_resource path="res://Audio/Poo Farmer Cow 3.wav" type="AudioStream" id=15]
+[ext_resource path="res://Audio/Poo Farmer Cow Poo 1.wav" type="AudioStream" id=16]
+[ext_resource path="res://Audio/Poo Farmer Cow Poo 2.wav" type="AudioStream" id=17]
+[ext_resource path="res://Audio/Poo Farmer Goat 1.wav" type="AudioStream" id=18]
+[ext_resource path="res://Audio/Poo Farmer Goat 2.wav" type="AudioStream" id=19]
+[ext_resource path="res://Audio/Poo Farmer Goat 3.wav" type="AudioStream" id=20]
+[ext_resource path="res://Audio/Poo Farmer Med Animals Poo 1.wav" type="AudioStream" id=21]
+[ext_resource path="res://Audio/Poo Farmer Med Animals Poo 2.wav" type="AudioStream" id=22]
+[ext_resource path="res://Audio/Poo Farmer Med Animals Poo 3.wav" type="AudioStream" id=23]
+[ext_resource path="res://Audio/Poo Farmer Llama 1.wav" type="AudioStream" id=24]
+[ext_resource path="res://Audio/Poo Farmer Llama 2.wav" type="AudioStream" id=25]
+[ext_resource path="res://Audio/Poo Farmer Llama 3.wav" type="AudioStream" id=26]
+[ext_resource path="res://Audio/Poo Farmer Unicon 1.wav" type="AudioStream" id=27]
+[ext_resource path="res://Audio/Poo Farmer Unicorn 2.wav" type="AudioStream" id=28]
+[ext_resource path="res://Images/Goat.png" type="Texture" id=29]
 
 [sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 7 )
@@ -136,37 +157,69 @@ region = Rect2( 64, 64, 32, 32 )
 atlas = ExtResource( 4 )
 region = Rect2( 96, 64, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 29 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 64, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 96, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 29 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 29 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 29 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 29 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 29 )
+region = Rect2( 32, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 29 )
+region = Rect2( 64, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=82]
+atlas = ExtResource( 29 )
+region = Rect2( 96, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 29 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=84]
+atlas = ExtResource( 29 )
 region = Rect2( 32, 32, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 29 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=86]
+atlas = ExtResource( 29 )
+region = Rect2( 96, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 29 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 29 )
 region = Rect2( 32, 64, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 5 )
-region = Rect2( 32, 96, 32, 32 )
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 29 )
+region = Rect2( 64, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=90]
+atlas = ExtResource( 29 )
+region = Rect2( 96, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 5 )
@@ -338,22 +391,22 @@ animations = [ {
 "name": "Cow - up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
+"frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ) ],
 "loop": true,
 "name": "Goat - down",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
+"frames": [ SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ) ],
 "loop": true,
 "name": "Goat - left",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ) ],
 "loop": true,
 "name": "Goat - right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ) ],
 "loop": true,
 "name": "Goat - up",
 "speed": 5.0
@@ -406,7 +459,6 @@ z_index = 1
 script = ExtResource( 1 )
 poo_timer_min = 1.0
 poo_timer_max = 3.0
-poo_scene = ExtResource( 3 )
 
 [node name="PooTimer" type="Timer" parent="."]
 
@@ -416,5 +468,25 @@ animation = "Goat - right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="ChickenAudioController" parent="." instance=ExtResource( 3 )]
+actions = [ ExtResource( 9 ), ExtResource( 10 ) ]
+behaviors = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ) ]
+
+[node name="CowAudioController" parent="." instance=ExtResource( 3 )]
+actions = [ ExtResource( 16 ), ExtResource( 17 ) ]
+behaviors = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
+
+[node name="GoatAudioController" parent="." instance=ExtResource( 3 )]
+actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
+behaviors = [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ]
+
+[node name="LlamaAudioController" parent="." instance=ExtResource( 3 )]
+actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
+behaviors = [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
+
+[node name="UnicornAudioController" parent="." instance=ExtResource( 3 )]
+actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
+behaviors = [ ExtResource( 27 ), ExtResource( 28 ) ]
 
 [connection signal="timeout" from="PooTimer" to="." method="do_poo"]

@@ -145,17 +145,20 @@ __meta__ = {
 pause_mode = 2
 stream = ExtResource( 5 )
 autoplay = true
+mix_target = 2
 
 [node name="BackgroundEnvPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 6 )
 autoplay = true
+mix_target = 2
 
 [node name="ShopMusicPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 7 )
 volume_db = -80.0
 autoplay = true
+mix_target = 2
 
 [node name="MusicAutomaton" type="AnimationPlayer" parent="."]
 pause_mode = 2
