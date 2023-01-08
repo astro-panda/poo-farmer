@@ -2,9 +2,10 @@ extends Area2D
 
 signal playerFire(poo_pellets, playerPosition, fireAngle)
 signal playerSendCurrentHoldAmount(currentHoldAmount)
-export (PackedScene) var poo_pellets
+signal update_global_poo_label(dump_amount)
 
 # Declare member variables here. Examples:
+export (PackedScene) var poo_pellets
 export var speed = 300
 export var holdCapacity = 10
 export var goblinStealAmount = 5
@@ -60,8 +61,7 @@ func _on_Player_area_entered(body):
 	if (body.is_in_group("poo") && currentHoldAmount < holdCapacity):
 		var poo = body as Poo
 		var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
-		currentHoldAmount += pooToAdd
-		totalPooAmount += pooToAdd
+		currentHoldAmount += pooToAdd		
 		emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 		if(pooToAdd != poo.pooValue):
 			poo.pooValue -= pooToAdd
@@ -71,7 +71,9 @@ func _on_Player_area_entered(body):
 				var goblin = node as Goblin
 				goblin.removePooFromTargets(body, false)
 			poo.destroy()
-		print("grabbed a poo")
+	
+	if(body.is_in_group("silo")):
+		emit_signal("update_global_poo_label", totalPooAmount)
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):
