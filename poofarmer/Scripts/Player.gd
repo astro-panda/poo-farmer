@@ -10,8 +10,12 @@ export var speed = 300
 export var holdCapacity = 10
 export var goblinStealAmount = 5
 var currentHoldAmount = 0
-var totalPooAmount = 0
+var totalPooAmount = 50
 var screen_size
+
+var fireModes = [FireMode.values.Shovel, FireMode.values.Pistol]
+
+var fireModes = [FireMode.values.Shovel]
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]

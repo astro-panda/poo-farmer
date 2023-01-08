@@ -456,7 +456,6 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Animal" type="KinematicBody2D"]
-z_index = 1
 collision_layer = 2
 collision_mask = 13
 script = ExtResource( 1 )
@@ -469,6 +468,7 @@ _type = 1
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "Chicken - down"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
