@@ -29,7 +29,3 @@ func _on_SpawnTimer_timeout():
 	add_child(animal)
 	if(get_child_count() > population):
 		$SpawnTimer.stop()
-	
-
-
-	
