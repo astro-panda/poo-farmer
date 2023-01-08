@@ -1,15 +1,22 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+[gd_resource type="AudioBusLayout" load_steps=3 format=2]
 
 [sub_resource type="AudioEffectStereoEnhance" id=1]
 resource_name = "StereoEnhance"
 surround = 1.0
+
+[sub_resource type="AudioEffectLimiter" id=2]
+resource_name = "Limiter"
+ceiling_db = -4.2
+threshold_db = -16.7
+soft_clip_db = 4.5
+soft_clip_ratio = 8.9
 
 [resource]
 bus/1/name = "Background"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
+bus/1/volume_db = 5.82224
 bus/1/send = "Master"
 bus/2/name = "Environment"
 bus/2/solo = false
@@ -23,17 +30,19 @@ bus/3/name = "Bkgd Music"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = 1.85375
+bus/3/volume_db = 2.84476
 bus/3/send = "Background"
 bus/4/name = "Shop Music"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = 0.0
+bus/4/volume_db = 0.267241
 bus/4/send = "Background"
 bus/5/name = "Animals"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = 0.0
+bus/5/volume_db = 0.464998
 bus/5/send = "Master"
+bus/5/effect/0/effect = SubResource( 2 )
+bus/5/effect/0/enabled = true

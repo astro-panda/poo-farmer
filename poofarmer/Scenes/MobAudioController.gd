@@ -21,10 +21,11 @@ func reset_behavior_timer():
 	behavior_timer.start()
 
 func _on_BehaviorTimer_timeout():
-	reset_behavior_timer()	
-	var behavior: AudioStream = behaviors[randi() % behaviors.size()]
-	behavior_player.stream = behavior
-	behavior_player.play()
+	if behaviors.size() > 0:	
+		reset_behavior_timer()	
+		var behavior: AudioStream = behaviors[randi() % behaviors.size()]	
+		behavior_player.stream = behavior
+		behavior_player.play()
 
 func act(index: int):
 	var action: AudioStream = actions[clamp(index, 0, actions.size())]
