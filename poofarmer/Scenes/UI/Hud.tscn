@@ -164,10 +164,10 @@ anchor_left = 0.012
 anchor_top = 0.128
 anchor_right = 0.012
 anchor_bottom = 0.128
-margin_left = 0.32
-margin_top = 46.92
-margin_right = 134.0
-margin_bottom = 72.92
+margin_left = 395.32
+margin_top = -38.08
+margin_right = 626.32
+margin_bottom = -12.08
 grow_horizontal = 2
 size_flags_horizontal = 3
 texture = ExtResource( 9 )
@@ -179,7 +179,7 @@ patch_margin_bottom = 8
 [node name="GoblinCountLabel" type="Label" parent="CanvasLayer/GoblinCountContainer"]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 125.0
+margin_right = 227.0
 margin_bottom = 23.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 6 )
@@ -188,9 +188,9 @@ align = 1
 valign = 1
 
 [node name="GoblinIcon" type="TextureRect" parent="CanvasLayer/GoblinCountContainer"]
-margin_left = -8.0
+margin_left = 221.0
 margin_top = -18.0
-margin_right = 8.0
+margin_right = 237.0
 margin_bottom = 18.0
 texture = ExtResource( 15 )
 expand = true

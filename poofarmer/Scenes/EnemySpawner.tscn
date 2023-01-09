@@ -12,6 +12,7 @@ enemy_scene = ExtResource( 2 )
 
 [node name="GenerationTimer" type="Timer" parent="."]
 wait_time = 120.0
+one_shot = true
 
 [node name="HudUpdateTimer" type="Timer" parent="."]
 

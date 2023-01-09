@@ -7,5 +7,5 @@ func _ready():
 	pass # Replace with function body.
 
 
-func update_goblin_hud():
-	hud.update_global_goblin_label(self.get_child_count())
+func update_goblin_hud(total, wave):
+	hud.update_global_goblin_label("Goblins " + str(self.get_child_count()) + " / " + str(total) + " Wave " + str(wave))
