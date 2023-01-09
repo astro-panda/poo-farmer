@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/PooFarmerMap.png" type="Texture" id=2]
@@ -10,12 +10,9 @@
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/UI/ModalWindow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/MusicAutomaton.gd" type="Script" id=10]
-[ext_resource path="res://Scenes/Animal/AnimalSpawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Poo.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Silo.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Animal/PooSpawner.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/EnemySpawner.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scripts/GnomePath.gd" type="Script" id=17]
 [ext_resource path="res://Scripts/PooPelletsManager.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/UI/StartScreen.tscn" type="PackedScene" id=19]
@@ -137,6 +134,11 @@ z_index = -5
 frames = SubResource( 2 )
 centered = false
 
+[node name="PooSpawner" parent="." instance=ExtResource( 15 )]
+
+[node name="PooPelletsManager" type="Node2D" parent="."]
+script = ExtResource( 18 )
+
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 5 )
@@ -165,34 +167,6 @@ pause_mode = 2
 "anims/Poose Screen" = SubResource( 4 )
 script = ExtResource( 10 )
 
-[node name="Poo" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1231, 1754 )
-pooValue = 15
-
-[node name="Poo4" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1247, 1324 )
-pooValue = 15
-
-[node name="Poo2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1820, 1313 )
-pooValue = 15
-
-[node name="Poo3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1806, 1779 )
-pooValue = 15
-
-[node name="Poo5" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1616, 1827 )
-pooValue = 15
-
-[node name="Poo6" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1213, 1556 )
-pooValue = 15
-
-[node name="Poo7" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1602, 1298 )
-pooValue = 15
-
 [node name="Silo" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1560, 1560 )
 __meta__ = {
@@ -211,19 +185,6 @@ rotate = false
 
 [node name="Gnome" parent="GnomePath/PathFollow2D" instance=ExtResource( 4 )]
 position = Vector2( 0.00170898, -24.0009 )
-
-[node name="AnimalSpawner" parent="." instance=ExtResource( 11 )]
-population = 100
-
-[node name="PooSpawner" parent="." instance=ExtResource( 15 )]
-
-[node name="EnemySpawner" parent="." instance=ExtResource( 16 )]
-maxEnemies = 100
-maxSpawnTime = 0.5
-minSpawnTime = 0.1
-
-[node name="PooPelletsManager" type="Node2D" parent="."]
-script = ExtResource( 18 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 margin_top = -365.0
@@ -252,5 +213,7 @@ visible = false
 [connection signal="close_store" from="Store" to="MusicAutomaton" method="_on_Store_close_store"]
 [connection signal="open_store" from="Store" to="MusicAutomaton" method="_on_Store_open_store"]
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
+[connection signal="game_quit" from="Player/ModalWindow" to="." method="quit"]
+[connection signal="game_reset" from="Player/ModalWindow" to="." method="reset"]
 [connection signal="game_started" from="StartScreen" to="Player/ModalWindow" method="_on_StartScreen_game_started"]
 [connection signal="how_to_play_requested" from="StartScreen" to="Player/ModalWindow" method="show_how_to_play"]

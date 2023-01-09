@@ -25,7 +25,7 @@ func set_is_paused(value):
 			show_poosed()
 		else:
 			reset_canvas()
-		get_tree().paused = value	
+		get_tree().paused = value
 		is_paused = value
 
 
@@ -59,8 +59,7 @@ func reset_canvas():
 
 
 func trigger_game_reset():
-	reset_canvas()
-	set_is_paused(false)
+	unpause()
 	emit_signal("game_reset")
 	
 func quit_game():
@@ -71,4 +70,8 @@ func quit_game():
 
 func _on_StartScreen_game_started():
 	game_started = true
+	unpause()
+	
+func unpause():
+	reset_canvas()
 	set_is_paused(false)

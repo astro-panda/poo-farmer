@@ -1,4 +1,5 @@
 extends Area2D
+class_name Player
 
 signal playerFire(poo_pellets, playerPosition, fireAngle)
 signal playerSendCurrentHoldAmount(currentHoldAmount)
@@ -157,3 +158,11 @@ func game_over():
 func _on_GameOnTimer_timeout():
 	if totalPooAmount <= 0:
 		game_over()
+
+
+func reset():
+	position = Vector2(1406, 1619)
+	currentHoldAmount = 0
+	totalPooAmount = 0
+	fireModes = [FireMode.values.Shovel]
+	equippedFireMode = FireMode.values.Shovel
