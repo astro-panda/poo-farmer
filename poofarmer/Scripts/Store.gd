@@ -37,8 +37,6 @@ func _on_Gnome_store_opened(opened):
 		
 func check_btns():
 	for j in listOfButtons.size():
-		var playerPoo = player.totalPooAmount
-		var cost = listOfCosts[j]
 		change_button_state(j, player.totalPooAmount <= listOfCosts[j], true)
 	for fireMode in player.fireModes:
 		if fireMode != FireMode.values.Shovel:

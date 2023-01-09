@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/PooFarmerMap.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Scripts/GnomePath.gd" type="Script" id=17]
 [ext_resource path="res://Scripts/PooPelletsManager.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/UI/StartScreen.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1536, 1536 )
@@ -185,6 +186,7 @@ rotate = false
 
 [node name="Gnome" parent="GnomePath/PathFollow2D" instance=ExtResource( 4 )]
 position = Vector2( 0.00170898, -24.0009 )
+poo_pellets = ExtResource( 19 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 margin_top = -365.0
@@ -212,6 +214,8 @@ visible = false
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
 [connection signal="close_store" from="Store" to="MusicAutomaton" method="_on_Store_close_store"]
 [connection signal="open_store" from="Store" to="MusicAutomaton" method="_on_Store_open_store"]
+[connection signal="close_store" from="Store" to="Player/ModalWindow" method="_on_Store_close_store"]
+[connection signal="firePoo" from="Player" to="PooPelletsManager" method="_on_Player_firePoo"]
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
 [connection signal="game_quit" from="Player/ModalWindow" to="." method="quit"]
 [connection signal="game_reset" from="Player/ModalWindow" to="." method="reset"]

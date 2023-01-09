@@ -9,6 +9,7 @@
 [ext_resource path="res://Images/Speechbox.png" type="Texture" id=7]
 [ext_resource path="res://Images/HUD.Silo.png" type="Texture" id=8]
 [ext_resource path="res://Images/Arrow.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Pooter.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 23.5 )
@@ -82,22 +83,22 @@ animations = [ {
 "frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "down",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "left",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "right",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "up",
-"speed": 3.0
+"speed": 6.0
 } ]
 
 [sub_resource type="SpriteFrames" id=19]
@@ -175,8 +176,28 @@ drag_margin_right = 0.4
 drag_margin_bottom = 0.3
 editor_draw_drag_margin = true
 
-[node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( 12, 8 )
+[node name="ShovelPooter" parent="." instance=ExtResource( 10 )]
+poo_pellets = ExtResource( 3 )
+
+[node name="PistolPooter" parent="." instance=ExtResource( 10 )]
+poo_pellets = ExtResource( 3 )
+currentFireMode = 1
+
+[node name="ShatgunPooter" parent="." instance=ExtResource( 10 )]
+poo_pellets = ExtResource( 3 )
+currentFireMode = 2
+
+[node name="RocketLauncherPooter" parent="." instance=ExtResource( 10 )]
+poo_pellets = ExtResource( 3 )
+currentFireMode = 3
+
+[node name="ScatlingPooter" parent="." instance=ExtResource( 10 )]
+poo_pellets = ExtResource( 3 )
+currentFireMode = 4
+
+[node name="RailgunPooter" parent="." instance=ExtResource( 10 )]
+poo_pellets = ExtResource( 3 )
+currentFireMode = 5
 
 [node name="MobAudioController" parent="." instance=ExtResource( 4 )]
 actions = [ ExtResource( 6 ), ExtResource( 5 ) ]
@@ -197,5 +218,11 @@ wait_time = 0.1
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
+[connection signal="firePoo" from="ShovelPooter" to="." method="_firePoo"]
+[connection signal="firePoo" from="PistolPooter" to="." method="_firePoo"]
+[connection signal="firePoo" from="ShatgunPooter" to="." method="_firePoo"]
+[connection signal="firePoo" from="RocketLauncherPooter" to="." method="_firePoo"]
+[connection signal="firePoo" from="ScatlingPooter" to="." method="_firePoo"]
+[connection signal="firePoo" from="RailgunPooter" to="." method="_firePoo"]
 [connection signal="timeout" from="SpeechTimer" to="." method="_on_SpeechTimer_timeout"]
 [connection signal="timeout" from="GameOnTimer" to="." method="_on_GameOnTimer_timeout"]

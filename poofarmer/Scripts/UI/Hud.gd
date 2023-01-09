@@ -59,34 +59,28 @@ func check_weapons():
 func _on_Shovel_button_down():
 	if player.fireModes.has(FireMode.values.Shovel):
 		player.equippedFireMode = FireMode.values.Shovel
-		print("equipped the shovel")
 
 
 func _on_Pistol_button_down():
 	if player.fireModes.has(FireMode.values.Pistol):
 		player.equippedFireMode = FireMode.values.Pistol
-		print("equipped the pistol")
 
 
 func _on_Shatgun_button_down():
 	if player.fireModes.has(FireMode.values.Shatgun):
 		player.equippedFireMode = FireMode.values.Shatgun
-		print("equipped the shatgun")
 
 
 func _on_ScatlingGun_button_down():
 	if player.fireModes.has(FireMode.values.Scatling):
 		player.equippedFireMode = FireMode.values.Scatling
-		print("equipped the scatling")
 
 
 func _on_RocketLauncher_button_down():
 	if player.fireModes.has(FireMode.values.RocketLauncher):
 		player.equippedFireMode = FireMode.values.RocketLauncher
-		print("equipped the rocketlauncher")
 
 
 func _on_Railgun_button_down():
 	if player.fireModes.has(FireMode.values.Railgun):
 		player.equippedFireMode = FireMode.values.Railgun
-		print("equipped the railgun")

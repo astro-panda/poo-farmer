@@ -89,8 +89,8 @@ func move_at_body(body, delta):
 	var velocity = (body.position - position).normalized() * speed * delta
 	return move_and_slide(velocity)	
 
-func handle_hit():
-	health -= 1
+func handle_hit(damage):
+	health -= damage
 	print("Enemy hit!", health)
 	if health <= 0:
 		print("Gobo ded!")

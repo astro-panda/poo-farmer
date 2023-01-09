@@ -148,7 +148,6 @@ margin_bottom = 25.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 6 )
 max_value = 10.0
-step = 1.0
 
 [node name="PocketCrudIcon" type="TextureRect" parent="CanvasLayer/PocketCountContainer"]
 margin_left = -8.0
