@@ -12,6 +12,7 @@ soft_clip_db = 4.5
 soft_clip_ratio = 8.9
 
 [resource]
+bus/0/volume_db = -14.6228
 bus/1/name = "Background"
 bus/1/solo = false
 bus/1/mute = false
