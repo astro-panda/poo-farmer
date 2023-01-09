@@ -15,6 +15,7 @@ onready var poo_timer = $PooTimer
 onready var destination_timer = $ChangeDestinationTimer
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var pooSpawner = get_tree().get_nodes_in_group("poo_spawner")[0]
+onready var audio_router = $AudioRouter
 
 var destination: Vector2
 
@@ -22,6 +23,7 @@ var destination: Vector2
 func _ready():
 	_on_ChangeDestinationTimer_timeout()
 	reset_poo_timer()
+	audio_router.initialize_router(_type)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -49,12 +51,12 @@ func reset_poo_timer():
 func do_poo():	
 	if !corked:
 		pooSpawner.do_poo(self)
-	emit_signal("action_enacted", _type)
+	emit_signal("action_enacted")
 	reset_poo_timer()
 
 func set_type(type:AnimalType):
 	_type = type.current_value
-	$Sprite.animation = AnimalType.values.keys()[_type] + " - down"
+	$Sprite.animation = AnimalType.values.keys()[_type] + " - down"	
 	print(_type)	
 
 

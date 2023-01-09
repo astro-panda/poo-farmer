@@ -468,6 +468,7 @@ _type = 1
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "Chicken - down"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -477,32 +478,42 @@ shape = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="ChickenAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+visible = true
 next_behavior_min = 10.0
 next_behavior_max = 60.0
+enabled = false
 actions = [ ExtResource( 9 ), ExtResource( 10 ) ]
 behaviors = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ) ]
 
 [node name="CowAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+visible = true
 next_behavior_min = 10.0
 next_behavior_max = 60.0
+enabled = false
 actions = [ ExtResource( 16 ), ExtResource( 17 ) ]
 behaviors = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
 
 [node name="GoatAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+visible = true
 next_behavior_min = 5.0
 next_behavior_max = 60.0
+enabled = false
 actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
 behaviors = [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="LlamaAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+visible = true
 next_behavior_min = 15.0
 next_behavior_max = 60.0
+enabled = false
 actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
 behaviors = [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
 
 [node name="UnicornAudioController" parent="AudioRouter" instance=ExtResource( 3 )]
+visible = true
 next_behavior_min = 5.0
 next_behavior_max = 80.0
+enabled = false
 actions = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
 behaviors = [ ExtResource( 27 ), ExtResource( 28 ) ]
 
