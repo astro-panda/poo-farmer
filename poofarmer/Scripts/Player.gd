@@ -106,11 +106,12 @@ func _on_Player_area_entered(body):
 		totalPooAmount += currentHoldAmount
 		currentHoldAmount = 0
 		hud.update_global_poo_label(totalPooAmount)
+		if totalPooAmount > 0:
+			$GameOnTimer.start()
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 	
-	if totalPooAmount > 0:
-		$GameOnTimer.start()
+	
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):
@@ -166,3 +167,5 @@ func reset():
 	totalPooAmount = 0
 	fireModes = [FireMode.values.Shovel]
 	equippedFireMode = FireMode.values.Shovel
+	$GameOnTimer.stop()
+	

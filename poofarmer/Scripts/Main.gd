@@ -2,6 +2,7 @@ extends Node
 
 onready var start_screen = $StartScreen
 onready var poo_pellets_manager = $PooPelletsManager
+onready var hud = $HUD
 onready var player  = get_tree().get_nodes_in_group("player")[0]
 
 var animal_spawner_scene = preload("res://Scenes/Animal/AnimalSpawner.tscn")
@@ -37,9 +38,12 @@ func reset():
 	add_child(animal_spawner)
 	add_child(enemy_spawner)
 	
+	hud.update_global_poo_label(0)
+	hud.update_global_goblin_label(0)	
+	
 	var _player = player as Player
 	player.reset()
 
 func quit():
-	reset()
 	start_screen.begin()
+	reset()
