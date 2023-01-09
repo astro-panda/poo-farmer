@@ -10,8 +10,8 @@ onready var Timers = {
 
 export(PackedScene) var enemy_scene
 export var maxEnemies = 20
-export var maxSpawnTime = 130.0
-export var minSpawnTime = 80.0
+export var maxSpawnTime = 40.0
+export var minSpawnTime = 15.0
 var rnd = RandomNumberGenerator.new()
 var goblin_population = 20
 var wave_count = 1
