@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Scripts/ModalWindow.gd" type="Script" id=1]
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Images/Goblin.png" type="Texture" id=13]
 [ext_resource path="res://Images/Crap.png" type="Texture" id=14]
 [ext_resource path="res://Images/Crap.Rainbow.png" type="Texture" id=15]
+[ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -300,7 +301,7 @@ valign = 1
 position = Vector2( -37, 4 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 17 )
-frame = 4
+frame = 15
 playing = true
 
 [node name="Shoot" type="Label" parent="CanvasLayer/HowToPlay"]
@@ -469,6 +470,10 @@ margin_right = 139.0
 margin_bottom = 30.0
 theme = ExtResource( 2 )
 text = "Restart"
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -9.973
 
 [connection signal="pressed" from="CanvasLayer/Poosed/Resume" to="." method="set_is_paused" binds= [ false ]]
 [connection signal="pressed" from="CanvasLayer/Poosed/Restart" to="." method="trigger_game_reset"]
