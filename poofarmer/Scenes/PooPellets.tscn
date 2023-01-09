@@ -31,7 +31,9 @@ one_shot = true
 
 [node name="Exploder" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
+volume_db = 10.466
+attenuation = 2.0
+bus = "Poots"
 
 [connection signal="body_entered" from="." to="." method="_on_PooPellets_body_entered"]
 [connection signal="timeout" from="RailShotTimer" to="." method="_on_RailShotTimer_timeout"]

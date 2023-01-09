@@ -12,6 +12,8 @@ var enemy_spawner_scene = preload("res://Scenes/EnemySpawner.tscn")
 var animal_spawner
 var enemy_spawner
 
+var game_started = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()	
@@ -36,12 +38,14 @@ func reset():
 		
 	add_child(animal_spawner)
 	add_child(enemy_spawner)
-	
-	hud.update_global_poo_label(0)
-	hud.update_global_goblin_label(0)	
-	
+
 	var _player = player as Player
-	player.reset()
+	if game_started:
+		player.reset()
+		hud.update_global_poo_label(0)
+		hud.update_global_goblin_label(0)	
+
+	game_started = true
 
 func quit():
 	start_screen.begin()
