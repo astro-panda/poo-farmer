@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://Images/HUD.SquareFrame.1.png" type="Texture" id=13]
 [ext_resource path="res://Images/Crap.png" type="Texture" id=14]
+[ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -263,6 +264,10 @@ margin_right = 624.0
 margin_bottom = 48.0
 texture_normal = ExtResource( 11 )
 expand = true
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -10.0
 
 [connection signal="button_down" from="CanvasLayer/Pistol/Button" to="." method="_on_PistolButton_button_down"]
 [connection signal="button_down" from="CanvasLayer/Shotgun/Button" to="." method="_on_ShotgunButton_button_down"]

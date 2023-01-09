@@ -120,6 +120,7 @@ _type = 4
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -10.0
 
 [connection signal="pressed" from="CanvasLayer/How to Play" to="." method="_on_How_to_Play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Start" to="." method="_on_Start_pressed"]

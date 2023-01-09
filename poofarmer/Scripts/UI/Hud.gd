@@ -6,6 +6,7 @@ onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPl
 onready var silo_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
 onready var goblin_counter = $CanvasLayer/GoblinCountContainer/GoblinCountLabel
 onready var canvas_layer = $CanvasLayer
+onready var click_player = $ClickPlayer
 onready var shovelBtn = $"CanvasLayer/Arsenal Wheel/Shovel"
 onready var pistolBtn = $"CanvasLayer/Arsenal Wheel/Pistol"
 onready var shatgunBtn = $"CanvasLayer/Arsenal Wheel/Shatgun"
@@ -59,28 +60,38 @@ func check_weapons():
 func _on_Shovel_button_down():
 	if player.fireModes.has(FireMode.values.Shovel):
 		player.equippedFireMode = FireMode.values.Shovel
+		click()
 
 
 func _on_Pistol_button_down():
 	if player.fireModes.has(FireMode.values.Pistol):
 		player.equippedFireMode = FireMode.values.Pistol
+		click()
 
 
 func _on_Shatgun_button_down():
 	if player.fireModes.has(FireMode.values.Shatgun):
 		player.equippedFireMode = FireMode.values.Shatgun
+		click()
 
 
 func _on_ScatlingGun_button_down():
 	if player.fireModes.has(FireMode.values.Scatling):
 		player.equippedFireMode = FireMode.values.Scatling
+		click()
 
 
 func _on_RocketLauncher_button_down():
 	if player.fireModes.has(FireMode.values.RocketLauncher):
 		player.equippedFireMode = FireMode.values.RocketLauncher
+		click()
 
 
 func _on_Railgun_button_down():
 	if player.fireModes.has(FireMode.values.Railgun):
 		player.equippedFireMode = FireMode.values.Railgun
+		click()
+
+
+func click():
+	click_player.play()

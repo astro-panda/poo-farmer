@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=13]
 [ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=14]
 [ext_resource path="res://Images/Goblin.png" type="Texture" id=15]
+[ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -328,6 +329,10 @@ pause_mode = 2
 anims/RESET = SubResource( 5 )
 anims/arsenal_close = SubResource( 3 )
 anims/arsenal_open = SubResource( 4 )
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -10.0
 
 [connection signal="button_down" from="CanvasLayer/Arsenal Wheel/Shovel" to="." method="_on_Shovel_button_down"]
 [connection signal="button_down" from="CanvasLayer/Arsenal Wheel/Pistol" to="." method="_on_Pistol_button_down"]
