@@ -159,8 +159,7 @@ func show_speech(subitem, target):
 func _on_SpeechTimer_timeout():
 	speech.visible = false
 
-func game_over():
-	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
+func game_over():	
 	get_tree().paused = true
 	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 	print("You Poose!")

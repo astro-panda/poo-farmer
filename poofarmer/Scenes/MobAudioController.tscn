@@ -4,6 +4,7 @@
 
 [node name="MobAudioController" type="Node2D"]
 pause_mode = 1
+visible = false
 script = ExtResource( 1 )
 
 [node name="ActionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
