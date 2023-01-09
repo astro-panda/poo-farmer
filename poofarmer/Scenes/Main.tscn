@@ -199,8 +199,7 @@ position = Vector2( 1406, 1619 )
 __meta__ = {
 "_edit_group_": true
 }
-currentHoldAmount = 10
-totalPooAmount = 2000
+speed = 275
 
 [node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
 visible = false
