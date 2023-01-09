@@ -11,7 +11,7 @@ onready var audio_ctrl = $MobAudioController
 var playerNearby = false
 var playerHasPoo = false
 var currentPooTargets = []
-var health = 5
+var health = 4
 var stealAmount = 3
 
 
