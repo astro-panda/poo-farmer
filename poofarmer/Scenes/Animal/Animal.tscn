@@ -455,7 +455,7 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Animal" type="KinematicBody2D"]
+[node name="Animal" type="KinematicBody2D" groups=["animal"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource( 1 )

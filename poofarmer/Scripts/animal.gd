@@ -7,6 +7,7 @@ export(float) var poo_timer_max = 20.0
 export(float) var destination_timer_min = 4.0
 export(float) var destination_timer_max = 20.0
 export var speed = 1500
+export(bool) var corked = false
 
 export(AnimalType.values) var _type = AnimalType.values.Chicken
 
@@ -46,14 +47,16 @@ func reset_poo_timer():
 
 
 func do_poo():	
-	pooSpawner.do_poo(self)	
+	if !corked:
+		pooSpawner.do_poo(self)
 	emit_signal("action_enacted", _type)
 	reset_poo_timer()
 
 func set_type(type:AnimalType):
 	_type = type.current_value
 	$Sprite.animation = AnimalType.values.keys()[_type] + " - down"
-	print(_type)
+	print(_type)	
+
 
 func _on_ChangeDestinationTimer_timeout():
 	destination = Vector2(randi() % 3072, randi() % 3072)
