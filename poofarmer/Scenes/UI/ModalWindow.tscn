@@ -1,17 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/ModalWindow.gd" type="Script" id=1]
+[ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=2]
+[ext_resource path="res://Images/HUD.Button.png" type="Texture" id=3]
+[ext_resource path="res://Images/HUD.Button.Pressed.png" type="Texture" id=4]
 
 [node name="ModalWindow" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 154.0 ],
+"_edit_vertical_guides_": [ 320.0, 448.0 ]
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 5
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchor_left = 0.5
@@ -23,3 +29,158 @@ margin_top = -180.0
 margin_right = 320.0
 margin_bottom = 180.0
 color = Color( 0.258824, 0.12549, 0, 0.505882 )
+
+[node name="Poosed" type="Control" parent="CanvasLayer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Poosed"]
+anchor_right = 15.948
+margin_left = 112.0
+margin_top = 16.0
+margin_right = -386.92
+margin_bottom = 35.0
+rect_scale = Vector2( 3, 3 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource( 2 )
+text = "Game Poosed"
+
+[node name="Resume" type="TextureButton" parent="CanvasLayer/Poosed"]
+margin_left = 96.0
+margin_top = 124.0
+margin_right = 288.0
+margin_bottom = 167.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Poosed/Resume"]
+margin_left = 58.0
+margin_top = 11.0
+margin_right = 134.0
+margin_bottom = 30.0
+theme = ExtResource( 2 )
+text = "Resume"
+percent_visible = -0.25
+
+[node name="Restart" type="TextureButton" parent="CanvasLayer/Poosed"]
+margin_left = 96.0
+margin_top = 220.0
+margin_right = 288.0
+margin_bottom = 263.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Poosed/Restart"]
+margin_left = 54.0
+margin_top = 11.0
+margin_right = 139.0
+margin_bottom = 30.0
+theme = ExtResource( 2 )
+text = "Restart"
+
+[node name="Quit" type="TextureButton" parent="CanvasLayer/Poosed"]
+margin_left = 352.0
+margin_top = 220.0
+margin_right = 544.0
+margin_bottom = 263.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Poosed/Quit"]
+margin_left = 75.0
+margin_top = 12.0
+margin_right = 120.0
+margin_bottom = 31.0
+theme = ExtResource( 2 )
+text = "Quit"
+
+[node name="How to Play" type="TextureButton" parent="CanvasLayer/Poosed"]
+margin_left = 352.0
+margin_top = 124.0
+margin_right = 544.0
+margin_bottom = 167.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Poosed/How to Play"]
+margin_left = 30.0
+margin_top = 11.0
+margin_right = 169.0
+margin_bottom = 30.0
+theme = ExtResource( 2 )
+text = "How to Play"
+
+[node name="HowToPlay" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="structions" type="Label" parent="CanvasLayer/HowToPlay"]
+margin_left = 191.0
+margin_top = 177.0
+margin_right = 458.0
+margin_bottom = 196.0
+theme = ExtResource( 2 )
+text = "Just get good, peasant"
+align = 1
+valign = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/HowToPlay"]
+margin_left = 104.0
+margin_top = 16.0
+margin_right = 248.0
+margin_bottom = 35.0
+rect_scale = Vector2( 3, 3 )
+theme = ExtResource( 2 )
+text = "How to Play"
+align = 1
+valign = 1
+
+[node name="Close" type="TextureButton" parent="CanvasLayer/HowToPlay"]
+margin_left = 223.0
+margin_top = 296.0
+margin_right = 415.0
+margin_bottom = 339.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/HowToPlay/Close"]
+margin_left = 52.0
+margin_top = 12.0
+margin_right = 141.0
+margin_bottom = 31.0
+theme = ExtResource( 2 )
+text = "Go Back"
+
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Title" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 104.0
+margin_top = 16.0
+margin_right = 248.0
+margin_bottom = 35.0
+rect_scale = Vector2( 3, 3 )
+theme = ExtResource( 2 )
+text = "You Poose!"
+align = 1
+valign = 1
+
+[node name="Wave Banner" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 191.0
+margin_top = 177.0
+margin_right = 458.0
+margin_bottom = 196.0
+theme = ExtResource( 2 )
+align = 1
+valign = 1
+
+[connection signal="pressed" from="CanvasLayer/HowToPlay/Close" to="." method="reset_canvas"]
