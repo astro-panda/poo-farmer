@@ -15,6 +15,7 @@ onready var railgunButton = $CanvasLayer/Railgun
 onready var listOfButtons = [pistolButton, shatgunButton, rocketLauncherButton, scatlingButton, railgunButton]
 const listOfCosts = [10, 20, 40, 60, 100]
 const grayedOutColor = Color(0.305882, 0.305882, 0.305882)
+const normalColor = Color(1, 1, 1)
 
 
 func _ready():
@@ -35,17 +36,18 @@ func _on_Gnome_store_opened(opened):
 		
 func check_btns():
 	for j in listOfButtons.size():
-		if player.totalPooAmount <= listOfCosts[j]:
-			_gray_out_button(j, true)
+		var playerPoo = player.totalPooAmount
+		var cost = listOfCosts[j]
+		change_button_state(j, player.totalPooAmount <= listOfCosts[j], true)
 	for fireMode in player.fireModes:
 		if fireMode != FireMode.values.Shovel:
-			_gray_out_button(int(fireMode) - 1, false)
+			change_button_state(int(fireMode) - 1, true, false)
 
-func _gray_out_button(idx: int, hideLabel: bool):
+func change_button_state(idx: int, disabled: bool, hideLabel: bool):
 	var btnNode = listOfButtons[idx].get_node("Button")
-	listOfButtons[idx].get_node("AnimatedSprite").modulate = grayedOutColor
-	btnNode.modulate = grayedOutColor
-	btnNode.disabled = true
+	listOfButtons[idx].get_node("AnimatedSprite").modulate = grayedOutColor if disabled else normalColor
+	btnNode.modulate = grayedOutColor if disabled else normalColor
+	btnNode.disabled = disabled
 	listOfButtons[idx].get_node("Label").visible = hideLabel
 
 func _on_PistolButton_button_down():
@@ -65,13 +67,12 @@ func _on_RailgunButton_button_down():
 
 func buy_item(fireMode):
 	var cost = listOfCosts[int(fireMode) - 1]
-	var playerpoo = player.totalPooAmount
 	if player.totalPooAmount > cost:
 		player.fireModes.append(fireMode)
 		player.totalPooAmount -= cost
 		pooCount.text = str(player.totalPooAmount)
 		hud.update_global_poo_label(player.totalPooAmount)
-		_gray_out_button(int(fireMode) - 1, false)
+		change_button_state(int(fireMode) - 1, true, false)
 		check_btns()
 
 func _on_ExitButton_button_down():
