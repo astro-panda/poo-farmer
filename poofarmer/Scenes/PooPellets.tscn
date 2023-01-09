@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/PooPellets.gd" type="Script" id=1]
 [ext_resource path="res://Images/Poojectile.png" type="Texture" id=2]
+[ext_resource path="res://Audio/Weapons/Rocket Explode.wav" type="AudioStream" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -27,6 +28,10 @@ shape = SubResource( 2 )
 [node name="RailShotTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="Exploder" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_PooPellets_body_entered"]
 [connection signal="timeout" from="RailShotTimer" to="." method="_on_RailShotTimer_timeout"]
