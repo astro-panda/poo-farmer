@@ -141,7 +141,7 @@ animations = [ {
 collision_mask = 4
 script = ExtResource( 1 )
 poo_pellets = ExtResource( 3 )
-speed = 20000
+speed = 18000
 
 [node name="FootCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 19.5 )
