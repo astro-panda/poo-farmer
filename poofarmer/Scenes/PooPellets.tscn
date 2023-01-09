@@ -16,6 +16,7 @@ animations = [ {
 radius = 5.0
 
 [node name="PooPellets" type="Area2D"]
+collision_layer = 32
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

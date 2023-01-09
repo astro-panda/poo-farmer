@@ -20,6 +20,9 @@
 [ext_resource path="res://Audio/Weapons/Scatling 1.wav" type="AudioStream" id=18]
 [ext_resource path="res://Audio/Weapons/Railgun.wav" type="AudioStream" id=19]
 
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 12, 4.5 )
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 23.5 )
 
@@ -134,15 +137,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 10, 4 )
-
-[node name="Player" type="Area2D" groups=["player"]]
-collision_mask = 14
+[node name="Player" type="KinematicBody2D" groups=["player"]]
+collision_mask = 4
 script = ExtResource( 1 )
 poo_pellets = ExtResource( 3 )
+speed = 20000
 
-[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
+[node name="FootCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 19.5 )
+shape = SubResource( 22 )
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
 
@@ -174,6 +181,7 @@ frames = SubResource( 21 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 current = true
+process_mode = 0
 limit_left = 0
 limit_top = 0
 limit_right = 3072
@@ -240,18 +248,10 @@ actions = [ ExtResource( 6 ), ExtResource( 5 ) ]
 wait_time = 2.0
 one_shot = true
 
-[node name="PlayerCollision" type="StaticBody2D" parent="."]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
-position = Vector2( 0, 20 )
-shape = SubResource( 22 )
-
 [node name="GameOnTimer" type="Timer" parent="."]
 wait_time = 0.1
 
-[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="firePoo" from="ShovelPooter" to="." method="_firePoo"]
 [connection signal="firePoo" from="PistolPooter" to="." method="_firePoo"]
 [connection signal="firePoo" from="ShatgunPooter" to="." method="_firePoo"]
