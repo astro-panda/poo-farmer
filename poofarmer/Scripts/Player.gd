@@ -11,14 +11,15 @@ export (PackedScene) var poo_pellets
 export var speed = 250
 export var holdCapacity = 10
 export var goblinStealAmount = 5
-var currentHoldAmount = 0
-var totalPooAmount = 0
+export var currentHoldAmount = 0
+export var totalPooAmount = 0
 var screen_size
 var gross_poo_harvested = 0
 var shoot_enabled = false
+var disable_ammo = false
 
 var fireModes = [FireMode.values.Shovel]
-var equippedFireMode = FireMode.values.Shovel
+export(FireMode.values) var equippedFireMode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
@@ -65,7 +66,24 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-
+		
+	# shhhhh our little secret
+	if Input.is_action_pressed("modifier"):
+		if Input.is_action_pressed("deep_pockets"):
+			disable_ammo = !disable_ammo
+		if Input.is_action_pressed("shovel"):
+			equippedFireMode = FireMode.values.Shovel
+		if Input.is_action_pressed("pistol"):
+			equippedFireMode = FireMode.values.Pistol
+		if Input.is_action_pressed("shatgun"):
+			equippedFireMode = FireMode.values.Shatgun
+		if Input.is_action_pressed("scatling"):
+			equippedFireMode = FireMode.values.Scatling
+		if Input.is_action_pressed("launcher"):
+			equippedFireMode = FireMode.values.RocketLauncher
+		if Input.is_action_pressed("railgun"):
+			equippedFireMode = FireMode.values.Railgun
+		
 	if velocity.x > 0:
 		$PlayerSprite.animation = "right"
 	elif velocity.x < 0:

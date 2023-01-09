@@ -31,9 +31,8 @@ func _physics_process(_delta: float) -> void:
 		if distTraveled >= distance || explodeOverride:
 			if willExplode:
 				if !exploding:
-					$Exploder.play()
 					exploding = true
-					
+				start_explode()
 				scale.x += 0.4
 				scale.y += 0.4
 				if scale.x >= explodeSize || scale.y >= explodeSize:
@@ -47,12 +46,15 @@ func set_direction(new_direction: Vector2):
 func _on_PooPellets_body_entered(body):
 	if body.has_method("handle_hit"):
 		body.handle_hit(damage)
-		if !exploding:
+		if willExplode:
 			explodeOverride = true
-			exploding = true
-		if !willExplode || !isRailShot:
+
+		if !willExplode && !isRailShot:
 			queue_free()
 
+func start_explode():
+	if !$Exploder.playing:
+		$Exploder.play()
 
 func _on_RailShotTimer_timeout():
 	queue_free()

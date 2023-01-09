@@ -74,8 +74,9 @@ func _ready():
 
 func shoot():
 	var playerAmt = player.currentHoldAmount
-	if canFire && player.currentHoldAmount >= cost:
-		player.currentHoldAmount -= cost
+	if canFire && (player.currentHoldAmount >= cost || player.disable_ammo):
+		if !player.disable_ammo:
+			player.currentHoldAmount -= cost
 		var poo_pellets_instance = poo_pellets.instance()
 		poo_pellets_instance.damage = damage
 		poo_pellets_instance.poo_speed = pooSpeed
