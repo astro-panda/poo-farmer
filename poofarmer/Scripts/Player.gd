@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 class_name Player
 
 signal firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
@@ -57,6 +57,11 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("game_over"):
 		game_over()
+
+func _physics_process(_delta):
+	if shoot_enabled && Input.is_action_pressed("player_fire"):
+		pooterDict[equippedFireMode].shoot()
+		
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -92,24 +97,18 @@ func _process(delta):
 		$PlayerSprite.animation = "down"
 	elif velocity.y < 0:
 		$PlayerSprite.animation = "up"
-
+	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$PlayerSprite.play()
 	else:
 		$PlayerSprite.stop()
-		
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	
+	# Move the player
+	move_and_slide(velocity * _delta)
 
 
-func _physics_process(_delta):
-	if shoot_enabled && Input.is_action_pressed("player_fire"):
-		pooterDict[equippedFireMode].shoot()
-
-
-func _on_Player_area_entered(body):
+func _on_Area2D_area_entered(body):
 	if (body.is_in_group("poo")):
 		if (currentHoldAmount < holdCapacity):
 			var poo = body as Poo
@@ -143,8 +142,6 @@ func _on_Player_area_entered(body):
 			$GameOnTimer.start()
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
-	
-	
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):

@@ -5,22 +5,18 @@
 [ext_resource path="res://Images/Crap.Rainbow.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 16 )
 
@@ -43,6 +39,8 @@ radius = 12.0416
 [node name="Poo" type="Area2D" groups=["poo"]]
 scale = Vector2( 0.5, 0.5 )
 z_index = -1
+collision_layer = 4
+collision_mask = 25
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
