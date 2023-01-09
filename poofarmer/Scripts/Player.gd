@@ -21,6 +21,7 @@ var equippedFireMode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
+
 onready var modal_window = $ModalWindow
 onready var game_on_timer = $GameOnTimer
 onready var audio_ctrl = $MobAudioController
@@ -161,10 +162,11 @@ func _on_SpeechTimer_timeout():
 func game_over():
 	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 	get_tree().paused = true
+	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 	print("You Poose!")
-	print("Waves survived: " + str(enemy_spawner.wave_count) + ", nice!")
-	print("You harvested " + str(gross_poo_harvested) + " poo with your hands.... gross...")
-	$ModalWindow.display_game_over()
+	var wave_count = "Waves survived: " + str(enemy_spawner.wave_count) + ", nice!"
+	var gross_poo = "You harvested " + str(gross_poo_harvested) + " poo with your hands.... gross..."
+	$ModalWindow.display_game_over(wave_count, gross_poo)
 
 func _on_GameOnTimer_timeout():
 	if totalPooAmount <= 0:

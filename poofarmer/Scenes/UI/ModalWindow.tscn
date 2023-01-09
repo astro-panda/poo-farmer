@@ -1,9 +1,164 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Scripts/ModalWindow.gd" type="Script" id=1]
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=2]
 [ext_resource path="res://Images/HUD.Button.png" type="Texture" id=3]
 [ext_resource path="res://Images/HUD.Button.Pressed.png" type="Texture" id=4]
+[ext_resource path="res://Images/Farmer.png" type="Texture" id=5]
+[ext_resource path="res://Images/HUD.Shotgun.png" type="Texture" id=6]
+[ext_resource path="res://Images/HUD.Frame.1.png" type="Texture" id=7]
+[ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=8]
+[ext_resource path="res://Images/HUD.Shovel.png" type="Texture" id=9]
+[ext_resource path="res://Images/HUD.RocketLauncher.png" type="Texture" id=10]
+[ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=11]
+[ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=12]
+[ext_resource path="res://Images/Goblin.png" type="Texture" id=13]
+[ext_resource path="res://Images/Crap.png" type="Texture" id=14]
+[ext_resource path="res://Images/Crap.Rainbow.png" type="Texture" id=15]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 96, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 13 )
+region = Rect2( 16, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 13 )
+region = Rect2( 32, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 13 )
+region = Rect2( 48, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 13 )
+region = Rect2( 16, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 13 )
+region = Rect2( 32, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 13 )
+region = Rect2( 48, 96, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 24 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=28]
+animations = [ {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 15 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 15 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 15 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="ModalWindow" type="Control"]
 pause_mode = 2
@@ -11,8 +166,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 154.0 ],
-"_edit_vertical_guides_": [ 320.0, 448.0 ]
+"_edit_horizontal_guides_": [ 150.0 ],
+"_edit_vertical_guides_": [ 320.0 ]
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -28,7 +183,7 @@ margin_left = -320.0
 margin_top = -180.0
 margin_right = 320.0
 margin_bottom = 180.0
-color = Color( 0.258824, 0.12549, 0, 0.505882 )
+color = Color( 0.258824, 0.12549, 0, 0.854902 )
 
 [node name="Poosed" type="Control" parent="CanvasLayer"]
 visible = false
@@ -63,7 +218,6 @@ margin_right = 134.0
 margin_bottom = 30.0
 theme = ExtResource( 2 )
 text = "Resume"
-percent_visible = -0.25
 
 [node name="Restart" type="TextureButton" parent="CanvasLayer/Poosed"]
 margin_left = 96.0
@@ -121,16 +275,6 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="structions" type="Label" parent="CanvasLayer/HowToPlay"]
-margin_left = 191.0
-margin_top = 177.0
-margin_right = 458.0
-margin_bottom = 196.0
-theme = ExtResource( 2 )
-text = "Just get good, peasant"
-align = 1
-valign = 1
-
 [node name="Title" type="Label" parent="CanvasLayer/HowToPlay"]
 margin_left = 104.0
 margin_top = 16.0
@@ -141,6 +285,100 @@ theme = ExtResource( 2 )
 text = "How to Play"
 align = 1
 valign = 1
+
+[node name="Move" type="Label" parent="CanvasLayer/HowToPlay"]
+margin_left = 162.0
+margin_top = 134.0
+margin_right = 287.0
+margin_bottom = 153.0
+theme = ExtResource( 2 )
+text = "Move: WASD"
+align = 1
+valign = 1
+
+[node name="Player" type="AnimatedSprite" parent="CanvasLayer/HowToPlay/Move"]
+position = Vector2( -37, 4 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 17 )
+frame = 4
+playing = true
+
+[node name="Shoot" type="Label" parent="CanvasLayer/HowToPlay"]
+margin_left = 394.0
+margin_top = 134.0
+margin_right = 554.0
+margin_bottom = 153.0
+theme = ExtResource( 2 )
+text = "Shoot: L-Click"
+align = 1
+valign = 1
+
+[node name="HudShotgun" type="Sprite" parent="CanvasLayer/HowToPlay/Shoot"]
+position = Vector2( -23, 3 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+
+[node name="Weapons" type="Label" parent="CanvasLayer/HowToPlay"]
+margin_left = 288.0
+margin_top = 210.0
+margin_right = 411.0
+margin_bottom = 229.0
+theme = ExtResource( 2 )
+text = "Weapons: R"
+align = 1
+valign = 1
+
+[node name="Node" type="Node2D" parent="CanvasLayer/HowToPlay/Weapons"]
+position = Vector2( -128, -212 )
+
+[node name="HudFrame1" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node"]
+position = Vector2( 75, 214 )
+texture = ExtResource( 7 )
+
+[node name="HudFrame2" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node"]
+position = Vector2( 92, 244 )
+texture = ExtResource( 7 )
+
+[node name="HudFrame3" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node"]
+position = Vector2( 109, 231 )
+texture = ExtResource( 7 )
+
+[node name="HudFrame4" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node"]
+position = Vector2( 75, 231 )
+texture = ExtResource( 7 )
+
+[node name="HudFrame5" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node"]
+position = Vector2( 109, 214 )
+texture = ExtResource( 7 )
+
+[node name="HudFrame6" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node"]
+position = Vector2( 92, 201 )
+texture = ExtResource( 7 )
+
+[node name="HudShovel" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node"]
+position = Vector2( 92, 244 )
+scale = Vector2( 0.375, 0.375 )
+texture = ExtResource( 9 )
+
+[node name="HudPistol" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node/HudShovel"]
+position = Vector2( 45.3333, -34.6667 )
+texture = ExtResource( 12 )
+
+[node name="HudShotgun" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node/HudShovel/HudPistol"]
+position = Vector2( 0, -45.3333 )
+texture = ExtResource( 6 )
+
+[node name="HudScatlingGun" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node/HudShovel/HudPistol"]
+position = Vector2( -45.3333, -80 )
+texture = ExtResource( 8 )
+
+[node name="HudRocketLauncher" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node/HudShovel/HudPistol"]
+position = Vector2( -90.6667, -45.3333 )
+texture = ExtResource( 10 )
+
+[node name="HudRailGun" type="Sprite" parent="CanvasLayer/HowToPlay/Weapons/Node/HudShovel/HudPistol"]
+position = Vector2( -90.6667, 0 )
+texture = ExtResource( 11 )
 
 [node name="Close" type="TextureButton" parent="CanvasLayer/HowToPlay"]
 margin_left = 223.0
@@ -174,14 +412,46 @@ text = "You Poose!"
 align = 1
 valign = 1
 
-[node name="Wave Banner" type="Label" parent="CanvasLayer/GameOver"]
-margin_left = 191.0
-margin_top = 177.0
-margin_right = 458.0
-margin_bottom = 196.0
+[node name="Poo Banner" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 175.0
+margin_top = 175.0
+margin_right = 489.0
+margin_bottom = 194.0
 theme = ExtResource( 2 )
 align = 1
 valign = 1
+autowrap = true
+
+[node name="Wave Banner" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 189.0
+margin_top = 103.0
+margin_right = 468.0
+margin_bottom = 122.0
+theme = ExtResource( 2 )
+align = 1
+valign = 1
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer/GameOver"]
+position = Vector2( 143, 103 )
+scale = Vector2( 1.3, 1.3 )
+frames = SubResource( 19 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="CanvasLayer/GameOver/AnimatedSprite2"]
+position = Vector2( 20, -9.23077 )
+frames = SubResource( 19 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer/GameOver/AnimatedSprite2"]
+position = Vector2( -21.5385, -9.23077 )
+frames = SubResource( 19 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/GameOver"]
+position = Vector2( 120, 185 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 28 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/GameOver/AnimatedSprite"]
+position = Vector2( 8.5, 8 )
+frames = SubResource( 33 )
 
 [node name="Restart" type="TextureButton" parent="CanvasLayer/GameOver"]
 margin_left = 224.0

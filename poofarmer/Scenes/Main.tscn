@@ -204,6 +204,9 @@ __meta__ = {
 
 [node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
 visible = false
+__meta__ = {
+"_edit_horizontal_guides_": [ 150.0 ]
+}
 
 [node name="StartScreen" parent="." instance=ExtResource( 19 )]
 

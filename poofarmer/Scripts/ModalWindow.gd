@@ -8,6 +8,9 @@ onready var poosed = $CanvasLayer/Poosed
 onready var how_to_play = $CanvasLayer/HowToPlay
 onready var game_over = $CanvasLayer/GameOver
 
+onready var wave_banner = $"CanvasLayer/GameOver/Wave Banner"
+onready var poo_banner = $"CanvasLayer/GameOver/Poo Banner"
+
 var game_started = false
 var is_paused = false
 
@@ -29,8 +32,11 @@ func set_is_paused(value):
 		is_paused = value
 
 
-func display_game_over():
+func display_game_over(waves: String, pooCollected: String):
 	set_is_paused(true)
+	
+	wave_banner.text = waves
+	poo_banner.text = pooCollected
 	canvas.visible = true
 	poosed.visible = false
 	how_to_play.visible = false
