@@ -183,4 +183,8 @@ theme = ExtResource( 2 )
 align = 1
 valign = 1
 
+[connection signal="pressed" from="CanvasLayer/Poosed/Resume" to="." method="set_is_paused" binds= [ false ]]
+[connection signal="pressed" from="CanvasLayer/Poosed/Restart" to="." method="trigger_game_reset"]
+[connection signal="pressed" from="CanvasLayer/Poosed/Quit" to="." method="quit_game"]
+[connection signal="pressed" from="CanvasLayer/Poosed/How to Play" to="." method="show_how_to_play"]
 [connection signal="pressed" from="CanvasLayer/HowToPlay/Close" to="." method="reset_canvas"]
