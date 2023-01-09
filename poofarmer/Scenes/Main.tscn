@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/PooFarmerMap.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/UI/ModalWindow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/MusicAutomaton.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Silo.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Animal/PooSpawner.tscn" type="PackedScene" id=15]
@@ -138,6 +139,7 @@ centered = false
 
 [node name="PooPelletsManager" type="Node2D" parent="."]
 script = ExtResource( 18 )
+poo_pellets = ExtResource( 11 )
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
