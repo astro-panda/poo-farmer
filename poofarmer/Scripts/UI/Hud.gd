@@ -1,5 +1,7 @@
 extends Control
 
+signal arsenal_state_changed(open)
+
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var arsenal_wheel = get_node("CanvasLayer/Arsenal Wheel")
 onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPlayer")
@@ -37,6 +39,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			arsenal_wheel_anim.playback_speed = 1
 			arsenal_wheel_anim.play("arsenal_close")
 			Engine.time_scale = 1
+		
+	emit_signal("arsenal_state_changed", arsenal_pressed)
+
 
 func update_global_poo_label(totalPooAmount):
 	silo_crud_points.text = str(totalPooAmount)
@@ -57,37 +62,37 @@ func check_weapons():
 			listOfButtons[int(fireMode)].get_node("TextureRect").modulate = normalColor
 
 
-func _on_Shovel_button_down():
+func _on_Shovel_pressed():
 	if player.fireModes.has(FireMode.values.Shovel):
 		player.equippedFireMode = FireMode.values.Shovel
 		click()
 
 
-func _on_Pistol_button_down():
+func _on_Pistol_pressed():
 	if player.fireModes.has(FireMode.values.Pistol):
 		player.equippedFireMode = FireMode.values.Pistol
 		click()
 
 
-func _on_Shatgun_button_down():
+func _on_Shatgun_pressed():
 	if player.fireModes.has(FireMode.values.Shatgun):
 		player.equippedFireMode = FireMode.values.Shatgun
 		click()
 
 
-func _on_ScatlingGun_button_down():
+func _on_ScatlingGun_pressed():
 	if player.fireModes.has(FireMode.values.Scatling):
 		player.equippedFireMode = FireMode.values.Scatling
 		click()
 
 
-func _on_RocketLauncher_button_down():
+func _on_RocketLauncher_pressed():
 	if player.fireModes.has(FireMode.values.RocketLauncher):
 		player.equippedFireMode = FireMode.values.RocketLauncher
 		click()
 
 
-func _on_Railgun_button_down():
+func _on_Railgun_pressed():
 	if player.fireModes.has(FireMode.values.Railgun):
 		player.equippedFireMode = FireMode.values.Railgun
 		click()
@@ -95,3 +100,4 @@ func _on_Railgun_button_down():
 
 func click():
 	click_player.play()
+	get_tree().set_input_as_handled()

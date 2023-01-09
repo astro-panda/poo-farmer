@@ -15,6 +15,7 @@ var currentHoldAmount = 0
 var totalPooAmount = 0
 var screen_size
 var gross_poo_harvested = 0
+var shoot_enabled = false
 
 var fireModes = [FireMode.values.Shovel]
 var equippedFireMode = FireMode.values.Shovel
@@ -83,10 +84,10 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-	
-	
+
+
 func _physics_process(_delta):
-	if Input.is_action_pressed("player_fire"):
+	if shoot_enabled && Input.is_action_pressed("player_fire"):
 		pooterDict[equippedFireMode].shoot()
 
 
@@ -184,3 +185,7 @@ func reset():
 
 func _firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
 	emit_signal("firePoo", pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
+
+
+func _on_shoot_enabled_changed(open):
+	shoot_enabled = !open
