@@ -15,7 +15,7 @@ onready var rocketLauncherButton = $CanvasLayer/RocketLauncher
 onready var scatlingButton = $CanvasLayer/Scatling
 onready var railgunButton = $CanvasLayer/Railgun
 onready var listOfButtons = [pistolButton, shatgunButton, rocketLauncherButton, scatlingButton, railgunButton]
-const listOfCosts = [10, 20, 40, 60, 100]
+const listOfCosts = [30, 50, 80, 120, 150]
 const grayedOutColor = Color(0.305882, 0.305882, 0.305882)
 const normalColor = Color(1, 1, 1)
 

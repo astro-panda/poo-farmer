@@ -74,8 +74,9 @@ func _on_Visibility_area_entered(area):
 		playerNearby = true
 
 func _on_Visibility_area_exited(area):
-	playerNearby = false
-	$StealTimer.stop()
+	if area.is_in_group("player"):
+		playerNearby = false
+		$StealTimer.stop()
 	
 func _on_PooPickupDetection_area_entered(area):
 	if (area.is_in_group("poo")):

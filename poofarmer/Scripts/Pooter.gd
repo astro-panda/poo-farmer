@@ -73,7 +73,6 @@ func _ready():
 
 
 func shoot():
-	var playerAmt = player.currentHoldAmount
 	if canFire && (player.currentHoldAmount >= cost || player.disable_ammo):
 		if !player.disable_ammo:
 			player.currentHoldAmount -= cost
