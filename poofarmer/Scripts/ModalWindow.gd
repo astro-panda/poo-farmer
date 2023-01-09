@@ -64,8 +64,8 @@ func trigger_game_reset():
 	
 func quit_game():
 	reset_canvas()
-	set_is_paused(true)
 	game_started = false
+	set_is_paused(true)
 	emit_signal("game_quit")
 
 func _on_StartScreen_game_started():

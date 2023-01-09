@@ -47,7 +47,7 @@ func showHUD(show: bool):
 	canvas_layer.visible = show
 
 func _on_Store_update_global_poo_label(totalPooAmount):
-	silo_crud_points.text = str(totalPooAmount)
+	update_global_poo_label(totalPooAmount)
 
 func check_weapons():
 	for i in listOfButtons.size():
