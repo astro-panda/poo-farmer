@@ -3,6 +3,7 @@ extends Area2D
 signal playerFire(poo_pellets, playerPosition, fireAngle)
 signal playerSendCurrentHoldAmount(currentHoldAmount)
 signal update_global_poo_label(dump_amount)
+signal game_on()
 
 # Declare member variables here. Examples:
 export (PackedScene) var poo_pellets
@@ -18,6 +19,8 @@ var equippedFireMode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
+onready var modal_window = $ModalWindow
+onready var game_on_timer = $GameOnTimer
 onready var end_of_gun = $EndOfGun
 onready var audio_ctrl = $MobAudioController
 onready var speech = $PlayerSprite/SpeechBubble
@@ -33,6 +36,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_pressed("game_over"):
+		game_over()
+		
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -98,6 +104,9 @@ func _on_Player_area_entered(body):
 		hud.update_global_poo_label(totalPooAmount)
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
+	
+	if totalPooAmount > 0:
+		$GameOnTimer.start()
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):
@@ -134,3 +143,12 @@ func show_speech(subitem, target):
 
 func _on_SpeechTimer_timeout():
 	speech.visible = false
+
+func game_over():
+	get_tree().paused = true
+	print("You Poose!")
+	$ModalWindow.display_game_over()
+
+func _on_GameOnTimer_timeout():
+	if totalPooAmount <= 0:
+		game_over()
