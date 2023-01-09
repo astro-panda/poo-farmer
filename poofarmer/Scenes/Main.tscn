@@ -228,6 +228,12 @@ script = ExtResource( 18 )
 margin_top = -365.0
 margin_bottom = -365.0
 
+[node name="Store" parent="." instance=ExtResource( 13 )]
+margin_left = 672.0
+margin_top = 384.0
+margin_right = 672.0
+margin_bottom = 384.0
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 384 )
 __meta__ = {
@@ -236,11 +242,9 @@ __meta__ = {
 
 [node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
 
-[node name="Store" parent="Player/ModalWindow" instance=ExtResource( 13 )]
-
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="MusicAutomaton" method="_on_Gnome_store_opened"]
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Player/ModalWindow" method="_on_Gnome_store_opened"]
-[connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Player/ModalWindow/Store" method="_on_Gnome_store_opened"]
+[connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Store" method="_on_Gnome_store_opened"]
+[connection signal="close_store" from="Store" to="Player/ModalWindow" method="_on_Store_close_store"]
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
 [connection signal="game_play_state_changed" from="Player/ModalWindow" to="MusicAutomaton" method="_on_ModalWindow_game_play_state_changed"]
-[connection signal="close_store" from="Player/ModalWindow/Store" to="Player/ModalWindow" method="_on_Store_close_store"]
