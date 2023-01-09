@@ -1,24 +1,55 @@
 extends Area2D
 
+
 export(float) var poo_speed = 10.0
-
 var damage
-var fire_rate
-var attack_area
-var attack_range
+var distance
 var direction := Vector2.ZERO
+var startLocation
+var willExplode: bool = false
+var exploding: bool
+var explodeSize = 10
+var explodeOverride = false
+var isRailShot = false
+var rotateAngle
 
-func _physics_process(delta: float) -> void:
-	if direction != Vector2.ZERO:
+func _ready():
+	if isRailShot:
+		scale.x = 0.5
+		scale.y = 100
+		$AnimatedSprite.position.y += -5
+		$CollisionShape2D.position.y += -5
+		rotation_degrees = rad2deg(rotateAngle - (PI / 2))
+		$RailShotTimer.start()
+
+func _physics_process(_delta: float) -> void:
+	if direction != Vector2.ZERO && !isRailShot:
+		var distTraveled = global_position.distance_to(startLocation)
 		var velocity = direction * poo_speed
-
-		global_position += velocity
+		if !exploding:
+			global_position += velocity
+		if distTraveled >= distance || explodeOverride:
+			if willExplode:
+				exploding = true
+				scale.x += 0.4
+				scale.y += 0.4
+				if scale.x >= explodeSize || scale.y >= explodeSize:
+					queue_free()
+			else:
+				queue_free()
 
 func set_direction(new_direction: Vector2):
 	direction = new_direction
 
 func _on_PooPellets_body_entered(body):
-	print ("Poojectile hits")
 	if body.has_method("handle_hit"):
-		body.handle_hit()
-		queue_free()
+		body.handle_hit(damage)
+		if !exploding:
+			explodeOverride = true
+			exploding = true
+		if !willExplode || !isRailShot:
+			queue_free()
+
+
+func _on_RailShotTimer_timeout():
+	queue_free()

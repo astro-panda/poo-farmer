@@ -1,14 +1,14 @@
 extends Area2D
 class_name Player
 
-signal playerFire(poo_pellets, playerPosition, fireAngle)
+signal firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
 signal playerSendCurrentHoldAmount(currentHoldAmount)
 signal update_global_poo_label(dump_amount)
 signal game_on()
 
 # Declare member variables here. Examples:
 export (PackedScene) var poo_pellets
-export var speed = 300
+export var speed = 250
 export var holdCapacity = 10
 export var goblinStealAmount = 5
 var currentHoldAmount = 0
@@ -28,6 +28,21 @@ onready var end_of_gun = $EndOfGun
 onready var audio_ctrl = $MobAudioController
 onready var speech = $PlayerSprite/SpeechBubble
 onready var arrow_handle = $PlayerSprite/SpeechBubble/ArrowHandle
+onready var shovelPooter = $ShovelPooter
+onready var pistolPooter = $PistolPooter
+onready var shatgunPooter = $ShatgunPooter
+onready var rocketLauncherPooter = $RocketLauncherPooter
+onready var scatlingPooter = $ScatlingPooter
+onready var railgunPooter = $RailgunPooter
+
+onready var pooterDict = {
+	FireMode.values.Shovel: shovelPooter,
+	FireMode.values.Pistol: pistolPooter,
+	FireMode.values.Shatgun: shatgunPooter,
+	FireMode.values.RocketLauncher: rocketLauncherPooter,
+	FireMode.values.Scatling: scatlingPooter,
+	FireMode.values.Railgun: railgunPooter
+}
 
 onready var silo_subItem = $PlayerSprite/SpeechBubble/Silo
 
@@ -69,12 +84,12 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
+	
+	
+func _physics_process(_delta):
+	if Input.is_action_pressed("player_fire"):
+		pooterDict[equippedFireMode].shoot()
 
-func _unhandled_input(event):
-	if event.is_action_pressed("player_fire"):
-		var clickLocation = get_global_mouse_position()
-		var fireAngle = rad2deg(clickLocation.angle_to_point(position))
-		shoot()
 
 func _on_Player_area_entered(body):
 	if (body.is_in_group("poo")):
@@ -122,11 +137,7 @@ func steal_poo(stealAmount: int):
 	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)	
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 
-func shoot():
-	var poo_pellets_instance = poo_pellets.instance()
-	var target = get_global_mouse_position()
-	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
-	emit_signal("playerFire", poo_pellets_instance, end_of_gun.global_position, direction_to_mouse)
+
 
 func _on_Goblin_global_poo_stolen(stealAmount):
 	totalPooAmount = max(0, totalPooAmount - stealAmount)
@@ -169,3 +180,7 @@ func reset():
 	equippedFireMode = FireMode.values.Shovel
 	$GameOnTimer.stop()
 	
+
+
+func _firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
+	emit_signal("firePoo", pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
