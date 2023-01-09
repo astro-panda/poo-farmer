@@ -252,4 +252,5 @@ visible = false
 [connection signal="close_store" from="Store" to="MusicAutomaton" method="_on_Store_close_store"]
 [connection signal="open_store" from="Store" to="MusicAutomaton" method="_on_Store_open_store"]
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
-[connection signal="how_to_play_requested" from="StartScreen" to="Player/ModalWindow" method="_on_StartScreen_how_to_play_requested"]
+[connection signal="game_started" from="StartScreen" to="Player/ModalWindow" method="_on_StartScreen_game_started"]
+[connection signal="how_to_play_requested" from="StartScreen" to="Player/ModalWindow" method="show_how_to_play"]
