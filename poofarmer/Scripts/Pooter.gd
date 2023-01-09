@@ -4,13 +4,16 @@ signal firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode
 
 export (PackedScene) var poo_pellets
 export (FireMode.values) var currentFireMode = FireMode.values.Shovel
+export(Array, AudioStream) var poot_sounds
 export var cooldown: float = 0.25
 export var damage: int = 2
 export var pooSpeed: int = 7
 export var pooDistance: int = 300 
 export var cost: float = 1
 onready var player = get_tree().get_nodes_in_group("player")[0]
+onready var poot_player = $Poot
 var canFire = true
+
 
 
 const cooldownDict = {
@@ -81,7 +84,18 @@ func shoot():
 		var direction_to_mouse = global_position.direction_to(target).normalized()
 		emit_signal("firePoo", poo_pellets_instance, global_position, direction_to_mouse, target, currentFireMode)
 		canFire = false
+		poot()
 
 
 func _on_FireCooldown_timeout():
 	canFire = true
+	
+func poot():
+	var da_poot
+	if currentFireMode != FireMode.values.RocketLauncher:
+		da_poot = poot_sounds[randi() % poot_sounds.size()]
+	else:
+		da_poot = poot_sounds[0]
+		
+	poot_player.stream = da_poot
+	poot_player.play()
