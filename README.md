@@ -44,8 +44,8 @@ If the goblins steal all of the **Poo** from your silo, you lose.
 | **Keyboard & Mouse** |
 | Movement | W,A,S,D |
 | Fire Poo Weapon | Left-Click|
-| Pause | Esc | 
-| Exit Shop | Tab |
+| Pause | Esc, Tab | 
+| Weapon Select | Hold R |
 
 
 ### Power-ups
