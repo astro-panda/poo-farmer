@@ -4,6 +4,7 @@ onready var arsenal_wheel = get_node("CanvasLayer/Arsenal Wheel")
 onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPlayer")
 onready var silo_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
 onready var goblin_counter = $CanvasLayer/GoblinCountContainer/GoblinCountLabel
+onready var canvas_layer = $CanvasLayer
 var arsenal_pressed: bool = false
 
 func _ready():
@@ -28,3 +29,9 @@ func update_global_poo_label(totalPooAmount):
 
 func update_global_goblin_label(totalGoblins):
 	goblin_counter.text = str(totalGoblins)
+
+func showHUD(show: bool):
+	canvas_layer.visible = show
+
+func _on_Store_update_global_poo_label(totalPooAmount):
+	silo_crud_points.text = str(totalPooAmount)

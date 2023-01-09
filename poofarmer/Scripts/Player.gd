@@ -10,7 +10,7 @@ export var speed = 300
 export var holdCapacity = 10
 export var goblinStealAmount = 5
 var currentHoldAmount = 0
-var totalPooAmount = 50
+var totalPooAmount = 0
 var screen_size
 
 var fireModes = [FireMode.values.Shovel]
@@ -97,7 +97,6 @@ func _on_Player_area_entered(body):
 		hud.update_global_poo_label(totalPooAmount)
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
-	emit_signal("update_global_poo_label", totalPooAmount)
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):

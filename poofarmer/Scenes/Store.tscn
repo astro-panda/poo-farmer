@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=2]
@@ -7,10 +7,13 @@
 [ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=5]
 [ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=6]
 [ext_resource path="res://Images/HUD.Button.png" type="Texture" id=7]
-[ext_resource path="res://Images/temporary-store.png" type="Texture" id=8]
+[ext_resource path="res://Images/gnome-store.png" type="Texture" id=8]
 [ext_resource path="res://Images/HUD.Button.Pressed.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Store.gd" type="Script" id=10]
 [ext_resource path="res://Images/exit-button.png" type="Texture" id=11]
+[ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Images/HUD.SquareFrame.1.png" type="Texture" id=13]
+[ext_resource path="res://Images/Crap.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,6 +22,12 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -49,34 +58,73 @@ animations = [ {
 } ]
 
 [node name="Store" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 10 )
 
-[node name="StoreBG" type="AnimatedSprite" parent="."]
-position = Vector2( -320, -176 )
-scale = Vector2( 0.266667, 0.265879 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StoreBG" type="AnimatedSprite" parent="CanvasLayer"]
+scale = Vector2( 2.222, 2.222 )
 frames = SubResource( 1 )
 centered = false
 
-[node name="Pistol" type="Node2D" parent="."]
-position = Vector2( -235, 3 )
+[node name="TotalPooContainer" type="NinePatchRect" parent="CanvasLayer"]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 512.0
+margin_bottom = 120.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+texture = ExtResource( 13 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Pistol"]
+[node name="PooIcon" type="TextureRect" parent="CanvasLayer/TotalPooContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 48.0
+margin_bottom = 48.0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="TotalPooCount" type="Label" parent="CanvasLayer/TotalPooContainer"]
+anchor_left = 0.156
+anchor_top = 0.5
+anchor_right = 0.156
+anchor_bottom = 0.5
+margin_left = 0.0639992
+margin_top = -20.0
+margin_right = 208.064
+margin_bottom = 20.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Pistol" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 90, 184 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Pistol"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
 z_index = 3
 frames = SubResource( 2 )
 animation = "pistol"
 
-[node name="Button" type="TextureButton" parent="Pistol"]
+[node name="Button" type="TextureButton" parent="CanvasLayer/Pistol"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
 expand = true
 
-[node name="Label" type="Label" parent="Pistol"]
+[node name="Label" type="Label" parent="CanvasLayer/Pistol"]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -89,24 +137,24 @@ text = "10"
 align = 1
 valign = 1
 
-[node name="Shotgun" type="Node2D" parent="."]
-position = Vector2( -32, 3 )
+[node name="Shotgun" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 293, 184 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Shotgun"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Shotgun"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
 z_index = 3
 frames = SubResource( 2 )
 animation = "shotgun"
 
-[node name="Button" type="TextureButton" parent="Shotgun"]
+[node name="Button" type="TextureButton" parent="CanvasLayer/Shotgun"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
 expand = true
 
-[node name="Label" type="Label" parent="Shotgun"]
+[node name="Label" type="Label" parent="CanvasLayer/Shotgun"]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -119,24 +167,24 @@ text = "20"
 align = 1
 valign = 1
 
-[node name="RocketLauncher" type="Node2D" parent="."]
-position = Vector2( 168, 3 )
+[node name="RocketLauncher" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 493, 184 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="RocketLauncher"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/RocketLauncher"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
 z_index = 3
 frames = SubResource( 2 )
 animation = "rocket-launcher"
 
-[node name="Button" type="TextureButton" parent="RocketLauncher"]
+[node name="Button" type="TextureButton" parent="CanvasLayer/RocketLauncher"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
 expand = true
 
-[node name="Label" type="Label" parent="RocketLauncher"]
+[node name="Label" type="Label" parent="CanvasLayer/RocketLauncher"]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -149,24 +197,24 @@ text = "40"
 align = 1
 valign = 1
 
-[node name="Scatling" type="Node2D" parent="."]
-position = Vector2( -136, 96 )
+[node name="Scatling" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 189, 277 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Scatling"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Scatling"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
 z_index = 3
 frames = SubResource( 2 )
 animation = "scatling"
 
-[node name="Button" type="TextureButton" parent="Scatling"]
+[node name="Button" type="TextureButton" parent="CanvasLayer/Scatling"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
 expand = true
 
-[node name="Label" type="Label" parent="Scatling"]
+[node name="Label" type="Label" parent="CanvasLayer/Scatling"]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -179,24 +227,24 @@ text = "60"
 align = 1
 valign = 1
 
-[node name="Railgun" type="Node2D" parent="."]
-position = Vector2( 72, 96 )
+[node name="Railgun" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 397, 277 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Railgun"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Railgun"]
 position = Vector2( 36, 34 )
 scale = Vector2( 3, 3 )
 z_index = 3
 frames = SubResource( 2 )
 animation = "railgun"
 
-[node name="Button" type="TextureButton" parent="Railgun"]
+[node name="Button" type="TextureButton" parent="CanvasLayer/Railgun"]
 margin_right = 72.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
 expand = true
 
-[node name="Label" type="Label" parent="Railgun"]
+[node name="Label" type="Label" parent="CanvasLayer/Railgun"]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -208,17 +256,17 @@ text = "100"
 align = 1
 valign = 1
 
-[node name="ExitButton" type="TextureButton" parent="."]
-margin_left = 280.0
-margin_top = -160.0
-margin_right = 304.0
-margin_bottom = -136.0
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer"]
+margin_left = 592.0
+margin_top = 16.0
+margin_right = 624.0
+margin_bottom = 48.0
 texture_normal = ExtResource( 11 )
 expand = true
 
-[connection signal="button_down" from="Pistol/Button" to="." method="_on_PistolButton_button_down"]
-[connection signal="button_down" from="Shotgun/Button" to="." method="_on_ShotgunButton_button_down"]
-[connection signal="button_down" from="RocketLauncher/Button" to="." method="_on_RocketLauncherButton_button_down"]
-[connection signal="button_down" from="Scatling/Button" to="." method="_on_ScatlingButton_button_down"]
-[connection signal="button_down" from="Railgun/Button" to="." method="_on_RailgunButton_button_down"]
-[connection signal="button_down" from="ExitButton" to="." method="_on_ExitButton_button_down"]
+[connection signal="button_down" from="CanvasLayer/Pistol/Button" to="." method="_on_PistolButton_button_down"]
+[connection signal="button_down" from="CanvasLayer/Shotgun/Button" to="." method="_on_ShotgunButton_button_down"]
+[connection signal="button_down" from="CanvasLayer/RocketLauncher/Button" to="." method="_on_RocketLauncherButton_button_down"]
+[connection signal="button_down" from="CanvasLayer/Scatling/Button" to="." method="_on_ScatlingButton_button_down"]
+[connection signal="button_down" from="CanvasLayer/Railgun/Button" to="." method="_on_RailgunButton_button_down"]
+[connection signal="button_down" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_button_down"]
