@@ -6,6 +6,7 @@ signal open_store
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var camera = get_tree().get_nodes_in_group("camera")[0]
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
+onready var click_player = $ClickPlayer
 onready var canvas = $CanvasLayer
 onready var pooCount = $CanvasLayer/TotalPooContainer/TotalPooCount
 onready var pistolButton = $CanvasLayer/Pistol
@@ -43,6 +44,7 @@ func check_btns():
 			change_button_state(int(fireMode) - 1, true, false)
 
 func change_button_state(idx: int, disabled: bool, hideLabel: bool):
+	click()
 	var btnNode = listOfButtons[idx].get_node("Button")
 	listOfButtons[idx].get_node("AnimatedSprite").modulate = grayedOutColor if disabled else normalColor
 	btnNode.modulate = grayedOutColor if disabled else normalColor
@@ -80,6 +82,10 @@ func _on_ExitButton_button_down():
 	emit_signal("close_store")
 	
 func show_store(show: bool):
+	click()
 	canvas.visible = show
 	if show:
 		emit_signal("open_store")
+
+func click():
+	click_player.play()

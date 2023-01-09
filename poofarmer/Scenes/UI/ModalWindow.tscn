@@ -301,7 +301,6 @@ valign = 1
 position = Vector2( -37, 4 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 17 )
-frame = 15
 playing = true
 
 [node name="Shoot" type="Label" parent="CanvasLayer/HowToPlay"]
@@ -473,7 +472,7 @@ text = "Restart"
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
-volume_db = -9.973
+volume_db = -10.0
 
 [connection signal="pressed" from="CanvasLayer/Poosed/Resume" to="." method="set_is_paused" binds= [ false ]]
 [connection signal="pressed" from="CanvasLayer/Poosed/Restart" to="." method="trigger_game_reset"]
