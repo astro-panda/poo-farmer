@@ -7,6 +7,7 @@ onready var canvas = $CanvasLayer
 onready var poosed = $CanvasLayer/Poosed
 onready var how_to_play = $CanvasLayer/HowToPlay
 onready var game_over = $CanvasLayer/GameOver
+onready var click_player = $ClickPlayer
 
 onready var wave_banner = $"CanvasLayer/GameOver/Wave Banner"
 onready var poo_banner = $"CanvasLayer/GameOver/Poo Banner"
@@ -30,6 +31,7 @@ func set_is_paused(value):
 			reset_canvas()
 		get_tree().paused = value
 		is_paused = value
+		click()
 
 
 func display_game_over(waves: String, pooCollected: String):
@@ -57,18 +59,20 @@ func show_how_to_play():
 	game_over.visible = false
 
 
-func reset_canvas():	
+func reset_canvas():
+	click()
 	canvas.visible = false
 	poosed.visible = false
 	how_to_play.visible = false
 	game_over.visible = false
 
 
-func trigger_game_reset():
+func trigger_game_reset():	
 	unpause()
 	emit_signal("game_reset")
 	
 func quit_game():
+	click()
 	reset_canvas()
 	game_started = false
 	set_is_paused(true)
@@ -79,5 +83,9 @@ func _on_StartScreen_game_started():
 	unpause()
 	
 func unpause():
+	click()
 	reset_canvas()
 	set_is_paused(false)
+	
+func click():
+	click_player.play()
