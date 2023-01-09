@@ -4,7 +4,8 @@ class_name Goblin
 signal global_poo_stolen(stealAmount)
 
 # Declare member variables here. Examples:
-export var speed = 1500
+export var speed = 2500
+export var fleeSpeedMultiplier = 4
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var audio_ctrl = $MobAudioController
@@ -13,6 +14,9 @@ var playerHasPoo = false
 var currentPooTargets = []
 var health = 4
 var stealAmount = 3
+var siloStealAmount = 5
+var isFleeing = false
+var fleeingVector = Vector2(0,0)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,10 +38,22 @@ func _process(delta):
 		if (is_instance_valid(currentPoo)):
 			velocity = move_at_body(currentPoo, delta)
 		else:
-			velocity = move_at_body(silo, delta)
+			if isFleeing:
+				velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
+				velocity = move_and_slide(velocity)
+				if (position.distance_to(fleeingVector) < 50):
+					isFleeing = false
+			else:
+				velocity = move_at_body(silo, delta)
 	else:
-		velocity = (silo.position - position).normalized() * speed * delta
-		velocity = move_and_slide(velocity)
+		if isFleeing:
+			velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
+			velocity = move_and_slide(velocity)
+			if (position.distance_to(fleeingVector) < 50):
+				isFleeing = false
+		else:
+			velocity = (silo.position - position).normalized() * speed * delta
+			velocity = move_and_slide(velocity)
 		
 	if velocity.x > 0:
 		$AnimatedSprite.animation = "right"
@@ -66,7 +82,8 @@ func _on_PooPickupDetection_area_entered(area):
 		removePooFromTargets(area, true)
 	
 	if (area.is_in_group("silo")):
-		emit_signal("global_poo_stolen", stealAmount)
+		emit_signal("global_poo_stolen", siloStealAmount)
+		isFleeing = true
 
 
 func removePooFromTargets(poo, destroy):
@@ -86,8 +103,8 @@ func _on_StealTimer_timeout():
 		playerNearby = false
 		
 func move_at_body(body, delta):
-	var velocity = (body.position - position).normalized() * speed * delta
-	return move_and_slide(velocity)	
+	var velocity = (body.position - position).normalized() * speed * delta * (fleeSpeedMultiplier if isFleeing else 1)
+	return move_and_slide(velocity)
 
 func handle_hit(damage):
 	health -= damage

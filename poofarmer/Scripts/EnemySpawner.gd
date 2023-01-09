@@ -40,6 +40,7 @@ func _on_SpawnTimer_timeout():
 			spawnLoc = Vector2(rndLoc, 3000)
 		
 		enemy.position = spawnLoc
+		enemy.fleeingVector = spawnLoc
 		enemy.connect("global_poo_stolen", player, "_on_Goblin_global_poo_stolen")
 		
 		current_population -= 1
