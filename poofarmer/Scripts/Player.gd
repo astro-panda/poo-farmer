@@ -13,12 +13,14 @@ export var goblinStealAmount = 5
 var currentHoldAmount = 0
 var totalPooAmount = 0
 var screen_size
+var gross_poo_harvested = 0
 
 var fireModes = [FireMode.values.Shovel]
 var equippedFireMode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
+onready var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 onready var modal_window = $ModalWindow
 onready var game_on_timer = $GameOnTimer
 onready var end_of_gun = $EndOfGun
@@ -38,7 +40,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("game_over"):
 		game_over()
-		
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -98,7 +99,9 @@ func _on_Player_area_entered(body):
 	if(body.is_in_group("silo")):
 		if currentHoldAmount > 0:
 			audio_ctrl.act(1) # the Poo drop sound
-			
+		
+		gross_poo_harvested += currentHoldAmount
+		
 		totalPooAmount += currentHoldAmount
 		currentHoldAmount = 0
 		hud.update_global_poo_label(totalPooAmount)
@@ -147,6 +150,8 @@ func _on_SpeechTimer_timeout():
 func game_over():
 	get_tree().paused = true
 	print("You Poose!")
+	print("Waves survived: " + str(enemy_spawner.wave_count) + ", nice!")
+	print("You harvested " + str(gross_poo_harvested) + " poo with your hands.... gross...")
 	$ModalWindow.display_game_over()
 
 func _on_GameOnTimer_timeout():

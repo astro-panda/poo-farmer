@@ -8,12 +8,13 @@ export var maxEnemies = 20
 export var maxSpawnTime = 30.0
 export var minSpawnTime = 10.0
 var rnd = RandomNumberGenerator.new()
-var goblin_populations = [20,20,40,60,60]
+var goblin_population = 20
+var wave_count = 1
 var current_population
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_population = goblin_populations.pop_front()
+	current_population = goblin_population + (randi() % 20) - 10
 	$SpawnTimer.start()
 	$HudUpdateTimer.start()
 	
@@ -44,6 +45,7 @@ func _on_SpawnTimer_timeout():
 		current_population -= 1
 		goblins.add_child(enemy)
 		if current_population == 0:
+			wave_count += 1
 			$SpawnTimer.stop()
 			$GenerationTimer.start()
 		
@@ -51,11 +53,9 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_GenerationTimer_timeout():
-	if goblin_populations.size() > 0:
-		current_population = goblin_populations.pop_front()
-		$SpawnTimer.start()
-	else:
-		$GenerationTimer.stop()
+	var base_count = goblin_population * wave_count
+	current_population = base_count + (randi() % (base_count)) - base_count
+	$SpawnTimer.start()
 	
 func _on_HudUpdateTimer_timeout():
 	goblins.update_goblin_hud()
