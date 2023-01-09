@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Images/Farmer.png" type="Texture" id=2]
@@ -14,82 +14,66 @@
 extents = Vector2( 12, 23.5 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 16, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 64, 16, 32 )
 
@@ -139,6 +123,9 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 10, 4 )
 
 [node name="Player" type="Area2D" groups=["player"]]
 collision_mask = 14
@@ -200,11 +187,11 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PlayerCollision" type="StaticBody2D" parent="."]
-collision_layer = 0
-collision_mask = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
-position = Vector2( 0, 21.5 )
+position = Vector2( 0, 20 )
+shape = SubResource( 22 )
 
 [node name="GameOnTimer" type="Timer" parent="."]
 wait_time = 0.1

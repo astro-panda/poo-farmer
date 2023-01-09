@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://Scenes/MobAudioController.gd"
 }, {
 "base": "Area2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/Player.gd"
+}, {
+"base": "Area2D",
 "class": "Poo",
 "language": "GDScript",
 "path": "res://Scripts/Poo.gd"
@@ -57,6 +62,7 @@ _global_script_class_icons={
 "HitBox": "",
 "HurtBox": "",
 "MobAudioController": "",
+"Player": "",
 "Poo": ""
 }
 

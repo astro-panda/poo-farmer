@@ -5,10 +5,13 @@ signal how_to_play_requested
 
 onready var canvas = $CanvasLayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	begin()
+
+
+func begin():
 	get_tree().paused = true
-	pass # Replace with function body.
+	canvas.visible = true
 
 
 func _on_Start_pressed():
