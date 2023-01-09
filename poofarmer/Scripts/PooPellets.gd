@@ -30,7 +30,10 @@ func _physics_process(_delta: float) -> void:
 			global_position += velocity
 		if distTraveled >= distance || explodeOverride:
 			if willExplode:
-				exploding = true
+				if !exploding:
+					$Exploder.play()
+					exploding = true
+					
 				scale.x += 0.4
 				scale.y += 0.4
 				if scale.x >= explodeSize || scale.y >= explodeSize:
