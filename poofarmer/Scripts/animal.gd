@@ -28,7 +28,7 @@ func _process(delta):
 	velocity = (destination - position).normalized() * speed * delta
 	velocity = move_and_slide(velocity)
 	if (position.distance_to(destination) < 100):
-		destination = Vector2(randi() % 1024, randi() % 1024)
+		_on_ChangeDestinationTimer_timeout()
 		
 	if velocity.x > 4:
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - right"
@@ -54,8 +54,6 @@ func set_type(type:AnimalType):
 	_type = type.current_value
 	$Sprite.animation = AnimalType.values.keys()[_type] + " - down"
 	print(_type)
-	
-
 
 func _on_ChangeDestinationTimer_timeout():
 	destination = Vector2(randi() % 3072, randi() % 3072)

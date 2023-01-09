@@ -329,3 +329,10 @@ pause_mode = 2
 anims/RESET = SubResource( 5 )
 anims/arsenal_close = SubResource( 3 )
 anims/arsenal_open = SubResource( 4 )
+
+[connection signal="button_down" from="CanvasLayer/Arsenal Wheel/Shovel" to="." method="_on_Shovel_button_down"]
+[connection signal="button_down" from="CanvasLayer/Arsenal Wheel/Pistol" to="." method="_on_Pistol_button_down"]
+[connection signal="button_down" from="CanvasLayer/Arsenal Wheel/Shatgun" to="." method="_on_Shatgun_button_down"]
+[connection signal="button_down" from="CanvasLayer/Arsenal Wheel/ScatlingGun" to="." method="_on_ScatlingGun_button_down"]
+[connection signal="button_down" from="CanvasLayer/Arsenal Wheel/RocketLauncher" to="." method="_on_RocketLauncher_button_down"]
+[connection signal="button_down" from="CanvasLayer/Arsenal Wheel/Railgun" to="." method="_on_Railgun_button_down"]

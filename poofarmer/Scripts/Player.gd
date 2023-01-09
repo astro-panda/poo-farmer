@@ -14,6 +14,7 @@ var totalPooAmount = 0
 var screen_size
 
 var fireModes = [FireMode.values.Shovel]
+var equippedFireMode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
@@ -116,7 +117,6 @@ func shoot():
 func _on_Goblin_global_poo_stolen(stealAmount):
 	totalPooAmount = max(0, totalPooAmount - stealAmount)
 	hud.update_global_poo_label(totalPooAmount)
-	emit_signal("update_global_poo_label", totalPooAmount)
 
 func show_speech(subitem, target):
 	for item in subItems:
