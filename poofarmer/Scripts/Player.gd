@@ -21,10 +21,8 @@ var equippedFireMode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
-onready var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 onready var modal_window = $ModalWindow
 onready var game_on_timer = $GameOnTimer
-onready var end_of_gun = $EndOfGun
 onready var audio_ctrl = $MobAudioController
 onready var speech = $PlayerSprite/SpeechBubble
 onready var arrow_handle = $PlayerSprite/SpeechBubble/ArrowHandle
@@ -161,6 +159,7 @@ func _on_SpeechTimer_timeout():
 	speech.visible = false
 
 func game_over():
+	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 	get_tree().paused = true
 	print("You Poose!")
 	print("Waves survived: " + str(enemy_spawner.wave_count) + ", nice!")
