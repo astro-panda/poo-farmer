@@ -8,6 +8,7 @@ func _ready():
 	visible = false
 	
 
+
 func _unhandled_input(event):
 	if event.is_action_pressed("pause") || event.is_action_pressed("store"):
 		self.is_paused = !is_paused
@@ -29,3 +30,7 @@ func _on_Gnome_store_opened(opened):
 
 func _on_Store_close_store():
 	set_is_paused(false)
+
+func display_game_over():
+	set_is_paused(true)
+	print("Wire up game over UI here")
