@@ -13,8 +13,6 @@ var currentHoldAmount = 0
 var totalPooAmount = 50
 var screen_size
 
-var fireModes = [FireMode.values.Shovel, FireMode.values.Pistol]
-
 var fireModes = [FireMode.values.Shovel]
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
