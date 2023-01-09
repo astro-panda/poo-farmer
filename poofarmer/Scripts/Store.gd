@@ -1,6 +1,7 @@
 extends Control
 
 signal close_store
+signal open_store
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var camera = get_tree().get_nodes_in_group("camera")[0]
@@ -82,3 +83,5 @@ func _on_ExitButton_button_down():
 	
 func show_store(show: bool):
 	canvas.visible = show
+	if show:
+		emit_signal("open_store")
