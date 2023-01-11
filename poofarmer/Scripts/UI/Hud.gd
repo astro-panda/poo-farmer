@@ -9,6 +9,7 @@ onready var silo_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
 onready var goblin_counter = $CanvasLayer/GoblinCountContainer/GoblinCountLabel
 onready var canvas_layer = $CanvasLayer
 onready var click_player = $ClickPlayer
+onready var goblinWaveProgress = $CanvasLayer/GoblinCountContainer/GoblinWaveProgress
 onready var shovelBtn = $"CanvasLayer/Arsenal Wheel/Shovel"
 onready var pistolBtn = $"CanvasLayer/Arsenal Wheel/Pistol"
 onready var shatgunBtn = $"CanvasLayer/Arsenal Wheel/Shatgun"
@@ -46,7 +47,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func update_global_poo_label(totalPooAmount):
 	silo_crud_points.text = str(totalPooAmount)
 
-func update_global_goblin_label(totalGoblins):
+func update_global_goblin_label(totalGoblins, waveCountdown, progMax, progValue):
+	if waveCountdown:
+		goblinWaveProgress.visible = true
+		goblinWaveProgress.value = progValue
+		goblinWaveProgress.max_value = progMax
+	else:
+		goblinWaveProgress.visible = false
 	goblin_counter.text = str(totalGoblins)
 
 func showHUD(show: bool):

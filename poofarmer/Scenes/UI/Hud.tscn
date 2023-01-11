@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=14]
 [ext_resource path="res://Images/Goblin.png" type="Texture" id=15]
 [ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=16]
+[ext_resource path="res://Images/GoblinColorSwatch.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -175,6 +176,16 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="GoblinWaveProgress" type="TextureProgress" parent="CanvasLayer/GoblinCountContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 228.0
+margin_bottom = 23.0
+value = 100.0
+texture_progress = ExtResource( 17 )
+fill_mode = 1
+nine_patch_stretch = true
 
 [node name="GoblinCountLabel" type="Label" parent="CanvasLayer/GoblinCountContainer"]
 margin_left = 3.0
