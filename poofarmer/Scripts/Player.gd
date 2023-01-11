@@ -127,21 +127,21 @@ func _on_Area2D_area_entered(body):
 				poo.destroy()
 		else:
 			print("show silo")
-			show_speech(silo_subItem, silo)
-	
-	if(body.is_in_group("silo")):
-		if currentHoldAmount > 0:
-			audio_ctrl.act(1) # the Poo drop sound
-		
-		gross_poo_harvested += currentHoldAmount
-		
-		totalPooAmount += currentHoldAmount
-		currentHoldAmount = 0
-		hud.update_global_poo_label(totalPooAmount)
-		if totalPooAmount > 0:
-			$GameOnTimer.start()
+			show_speech(silo_subItem, silo)	
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
+	
+func dump_poo_in_silo():	
+	if currentHoldAmount > 0:
+		audio_ctrl.act(1) # the Poo drop sound
+	
+	gross_poo_harvested += currentHoldAmount
+	
+	totalPooAmount += currentHoldAmount
+	currentHoldAmount = 0
+	hud.update_global_poo_label(totalPooAmount)
+	if totalPooAmount > 0:
+		$GameOnTimer.start()
 
 func _on_Player_body_entered(body):
 	if (body.is_in_group("goblin")):
@@ -151,7 +151,6 @@ func _on_Player_body_entered(body):
 func steal_poo(stealAmount: int):
 	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)	
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
-
 
 
 func _on_Goblin_global_poo_stolen(stealAmount):
