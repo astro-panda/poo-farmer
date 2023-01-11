@@ -1,0 +1,16 @@
+Layers
+1		Player, Gnome
+2		Animals
+3		Silo
+4		Goblin
+5		Poo
+6		PooPellets
+
+Colides with:
+Player		Silo, Poo 						(3, 5)
+Gnome		Player, Gnome					(1)
+Animals		Silo							(3)
+Silo		Player, Gnome, Animals, Goblin	(1, 2, 4)
+Poo			Player, Gnome, Goblin			(1, 4)
+Goblin		Silo, Poo, PooPellets			(3, 5, 6)
+PooPellets	Player, Gnome					(1)

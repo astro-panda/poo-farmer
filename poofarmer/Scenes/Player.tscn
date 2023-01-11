@@ -21,7 +21,7 @@
 [ext_resource path="res://Audio/Weapons/Railgun.wav" type="AudioStream" id=19]
 
 [sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 12, 4.5 )
+extents = Vector2( 10, 4 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 23.5 )
@@ -138,7 +138,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
-collision_mask = 4
+collision_mask = 20
 script = ExtResource( 1 )
 poo_pellets = ExtResource( 3 )
 speed = 18000
@@ -157,7 +157,7 @@ shape = SubResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "down"
-frame = 1
+frame = 2
 playing = true
 
 [node name="SpeechBubble" type="AnimatedSprite" parent="PlayerSprite"]
