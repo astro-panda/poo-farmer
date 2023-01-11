@@ -4,8 +4,9 @@ class_name Goblin
 signal global_poo_stolen(stealAmount)
 
 # Declare member variables here. Examples:
-export var speed = 2500
+export var speed = 4000
 export var fleeSpeedMultiplier = 4
+export var pooCapacity = 5
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var audio_ctrl = $MobAudioController
@@ -15,6 +16,7 @@ var currentPooTargets = []
 var health = 4
 var stealAmount = 3
 var siloStealAmount = 5
+var poosPickedUp = 0
 var isFleeing = false
 var fleeingVector = Vector2(0,0)
 
@@ -26,9 +28,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2()
-	if playerNearby && playerHasPoo:
+	if playerNearby && playerHasPoo && !isFleeing:
 		velocity = move_at_body(player, delta)
-	elif currentPooTargets.size() > 0:
+	elif currentPooTargets.size() > 0 && poosPickedUp <= pooCapacity:
 		var currentPoo = currentPooTargets.front()
 		while !is_instance_valid(currentPoo) && currentPooTargets.size() > 0:
 			currentPooTargets.pop_front()
@@ -51,6 +53,7 @@ func _process(delta):
 			velocity = move_and_slide(velocity)
 			if (position.distance_to(fleeingVector) < 50):
 				isFleeing = false
+				poosPickedUp = 0
 		else:
 			velocity = (silo.position - position).normalized() * speed * delta
 			velocity = move_and_slide(velocity)
@@ -81,10 +84,17 @@ func _on_Visibility_area_exited(area):
 func _on_PooPickupDetection_area_entered(area):
 	if (area.is_in_group("poo")):
 		removePooFromTargets(area, true)
+		poosPickedUp += 1
 	
 	if (area.is_in_group("silo")):
 		emit_signal("global_poo_stolen", siloStealAmount)
 		isFleeing = true
+		poosPickedUp = 0
+		
+	if area.is_in_group("player") && playerHasPoo:
+		isFleeing = true
+		player.steal_poo(stealAmount)
+		audio_ctrl.act(0)
 
 
 func removePooFromTargets(poo, destroy):
