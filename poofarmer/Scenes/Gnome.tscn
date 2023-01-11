@@ -185,22 +185,18 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=36]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 0, 72, 72, 72 )
 
 [sub_resource type="AtlasTexture" id=37]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 72, 72 )
 
 [sub_resource type="AtlasTexture" id=38]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 72, 0, 72, 72 )
 
 [sub_resource type="AtlasTexture" id=39]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 72, 72, 72, 72 )
 
@@ -240,7 +236,7 @@ script = ExtResource( 2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "down"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Glow" type="AnimatedSprite" parent="AnimatedSprite"]
@@ -262,6 +258,3 @@ shape = SubResource( 19 )
 next_behavior_min = 30.0
 next_behavior_max = 160.0
 behaviors = [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 10 ) ]
-
-[connection signal="area_entered" from="." to="." method="_on_Gnome_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_Gnome_area_exited"]

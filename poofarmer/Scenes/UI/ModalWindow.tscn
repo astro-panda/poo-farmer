@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Scripts/ModalWindow.gd" type="Script" id=1]
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=2]
@@ -16,6 +16,89 @@
 [ext_resource path="res://Images/Crap.png" type="Texture" id=14]
 [ext_resource path="res://Images/Crap.Rainbow.png" type="Texture" id=15]
 [ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=16]
+[ext_resource path="res://Images/FarmHouseOpen.png" type="Texture" id=17]
+[ext_resource path="res://Images/Gnome.Glowing.SpriteSheet.png" type="Texture" id=18]
+[ext_resource path="res://Images/FarmHouse.png" type="Texture" id=19]
+
+[sub_resource type="SpriteFrames" id=51]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.5
+} ]
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 18 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 18 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 18 )
+region = Rect2( 48, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 18 )
+region = Rect2( 144, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 18 )
+region = Rect2( 48, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 18 )
+region = Rect2( 144, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 18 )
+region = Rect2( 48, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 18 )
+region = Rect2( 144, 144, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=50]
+animations = [ {
+"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -87,6 +170,14 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=52]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.7
 } ]
 
 [sub_resource type="AtlasTexture" id=24]
@@ -167,8 +258,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 150.0 ],
-"_edit_vertical_guides_": [ 320.0 ]
+"_edit_horizontal_guides_": [ 150.0, 225.0 ],
+"_edit_vertical_guides_": [ 320.0, 395.0 ]
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -272,9 +363,31 @@ theme = ExtResource( 2 )
 text = "How to Play"
 
 [node name="HowToPlay" type="Control" parent="CanvasLayer"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+
+[node name="Space" type="Label" parent="CanvasLayer/HowToPlay"]
+margin_left = 394.0
+margin_top = 210.0
+margin_right = 585.0
+margin_bottom = 229.0
+theme = ExtResource( 2 )
+text = "Action: Space"
+align = 1
+valign = 1
+
+[node name="HudShotgun" type="AnimatedSprite" parent="CanvasLayer/HowToPlay/Space"]
+position = Vector2( -50, -4 )
+scale = Vector2( 0.666667, 0.666667 )
+frames = SubResource( 51 )
+playing = true
+
+[node name="HudShotgun2" type="AnimatedSprite" parent="CanvasLayer/HowToPlay/Space"]
+position = Vector2( -1, 38 )
+scale = Vector2( 1.27083, 1.27083 )
+frames = SubResource( 50 )
+frame = 14
+playing = true
 
 [node name="Title" type="Label" parent="CanvasLayer/HowToPlay"]
 margin_left = 104.0
@@ -301,6 +414,7 @@ valign = 1
 position = Vector2( -37, 4 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 17 )
+frame = 12
 playing = true
 
 [node name="Shoot" type="Label" parent="CanvasLayer/HowToPlay"]
@@ -313,15 +427,16 @@ text = "Shoot: L-Click"
 align = 1
 valign = 1
 
-[node name="HudShotgun" type="Sprite" parent="CanvasLayer/HowToPlay/Shoot"]
+[node name="HudShotgun" type="AnimatedSprite" parent="CanvasLayer/HowToPlay/Shoot"]
 position = Vector2( -23, 3 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 6 )
+frames = SubResource( 52 )
+playing = true
 
 [node name="Weapons" type="Label" parent="CanvasLayer/HowToPlay"]
-margin_left = 288.0
+margin_left = 163.0
 margin_top = 210.0
-margin_right = 411.0
+margin_right = 286.0
 margin_bottom = 229.0
 theme = ExtResource( 2 )
 text = "Weapons: R"
@@ -398,6 +513,7 @@ theme = ExtResource( 2 )
 text = "Go Back"
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
