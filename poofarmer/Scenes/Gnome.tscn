@@ -240,7 +240,7 @@ script = ExtResource( 2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "down"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Glow" type="AnimatedSprite" parent="AnimatedSprite"]
