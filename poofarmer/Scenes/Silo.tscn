@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Silo.gd" type="Script" id=1]
 [ext_resource path="res://Images/FarmHouse.png" type="Texture" id=2]
 [ext_resource path="res://Images/Silo.Png" type="Texture" id=3]
 [ext_resource path="res://Images/FarmHouseTop.png" type="Texture" id=4]
 [ext_resource path="res://Images/SiloTop.Png" type="Texture" id=5]
+[ext_resource path="res://Images/FarmHouseOpen.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 72 )
@@ -13,7 +14,12 @@ extents = Vector2( 80, 72 )
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "default",
+"name": "closed-doors",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "open-doors",
 "speed": 5.0
 } ]
 
@@ -57,6 +63,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -32 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
+animation = "open-doors"
 
 [node name="SiloSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -72, -40 )
