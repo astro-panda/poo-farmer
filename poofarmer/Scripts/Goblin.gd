@@ -28,6 +28,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2()
+	if position.distance_to(silo.position) <= 300:
+		currentPooTargets.clear()
 	if playerNearby && playerHasPoo && !isFleeing:
 		velocity = move_at_body(player, delta)
 	elif currentPooTargets.size() > 0 && poosPickedUp <= pooCapacity:
