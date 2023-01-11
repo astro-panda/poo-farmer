@@ -98,7 +98,7 @@ animations = [ {
 extents = Vector2( 12, 13.5 )
 
 [sub_resource type="CircleShape2D" id=19]
-radius = 20.0
+radius = 46.0
 
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 12, 13.5 )
@@ -112,7 +112,6 @@ script = ExtResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 17 )
 animation = "down"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
