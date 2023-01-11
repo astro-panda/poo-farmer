@@ -63,16 +63,19 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_GenerationTimer_timeout():
-	wave_count += 1
 	var base_count = goblin_population * wave_count
-	current_population = base_count + (randi() % base_count) - (base_count/2)
+	if wave_count == 1: 
+		current_population = 14
+	current_population = floor(current_population * rnd.randf_range(1.5, 1.8))
 	population_countdown = current_population
+	wave_count += 1
 	if wave_count % 3 == 0:
 		Timers.spawn.wait_time *= 0.5
 	Timers.spawn.start()
 	
 func _on_HudUpdateTimer_timeout():
+	var waveCountdown = !Timers.generation.is_stopped()
 	var waveInfo = wave_count
-	if !Timers.generation.is_stopped():
+	if waveCountdown:
 		waveInfo = floor(Timers.generation.time_left)
-	goblins.update_goblin_hud(current_population, waveInfo)
+	goblins.update_goblin_hud(current_population, waveInfo, Timers.generation.wait_time, waveCountdown)
