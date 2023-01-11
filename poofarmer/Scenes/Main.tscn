@@ -188,12 +188,6 @@ rotate = false
 [node name="Gnome" parent="GnomePath/PathFollow2D" instance=ExtResource( 4 )]
 position = Vector2( 0.00170898, -24.0009 )
 
-[node name="Store" parent="." instance=ExtResource( 13 )]
-margin_left = 672.0
-margin_top = 384.0
-margin_right = 672.0
-margin_bottom = 384.0
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1406, 1619 )
 __meta__ = {
@@ -209,14 +203,17 @@ __meta__ = {
 [node name="StartScreen" parent="." instance=ExtResource( 19 )]
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
+pause_mode = 2
 margin_top = -365.0
 margin_bottom = -365.0
 
+[node name="Store" parent="." instance=ExtResource( 13 )]
+margin_left = 672.0
+margin_top = 384.0
+margin_right = 672.0
+margin_bottom = 384.0
+
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Store" method="_on_Gnome_store_opened"]
-[connection signal="close_store" from="Store" to="MusicAutomaton" method="_on_Store_close_store"]
-[connection signal="close_store" from="Store" to="Player" method="_on_shoot_enabled_changed" binds= [ false ]]
-[connection signal="open_store" from="Store" to="MusicAutomaton" method="_on_Store_open_store"]
-[connection signal="open_store" from="Store" to="Player" method="_on_shoot_enabled_changed" binds= [ true ]]
 [connection signal="firePoo" from="Player" to="PooPelletsManager" method="_on_Player_firePoo"]
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
 [connection signal="game_quit" from="Player/ModalWindow" to="." method="quit"]
@@ -224,3 +221,7 @@ margin_bottom = -365.0
 [connection signal="game_started" from="StartScreen" to="Player/ModalWindow" method="_on_StartScreen_game_started"]
 [connection signal="how_to_play_requested" from="StartScreen" to="Player/ModalWindow" method="show_how_to_play"]
 [connection signal="arsenal_state_changed" from="HUD" to="Player" method="_on_shoot_enabled_changed"]
+[connection signal="close_store" from="Store" to="MusicAutomaton" method="_on_Store_close_store"]
+[connection signal="close_store" from="Store" to="Player" method="_on_shoot_enabled_changed" binds= [ false ]]
+[connection signal="open_store" from="Store" to="MusicAutomaton" method="_on_Store_open_store"]
+[connection signal="open_store" from="Store" to="Player" method="_on_shoot_enabled_changed" binds= [ true ]]

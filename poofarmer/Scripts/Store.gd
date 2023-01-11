@@ -31,8 +31,7 @@ func _unhandled_input(event):
 
 func _on_Gnome_store_opened(opened):
 	if opened:
-		check_btns()
-		hud.showHUD(false)
+		check_btns()		
 		pooCount.text = str(player.totalPooAmount)
 		show_store(true)
 		
@@ -77,13 +76,13 @@ func buy_item(fireMode):
 		check_btns()
 
 func _on_ExitButton_button_down():
-	show_store(false)
-	hud.showHUD(true)
+	show_store(false)	
 	emit_signal("close_store")
 	
 func show_store(show: bool):
 	click()
 	canvas.visible = show
+	get_tree().paused = show
 	if show:
 		emit_signal("open_store")
 
