@@ -49,6 +49,7 @@ func _on_SpawnTimer_timeout():
 		
 		enemy.position = spawnLoc
 		enemy.fleeingVector = spawnLoc
+		enemy.speed *= 1 + (wave_count - 1) / 10
 		enemy.connect("global_poo_stolen", player, "_on_Goblin_global_poo_stolen")
 		
 		if population_countdown > 0:
@@ -64,8 +65,10 @@ func _on_SpawnTimer_timeout():
 func _on_GenerationTimer_timeout():
 	wave_count += 1
 	var base_count = goblin_population * wave_count
-	current_population = base_count + (randi() % (base_count/2)) - (base_count/2)
+	current_population = base_count + (randi() % base_count) - (base_count/2)
 	population_countdown = current_population
+	if wave_count % 3 == 0:
+		Timers.spawn.wait_time *= 0.5
 	Timers.spawn.start()
 	
 func _on_HudUpdateTimer_timeout():
