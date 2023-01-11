@@ -20,18 +20,18 @@ const cooldownDict = {
 	FireMode.values.Shovel: 0.25,
 	FireMode.values.Pistol: 0.2,
 	FireMode.values.Shatgun: 0.5,
-	FireMode.values.RocketLauncher: 1.0,
+	FireMode.values.RocketLauncher: 1.5,
 	FireMode.values.Scatling: 0.05,
-	FireMode.values.Railgun: 3.0
+	FireMode.values.Railgun: 1.0
 }
 
 var pooCostDict = {
 	FireMode.values.Shovel: 0.1,
 	FireMode.values.Pistol: 0.1,
-	FireMode.values.Shatgun: 0.2,
-	FireMode.values.RocketLauncher: 0.5,
+	FireMode.values.Shatgun: 0.1,
+	FireMode.values.RocketLauncher: 0.16,
 	FireMode.values.Scatling: 0.01,
-	FireMode.values.Railgun: 1
+	FireMode.values.Railgun: 0.05
 }
 const dmgDict = {
 	FireMode.values.Shovel: 2,
