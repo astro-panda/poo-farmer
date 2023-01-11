@@ -43,7 +43,7 @@ func reset():
 	if game_started:
 		player.reset()
 		hud.update_global_poo_label(0)
-		hud.update_global_goblin_label(0)	
+		hud.update_global_goblin_label(0, false, 0, 0)	
 
 	game_started = true
 
