@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Silo.gd" type="Script" id=1]
 [ext_resource path="res://Images/FarmHouse.png" type="Texture" id=2]
@@ -6,6 +6,15 @@
 [ext_resource path="res://Images/FarmHouseTop.png" type="Texture" id=4]
 [ext_resource path="res://Images/SiloTop.Png" type="Texture" id=5]
 [ext_resource path="res://Images/FarmHouseOpen.png" type="Texture" id=6]
+[ext_resource path="res://Images/Crap.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 72 )
@@ -54,6 +63,134 @@ extents = Vector2( 72, 44 )
 collision_layer = 4
 collision_mask = 11
 script = ExtResource( 1 )
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="Poo" type="AnimatedSprite" parent="Node"]
+position = Vector2( -14, 32 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo2" type="AnimatedSprite" parent="Node"]
+position = Vector2( -12, 18 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo3" type="AnimatedSprite" parent="Node"]
+position = Vector2( -5, 35 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo4" type="AnimatedSprite" parent="Node"]
+position = Vector2( 19, 16 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo5" type="AnimatedSprite" parent="Node"]
+position = Vector2( 9, 13 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo6" type="AnimatedSprite" parent="Node"]
+position = Vector2( -4, 12 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo7" type="AnimatedSprite" parent="Node"]
+position = Vector2( 1, 6 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo8" type="AnimatedSprite" parent="Node"]
+position = Vector2( 8, 4 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo9" type="AnimatedSprite" parent="Node"]
+position = Vector2( 14, 12 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo10" type="AnimatedSprite" parent="Node"]
+position = Vector2( 23, 8 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo11" type="AnimatedSprite" parent="Node"]
+position = Vector2( 17, 6 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo12" type="AnimatedSprite" parent="Node"]
+position = Vector2( 23, 23 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo13" type="AnimatedSprite" parent="Node"]
+position = Vector2( 10, 23 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo14" type="AnimatedSprite" parent="Node"]
+position = Vector2( -2, 22 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo15" type="AnimatedSprite" parent="Node"]
+position = Vector2( -12, 10 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo16" type="AnimatedSprite" parent="Node"]
+position = Vector2( -6, 6 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo17" type="AnimatedSprite" parent="Node"]
+position = Vector2( -10, -1 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo18" type="AnimatedSprite" parent="Node"]
+position = Vector2( 2, -2 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo19" type="AnimatedSprite" parent="Node"]
+position = Vector2( 3, 12 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo20" type="AnimatedSprite" parent="Node"]
+position = Vector2( 24, 32 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
+
+[node name="Poo21" type="AnimatedSprite" parent="Node"]
+position = Vector2( 24, 32 )
+scale = Vector2( 0.5625, 0.5625 )
+frames = SubResource( 7 )
+offset = Vector2( -8.88889, -26.6667 )
 
 [node name="DropOffDetection" type="CollisionShape2D" parent="."]
 position = Vector2( -24, -32 )
