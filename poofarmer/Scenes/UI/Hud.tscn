@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=2]
@@ -77,6 +77,39 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "launcher",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "pistol",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "railgun",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "scatling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "shatgun",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "shovel",
+"speed": 5.0
+} ]
 
 [node name="HUD" type="Control" groups=["hud"]]
 anchor_right = 1.0
@@ -340,6 +373,12 @@ pause_mode = 2
 anims/RESET = SubResource( 5 )
 anims/arsenal_close = SubResource( 3 )
 anims/arsenal_open = SubResource( 4 )
+
+[node name="EquippedIcon" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 608, 328 )
+scale = Vector2( 2.5, 2.5 )
+frames = SubResource( 7 )
+animation = "shovel"
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )

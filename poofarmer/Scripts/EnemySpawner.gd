@@ -63,7 +63,6 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_GenerationTimer_timeout():
-	var base_count = goblin_population * wave_count
 	if wave_count == 1: 
 		current_population = 14
 	current_population = floor(current_population * rnd.randf_range(1.5, 1.8))
