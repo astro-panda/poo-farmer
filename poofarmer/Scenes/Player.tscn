@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Images/Farmer.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Audio/Weapons/Scatling 2.wav" type="AudioStream" id=17]
 [ext_resource path="res://Audio/Weapons/Scatling 1.wav" type="AudioStream" id=18]
 [ext_resource path="res://Audio/Weapons/Railgun.wav" type="AudioStream" id=19]
+[ext_resource path="res://Images/Goblin.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 10, 4 )
@@ -137,6 +138,18 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 23 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_mask = 20
 script = ExtResource( 1 )
@@ -174,6 +187,26 @@ frames = SubResource( 20 )
 position = Vector2( -2.17867, 0.814667 )
 
 [node name="Arrow" type="AnimatedSprite" parent="PlayerSprite/SpeechBubble/ArrowHandle"]
+position = Vector2( -24.794, 0 )
+rotation = -1.5708
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 21 )
+
+[node name="GoboSpeechBubble" type="AnimatedSprite" parent="PlayerSprite"]
+visible = false
+position = Vector2( 14, -9.33333 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 19 )
+flip_h = true
+
+[node name="Goblin" type="AnimatedSprite" parent="PlayerSprite/GoboSpeechBubble"]
+position = Vector2( 2.66667, -6.66667 )
+frames = SubResource( 24 )
+
+[node name="ArrowHandle" type="Node2D" parent="PlayerSprite/GoboSpeechBubble"]
+position = Vector2( -2.17867, 0.814667 )
+
+[node name="Arrow" type="AnimatedSprite" parent="PlayerSprite/GoboSpeechBubble/ArrowHandle"]
 position = Vector2( -24.794, 0 )
 rotation = -1.5708
 scale = Vector2( 0.75, 0.75 )
@@ -244,10 +277,6 @@ bus = "Poots"
 [node name="MobAudioController" parent="." instance=ExtResource( 4 )]
 actions = [ ExtResource( 6 ), ExtResource( 5 ) ]
 
-[node name="SpeechTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="GameOnTimer" type="Timer" parent="."]
 wait_time = 0.1
 
@@ -258,5 +287,4 @@ wait_time = 0.1
 [connection signal="firePoo" from="RocketLauncherPooter" to="." method="_firePoo"]
 [connection signal="firePoo" from="ScatlingPooter" to="." method="_firePoo"]
 [connection signal="firePoo" from="RailgunPooter" to="." method="_firePoo"]
-[connection signal="timeout" from="SpeechTimer" to="." method="_on_SpeechTimer_timeout"]
 [connection signal="timeout" from="GameOnTimer" to="." method="_on_GameOnTimer_timeout"]

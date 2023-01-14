@@ -17,6 +17,7 @@ var goblin_population = 20
 var wave_count = 1
 var current_population
 var population_countdown
+var doneSpawning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +34,7 @@ func _ready():
 
 
 func _on_SpawnTimer_timeout():
-	if get_child_count() < maxEnemies:
+	if goblins.get_child_count() < maxEnemies:
 		var rndSide = rnd.randi_range(0, 3)
 		var rndLoc = rnd.randi_range(72, 3000)
 		var enemy = enemy_scene.instance()
@@ -56,6 +57,7 @@ func _on_SpawnTimer_timeout():
 			population_countdown -= 1
 			goblins.add_child(enemy)
 		else:
+			doneSpawning = true
 			if goblins.get_child_count() == 0 && Timers.generation.is_stopped():
 				Timers.generation.wait_time = rand_range(minSpawnTime, maxSpawnTime)
 				Timers.generation.start()
@@ -70,6 +72,7 @@ func _on_GenerationTimer_timeout():
 	wave_count += 1
 	if wave_count % 3 == 0:
 		Timers.spawn.wait_time *= 0.5
+	doneSpawning = false
 	Timers.spawn.start()
 	
 func _on_HudUpdateTimer_timeout():
