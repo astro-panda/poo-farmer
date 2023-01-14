@@ -16,7 +16,7 @@ one_shot = true
 
 [node name="HudUpdateTimer" type="Timer" parent="."]
 
-[node name="Goblins" type="Node" parent="."]
+[node name="Goblins" type="Node" parent="." groups=["gobo_population"]]
 script = ExtResource( 3 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

@@ -23,6 +23,7 @@ export(FireMode.values) var equippedFireMode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
+var goboSpawner
 
 onready var modal_window = $ModalWindow
 onready var game_on_timer = $GameOnTimer
@@ -46,6 +47,9 @@ onready var pooterDict = {
 }
 
 onready var silo_subItem = $PlayerSprite/SpeechBubble/Silo
+
+onready var goboSpeech = $PlayerSprite/GoboSpeechBubble
+onready var goboArrowHandle = $PlayerSprite/GoboSpeechBubble/ArrowHandle
 
 var subItems = [silo_subItem]
 
@@ -106,6 +110,27 @@ func _physics_process(_delta):
 	
 	# Move the player
 	move_and_slide(velocity * _delta)
+	
+	var goboCount = goboSpawner.goblins.get_child_count()
+	var threshold = ceil(goboSpawner.current_population / 10.0)
+	if (goboCount > 0) && (goboCount <= threshold) && goboSpawner.doneSpawning:
+		goboSpeech.visible = true
+		var closestGoblin = goboSpawner.goblins.get_children()[0]
+		var distToClosestGoblin = global_position.distance_to(closestGoblin.global_position)
+		for goblin in goboSpawner.goblins.get_children():
+			var distToGoblin = global_position.distance_to(goblin.global_position)
+			if distToGoblin < distToClosestGoblin:
+				closestGoblin = goblin
+				distToClosestGoblin = distToGoblin
+		var angle = self.global_position.angle_to_point(closestGoblin.global_position)
+		goboArrowHandle.rotation = angle
+	else:
+		goboSpeech.visible = false
+		
+	if (currentHoldAmount == holdCapacity):
+		show_speech(silo_subItem, silo)
+	else:
+		speech.visible = false
 
 
 func _on_Area2D_area_entered(body):
@@ -117,17 +142,12 @@ func _on_Area2D_area_entered(body):
 			audio_ctrl.act(0) # the Poo pick up sound
 			if(pooToAdd != poo.pooValue):
 				poo.pooValue -= pooToAdd
-				print("show silo")
-				show_speech(silo_subItem, silo)
 			else:
 				var goblins = get_tree().get_nodes_in_group("goblin")
 				for node in goblins:
 					var goblin = node as Goblin
 					goblin.removePooFromTargets(body, false)
 				poo.destroy()
-		else:
-			print("show silo")
-			show_speech(silo_subItem, silo)	
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
 	
@@ -164,15 +184,11 @@ func show_speech(subitem, target):
 	if (is_instance_valid(subitem)):
 		subitem.visible = true
 		speech.visible = true
-		$SpeechTimer.start()
 	if (is_instance_valid(target)):
 		#rotate arrow handle towards target
 		var angle = self.global_position.angle_to_point(target.global_position)
 		print("Angle to target: " + str(rad2deg(angle)))
-		arrow_handle.rotation = (angle)
-
-func _on_SpeechTimer_timeout():
-	speech.visible = false
+		arrow_handle.rotation = angle
 
 func game_over():	
 	get_tree().paused = true

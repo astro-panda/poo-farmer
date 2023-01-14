@@ -38,6 +38,7 @@ func reset():
 		
 	add_child(animal_spawner)
 	add_child(enemy_spawner)
+	player.goboSpawner = enemy_spawner
 
 	var _player = player as Player
 	if game_started:
