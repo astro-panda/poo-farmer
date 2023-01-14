@@ -121,7 +121,5 @@ func move_at_body(body, delta):
 
 func handle_hit(damage):
 	health -= damage
-	print("Enemy hit!", health)
 	if health <= 0:
-		print("Gobo ded!")
 		queue_free()
