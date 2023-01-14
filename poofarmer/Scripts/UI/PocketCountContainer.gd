@@ -6,5 +6,5 @@ onready var pocket_crud_progress = $PocketCrudProgressBar
 func _ready():
 	pocket_crud_progress.max_value = player.holdCapacity
 
-func _process(delta):
+func _process(_delta):
 	pocket_crud_progress.value = player.currentHoldAmount

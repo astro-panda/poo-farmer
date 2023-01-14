@@ -10,6 +10,7 @@ onready var goblin_counter = $CanvasLayer/GoblinCountContainer/GoblinCountLabel
 onready var canvas_layer = $CanvasLayer
 onready var click_player = $ClickPlayer
 onready var goblinWaveProgress = $CanvasLayer/GoblinCountContainer/GoblinWaveProgress
+onready var equippedIcon = $CanvasLayer/EquippedIcon
 onready var shovelBtn = $"CanvasLayer/Arsenal Wheel/Shovel"
 onready var pistolBtn = $"CanvasLayer/Arsenal Wheel/Pistol"
 onready var shatgunBtn = $"CanvasLayer/Arsenal Wheel/Shatgun"
@@ -72,36 +73,42 @@ func check_weapons():
 func _on_Shovel_pressed():
 	if player.fireModes.has(FireMode.values.Shovel):
 		player.equippedFireMode = FireMode.values.Shovel
+		equippedIcon.animation = "shovel"
 		click()
 
 
 func _on_Pistol_pressed():
 	if player.fireModes.has(FireMode.values.Pistol):
 		player.equippedFireMode = FireMode.values.Pistol
+		equippedIcon.animation = "pistol"
 		click()
 
 
 func _on_Shatgun_pressed():
 	if player.fireModes.has(FireMode.values.Shatgun):
 		player.equippedFireMode = FireMode.values.Shatgun
+		equippedIcon.animation = "shatgun"
 		click()
 
 
 func _on_ScatlingGun_pressed():
 	if player.fireModes.has(FireMode.values.Scatling):
 		player.equippedFireMode = FireMode.values.Scatling
+		equippedIcon.animation = "scatling"
 		click()
 
 
 func _on_RocketLauncher_pressed():
 	if player.fireModes.has(FireMode.values.RocketLauncher):
 		player.equippedFireMode = FireMode.values.RocketLauncher
+		equippedIcon.animation = "launcher"
 		click()
 
 
 func _on_Railgun_pressed():
 	if player.fireModes.has(FireMode.values.Railgun):
 		player.equippedFireMode = FireMode.values.Railgun
+		equippedIcon.animation = "railgun"
 		click()
 
 
