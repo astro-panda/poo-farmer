@@ -8,6 +8,7 @@ onready var camera = get_tree().get_nodes_in_group("camera")[0]
 var rnd = RandomNumberGenerator.new()
 export(bool) var spawn_animals = true
 var number_of_unicorns = 0
+export var max_number_of_unicorns = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +26,7 @@ func _on_SpawnTimer_timeout():
 		animalType.current_value = (randi() % AnimalType.values.keys().size())
 		if animalType.current_value == 4:
 			number_of_unicorns += 1
-		if number_of_unicorns >= 3:
+		if number_of_unicorns >= (max_number_of_unicorns + 1):
 			# never spawn more than 2 unicorns
 			return
 			
