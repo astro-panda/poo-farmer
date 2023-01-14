@@ -35,7 +35,8 @@ func reset():
 	
 	if enemy_spawner == null:
 		enemy_spawner = enemy_spawner_scene.instance()
-		
+	
+	
 	add_child(animal_spawner)
 	add_child(enemy_spawner)
 	player.goboSpawner = enemy_spawner

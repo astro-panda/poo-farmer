@@ -8,7 +8,6 @@ func _physics_process(delta):
 	if overlaps_body(player):
 		glow.visible = true
 		barn_sprite.animation = "open-doors"
-		print("player in dump range")
 		
 		if Input.is_action_pressed("ui_select"):
 			(player as Player).dump_poo_in_silo()

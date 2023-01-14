@@ -193,7 +193,6 @@ func show_speech(subitem, target):
 func game_over():	
 	get_tree().paused = true
 	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
-	print("You Poose!")
 	var wave_count = "Waves survived: " + str(clamp(enemy_spawner.wave_count - 1, 0, enemy_spawner.wave_count)) + ", nice!"
 	var gross_poo = "You harvested " + str(gross_poo_harvested) + " poo with your hands.... gross..."
 	$ModalWindow.display_game_over(wave_count, gross_poo)
