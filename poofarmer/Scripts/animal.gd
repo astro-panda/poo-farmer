@@ -4,7 +4,7 @@ signal action_enacted(animalType)
 
 export(float) var poo_timer_min = 4.0
 export(float) var poo_timer_max = 20.0
-export(float) var destination_timer_min = 5.0
+export(float) var destination_timer_min = 4.0
 export(float) var destination_timer_max = 15.0
 export var speed = 1500
 export(bool) var corked = false
