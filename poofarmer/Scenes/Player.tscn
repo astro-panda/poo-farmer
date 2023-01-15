@@ -204,7 +204,7 @@ position = Vector2( 2.66667, -6.66667 )
 frames = SubResource( 24 )
 
 [node name="ArrowHandle" type="Node2D" parent="PlayerSprite/GoboSpeechBubble"]
-position = Vector2( -2.17867, 0.814667 )
+position = Vector2( 2.66667, -7.39098e-06 )
 
 [node name="Arrow" type="AnimatedSprite" parent="PlayerSprite/GoboSpeechBubble/ArrowHandle"]
 position = Vector2( -24.794, 0 )

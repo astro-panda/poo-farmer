@@ -8,7 +8,8 @@ onready var Timers = {
 	"hud": $HudUpdateTimer
 }
 
-export(PackedScene) var enemy_scene
+export (PackedScene) var goblin_enemy_scene
+export (PackedScene) var troll_enemy_scene
 export var maxEnemies = 20
 export var maxSpawnTime = 40.0
 export var minSpawnTime = 15.0
@@ -18,6 +19,10 @@ var wave_count = 1
 var current_population
 var population_countdown
 var doneSpawning = false
+var num_enemies_spawned = 0
+var num_trolls_spawned = 0
+var num_enemies_killed = 0
+var troll_spawn_numbers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,7 +42,13 @@ func _on_SpawnTimer_timeout():
 	if goblins.get_child_count() < maxEnemies:
 		var rndSide = rnd.randi_range(0, 3)
 		var rndLoc = rnd.randi_range(72, 3000)
-		var enemy = enemy_scene.instance()
+		
+		var enemy = goblin_enemy_scene.instance()
+		if troll_spawn_numbers.has(num_enemies_spawned - 1):
+			print("Spawning troll")
+			enemy = troll_enemy_scene.instance()
+			num_trolls_spawned += 1
+		
 		var spawnLoc = Vector2(72, 72)
 		if rndSide == 0:
 			spawnLoc = Vector2(3000, rndLoc)
@@ -52,10 +63,13 @@ func _on_SpawnTimer_timeout():
 		enemy.fleeingVector = spawnLoc
 		enemy.speed *= 1 + (wave_count - 1) / 10
 		enemy.connect("global_poo_stolen", player, "_on_Goblin_global_poo_stolen")
+		enemy.connect("enemy_killed", goblins, "_on_enemy_killed")
 		
 		if population_countdown > 0:
 			population_countdown -= 1
 			goblins.add_child(enemy)
+			num_enemies_spawned += 1
+			print("num enemies spawned: ", num_enemies_spawned)
 		else:
 			doneSpawning = true
 			if goblins.get_child_count() == 0 && Timers.generation.is_stopped():
@@ -67,12 +81,19 @@ func _on_SpawnTimer_timeout():
 func _on_GenerationTimer_timeout():
 	if wave_count == 1: 
 		current_population = 14
-	current_population = floor(current_population * rnd.randf_range(1.5, 1.8))
+	current_population = int(floor(current_population * rnd.randf_range(1.5, 1.8)))
 	population_countdown = current_population
 	wave_count += 1
 	if wave_count % 3 == 0:
 		Timers.spawn.wait_time *= 0.5
 	doneSpawning = false
+	num_enemies_spawned = 0
+	num_trolls_spawned = 0
+	troll_spawn_numbers.clear()
+	if current_population > 20:
+		for i in range(int(floor(current_population / 20))):
+			troll_spawn_numbers.append(rnd.randi_range(1, 20) + (i * 20))
+	print("new troll numbers: ", str(troll_spawn_numbers))
 	Timers.spawn.start()
 	
 func _on_HudUpdateTimer_timeout():

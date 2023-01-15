@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Goblin
 
 signal global_poo_stolen(stealAmount)
+signal enemy_killed
 
 # Declare member variables here. Examples:
 export var speed = 4000
@@ -123,3 +124,4 @@ func handle_hit(damage):
 	health -= damage
 	if health <= 0:
 		queue_free()
+		emit_signal("enemy_killed")

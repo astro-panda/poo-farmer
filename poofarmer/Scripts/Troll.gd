@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
 signal global_poo_stolen(stealAmount)
+signal enemy_killed
 
 # Declare member variables here. Examples:
 export var speed = 2000
 export var fleeSpeedMultiplier = 1
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var audio_ctrl = $MobAudioController
-var health = 16
+var health = 32
 var stealAmount = 5
 var siloStealAmount = 10
 var isFleeing = false
@@ -62,3 +63,4 @@ func handle_hit(damage):
 	health -= damage
 	if health <= 0:
 		queue_free()
+		emit_signal("enemy_killed")

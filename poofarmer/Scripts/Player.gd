@@ -50,6 +50,7 @@ onready var silo_subItem = $PlayerSprite/SpeechBubble/Silo
 
 onready var goboSpeech = $PlayerSprite/GoboSpeechBubble
 onready var goboArrowHandle = $PlayerSprite/GoboSpeechBubble/ArrowHandle
+var gobodarOverride = false
 
 var subItems = [silo_subItem]
 
@@ -92,6 +93,8 @@ func _physics_process(_delta):
 			equippedFireMode = FireMode.values.RocketLauncher
 		if Input.is_action_pressed("railgun"):
 			equippedFireMode = FireMode.values.Railgun
+		if Input.is_action_pressed("gobodar"):
+			gobodarOverride = !gobodarOverride
 		
 	if velocity.x > 0:
 		$PlayerSprite.animation = "right"
@@ -113,7 +116,7 @@ func _physics_process(_delta):
 	
 	var goboCount = goboSpawner.goblins.get_child_count()
 	var threshold = ceil(goboSpawner.current_population / 10.0)
-	if (goboCount > 0) && (goboCount <= threshold) && goboSpawner.doneSpawning:
+	if (goboCount > 0) && (goboSpawner.doneSpawning && goboCount <= threshold || gobodarOverride):
 		goboSpeech.visible = true
 		var closestGoblin = goboSpawner.goblins.get_children()[0]
 		var distToClosestGoblin = global_position.distance_to(closestGoblin.global_position)
@@ -122,7 +125,7 @@ func _physics_process(_delta):
 			if distToGoblin < distToClosestGoblin:
 				closestGoblin = goblin
 				distToClosestGoblin = distToGoblin
-		var angle = self.global_position.angle_to_point(closestGoblin.global_position)
+		var angle = goboArrowHandle.global_position.angle_to_point(closestGoblin.global_position)
 		goboArrowHandle.rotation = angle
 	else:
 		goboSpeech.visible = false
@@ -186,7 +189,7 @@ func show_speech(subitem, target):
 		speech.visible = true
 	if (is_instance_valid(target)):
 		#rotate arrow handle towards target
-		var angle = self.global_position.angle_to_point(target.global_position)
+		var angle = arrow_handle.global_position.angle_to_point(target.global_position)
 		arrow_handle.rotation = angle
 
 func game_over():	
