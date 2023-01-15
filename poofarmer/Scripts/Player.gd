@@ -187,7 +187,6 @@ func show_speech(subitem, target):
 	if (is_instance_valid(target)):
 		#rotate arrow handle towards target
 		var angle = self.global_position.angle_to_point(target.global_position)
-		print("Angle to target: " + str(rad2deg(angle)))
 		arrow_handle.rotation = angle
 
 func game_over():	
