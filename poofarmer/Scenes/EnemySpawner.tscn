@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/EnemySpawner.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Goblin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/GoblinsGeneration.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Troll.tscn" type="PackedScene" id=4]
 
 [node name="EnemySpawner" type="Node" groups=["spawner_enemy"]]
 script = ExtResource( 1 )
-enemy_scene = ExtResource( 2 )
+goblin_enemy_scene = ExtResource( 2 )
+troll_enemy_scene = ExtResource( 4 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
