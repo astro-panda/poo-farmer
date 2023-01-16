@@ -79,21 +79,21 @@ func _physics_process(_delta):
 		
 	# shhhhh our little secret
 	if Input.is_action_pressed("modifier"):
-		if Input.is_action_pressed("deep_pockets"):
+		if Input.is_action_just_pressed("deep_pockets"):
 			disable_ammo = !disable_ammo
-		if Input.is_action_pressed("shovel"):
+		if Input.is_action_just_pressed("shovel"):
 			equippedFireMode = FireMode.values.Shovel
-		if Input.is_action_pressed("pistol"):
+		if Input.is_action_just_pressed("pistol"):
 			equippedFireMode = FireMode.values.Pistol
-		if Input.is_action_pressed("shatgun"):
+		if Input.is_action_just_pressed("shatgun"):
 			equippedFireMode = FireMode.values.Shatgun
-		if Input.is_action_pressed("scatling"):
+		if Input.is_action_just_pressed("scatling"):
 			equippedFireMode = FireMode.values.Scatling
-		if Input.is_action_pressed("launcher"):
+		if Input.is_action_just_pressed("launcher"):
 			equippedFireMode = FireMode.values.RocketLauncher
-		if Input.is_action_pressed("railgun"):
+		if Input.is_action_just_pressed("railgun"):
 			equippedFireMode = FireMode.values.Railgun
-		if Input.is_action_pressed("gobodar"):
+		if Input.is_action_just_pressed("gobodar"):
 			gobodarOverride = !gobodarOverride
 		
 	if velocity.x > 0:
