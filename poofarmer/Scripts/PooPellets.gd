@@ -45,11 +45,11 @@ func set_direction(new_direction: Vector2):
 
 func _on_PooPellets_body_entered(body):
 	if body.has_method("handle_hit"):
-		body.handle_hit(damage)
+		body.handle_hit(damage, self)
 		if willExplode:
 			explodeOverride = true
 
-		if !willExplode && !isRailShot:
+		if !willExplode && !isRailShot && !body.is_dying:
 			queue_free()
 
 func start_explode():
