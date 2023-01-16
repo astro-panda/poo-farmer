@@ -12,6 +12,7 @@ export var siloStealAmount = 5
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var audio_ctrl = $MobAudioController
+var sprite
 var isFleeing = false
 var fleeingVector = Vector2(0,0)
 var is_dying = false
@@ -44,7 +45,7 @@ func move_at_body(body, delta):
 	var velocity = (body.position - position).normalized() * speed * delta * (fleeSpeedMultiplier if isFleeing else 1)
 	return move_and_slide(velocity)
 
-func enemy_handle_hit(sprite, damage, sprite_offset):
+func enemy_handle_hit(damage, sprite_offset):
 	health -= damage
 	if health <= 0 && !is_dying:
 		if sprite.animation == "right":
@@ -53,7 +54,7 @@ func enemy_handle_hit(sprite, damage, sprite_offset):
 		sprite.play("death")
 		is_dying = true
 		
-func calculate_sprite_direction(sprite, velocity):
+func calculate_sprite_direction(velocity):
 	if velocity.x > 0:
 		sprite.animation = "right"
 	elif velocity.x < 0:
@@ -63,7 +64,7 @@ func calculate_sprite_direction(sprite, velocity):
 	elif velocity.y < 0:
 		sprite.animation = "up"
 
-func end_death(sprite):
+func end_death():
 	if sprite.animation == "death":
 		queue_free()
 		emit_signal("enemy_killed")

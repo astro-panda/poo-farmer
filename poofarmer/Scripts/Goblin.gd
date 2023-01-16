@@ -3,11 +3,14 @@ class_name Goblin
 
 
 export var pooCapacity = 5
-onready var sprite = $AnimatedSprite
+onready var goblin_sprite = $AnimatedSprite
 var playerNearby = false
 var playerHasPoo = false
 var currentPooTargets = []
 var poosPickedUp = 0
+
+func _ready():
+	sprite = goblin_sprite
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -45,7 +48,7 @@ func _process(delta):
 				velocity = (silo.position - position).normalized() * speed * delta
 				velocity = move_and_slide(velocity)
 			
-		calculate_sprite_direction(sprite, velocity)
+		calculate_sprite_direction(velocity)
 
 
 func _on_Visibility_area_entered(area):
@@ -87,8 +90,8 @@ func _on_StealTimer_timeout():
 		playerNearby = false
 
 func handle_hit(damage):
-	enemy_handle_hit(sprite, damage, 13)
+	enemy_handle_hit(damage, 13)
 
 
 func _on_AnimatedSprite_animation_finished():
-	end_death(sprite)
+	end_death()
