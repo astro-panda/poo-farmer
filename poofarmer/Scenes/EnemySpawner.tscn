@@ -21,6 +21,8 @@ one_shot = true
 [node name="Goblins" type="Node" parent="." groups=["gobo_population"]]
 script = ExtResource( 3 )
 
+[node name="Trolls" type="Node" parent="." groups=["troll_population"]]
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="GenerationTimer" to="." method="_on_GenerationTimer_timeout"]
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_HudUpdateTimer_timeout"]

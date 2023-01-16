@@ -114,13 +114,13 @@ func _physics_process(_delta):
 	# Move the player
 	move_and_slide(velocity * _delta)
 	
-	var goboCount = goboSpawner.goblins.get_child_count()
+	var goboCount = goboSpawner.get_enemy_count()
 	var threshold = ceil(goboSpawner.current_population / 10.0)
 	if (goboCount > 0) && (goboSpawner.doneSpawning && goboCount <= threshold || gobodarOverride):
 		goboSpeech.visible = true
-		var closestGoblin = goboSpawner.goblins.get_children()[0]
+		var closestGoblin = goboSpawner.get_enemy_list()[0]
 		var distToClosestGoblin = global_position.distance_to(closestGoblin.global_position)
-		for goblin in goboSpawner.goblins.get_children():
+		for goblin in goboSpawner.get_enemy_list():
 			var distToGoblin = global_position.distance_to(goblin.global_position)
 			if distToGoblin < distToClosestGoblin:
 				closestGoblin = goblin
