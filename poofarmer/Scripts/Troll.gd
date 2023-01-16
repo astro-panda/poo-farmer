@@ -8,11 +8,13 @@ export var speed = 2000
 export var fleeSpeedMultiplier = 1
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var audio_ctrl = $MobAudioController
+onready var sprite = $AnimatedSprite
 var health = 32
 var stealAmount = 5
 var siloStealAmount = 10
 var isFleeing = false
 var fleeingVector = Vector2(0,0)
+var is_dying = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,32 +23,34 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2()
-	if isFleeing:
-		velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
-		velocity = move_and_slide(velocity)
-		if (position.distance_to(fleeingVector) < 50):
-			isFleeing = false
-	else:
-		velocity = (silo.position - position).normalized() * speed * delta
-		velocity = move_and_slide(velocity)
-		
-	if velocity.x > 4:
-		$AnimatedSprite.animation = "right"
-	elif velocity.x < -4:
-		$AnimatedSprite.animation = "left"
-	elif velocity.y > 0:
-		$AnimatedSprite.animation = "down"
-	elif velocity.y < 0:
-		$AnimatedSprite.animation = "up"
+	if !is_dying:
+		var velocity = Vector2()
+		if isFleeing:
+			velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
+			velocity = move_and_slide(velocity)
+			if (position.distance_to(fleeingVector) < 50):
+				isFleeing = false
+		else:
+			velocity = (silo.position - position).normalized() * speed * delta
+			velocity = move_and_slide(velocity)
+			
+		if velocity.x > 4:
+			sprite.animation = "right"
+		elif velocity.x < -4:
+			sprite.animation = "left"
+		elif velocity.y > 0:
+			sprite.animation = "down"
+		elif velocity.y < 0:
+			sprite.animation = "up"
 	
 func _on_PooPickupDetection_area_entered(area):
-	if (area.is_in_group("poo")):
-		removePooFromTargets(area, true)
-	
-	if (area.is_in_group("silo")):
-		emit_signal("global_poo_stolen", siloStealAmount)
-		isFleeing = true
+	if !is_dying:
+		if (area.is_in_group("poo")):
+			removePooFromTargets(area, true)
+		
+		if (area.is_in_group("silo")):
+			emit_signal("global_poo_stolen", siloStealAmount)
+			isFleeing = true
 
 
 func removePooFromTargets(poo, destroy):
@@ -61,6 +65,14 @@ func move_at_body(body, delta):
 
 func handle_hit(damage):
 	health -= damage
-	if health <= 0:
+	if health <= 0 && !is_dying:
+		if sprite.animation == "right":
+			sprite.flip_h = true
+		sprite.play("death")
+		is_dying = true
+
+
+func _on_AnimatedSprite_animation_finished():
+	if sprite.animation == "death":
 		queue_free()
 		emit_signal("enemy_killed")
