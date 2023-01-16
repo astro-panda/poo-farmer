@@ -1,7 +1,10 @@
 extends Enemy
 
 
-onready var sprite = $AnimatedSprite
+onready var troll_sprite = $AnimatedSprite
+
+func _ready():
+	sprite = troll_sprite
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -16,15 +19,15 @@ func _process(delta):
 			velocity = (silo.position - position).normalized() * speed * delta
 			velocity = move_and_slide(velocity)
 			
-		calculate_sprite_direction(sprite, velocity)
+		calculate_sprite_direction(velocity)
 	
 func _on_PooPickupDetection_area_entered(area):
 	detected_something(area, false)
 
 
 func handle_hit(damage):
-	enemy_handle_hit(sprite, damage, 0)
+	enemy_handle_hit(damage, 0)
 
 
 func _on_AnimatedSprite_animation_finished():
-	end_death(sprite)
+	end_death()
