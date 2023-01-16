@@ -48,18 +48,20 @@ func move_at_body(body, delta):
 	return move_and_slide(velocity)
 
 func enemy_handle_hit(damage, sprite_offset, poo):
-	health -= damage
-	if health <= 0 && !is_dying:
-		if sprite.animation == "right":
-			sprite.flip_h = true
-		sprite.offset.y = sprite_offset
-		sprite.play("death")
-		is_dying = true
-	elif !is_dying:
-		sprite.self_modulate = hit_color
-		sprite.scale.x += 0.1
-		sprite.scale.y += 0.1
-		sprite.offset = poo.global_position.direction_to(global_position).normalized() * 2
+	if !is_dying:
+		health -= damage
+		if health <= 0:
+			if sprite.animation == "right":
+				sprite.flip_h = true
+			sprite.offset.y = sprite_offset
+			sprite.play("death")
+			is_dying = true
+		else:
+			sprite.self_modulate = hit_color
+			sprite.scale.x += 0.1
+			sprite.scale.y += 0.1
+			sprite.offset = poo.global_position.direction_to(global_position).normalized() * 2
+			$HitFeedbackTimer.start()
 		
 		
 func calculate_sprite_direction(velocity):
@@ -76,8 +78,8 @@ func end_death():
 	if sprite.animation == "death":
 		queue_free()
 		emit_signal("enemy_killed")
-		
-func reset_sprite_after_hit(sprite):
+
+func _on_HitFeedbackTimer_timeout():
 	sprite.self_modulate = normal_color
 	sprite.scale.x -= 0.1
 	sprite.scale.y -= 0.1
