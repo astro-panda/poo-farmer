@@ -43,7 +43,7 @@ func _ready():
 
 
 func _on_SpawnTimer_timeout():
-	if goblins.get_child_count() < maxEnemies:
+	if get_enemy_count() < maxEnemies:
 		var rndSide = rnd.randi_range(0, 3)
 		var rndLoc = rnd.randi_range(72, 3000)
 		
