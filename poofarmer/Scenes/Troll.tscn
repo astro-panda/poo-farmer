@@ -129,6 +129,11 @@ extents = Vector2( 37, 37.5 )
 collision_layer = 8
 collision_mask = 52
 script = ExtResource( 1 )
+speed = 2000
+fleeSpeedMultiplier = 1
+health = 32
+stealAmount = 5
+siloStealAmount = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2.5, 2.5 )

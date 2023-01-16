@@ -1,25 +1,7 @@
-extends KinematicBody2D
+extends Enemy
 
-signal global_poo_stolen(stealAmount)
-signal enemy_killed
 
-# Declare member variables here. Examples:
-export var speed = 2000
-export var fleeSpeedMultiplier = 1
-onready var silo = get_tree().get_nodes_in_group("silo")[0]
-onready var audio_ctrl = $MobAudioController
 onready var sprite = $AnimatedSprite
-var health = 32
-var stealAmount = 5
-var siloStealAmount = 10
-var isFleeing = false
-var fleeingVector = Vector2(0,0)
-var is_dying = false
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,45 +16,15 @@ func _process(delta):
 			velocity = (silo.position - position).normalized() * speed * delta
 			velocity = move_and_slide(velocity)
 			
-		if velocity.x > 4:
-			sprite.animation = "right"
-		elif velocity.x < -4:
-			sprite.animation = "left"
-		elif velocity.y > 0:
-			sprite.animation = "down"
-		elif velocity.y < 0:
-			sprite.animation = "up"
+		calculate_sprite_direction(sprite, velocity)
 	
 func _on_PooPickupDetection_area_entered(area):
-	if !is_dying:
-		if (area.is_in_group("poo")):
-			removePooFromTargets(area, true)
-		
-		if (area.is_in_group("silo")):
-			emit_signal("global_poo_stolen", siloStealAmount)
-			isFleeing = true
+	detected_something(area, false)
 
-
-func removePooFromTargets(poo, destroy):
-	if (poo.is_in_group("poo")):
-		var pooInstance = poo as Poo
-		if (destroy):
-			pooInstance.destroy()
-		
-func move_at_body(body, delta):
-	var velocity = (body.position - position).normalized() * speed * delta * (fleeSpeedMultiplier if isFleeing else 1)
-	return move_and_slide(velocity)
 
 func handle_hit(damage):
-	health -= damage
-	if health <= 0 && !is_dying:
-		if sprite.animation == "right":
-			sprite.flip_h = true
-		sprite.play("death")
-		is_dying = true
+	enemy_handle_hit(sprite, damage, 0)
 
 
 func _on_AnimatedSprite_animation_finished():
-	if sprite.animation == "death":
-		queue_free()
-		emit_signal("enemy_killed")
+	end_death(sprite)
