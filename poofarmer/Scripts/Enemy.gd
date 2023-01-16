@@ -16,6 +16,8 @@ var sprite
 var isFleeing = false
 var fleeingVector = Vector2(0,0)
 var is_dying = false
+var hit_color = Color(100, 100, 100, 1)
+var normal_color = Color(1, 1, 1)
 
 
 func detected_something(area, player_steal):
@@ -45,7 +47,7 @@ func move_at_body(body, delta):
 	var velocity = (body.position - position).normalized() * speed * delta * (fleeSpeedMultiplier if isFleeing else 1)
 	return move_and_slide(velocity)
 
-func enemy_handle_hit(damage, sprite_offset):
+func enemy_handle_hit(damage, sprite_offset, poo):
 	health -= damage
 	if health <= 0 && !is_dying:
 		if sprite.animation == "right":
@@ -53,6 +55,12 @@ func enemy_handle_hit(damage, sprite_offset):
 		sprite.offset.y = sprite_offset
 		sprite.play("death")
 		is_dying = true
+	elif !is_dying:
+		sprite.self_modulate = hit_color
+		sprite.scale.x += 0.1
+		sprite.scale.y += 0.1
+		sprite.offset = poo.global_position.direction_to(global_position).normalized() * 2
+		
 		
 func calculate_sprite_direction(velocity):
 	if velocity.x > 0:
@@ -68,3 +76,9 @@ func end_death():
 	if sprite.animation == "death":
 		queue_free()
 		emit_signal("enemy_killed")
+		
+func reset_sprite_after_hit(sprite):
+	sprite.self_modulate = normal_color
+	sprite.scale.x -= 0.1
+	sprite.scale.y -= 0.1
+	sprite.offset = Vector2(0,0)

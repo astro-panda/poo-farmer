@@ -25,8 +25,8 @@ func _on_PooPickupDetection_area_entered(area):
 	detected_something(area, false)
 
 
-func handle_hit(damage):
-	enemy_handle_hit(damage, 0)
+func handle_hit(damage, poo):
+	enemy_handle_hit(damage, 0, poo)
 
 
 func _on_AnimatedSprite_animation_finished():

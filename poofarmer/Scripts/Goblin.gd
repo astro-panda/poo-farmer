@@ -89,8 +89,8 @@ func _on_StealTimer_timeout():
 	if(player.currentHoldAmount == 0):
 		playerNearby = false
 
-func handle_hit(damage):
-	enemy_handle_hit(damage, 13)
+func handle_hit(damage, poo):
+	enemy_handle_hit(damage, 13, poo)
 
 
 func _on_AnimatedSprite_animation_finished():
