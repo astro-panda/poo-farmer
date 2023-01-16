@@ -2,6 +2,8 @@ extends Node
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var goblins = $Goblins
+onready var trolls = $Trolls
+var list_of_enemy_nodes = []
 onready var Timers = {
 	"spawn": $SpawnTimer, 
 	"generation": $GenerationTimer, 
@@ -23,9 +25,11 @@ var num_enemies_spawned = 0
 var num_trolls_spawned = 0
 var num_enemies_killed = 0
 var troll_spawn_numbers = []
+var spawning_troll = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	list_of_enemy_nodes = [goblins, trolls]
 	current_population = 3
 	population_countdown = current_population
 	Timers.spawn.start()
@@ -48,6 +52,7 @@ func _on_SpawnTimer_timeout():
 			print("Spawning troll")
 			enemy = troll_enemy_scene.instance()
 			num_trolls_spawned += 1
+			spawning_troll = true
 		
 		var spawnLoc = Vector2(72, 72)
 		if rndSide == 0:
@@ -67,12 +72,15 @@ func _on_SpawnTimer_timeout():
 		
 		if population_countdown > 0:
 			population_countdown -= 1
-			goblins.add_child(enemy)
+			if spawning_troll:
+				trolls.add_child(enemy)
+			else:
+				goblins.add_child(enemy)
 			num_enemies_spawned += 1
 			print("num enemies spawned: ", num_enemies_spawned)
 		else:
 			doneSpawning = true
-			if goblins.get_child_count() == 0 && Timers.generation.is_stopped():
+			if get_enemy_count() == 0 && Timers.generation.is_stopped():
 				Timers.generation.wait_time = rand_range(minSpawnTime, maxSpawnTime)
 				Timers.generation.start()
 		
@@ -102,3 +110,16 @@ func _on_HudUpdateTimer_timeout():
 	if waveCountdown:
 		waveInfo = floor(Timers.generation.time_left)
 	goblins.update_goblin_hud(current_population, waveInfo, Timers.generation.wait_time, waveCountdown)
+
+
+func get_enemy_count():
+	var num_enemies = 0
+	for enemy_node in list_of_enemy_nodes:
+		num_enemies += enemy_node.get_child_count()
+	return num_enemies
+	
+func get_enemy_list():
+	var enemies = []
+	for enemy_node in list_of_enemy_nodes:
+		enemies.append_array(enemy_node.get_children())
+	return enemies
