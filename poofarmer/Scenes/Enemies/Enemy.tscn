@@ -14,8 +14,3 @@ next_behavior_min = 30.0
 next_behavior_max = 90.0
 actions = [ ExtResource( 3 ) ]
 behaviors = [ ExtResource( 2 ), ExtResource( 4 ) ]
-
-[node name="HitFeedbackTimer" type="Timer" parent="."]
-wait_time = 0.1
-
-[connection signal="timeout" from="HitFeedbackTimer" to="." method="_on_HitFeedbackTimer_timeout"]
