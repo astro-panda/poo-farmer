@@ -139,7 +139,7 @@ siloStealAmount = 10
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 17 )
 animation = "down"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -159,6 +159,10 @@ next_behavior_min = 30.0
 next_behavior_max = 90.0
 actions = [ ExtResource( 3 ) ]
 behaviors = [ ExtResource( 2 ), ExtResource( 4 ) ]
+
+[node name="HitFeedbackTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="area_entered" from="PooPickupDetection" to="." method="_on_PooPickupDetection_area_entered"]

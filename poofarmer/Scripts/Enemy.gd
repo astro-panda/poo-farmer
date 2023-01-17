@@ -12,12 +12,16 @@ export var siloStealAmount = 5
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var audio_ctrl = $MobAudioController
+onready var hit_feedback_timer = $HitFeedbackTimer
 var sprite
 var isFleeing = false
 var fleeingVector = Vector2(0,0)
 var is_dying = false
 var hit_color = Color(100, 100, 100, 1)
 var normal_color = Color(1, 1, 1)
+
+func _ready():
+	hit_feedback_timer.connect("timeout", self, "reset_sprite_after_hit")
 
 
 func detected_something(area, player_steal):
@@ -61,9 +65,9 @@ func enemy_handle_hit(damage, sprite_offset, poo):
 			sprite.scale.x += 0.1
 			sprite.scale.y += 0.1
 			sprite.offset = poo.global_position.direction_to(global_position).normalized() * 2
-			$HitFeedbackTimer.start()
-		
-		
+			hit_feedback_timer.start()
+
+
 func calculate_sprite_direction(velocity):
 	if velocity.x > 0:
 		sprite.animation = "right"
@@ -79,7 +83,7 @@ func end_death():
 		queue_free()
 		emit_signal("enemy_killed")
 
-func _on_HitFeedbackTimer_timeout():
+func reset_sprite_after_hit():
 	sprite.self_modulate = normal_color
 	sprite.scale.x -= 0.1
 	sprite.scale.y -= 0.1
