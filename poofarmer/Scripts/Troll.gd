@@ -5,6 +5,7 @@ onready var troll_sprite = $AnimatedSprite
 
 func _ready():
 	sprite = troll_sprite
+	sprite_scale = troll_sprite.scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

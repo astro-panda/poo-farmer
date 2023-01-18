@@ -76,8 +76,7 @@ func buy_item(fireMode):
 		check_btns()
 
 func _on_ExitButton_button_down():
-	show_store(false)	
-	emit_signal("close_store")
+	$CloseStoreBuffer.start()
 	
 func show_store(show: bool):
 	click()
@@ -88,3 +87,8 @@ func show_store(show: bool):
 
 func click():
 	click_player.play()
+
+
+func _on_CloseStoreBuffer_timeout():
+	show_store(false)	
+	emit_signal("close_store")

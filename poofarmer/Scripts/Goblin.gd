@@ -11,6 +11,7 @@ var poosPickedUp = 0
 
 func _ready():
 	sprite = goblin_sprite
+	sprite_scale = goblin_sprite.scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

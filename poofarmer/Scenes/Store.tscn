@@ -270,9 +270,14 @@ expand = true
 stream = ExtResource( 15 )
 volume_db = -10.0
 
+[node name="CloseStoreBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="button_down" from="CanvasLayer/Pistol/Button" to="." method="_on_PistolButton_button_down"]
 [connection signal="button_down" from="CanvasLayer/Shotgun/Button" to="." method="_on_ShotgunButton_button_down"]
 [connection signal="button_down" from="CanvasLayer/RocketLauncher/Button" to="." method="_on_RocketLauncherButton_button_down"]
 [connection signal="button_down" from="CanvasLayer/Scatling/Button" to="." method="_on_ScatlingButton_button_down"]
 [connection signal="button_down" from="CanvasLayer/Railgun/Button" to="." method="_on_RailgunButton_button_down"]
 [connection signal="button_down" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_button_down"]
+[connection signal="timeout" from="CloseStoreBuffer" to="." method="_on_CloseStoreBuffer_timeout"]

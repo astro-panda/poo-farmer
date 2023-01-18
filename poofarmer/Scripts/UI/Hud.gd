@@ -64,6 +64,9 @@ func _on_Store_update_global_poo_label(totalPooAmount):
 	update_global_poo_label(totalPooAmount)
 
 func check_weapons():
+	for btn in listOfButtons:
+		btn.disabled = true
+		btn.get_node("TextureRect").modulate = grayedOutColor
 	for i in listOfButtons.size():
 		for fireMode in player.fireModes:
 			listOfButtons[int(fireMode)].disabled = false
