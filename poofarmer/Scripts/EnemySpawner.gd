@@ -26,6 +26,7 @@ var num_trolls_spawned = 0
 var num_enemies_killed = 0
 var troll_spawn_numbers = []
 var spawning_troll = false
+var started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,13 +44,12 @@ func _ready():
 
 
 func _on_SpawnTimer_timeout():
-	if get_enemy_count() < maxEnemies:
+	if (get_enemy_count() < maxEnemies) && started:
 		var rndSide = rnd.randi_range(0, 3)
 		var rndLoc = rnd.randi_range(72, 3000)
 		
 		var enemy = goblin_enemy_scene.instance()
 		if troll_spawn_numbers.has(num_enemies_spawned - 1):
-			print("Spawning troll")
 			enemy = troll_enemy_scene.instance()
 			num_trolls_spawned += 1
 			spawning_troll = true
@@ -77,7 +77,6 @@ func _on_SpawnTimer_timeout():
 			else:
 				goblins.add_child(enemy)
 			num_enemies_spawned += 1
-			print("num enemies spawned: ", num_enemies_spawned)
 		else:
 			doneSpawning = true
 			if get_enemy_count() == 0 && Timers.generation.is_stopped():
@@ -87,22 +86,22 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_GenerationTimer_timeout():
-	if wave_count == 1: 
-		current_population = 14
-	current_population = int(floor(current_population * rnd.randf_range(1.5, 1.8)))
-	population_countdown = current_population
-	wave_count += 1
-	if wave_count % 3 == 0:
-		Timers.spawn.wait_time *= 0.5
-	doneSpawning = false
-	num_enemies_spawned = 0
-	num_trolls_spawned = 0
-	troll_spawn_numbers.clear()
-	if current_population > 20:
-		for i in range(int(floor(current_population / 20))):
-			troll_spawn_numbers.append(rnd.randi_range(1, 20) + (i * 20))
-	print("new troll numbers: ", str(troll_spawn_numbers))
-	Timers.spawn.start()
+	if started:
+		if wave_count == 1: 
+			current_population = 14
+		current_population = int(floor(current_population * rnd.randf_range(1.5, 1.8)))
+		population_countdown = current_population
+		wave_count += 1
+		if wave_count % 3 == 0:
+			Timers.spawn.wait_time *= 0.5
+		doneSpawning = false
+		num_enemies_spawned = 0
+		num_trolls_spawned = 0
+		troll_spawn_numbers.clear()
+		if current_population > 20:
+			for i in range(int(floor(current_population / 20))):
+				troll_spawn_numbers.append(rnd.randi_range(1, 20) + (i * 20))
+		Timers.spawn.start()
 	
 func _on_HudUpdateTimer_timeout():
 	var waveCountdown = !Timers.generation.is_stopped()

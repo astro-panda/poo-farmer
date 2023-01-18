@@ -14,6 +14,7 @@ onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var audio_ctrl = $MobAudioController
 onready var hit_feedback_timer = $HitFeedbackTimer
 var sprite
+var sprite_scale
 var isFleeing = false
 var fleeingVector = Vector2(0,0)
 var is_dying = false
@@ -62,8 +63,7 @@ func enemy_handle_hit(damage, sprite_offset, poo):
 			is_dying = true
 		else:
 			sprite.self_modulate = hit_color
-			sprite.scale.x += 0.1
-			sprite.scale.y += 0.1
+			sprite.scale = sprite_scale + Vector2(0.1, 0.1)
 			sprite.offset = poo.global_position.direction_to(global_position).normalized() * 2
 			hit_feedback_timer.start()
 
@@ -85,6 +85,5 @@ func end_death():
 
 func reset_sprite_after_hit():
 	sprite.self_modulate = normal_color
-	sprite.scale.x -= 0.1
-	sprite.scale.y -= 0.1
+	sprite.scale = sprite_scale
 	sprite.offset = Vector2(0,0)

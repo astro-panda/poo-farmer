@@ -36,7 +36,8 @@ func reset():
 	if enemy_spawner == null:
 		enemy_spawner = enemy_spawner_scene.instance()
 	
-	
+	enemy_spawner.started = false
+	animal_spawner.spawn_animals = false
 	add_child(animal_spawner)
 	add_child(enemy_spawner)
 	player.goboSpawner = enemy_spawner
@@ -45,10 +46,19 @@ func reset():
 	if game_started:
 		player.reset()
 		hud.update_global_poo_label(0)
-		hud.update_global_goblin_label(0, false, 0, 0)	
+		hud.update_global_goblin_label(0, false, 0, 0)
+		enemy_spawner.started = true
+		animal_spawner.spawn_animals = true
 
 	game_started = true
 
 func quit():
 	start_screen.begin()
+	enemy_spawner.started = true
+	animal_spawner.spawn_animals = true
 	reset()
+
+
+func _on_StartScreen_game_started():
+	enemy_spawner.started = true
+	animal_spawner.spawn_animals = true

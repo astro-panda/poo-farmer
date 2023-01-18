@@ -84,6 +84,7 @@ func shoot():
 		var direction_to_mouse = global_position.direction_to(target).normalized()
 		emit_signal("firePoo", poo_pellets_instance, global_position, direction_to_mouse, target, currentFireMode)
 		canFire = false
+		$FireCooldown.start()
 		poot()
 
 

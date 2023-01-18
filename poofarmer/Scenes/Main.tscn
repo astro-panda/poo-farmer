@@ -218,6 +218,7 @@ margin_bottom = 384.0
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
 [connection signal="game_quit" from="Player/ModalWindow" to="." method="quit"]
 [connection signal="game_reset" from="Player/ModalWindow" to="." method="reset"]
+[connection signal="game_started" from="StartScreen" to="." method="_on_StartScreen_game_started"]
 [connection signal="game_started" from="StartScreen" to="Player/ModalWindow" method="_on_StartScreen_game_started"]
 [connection signal="how_to_play_requested" from="StartScreen" to="Player/ModalWindow" method="show_how_to_play"]
 [connection signal="arsenal_state_changed" from="HUD" to="Player" method="_on_shoot_enabled_changed"]
