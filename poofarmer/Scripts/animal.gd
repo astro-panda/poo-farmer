@@ -15,16 +15,12 @@ onready var poo_timer = $PooTimer
 onready var destination_timer = $ChangeDestinationTimer
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var pooSpawner = get_tree().get_nodes_in_group("poo_spawner")[0]
+onready var silo = get_tree().get_nodes_in_group("silo")[0]
 onready var audio_router = $AudioRouter
 var rnd = RandomNumberGenerator.new()
 
-var topLeft = Vector2(0, 0)
-var topRight = Vector2(3072, 0)
-var bottomRight = Vector2(3072, 3072)
-var bottomLeft = Vector2(0, 3072)
-var halfOfDiagonal = 2173
-
-var destination: Vector2
+var velocity: Vector2
+var angle = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,19 +30,31 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2()
-	velocity = (destination - position).normalized() * speed * delta
+	var vector_from_angle = Vector2.RIGHT.rotated(angle).normalized()
+	velocity = vector_from_angle * speed * delta
 	velocity = move_and_slide(velocity)
-	if (position.distance_to(destination) < 100):
-		_on_ChangeDestinationTimer_timeout()
+	# Keep unicorns away from the silo and all animals from getting hung up on it
+	if ((position.distance_to(silo.position) < 500 && _type == AnimalType.values.Unicorn)) || position.distance_to(silo.position) < 115:
+		angle = position.angle_to_point(silo.position)
 		
-	if velocity.x > 4:
+	if global_position.x < 72 || global_position.x > 3000:
+		angle = PI - angle
+	if global_position.y < 72 || global_position.y > 3000:
+		angle = (2 * PI) - angle
+	
+	var unit_angle = angle
+	if angle > (2 * PI):
+		unit_angle = angle - (2 * PI)
+	if angle < 0:
+		unit_angle = angle + (2 * PI)
+	
+	if unit_angle < (PI / 4) || unit_angle > (7 * PI / 4):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - right"
-	elif velocity.x < -4:
+	elif unit_angle > (3 * PI / 4) && unit_angle < (5 * PI / 4):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - left"
-	elif velocity.y > 0:
+	elif unit_angle > (PI / 4) && unit_angle < (3 * PI / 4):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - down"
-	elif velocity.y < 0:
+	elif unit_angle > (5 * PI / 4) && unit_angle < (7 * PI / 4):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - up"
 
 
@@ -67,45 +75,5 @@ func set_type(type:AnimalType):
 
 
 func _on_ChangeDestinationTimer_timeout():
-	if _type == AnimalType.values.Unicorn:
-		var rndSide = rnd.randi_range(0, 1)
-		var rndLocAlongSide = rnd.randi_range(0, 3072)
-		var rndDistFromSide = rnd.randi_range(0, 1000)
-		var distToTopLeft = global_position.distance_to(topLeft)
-		var distToTopRight = global_position.distance_to(topRight)
-		var distToBottomRight = global_position.distance_to(bottomRight)
-		if distToTopLeft < halfOfDiagonal:
-			# Will be closest to Top Left
-			if rndSide == 0:
-				# Picked the left wall
-				destination = Vector2(rndDistFromSide, rndLocAlongSide)
-			else:
-				# Picked the top wall
-				destination = Vector2(rndLocAlongSide, rndDistFromSide)
-		elif distToTopRight < halfOfDiagonal:
-			# Will be closest to Top Right
-			if rndSide == 0:
-				# Picked the top wall
-				destination = Vector2(rndLocAlongSide, rndDistFromSide)
-			else:
-				# Picked the right wall
-				destination = Vector2(3072 - rndDistFromSide, rndLocAlongSide)
-		elif distToBottomRight < halfOfDiagonal:
-			# Will be closest to Bottom Right
-			if rndSide == 0:
-				# Picked the right wall
-				destination = Vector2(3072 - rndDistFromSide, rndLocAlongSide)
-			else:
-				# Picked the bottom wall
-				destination = Vector2(rndLocAlongSide, 3072 - rndDistFromSide)
-		else:
-			# Will be closest to Bottom Left
-			if rndSide == 0:
-				# Picked the bottom wall
-				destination = Vector2(rndLocAlongSide, 3072 - rndDistFromSide)
-			else:
-				# Picked the left wall
-				destination = Vector2(rndDistFromSide, rndLocAlongSide)
-	else:
-		destination = Vector2(rnd.randi_range(0, 3072), rnd.randi_range(0, 3072))
+	angle = rnd.randf_range(angle - (PI/3), angle + (PI/3))
 	destination_timer.start(rand_range(destination_timer_min, destination_timer_max))

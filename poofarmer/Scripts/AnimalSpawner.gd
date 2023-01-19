@@ -47,6 +47,7 @@ func _on_SpawnTimer_timeout():
 			spawnY = rnd.randi_range(0, 3072)
 		
 		animal.position = Vector2(spawnX, spawnY)
+		animal.angle = rnd.randf_range(0, 2 * PI)
 		animal.set_type(animalType)
 		add_child(animal)
 		if(get_child_count() > population):
