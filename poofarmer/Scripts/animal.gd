@@ -34,7 +34,7 @@ func _process(delta):
 	velocity = vector_from_angle * speed * delta
 	velocity = move_and_slide(velocity)
 	# Keep unicorns away from the silo and all animals from getting hung up on it
-	if ((position.distance_to(silo.position) < 500 && _type == AnimalType.values.Unicorn)) || position.distance_to(silo.position) < 115:
+	if ((position.distance_to(silo.position) < 1000 && _type == AnimalType.values.Unicorn)) || position.distance_to(silo.position) < 115:
 		angle = position.angle_to_point(silo.position)
 		
 	if global_position.x < 72 || global_position.x > 3000:
@@ -43,18 +43,18 @@ func _process(delta):
 		angle = (2 * PI) - angle
 	
 	var unit_angle = angle
-	if angle > (2 * PI):
-		unit_angle = angle - (2 * PI)
-	if angle < 0:
-		unit_angle = angle + (2 * PI)
+	while unit_angle > (2 * PI):
+		unit_angle -= (2 * PI)
+	while unit_angle < 0:
+		unit_angle += (2 * PI)
 	
-	if unit_angle < (PI / 4) || unit_angle > (7 * PI / 4):
+	if unit_angle < (PI / 3) || unit_angle > (5 * PI / 3):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - right"
-	elif unit_angle > (3 * PI / 4) && unit_angle < (5 * PI / 4):
+	elif unit_angle > (2 * PI / 3) && unit_angle < (4 * PI / 2):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - left"
-	elif unit_angle > (PI / 4) && unit_angle < (3 * PI / 4):
+	elif unit_angle > (PI / 3) && unit_angle < (2 * PI / 3):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - down"
-	elif unit_angle > (5 * PI / 4) && unit_angle < (7 * PI / 4):
+	elif unit_angle > (4 * PI / 3) && unit_angle < (5 * PI / 3):
 		$Sprite.animation = AnimalType.values.keys()[_type] + " - up"
 
 
