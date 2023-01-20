@@ -2,6 +2,8 @@ extends Control
 
 signal game_reset
 signal game_quit
+signal game_paused
+signal game_resumed
 
 onready var canvas = $CanvasLayer
 onready var poosed = $CanvasLayer/Poosed
@@ -50,6 +52,7 @@ func show_poosed():
 	poosed.visible = true
 	how_to_play.visible = false
 	game_over.visible = false
+	emit_signal("game_paused")
 
 
 func show_how_to_play():
@@ -65,6 +68,7 @@ func reset_canvas():
 	poosed.visible = false
 	how_to_play.visible = false
 	game_over.visible = false
+	emit_signal("game_resumed")
 
 
 func trigger_game_reset():	

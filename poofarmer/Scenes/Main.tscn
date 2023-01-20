@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/PooFarmerMap.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/UI/ModalWindow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/MusicAutomaton.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/MouseControl.gd" type="Script" id=12]
 [ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Silo.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Animal/PooSpawner.tscn" type="PackedScene" id=15]
@@ -213,16 +214,31 @@ margin_top = 384.0
 margin_right = 672.0
 margin_bottom = 384.0
 
+[node name="MouseControl" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 12 )
+
+[node name="ClickResetTimer" type="Timer" parent="MouseControl"]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Store" method="_on_Gnome_store_opened"]
 [connection signal="firePoo" from="Player" to="PooPelletsManager" method="_on_Player_firePoo"]
 [connection signal="update_global_poo_label" from="Player" to="HUD" method="_on_Player_update_global_poo_label"]
+[connection signal="game_paused" from="Player/ModalWindow" to="MouseControl" method="set_mouse_hand"]
 [connection signal="game_quit" from="Player/ModalWindow" to="." method="quit"]
+[connection signal="game_quit" from="Player/ModalWindow" to="MouseControl" method="set_mouse_hand"]
 [connection signal="game_reset" from="Player/ModalWindow" to="." method="reset"]
+[connection signal="game_resumed" from="Player/ModalWindow" to="MouseControl" method="set_mouse_crosshairs"]
 [connection signal="game_started" from="StartScreen" to="." method="_on_StartScreen_game_started"]
 [connection signal="game_started" from="StartScreen" to="Player/ModalWindow" method="_on_StartScreen_game_started"]
+[connection signal="game_started" from="StartScreen" to="MouseControl" method="set_mouse_crosshairs"]
 [connection signal="how_to_play_requested" from="StartScreen" to="Player/ModalWindow" method="show_how_to_play"]
 [connection signal="arsenal_state_changed" from="HUD" to="Player" method="_on_shoot_enabled_changed"]
 [connection signal="close_store" from="Store" to="MusicAutomaton" method="_on_Store_close_store"]
 [connection signal="close_store" from="Store" to="Player" method="_on_shoot_enabled_changed" binds= [ false ]]
+[connection signal="close_store" from="Store" to="MouseControl" method="set_mouse_crosshairs"]
 [connection signal="open_store" from="Store" to="MusicAutomaton" method="_on_Store_open_store"]
 [connection signal="open_store" from="Store" to="Player" method="_on_shoot_enabled_changed" binds= [ true ]]
+[connection signal="open_store" from="Store" to="MouseControl" method="set_mouse_hand"]
+[connection signal="timeout" from="MouseControl/ClickResetTimer" to="MouseControl" method="_on_ClickResetTimer_timeout"]
