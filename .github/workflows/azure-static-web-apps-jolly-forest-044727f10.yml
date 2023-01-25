@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_deploy_job:
+  build_and_deploy_web:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     name: Build and Deploy Job
@@ -25,7 +25,7 @@ jobs:
           version: 3.5.1
           mono: true          
       
-      - name: Build Godot
+      - name: Build Godot for Web
         run: |
           mkdir ${{ github.workspace }}/build/
           godot --path poofarmer --export "Web" ${{ github.workspace }}/build/index.html -v
@@ -40,6 +40,10 @@ jobs:
           app_location: ${{ github.workspace }}/build # App source code path          
           is_static_export: true
           skip_app_build: true
+
+  
+
+    
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
