@@ -46,6 +46,7 @@ If the goblins steal all of the **Poo** from your silo, you lose.
 | Fire Poo Weapon | Left-Click|
 | Pause | Esc, Tab | 
 | Weapon Select | Hold R |
+| Interact | Space |
 
 
 ### Power-ups
