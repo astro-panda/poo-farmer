@@ -53,12 +53,18 @@ If the goblins steal all of the **Poo** from your silo, you lose.
 
 As you navigate your farm, you may run into the **Poo Peddler** from time to time. A merchant gnome who sells Poo-based weapons, but you'll have to pay with some of your own Poo. The weapons you may need for defense are:
 
-
+- Shovel
+![](demos/poo-weapons-test-shovel.gif)
 - Pistol
+![](demos/poo-weapons-test-pistol.gif)
 - Sh@tgun
+![](demos/poo-weapons-test-shatgun.gif)
 - Turd Launcher
+![](demos/poo-weapons-test-rocket.gif)
 - Scatling Gun
+![](demos/poo-weapons-test-scatling.gif)
 - Railgun
+![](demos/poo-weapons-test-railgun.gif)
 
 ### Collecting Poo
 
