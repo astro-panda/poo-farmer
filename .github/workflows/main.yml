@@ -13,7 +13,8 @@ on:
 
 jobs:
   build_for_platforms:
-  # Using a strategey matrix like this will allow us to simply specify the configuration for future build targets without having to rewrite them
+    uses: "./.github/workflows/godot_build.yml"
+    # Using a strategey matrix like this will allow us to simply specify the configuration for future build targets without having to rewrite them
     strategy:
       matrix:
         include:
@@ -21,7 +22,6 @@ jobs:
             output_path: Poo_Farmer_win.exe
           - target: "Linux/X11"
             output_path: Poo_Farmer_linux.x86_64
-    uses: "./.github/workflows/godot_build.yml"
     with: 
       target_name: ${{ matrix.target }}
       output_path: ${{ matrix.output_path }}
