@@ -21,7 +21,7 @@ jobs:
             output_path: Poo_Farmer_win.exe
           - target: "Linux/X11"
             output_path: Poo_Farmer_linux.x86_64
-    uses: "./.github/workflows/godot_build.yml"
+    uses: "./godot_build.yml"
     with: 
       target_name: ${{ matrix.target }}
       output_path: ${{ matrix.output_path }}
