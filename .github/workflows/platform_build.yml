@@ -1,3 +1,5 @@
+name: Platform Build
+
 on:  
   pull_request:
     types: 
@@ -12,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_for_platforms:    
+  default:    
     uses: ./.github/workflows/godot_template.yml
     # Using a strategey matrix like this will allow us to simply specify the configuration for future build targets without having to rewrite them
     strategy:
