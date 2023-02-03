@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_for_platforms:
-    uses: "./godot_build.yml"
+  build_for_platforms:    
+    uses: ".github/workflows/godot_build.yml"
     # Using a strategey matrix like this will allow us to simply specify the configuration for future build targets without having to rewrite them
     strategy:
       matrix:
