@@ -11,7 +11,8 @@ on:
         required: true      
 
 jobs:
-  godot_build:
+  default:
+    name: ${{ inputs.target_name }}
     runs-on: ubuntu-latest
     steps:
     - name: checkout
