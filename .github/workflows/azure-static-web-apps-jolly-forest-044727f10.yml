@@ -1,14 +1,13 @@
 name: Azure Static Web Apps CI/CD
 
 on:
-  #push:
-  #  branches:
-  #    - main
+  push:
+   branches:
+     - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - main     
-  # Allows you to run this workflow manually from the Actions tab
+      - main  
   workflow_dispatch:
 
 jobs:
@@ -39,11 +38,7 @@ jobs:
           action: "upload"          
           app_location: ${{ github.workspace }}/build # App source code path          
           is_static_export: true
-          skip_app_build: true
-
-  
-
-    
+          skip_app_build: true   
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
