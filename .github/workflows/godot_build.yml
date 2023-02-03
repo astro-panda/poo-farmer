@@ -1,0 +1,38 @@
+on:
+  workflow_call:
+    inputs:
+      output_path:
+        type: string
+        default: ''
+        required: true
+      target_name:
+        type: string
+        default: ''
+        required: true      
+
+jobs:
+  godot_build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.3.0
+      
+    - name: Install Godot
+      uses: paulloz/godot-action@v1.2
+      with:
+        version: 3.5.1
+        mono: true
+          
+    - name: ${{ inputs.target_name }} Build
+      run: |
+        mkdir ${{ github.workspace }}/build/
+        godot --path poofarmer --export "${{ inputs.target_name }}" ${{ github.workspace }}/build/${{ inputs.output_path }} -v
+    
+    - name: Pack ${{ inputs.target_name }}
+      if: github.event_name == 'release'
+      run: |-
+        cd ${{ github.workspace }}/build
+        zip -r ${{ inputs.output_path }}.zip .
+
+    - name: Upload Artifact to Release
+      uses: actions@upload-artifact
