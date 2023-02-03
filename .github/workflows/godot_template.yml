@@ -33,6 +33,3 @@ jobs:
       run: |-
         cd ${{ github.workspace }}/build
         zip -r ${{ inputs.output_path }}.zip .
-
-    - name: Upload Artifact to Release
-      uses: actions@upload-artifact
