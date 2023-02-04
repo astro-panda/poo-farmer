@@ -72,49 +72,35 @@ func check_weapons():
 			listOfButtons[int(fireMode)].disabled = false
 			listOfButtons[int(fireMode)].get_node("TextureRect").modulate = normalColor
 
-
 func _on_Shovel_pressed():
-	if player.fireModes.has(FireMode.values.Shovel):
-		player.equippedFireMode = FireMode.values.Shovel
-		equippedIcon.animation = "shovel"
-		click()
-
+	cycle_selected_fireMode(FireMode.values.Shovel)
 
 func _on_Pistol_pressed():
-	if player.fireModes.has(FireMode.values.Pistol):
-		player.equippedFireMode = FireMode.values.Pistol
-		equippedIcon.animation = "pistol"
-		click()
-
-
+	cycle_selected_fireMode(FireMode.values.Pistol)
+	
 func _on_Shatgun_pressed():
-	if player.fireModes.has(FireMode.values.Shatgun):
-		player.equippedFireMode = FireMode.values.Shatgun
-		equippedIcon.animation = "shatgun"
-		click()
-
+	cycle_selected_fireMode(FireMode.values.Shatgun)
 
 func _on_ScatlingGun_pressed():
-	if player.fireModes.has(FireMode.values.Scatling):
-		player.equippedFireMode = FireMode.values.Scatling
-		equippedIcon.animation = "scatling"
-		click()
-
+	cycle_selected_fireMode(FireMode.values.Scatling)
 
 func _on_RocketLauncher_pressed():
-	if player.fireModes.has(FireMode.values.RocketLauncher):
-		player.equippedFireMode = FireMode.values.RocketLauncher
-		equippedIcon.animation = "launcher"
-		click()
-
+	cycle_selected_fireMode(FireMode.values.RocketLauncher)
 
 func _on_Railgun_pressed():
-	if player.fireModes.has(FireMode.values.Railgun):
-		player.equippedFireMode = FireMode.values.Railgun
-		equippedIcon.animation = "railgun"
-		click()
+	cycle_selected_fireMode(FireMode.values.Railgun)	
 
+func cycle_selected_fireMode(value):
+	if player.fireModes.has(value):
+		player.equippedFireMode = value
+		equippedIcon.animation = FireMode.values.keys()[value].to_lower()
+		click()
 
 func click():
 	click_player.play()
 	get_tree().set_input_as_handled()
+	
+func reset():
+	update_global_poo_label(0)
+	update_global_goblin_label(0, false, 0, 0)
+	cycle_selected_fireMode(FireMode.values.Shovel)

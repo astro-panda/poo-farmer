@@ -26,6 +26,7 @@ func reset():
 	if animal_spawner != null:
 		animal_spawner.queue_free()
 		animal_spawner = null
+		
 	if enemy_spawner != null: 
 		enemy_spawner.queue_free()
 		enemy_spawner = null
@@ -45,8 +46,8 @@ func reset():
 	var _player = player as Player
 	if game_started:
 		player.reset()
-		hud.update_global_poo_label(0)
-		hud.update_global_goblin_label(0, false, 0, 0)
+		hud.reset()
+		
 		enemy_spawner.started = true
 		animal_spawner.spawn_animals = true
 

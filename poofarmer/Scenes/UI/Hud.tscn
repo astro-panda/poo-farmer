@@ -80,11 +80,6 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "launcher",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "pistol",
@@ -93,6 +88,11 @@ animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "railgun",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "rocketlauncher",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],

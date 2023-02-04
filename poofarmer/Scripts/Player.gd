@@ -58,11 +58,6 @@ var subItems = [silo_subItem]
 func _ready():
 	screen_size = Vector2(3072, 3072)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(_delta):
-#	if Input.is_action_pressed("game_over"):
-#		game_over()
-
 func _physics_process(_delta):
 	if shoot_enabled && Input.is_action_pressed("player_fire"):
 		pooterDict[equippedFireMode].shoot()
