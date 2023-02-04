@@ -33,4 +33,9 @@ jobs:
       if: github.event_name == 'release'
       run: |-
         cd ${{ github.workspace }}/build
-        zip -r ${{ inputs.output_path }}.zip .
+        zip -r ${{ inputs.output_path }}_${{ github.ref_name }}.zip .
+
+    - name: Upload ${{ inputs.target_name }} to Release ${{ github.ref_name }}
+      if: github.event_name == 'release'
+      run: |-
+        gh release upload ${{ github.ref_name }} ${{ inputs.output_path }}_${{ github.ref_name }}.zip
