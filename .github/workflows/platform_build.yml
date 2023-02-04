@@ -27,4 +27,5 @@ jobs:
     with: 
       target_name: ${{ matrix.target }}
       output_path: ${{ matrix.output_path }}
+    secrets: inherit
 
