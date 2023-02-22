@@ -1,9 +1,9 @@
 [gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scripts/Troll.gd" type="Script" id=1]
-[ext_resource path="res://Audio/Poo Farmer Goblin Laugh 1.wav" type="AudioStream" id=2]
-[ext_resource path="res://Audio/Poo Farmer Goblin Attack.wav" type="AudioStream" id=3]
-[ext_resource path="res://Audio/Poo Farmer Goblin Laugh 2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Enemies/Troll 1.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Enemies/Troll Attack.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/Enemies/Troll Groan.wav" type="AudioStream" id=4]
 [ext_resource path="res://Images/troll.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/MobAudioController.tscn" type="PackedScene" id=6]
 
@@ -139,7 +139,7 @@ siloStealAmount = 10
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 17 )
 animation = "down"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
