@@ -3,9 +3,9 @@ class_name Gnome
 
 signal store_opened(opened)
 
-onready var sprite = $AnimatedSprite
-onready var glow = $AnimatedSprite/Glow
-onready var player = get_tree().get_nodes_in_group("player")[0]
+@onready var sprite = $AnimatedSprite2D
+@onready var glow = $AnimatedSprite2D/Glow
+@onready var player = get_tree().get_nodes_in_group("player")[0]
 
 var player_in_range = false
 

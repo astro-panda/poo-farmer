@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/forest-background.wav-e5e519adbefbb5706ac440afcdbbf5a7.sample"
+type="AudioStreamWAV"
+uid="uid://cw2f3eb1lh18t"
+path="res://.godot/imported/forest-background.wav-e5e519adbefbb5706ac440afcdbbf5a7.sample"
 
 [deps]
 
 source_file="res://Audio/forest-background.wav"
-dest_files=[ "res://.import/forest-background.wav-e5e519adbefbb5706ac440afcdbbf5a7.sample" ]
+dest_files=["res://.godot/imported/forest-background.wav-e5e519adbefbb5706ac440afcdbbf5a7.sample"]
 
 [params]
 

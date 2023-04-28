@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Gnome Bells.wav-ce40ab73c1a7b150699c4f427e73d8bd.sample"
+type="AudioStreamWAV"
+uid="uid://tsm40r3jwljd"
+path="res://.godot/imported/Poo Farmer Gnome Bells.wav-ce40ab73c1a7b150699c4f427e73d8bd.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Gnome Bells.wav"
-dest_files=[ "res://.import/Poo Farmer Gnome Bells.wav-ce40ab73c1a7b150699c4f427e73d8bd.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Gnome Bells.wav-ce40ab73c1a7b150699c4f427e73d8bd.sample"]
 
 [params]
 

@@ -1,20 +1,20 @@
 extends Node
 
-onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var goblins = $Goblins
-onready var trolls = $Trolls
+@onready var player = get_tree().get_nodes_in_group("player")[0]
+@onready var goblins = $Goblins
+@onready var trolls = $Trolls
 var list_of_enemy_nodes = []
-onready var Timers = {
+@onready var Timers = {
 	"spawn": $SpawnTimer, 
 	"generation": $GenerationTimer, 
 	"hud": $HudUpdateTimer
 }
 
-export (PackedScene) var goblin_enemy_scene
-export (PackedScene) var troll_enemy_scene
-export var maxEnemies = 20
-export var maxSpawnTime = 40.0
-export var minSpawnTime = 15.0
+@export var goblin_enemy_scene: PackedScene
+@export var troll_enemy_scene: PackedScene
+@export var maxEnemies = 20
+@export var maxSpawnTime = 40.0
+@export var minSpawnTime = 15.0
 var rnd = RandomNumberGenerator.new()
 var goblin_population = 20
 var wave_count = 1
@@ -48,9 +48,9 @@ func _on_SpawnTimer_timeout():
 		var rndSide = rnd.randi_range(0, 3)
 		var rndLoc = rnd.randi_range(72, 3000)
 		
-		var enemy = goblin_enemy_scene.instance()
+		var enemy = goblin_enemy_scene.instantiate()
 		if troll_spawn_numbers.has(num_enemies_spawned - 1):
-			enemy = troll_enemy_scene.instance()
+			enemy = troll_enemy_scene.instantiate()
 			num_trolls_spawned += 1
 			spawning_troll = true
 		
@@ -66,9 +66,9 @@ func _on_SpawnTimer_timeout():
 		
 		enemy.position = spawnLoc
 		enemy.fleeingVector = spawnLoc
-		enemy.speed *= 1 + (wave_count - 1) / 10
-		enemy.connect("global_poo_stolen", player, "_on_Goblin_global_poo_stolen")
-		enemy.connect("enemy_killed", goblins, "_on_enemy_killed")
+		enemy.speed *= 1 + (wave_count - 1) / 10.0
+		enemy.connect("global_poo_stolen", Callable(player, "_on_Goblin_global_poo_stolen"))
+		enemy.connect("enemy_killed", Callable(goblins, "_on_enemy_killed"))
 		
 		if population_countdown > 0:
 			population_countdown -= 1
@@ -80,7 +80,7 @@ func _on_SpawnTimer_timeout():
 		else:
 			doneSpawning = true
 			if get_enemy_count() == 0 && Timers.generation.is_stopped():
-				Timers.generation.wait_time = rand_range(minSpawnTime, maxSpawnTime)
+				Timers.generation.wait_time = randf_range(minSpawnTime, maxSpawnTime)
 				Timers.generation.start()
 		
 

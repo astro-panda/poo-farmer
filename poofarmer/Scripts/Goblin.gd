@@ -2,8 +2,8 @@ extends Enemy
 class_name Goblin
 
 
-export var pooCapacity = 5
-onready var goblin_sprite = $AnimatedSprite
+@export var pooCapacity = 5
+@onready var goblin_sprite = $AnimatedSprite2D
 var playerNearby = false
 var playerHasPoo = false
 var currentPooTargets = []
@@ -16,11 +16,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !is_dying:
-		var velocity = Vector2()
+		var _velocity = Vector2()
 		if position.distance_to(silo.position) <= 300:
 			currentPooTargets.clear()
 		if playerNearby && playerHasPoo && !isFleeing:
-			velocity = move_at_body(player, delta)
+			_velocity = move_at_body(player, delta)
 		elif currentPooTargets.size() > 0 && poosPickedUp <= pooCapacity:
 			var currentPoo = currentPooTargets.front()
 			while !is_instance_valid(currentPoo) && currentPooTargets.size() > 0:
@@ -29,27 +29,33 @@ func _process(delta):
 					currentPoo = currentPooTargets.front()
 				
 			if (is_instance_valid(currentPoo)):
-				velocity = move_at_body(currentPoo, delta)
+				_velocity = move_at_body(currentPoo, delta)
 			else:
 				if isFleeing:
-					velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
-					velocity = move_and_slide(velocity)
+					_velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
+					set_velocity(_velocity)
+					move_and_slide()
+					_velocity = _velocity
 					if (position.distance_to(fleeingVector) < 50):
 						isFleeing = false
 				else:
-					velocity = move_at_body(silo, delta)
+					_velocity = move_at_body(silo, delta)
 		else:
 			if isFleeing:
-				velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
-				velocity = move_and_slide(velocity)
+				_velocity = (fleeingVector - position).normalized() * speed * delta * fleeSpeedMultiplier
+				set_velocity(_velocity)
+				move_and_slide()
+				_velocity = _velocity
 				if (position.distance_to(fleeingVector) < 50):
 					isFleeing = false
 					poosPickedUp = 0
 			else:
-				velocity = (silo.position - position).normalized() * speed * delta
-				velocity = move_and_slide(velocity)
+				_velocity = (silo.position - position).normalized() * speed * delta
+				set_velocity(_velocity)
+				move_and_slide()
+				_velocity = _velocity
 			
-		calculate_sprite_direction(velocity)
+		calculate_sprite_direction(_velocity)
 
 
 func _on_Visibility_area_entered(area):
@@ -76,7 +82,7 @@ func _on_PooPickupDetection_area_entered(area):
 			poosPickedUp = 0
 
 
-func removePooFromTargets(poo, destroy):
+func removePooFromTargets(poo):
 	if (poo.is_in_group("poo")):
 		currentPooTargets.erase(poo)
 		destroy_poo(poo)

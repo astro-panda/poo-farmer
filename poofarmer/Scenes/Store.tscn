@@ -1,273 +1,288 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=19 format=3 uid="uid://b0hyfr2b3k47t"]
 
-[ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
-[ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=2]
-[ext_resource path="res://Images/HUD.Shotgun.png" type="Texture" id=3]
-[ext_resource path="res://Images/HUD.RocketLauncher.png" type="Texture" id=4]
-[ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=5]
-[ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=6]
-[ext_resource path="res://Images/HUD.Button.png" type="Texture" id=7]
-[ext_resource path="res://Images/gnome-store.png" type="Texture" id=8]
-[ext_resource path="res://Images/HUD.Button.Pressed.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/Store.gd" type="Script" id=10]
-[ext_resource path="res://Images/exit-button.png" type="Texture" id=11]
-[ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://Images/HUD.SquareFrame.1.png" type="Texture" id=13]
-[ext_resource path="res://Images/Crap.png" type="Texture" id=14]
-[ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=15]
+[ext_resource type="Theme" uid="uid://bev8s04hvds01" path="res://Themes/UI Theme.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://cfsopj4wqo48i" path="res://Images/HUD.ScatlingGun.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dw2tkcthulm4n" path="res://Images/HUD.Shotgun.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bbxabnsn633wd" path="res://Images/HUD.RocketLauncher.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b8o31l6s35llr" path="res://Images/HUD.Pistol.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://b87tr5ugueh8x" path="res://Images/HUD.RailGun.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dvs682kkxgcb1" path="res://Images/HUD.Button.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://cr2dpuw63braa" path="res://Images/gnome-store.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://chq0x217cc6y2" path="res://Images/HUD.Button.Pressed.png" id="9"]
+[ext_resource type="Script" path="res://Scripts/Store.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://cgvck33lb871v" path="res://Images/exit-button.png" id="11"]
+[ext_resource type="FontFile" uid="uid://ddvv3rqspw0h3" path="res://Fonts/Silkscreen/slkscrb.ttf" id="12"]
+[ext_resource type="Texture2D" uid="uid://d5xijwvbfe48" path="res://Images/HUD.SquareFrame.1.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://buevuwfnht5xy" path="res://Images/Crap.png" id="14"]
+[ext_resource type="AudioStream" uid="uid://er2d5vg4qmck" path="res://Audio/UI/Click.wav" id="15"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 8 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="DynamicFont" id=3]
-size = 18
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 12 )
+[sub_resource type="FontFile" id="3"]
+fallbacks = Array[Font]([ExtResource("12")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
 "loop": true,
-"name": "pistol",
+"name": &"pistol",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6")
+}],
 "loop": true,
-"name": "railgun",
+"name": &"railgun",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4")
+}],
 "loop": true,
-"name": "rocket-launcher",
+"name": &"rocket-launcher",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
 "loop": true,
-"name": "scatling",
+"name": &"scatling",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
 "loop": true,
-"name": "shotgun",
+"name": &"shotgun",
 "speed": 5.0
-} ]
+}]
 
 [node name="Store" type="Control"]
-pause_mode = 2
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 10 )
+script = ExtResource("10")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StoreBG" type="AnimatedSprite" parent="CanvasLayer"]
-scale = Vector2( 2.222, 2.222 )
-frames = SubResource( 1 )
+[node name="StoreBG" type="AnimatedSprite2D" parent="CanvasLayer"]
+scale = Vector2(2.222, 2.222)
+sprite_frames = SubResource("1")
 centered = false
 
 [node name="TotalPooContainer" type="NinePatchRect" parent="CanvasLayer"]
-margin_left = 256.0
-margin_top = 64.0
-margin_right = 512.0
-margin_bottom = 120.0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 120.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-texture = ExtResource( 13 )
+texture = ExtResource("13")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="PooIcon" type="TextureRect" parent="CanvasLayer/TotalPooContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 14 )
-expand = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("14")
+expand_mode = 1
 stretch_mode = 1
 
 [node name="TotalPooCount" type="Label" parent="CanvasLayer/TotalPooContainer"]
+layout_mode = 0
 anchor_left = 0.156
 anchor_top = 0.5
 anchor_right = 0.156
 anchor_bottom = 0.5
-margin_left = 0.0639992
-margin_top = -20.0
-margin_right = 208.064
-margin_bottom = 20.0
-theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 3 )
+offset_left = 0.0639992
+offset_top = -20.0
+offset_right = 208.064
+offset_bottom = 20.0
+theme = ExtResource("1")
+theme_override_fonts/font = SubResource("3")
 text = "0"
-align = 1
-valign = 1
 
 [node name="Pistol" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 90, 184 )
+position = Vector2(90, 184)
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Pistol"]
-position = Vector2( 36, 34 )
-scale = Vector2( 3, 3 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Pistol"]
 z_index = 3
-frames = SubResource( 2 )
-animation = "pistol"
+position = Vector2(36, 34)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("2")
+animation = &"pistol"
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Pistol"]
-margin_right = 72.0
-margin_bottom = 72.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 9 )
-expand = true
+offset_right = 72.0
+offset_bottom = 72.0
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("9")
 
 [node name="Label" type="Label" parent="CanvasLayer/Pistol"]
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -34.0
-margin_top = 21.0
-margin_right = -3.0
-margin_bottom = 51.0
-theme = ExtResource( 1 )
+offset_left = -34.0
+offset_top = 21.0
+offset_right = -3.0
+offset_bottom = 51.0
+theme = ExtResource("1")
 text = "10"
-align = 1
-valign = 1
 
 [node name="Shotgun" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 293, 184 )
+position = Vector2(293, 184)
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Shotgun"]
-position = Vector2( 36, 34 )
-scale = Vector2( 3, 3 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Shotgun"]
 z_index = 3
-frames = SubResource( 2 )
-animation = "shotgun"
+position = Vector2(36, 34)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("2")
+animation = &"shotgun"
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Shotgun"]
-margin_right = 72.0
-margin_bottom = 72.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 9 )
-expand = true
+offset_right = 72.0
+offset_bottom = 72.0
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("9")
 
 [node name="Label" type="Label" parent="CanvasLayer/Shotgun"]
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -34.0
-margin_top = 21.0
-margin_right = -3.0
-margin_bottom = 51.0
-theme = ExtResource( 1 )
+offset_left = -34.0
+offset_top = 21.0
+offset_right = -3.0
+offset_bottom = 51.0
+theme = ExtResource("1")
 text = "20"
-align = 1
-valign = 1
 
 [node name="RocketLauncher" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 189, 277 )
+position = Vector2(189, 277)
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/RocketLauncher"]
-position = Vector2( 36, 34 )
-scale = Vector2( 3, 3 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/RocketLauncher"]
 z_index = 3
-frames = SubResource( 2 )
-animation = "rocket-launcher"
+position = Vector2(36, 34)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("2")
+animation = &"rocket-launcher"
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/RocketLauncher"]
-margin_right = 72.0
-margin_bottom = 72.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 9 )
-expand = true
+offset_right = 72.0
+offset_bottom = 72.0
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("9")
 
 [node name="Label" type="Label" parent="CanvasLayer/RocketLauncher"]
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -44.0
-margin_top = 21.0
-margin_right = -13.0
-margin_bottom = 51.0
-theme = ExtResource( 1 )
+offset_left = -44.0
+offset_top = 21.0
+offset_right = -13.0
+offset_bottom = 51.0
+theme = ExtResource("1")
 text = "40"
-align = 1
-valign = 1
 
 [node name="Scatling" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 391, 277 )
+position = Vector2(391, 277)
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Scatling"]
-position = Vector2( 36, 34 )
-scale = Vector2( 3, 3 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Scatling"]
 z_index = 3
-frames = SubResource( 2 )
-animation = "scatling"
+position = Vector2(36, 34)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("2")
+animation = &"scatling"
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Scatling"]
-margin_right = 72.0
-margin_bottom = 72.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 9 )
-expand = true
+offset_right = 72.0
+offset_bottom = 72.0
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("9")
 
 [node name="Label" type="Label" parent="CanvasLayer/Scatling"]
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -44.0
-margin_top = 21.0
-margin_right = -13.0
-margin_bottom = 51.0
-theme = ExtResource( 1 )
+offset_left = -44.0
+offset_top = 21.0
+offset_right = -13.0
+offset_bottom = 51.0
+theme = ExtResource("1")
 text = "60"
-align = 1
-valign = 1
 
 [node name="Railgun" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 496, 184 )
+position = Vector2(496, 184)
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Railgun"]
-position = Vector2( 36, 34 )
-scale = Vector2( 3, 3 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Railgun"]
 z_index = 3
-frames = SubResource( 2 )
-animation = "railgun"
+position = Vector2(36, 34)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("2")
+animation = &"railgun"
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Railgun"]
-margin_right = 72.0
-margin_bottom = 72.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 9 )
-expand = true
+offset_right = 72.0
+offset_bottom = 72.0
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("9")
 
 [node name="Label" type="Label" parent="CanvasLayer/Railgun"]
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -44.0
-margin_top = 21.0
-margin_right = -7.0
-margin_bottom = 51.0
-theme = ExtResource( 1 )
+offset_left = -44.0
+offset_top = 21.0
+offset_right = -7.0
+offset_bottom = 51.0
+theme = ExtResource("1")
 text = "100"
-align = 1
-valign = 1
 
 [node name="ExitButton" type="TextureButton" parent="CanvasLayer"]
-margin_left = 592.0
-margin_top = 16.0
-margin_right = 624.0
-margin_bottom = 48.0
-texture_normal = ExtResource( 11 )
-expand = true
+offset_left = 592.0
+offset_top = 16.0
+offset_right = 624.0
+offset_bottom = 48.0
+texture_normal = ExtResource("11")
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
+stream = ExtResource("15")
 volume_db = -10.0
 
 [node name="CloseStoreBuffer" type="Timer" parent="."]

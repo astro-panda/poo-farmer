@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Goblin Laugh 2.wav-74fc04bde6369abc9e9a1715bdfc15d2.sample"
+type="AudioStreamWAV"
+uid="uid://bmlygsmnmhrpe"
+path="res://.godot/imported/Poo Farmer Goblin Laugh 2.wav-74fc04bde6369abc9e9a1715bdfc15d2.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Goblin Laugh 2.wav"
-dest_files=[ "res://.import/Poo Farmer Goblin Laugh 2.wav-74fc04bde6369abc9e9a1715bdfc15d2.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Goblin Laugh 2.wav-74fc04bde6369abc9e9a1715bdfc15d2.sample"]
 
 [params]
 

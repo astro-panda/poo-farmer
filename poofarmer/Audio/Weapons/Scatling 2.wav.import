@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Scatling 2.wav-211469e980168fe3c0be78fc69f9b027.sample"
+type="AudioStreamWAV"
+uid="uid://ddrpxo4vovctp"
+path="res://.godot/imported/Scatling 2.wav-211469e980168fe3c0be78fc69f9b027.sample"
 
 [deps]
 
 source_file="res://Audio/Weapons/Scatling 2.wav"
-dest_files=[ "res://.import/Scatling 2.wav-211469e980168fe3c0be78fc69f9b027.sample" ]
+dest_files=["res://.godot/imported/Scatling 2.wav-211469e980168fe3c0be78fc69f9b027.sample"]
 
 [params]
 

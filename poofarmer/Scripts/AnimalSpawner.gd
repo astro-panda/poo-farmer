@@ -1,14 +1,14 @@
 extends Node
 
 
-export(PackedScene) var animal_scene
-export var population = 10
-onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var camera = get_tree().get_nodes_in_group("camera")[0]
+@export var animal_scene: PackedScene
+@export var population = 10
+@onready var player = get_tree().get_nodes_in_group("player")[0]
+@onready var camera = get_tree().get_nodes_in_group("camera")[0]
 var rnd = RandomNumberGenerator.new()
-export(bool) var spawn_animals = true
+@export var spawn_animals: bool = true
 var number_of_unicorns = 0
-export var max_number_of_unicorns = 2
+@export var max_number_of_unicorns = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,15 +30,15 @@ func _on_SpawnTimer_timeout():
 			# never spawn more than 2 unicorns
 			return
 			
-		var animal = animal_scene.instance()
+		var animal = animal_scene.instantiate()
 		
 		var cameraWidth = 640
 		var cameraHeight = 375
 		var cameraPosition = camera.get_camera_position()
-		var cameraTop = cameraPosition.y - (cameraHeight / 2)
-		var cameraBottom = cameraPosition.y + (cameraHeight / 2)
-		var cameraLeft = cameraPosition.x - (cameraWidth / 2)
-		var cameraRight = cameraPosition.x + (cameraWidth / 2)
+		var cameraTop = cameraPosition.y - (cameraHeight / 2.0)
+		var cameraBottom = cameraPosition.y + (cameraHeight / 2.0)
+		var cameraLeft = cameraPosition.x - (cameraWidth / 2.0)
+		var cameraRight = cameraPosition.x + (cameraWidth / 2.0)
 		
 		var spawnX = rnd.randi_range(0, 3072)
 		var spawnY = rnd.randi_range(0, 3072)

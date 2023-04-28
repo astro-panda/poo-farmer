@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Llama 3.wav-9511bbba80bad00dfb85bc9801f42f19.sample"
+type="AudioStreamWAV"
+uid="uid://cb5q0n5t3n0xf"
+path="res://.godot/imported/Poo Farmer Llama 3.wav-9511bbba80bad00dfb85bc9801f42f19.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Llama 3.wav"
-dest_files=[ "res://.import/Poo Farmer Llama 3.wav-9511bbba80bad00dfb85bc9801f42f19.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Llama 3.wav-9511bbba80bad00dfb85bc9801f42f19.sample"]
 
 [params]
 

@@ -2,28 +2,28 @@ extends Control
 
 signal arsenal_state_changed(open)
 
-onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var arsenal_wheel = get_node("CanvasLayer/Arsenal Wheel")
-onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPlayer")
-onready var silo_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
-onready var goblin_counter = $CanvasLayer/GoblinCountContainer/GoblinCountLabel
-onready var canvas_layer = $CanvasLayer
-onready var click_player = $ClickPlayer
-onready var goblinWaveProgress = $CanvasLayer/GoblinCountContainer/GoblinWaveProgress
-onready var equippedIcon = $CanvasLayer/EquippedIcon
-onready var shovelBtn = $"CanvasLayer/Arsenal Wheel/Shovel"
-onready var pistolBtn = $"CanvasLayer/Arsenal Wheel/Pistol"
-onready var shatgunBtn = $"CanvasLayer/Arsenal Wheel/Shatgun"
-onready var scatlingBtn = $"CanvasLayer/Arsenal Wheel/ScatlingGun"
-onready var rocketLauncherBtn = $"CanvasLayer/Arsenal Wheel/RocketLauncher"
-onready var railgunBtn = $"CanvasLayer/Arsenal Wheel/Railgun"
-onready var listOfButtons = [shovelBtn, pistolBtn, shatgunBtn, rocketLauncherBtn, scatlingBtn, railgunBtn]
+@onready var player = get_tree().get_nodes_in_group("player")[0]
+@onready var arsenal_wheel = get_node("CanvasLayer/Arsenal Wheel")
+@onready var arsenal_wheel_anim = get_node("CanvasLayer/Arsenal Wheel/AnimationPlayer")
+@onready var silo_crud_points = $CanvasLayer/SiloCountContainer/SiloCrudPoints
+@onready var goblin_counter = $CanvasLayer/GoblinCountContainer/GoblinCountLabel
+@onready var canvas_layer = $CanvasLayer
+@onready var click_player = $ClickPlayer
+@onready var goblinWaveProgress = $CanvasLayer/GoblinCountContainer/GoblinWaveProgress
+@onready var equippedIcon = $CanvasLayer/EquippedIcon
+@onready var shovelBtn = $"CanvasLayer/Arsenal Wheel/Shovel"
+@onready var pistolBtn = $"CanvasLayer/Arsenal Wheel/Pistol"
+@onready var shatgunBtn = $"CanvasLayer/Arsenal Wheel/Shatgun"
+@onready var scatlingBtn = $"CanvasLayer/Arsenal Wheel/ScatlingGun"
+@onready var rocketLauncherBtn = $"CanvasLayer/Arsenal Wheel/RocketLauncher"
+@onready var railgunBtn = $"CanvasLayer/Arsenal Wheel/Railgun"
+@onready var listOfButtons = [shovelBtn, pistolBtn, shatgunBtn, rocketLauncherBtn, scatlingBtn, railgunBtn]
 var arsenal_pressed: bool = false
 const grayedOutColor = Color(0.305882, 0.305882, 0.305882)
 const normalColor = Color(1, 1, 1)
 
 func _ready():
-	arsenal_wheel.rect_scale = Vector2(0, 0)
+	arsenal_wheel.scale = Vector2(0, 0)
 	for btn in listOfButtons:
 		btn.disabled = true
 		btn.get_node("TextureRect").modulate = grayedOutColor
@@ -57,8 +57,8 @@ func update_global_goblin_label(totalGoblins, waveCountdown, progMax, progValue)
 		goblinWaveProgress.visible = false
 	goblin_counter.text = str(totalGoblins)
 
-func showHUD(show: bool):
-	canvas_layer.visible = show
+func showHUD(doShow: bool):
+	canvas_layer.visible = doShow
 
 func _on_Store_update_global_poo_label(totalPooAmount):
 	update_global_poo_label(totalPooAmount)
@@ -98,7 +98,7 @@ func cycle_selected_fireMode(value):
 
 func click():
 	click_player.play()
-	get_tree().set_input_as_handled()
+	get_viewport().set_input_as_handled()
 	
 func reset():
 	update_global_poo_label(0)

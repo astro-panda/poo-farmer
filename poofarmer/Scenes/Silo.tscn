@@ -1,236 +1,254 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=16 format=3 uid="uid://dqnxkitbs1jb"]
 
-[ext_resource path="res://Scripts/Silo.gd" type="Script" id=1]
-[ext_resource path="res://Images/FarmHouse.png" type="Texture" id=2]
-[ext_resource path="res://Images/Silo.Png" type="Texture" id=3]
-[ext_resource path="res://Images/FarmHouseTop.png" type="Texture" id=4]
-[ext_resource path="res://Images/SiloTop.Png" type="Texture" id=5]
-[ext_resource path="res://Images/FarmHouseOpen.png" type="Texture" id=6]
-[ext_resource path="res://Images/Crap.png" type="Texture" id=7]
-[ext_resource path="res://Images/FarmHouseGlow.png" type="Texture" id=8]
+[ext_resource type="Script" path="res://Scripts/Silo.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://hadmpxioice2" path="res://Images/FarmHouse.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://fn4qyuy87c77" path="res://Images/Silo.Png" id="3"]
+[ext_resource type="Texture2D" uid="uid://co6jxhr4x8g84" path="res://Images/FarmHouseTop.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c6m03c3yr1e" path="res://Images/SiloTop.Png" id="5"]
+[ext_resource type="Texture2D" uid="uid://be22tksh6dckh" path="res://Images/FarmHouseOpen.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://buevuwfnht5xy" path="res://Images/Crap.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dnbcjq4rnfijl" path="res://Images/FarmHouseGlow.png" id="8"]
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 7 ) ],
+[sub_resource type="SpriteFrames" id="7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80, 72 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(80, 72)
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
 "loop": true,
-"name": "closed-doors",
+"name": &"closed-doors",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6")
+}],
 "loop": true,
-"name": "open-doors",
+"name": &"open-doors",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 4 ) ],
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 72, 44 )
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(72, 44)
 
 [node name="Silo" type="Area2D" groups=["silo"]]
 collision_layer = 4
 collision_mask = 11
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="Glow" type="Sprite" parent="."]
+[node name="Glow" type="Sprite2D" parent="."]
 visible = false
-position = Vector2( -24, -32 )
-scale = Vector2( 1.53125, 1.58929 )
-texture = ExtResource( 8 )
+position = Vector2(-24, -32)
+scale = Vector2(1.53125, 1.58929)
+texture = ExtResource("8")
 
 [node name="Node" type="Node2D" parent="."]
 
-[node name="Poo" type="AnimatedSprite" parent="Node"]
-position = Vector2( -14, 32 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-14, 32)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo2" type="AnimatedSprite" parent="Node"]
-position = Vector2( -12, 18 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo2" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-12, 18)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo3" type="AnimatedSprite" parent="Node"]
-position = Vector2( -5, 35 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo3" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-5, 35)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo4" type="AnimatedSprite" parent="Node"]
-position = Vector2( 19, 16 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo4" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(19, 16)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo5" type="AnimatedSprite" parent="Node"]
-position = Vector2( 9, 13 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo5" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(9, 13)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo6" type="AnimatedSprite" parent="Node"]
-position = Vector2( -4, 12 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo6" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-4, 12)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo7" type="AnimatedSprite" parent="Node"]
-position = Vector2( 1, 6 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo7" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(1, 6)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo8" type="AnimatedSprite" parent="Node"]
-position = Vector2( 8, 4 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo8" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(8, 4)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo9" type="AnimatedSprite" parent="Node"]
-position = Vector2( 14, 12 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo9" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(14, 12)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo10" type="AnimatedSprite" parent="Node"]
-position = Vector2( 23, 8 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo10" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(23, 8)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo11" type="AnimatedSprite" parent="Node"]
-position = Vector2( 17, 6 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo11" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(17, 6)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo12" type="AnimatedSprite" parent="Node"]
-position = Vector2( 23, 23 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo12" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(23, 23)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo13" type="AnimatedSprite" parent="Node"]
-position = Vector2( 10, 23 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo13" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(10, 23)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo14" type="AnimatedSprite" parent="Node"]
-position = Vector2( -2, 22 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo14" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-2, 22)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo15" type="AnimatedSprite" parent="Node"]
-position = Vector2( -12, 10 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo15" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-12, 10)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo16" type="AnimatedSprite" parent="Node"]
-position = Vector2( -6, 6 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo16" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-6, 6)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo17" type="AnimatedSprite" parent="Node"]
-position = Vector2( -10, -1 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo17" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(-10, -1)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo18" type="AnimatedSprite" parent="Node"]
-position = Vector2( 2, -2 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo18" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(2, -2)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo19" type="AnimatedSprite" parent="Node"]
-position = Vector2( 3, 12 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo19" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(3, 12)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo20" type="AnimatedSprite" parent="Node"]
-position = Vector2( 24, 32 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo20" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(24, 32)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
-[node name="Poo21" type="AnimatedSprite" parent="Node"]
-position = Vector2( 24, 32 )
-scale = Vector2( 0.5625, 0.5625 )
-frames = SubResource( 7 )
-offset = Vector2( -8.88889, -26.6667 )
+[node name="Poo21" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(24, 32)
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("7")
+offset = Vector2(-8.88889, -26.6667)
 
 [node name="DropOffDetection" type="CollisionShape2D" parent="."]
-position = Vector2( -24, -32 )
-shape = SubResource( 1 )
+position = Vector2(-24, -32)
+shape = SubResource("1")
 
-[node name="BarnSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -32 )
-scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 2 )
-animation = "open-doors"
+[node name="BarnSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("2")
+animation = &"open-doors"
 
-[node name="SiloSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -72, -40 )
-scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 4 )
+[node name="SiloSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-72, -40)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("4")
 
-[node name="BarnTopSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -73 )
-scale = Vector2( 1.5, 1.5 )
+[node name="BarnTopSprite" type="AnimatedSprite2D" parent="."]
 z_index = 2
-frames = SubResource( 5 )
+position = Vector2(0, -73)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("5")
 
-[node name="SiloTopSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -72, -72 )
-scale = Vector2( 1.5, 1.5 )
+[node name="SiloTopSprite" type="AnimatedSprite2D" parent="."]
 z_index = 2
-frames = SubResource( 6 )
+position = Vector2(-72, -72)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("6")
 
 [node name="ImpassableArea2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 11
 
 [node name="RigidCollision" type="CollisionShape2D" parent="ImpassableArea2D"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -24, -12 )
-shape = SubResource( 3 )
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-24, -12)
+shape = SubResource("3")

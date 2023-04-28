@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Troll Attack.wav-22cd2d5bee6a2b99bba74be8560482b1.sample"
+type="AudioStreamWAV"
+uid="uid://p3670dtdufro"
+path="res://.godot/imported/Troll Attack.wav-22cd2d5bee6a2b99bba74be8560482b1.sample"
 
 [deps]
 
 source_file="res://Audio/Enemies/Troll Attack.wav"
-dest_files=[ "res://.import/Troll Attack.wav-22cd2d5bee6a2b99bba74be8560482b1.sample" ]
+dest_files=["res://.godot/imported/Troll Attack.wav-22cd2d5bee6a2b99bba74be8560482b1.sample"]
 
 [params]
 

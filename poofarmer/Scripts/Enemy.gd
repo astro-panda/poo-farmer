@@ -1,18 +1,18 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name Enemy
 
 signal global_poo_stolen(stealAmount)
 signal enemy_killed
 
-export var speed = 4000
-export var fleeSpeedMultiplier = 4
-export var health = 4
-export var stealAmount = 3
-export var siloStealAmount = 5
-onready var silo = get_tree().get_nodes_in_group("silo")[0]
-onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var audio_ctrl = $MobAudioController
-onready var hit_feedback_timer = $HitFeedbackTimer
+@export var speed = 4000
+@export var fleeSpeedMultiplier = 4
+@export var health = 4
+@export var stealAmount = 3
+@export var siloStealAmount = 5
+@onready var silo = get_tree().get_nodes_in_group("silo")[0]
+@onready var player = get_tree().get_nodes_in_group("player")[0]
+@onready var audio_ctrl = $MobAudioController
+@onready var hit_feedback_timer = $HitFeedbackTimer
 var sprite
 var sprite_scale
 var isFleeing = false
@@ -22,7 +22,7 @@ var hit_color = Color(100, 100, 100, 1)
 var normal_color = Color(1, 1, 1)
 
 func _ready():
-	hit_feedback_timer.connect("timeout", self, "reset_sprite_after_hit")
+	hit_feedback_timer.connect("timeout", Callable(self, "reset_sprite_after_hit"))
 
 
 func detected_something(area, player_steal):
@@ -49,8 +49,10 @@ func steal_from_player():
 	audio_ctrl.act(0)
 		
 func move_at_body(body, delta):
-	var velocity = (body.position - position).normalized() * speed * delta * (fleeSpeedMultiplier if isFleeing else 1)
-	return move_and_slide(velocity)
+	var _velocity = (body.position - position).normalized() * speed * delta * (fleeSpeedMultiplier if isFleeing else 1)
+	set_velocity(_velocity)
+	move_and_slide()
+	return _velocity
 
 func enemy_handle_hit(damage, sprite_offset, poo):
 	if !is_dying:
@@ -68,14 +70,14 @@ func enemy_handle_hit(damage, sprite_offset, poo):
 			hit_feedback_timer.start()
 
 
-func calculate_sprite_direction(velocity):
-	if velocity.x > 0:
+func calculate_sprite_direction(_velocity):
+	if _velocity.x > 0:
 		sprite.animation = "right"
-	elif velocity.x < 0:
+	elif _velocity.x < 0:
 		sprite.animation = "left"
-	elif velocity.y > 0:
+	elif _velocity.y > 0:
 		sprite.animation = "down"
-	elif velocity.y < 0:
+	elif _velocity.y < 0:
 		sprite.animation = "up"
 
 func end_death():

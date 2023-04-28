@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://cq5np2s7m6w2n"]
 
-[ext_resource path="res://Scripts/AnimalSpawner.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Animal/Animal.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://Scripts/AnimalSpawner.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dwdcl8ubfbkl4" path="res://Scenes/Animal/Animal.tscn" id="2"]
 
 [node name="AnimalSpawner" type="Node"]
-script = ExtResource( 1 )
-animal_scene = ExtResource( 2 )
+script = ExtResource("1")
+animal_scene = ExtResource("2")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Rocket Launch.wav-8184217b744099d2f94c925af324f4ab.sample"
+type="AudioStreamWAV"
+uid="uid://1hlwt4a8l2ln"
+path="res://.godot/imported/Rocket Launch.wav-8184217b744099d2f94c925af324f4ab.sample"
 
 [deps]
 
 source_file="res://Audio/Weapons/Rocket Launch.wav"
-dest_files=[ "res://.import/Rocket Launch.wav-8184217b744099d2f94c925af324f4ab.sample" ]
+dest_files=["res://.godot/imported/Rocket Launch.wav-8184217b744099d2f94c925af324f4ab.sample"]
 
 [params]
 

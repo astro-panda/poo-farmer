@@ -1,8 +1,8 @@
 extends Area2D
 class_name Poo
 
-export var pooValue = 1
-export(AnimalType.values) var _type = AnimalType.values.Chicken
+@export var pooValue = 1
+@export var _type = AnimalType.values.Chicken # (AnimalType.values)
 
 var types_dict = {
 	AnimalType.values.Chicken: 1, 
@@ -17,9 +17,9 @@ func _ready():
 	pass
 	
 func set_type(type: int):
-	_type = type
+	_type = type as AnimalType.values
 	pooValue = types_dict[_type]
-	$AnimatedSprite.animation = "Unicorn" if (type == AnimalType.values.Unicorn) else "Normal"
+	$AnimatedSprite2D.animation = "Unicorn" if (type == AnimalType.values.Unicorn) else "Normal"
 
 func destroy():
 	queue_free()

@@ -1,16 +1,16 @@
 extends Node
 class_name MobAudioController
 
-export(float) var next_behavior_min = 4.0
-export(float) var next_behavior_max = 10.0
-export(bool) var enabled = true
+@export var next_behavior_min: float = 4.0
+@export var next_behavior_max: float = 10.0
+@export var enabled: bool = true
 
-export(Array, AudioStream) var actions
-export(Array, AudioStream) var behaviors
+@export var actions: Array[AudioStream]
+@export var behaviors: Array[AudioStream]
 
-onready var behavior_timer = $BehaviorTimer
-onready var behavior_player = $BehaviorAudioPlayer
-onready var action_player = $ActionAudioPlayer
+@onready var behavior_timer = $BehaviorTimer
+@onready var behavior_player = $BehaviorAudioPlayer
+@onready var action_player = $ActionAudioPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +18,7 @@ func _ready():
 	reset_behavior_timer()
 
 func reset_behavior_timer():
-	behavior_timer.wait_time = rand_range(next_behavior_min, next_behavior_max) as float
+	behavior_timer.wait_time = randf_range(next_behavior_min, next_behavior_max) as float
 	behavior_timer.start()
 
 func _on_BehaviorTimer_timeout():

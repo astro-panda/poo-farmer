@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Goblin Attack.wav-71a6ed104116a94c5493818263331524.sample"
+type="AudioStreamWAV"
+uid="uid://bdfb88nwirxhu"
+path="res://.godot/imported/Poo Farmer Goblin Attack.wav-71a6ed104116a94c5493818263331524.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Goblin Attack.wav"
-dest_files=[ "res://.import/Poo Farmer Goblin Attack.wav-71a6ed104116a94c5493818263331524.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Goblin Attack.wav-71a6ed104116a94c5493818263331524.sample"]
 
 [params]
 

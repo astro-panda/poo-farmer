@@ -2,9 +2,9 @@ extends Path2D
 
 
 # Declare member variables here. Examples:
-onready var gnome = $PathFollow2D/Gnome as Gnome
-onready var pathFollow = $PathFollow2D
-export var speed = 20
+@onready var gnome = $PathFollow2D/Gnome as Gnome
+@onready var pathFollow = $PathFollow2D
+@export var speed = 20
 var isMoving = true
 var previousPosition: Vector2
 
@@ -17,7 +17,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if isMoving:
-		pathFollow.set_offset(pathFollow.get_offset() + speed * delta)
+		pathFollow.set_progress(pathFollow.get_progress() + speed * delta)
 		var deltaX = previousPosition.x - gnome.global_position.x
 		var deltaY = previousPosition.y - gnome.global_position.y
 		if deltaX > 0.08:

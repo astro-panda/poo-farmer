@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name Player
 
 signal firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
@@ -7,37 +7,37 @@ signal update_global_poo_label(dump_amount)
 signal game_on()
 
 # Declare member variables here. Examples:
-export (PackedScene) var poo_pellets
-export var speed = 250
-export var holdCapacity = 10
-export var goblinStealAmount = 5
-export var currentHoldAmount = 0
-export var totalPooAmount = 0
+@export var poo_pellets: PackedScene
+@export var speed = 250
+@export var holdCapacity = 10
+@export var goblinStealAmount = 5
+@export var currentHoldAmount = 0
+@export var totalPooAmount = 0
 var screen_size
 var gross_poo_harvested = 0
 var shoot_enabled = false
 var disable_ammo = false
 
 var fireModes = [FireMode.values.Shovel]
-export(FireMode.values) var equippedFireMode = FireMode.values.Shovel
+@export var equippedFireMode = FireMode.values.Shovel # (FireMode.values)
 
-onready var hud = get_tree().get_nodes_in_group("hud")[0]
-onready var silo = get_tree().get_nodes_in_group("silo")[0]
+@onready var hud = get_tree().get_nodes_in_group("hud")[0]
+@onready var silo = get_tree().get_nodes_in_group("silo")[0]
 var goboSpawner
 
-onready var modal_window = $ModalWindow
-onready var game_on_timer = $GameOnTimer
-onready var audio_ctrl = $MobAudioController
-onready var speech = $PlayerSprite/SpeechBubble
-onready var arrow_handle = $PlayerSprite/SpeechBubble/ArrowHandle
-onready var shovelPooter = $ShovelPooter
-onready var pistolPooter = $PistolPooter
-onready var shatgunPooter = $ShatgunPooter
-onready var rocketLauncherPooter = $RocketLauncherPooter
-onready var scatlingPooter = $ScatlingPooter
-onready var railgunPooter = $RailgunPooter
+@onready var modal_window = $ModalWindow
+@onready var game_on_timer = $GameOnTimer
+@onready var audio_ctrl = $MobAudioController
+@onready var speech = $PlayerSprite/SpeechBubble
+@onready var arrow_handle = $PlayerSprite/SpeechBubble/ArrowHandle
+@onready var shovelPooter = $ShovelPooter
+@onready var pistolPooter = $PistolPooter
+@onready var shatgunPooter = $ShatgunPooter
+@onready var rocketLauncherPooter = $RocketLauncherPooter
+@onready var scatlingPooter = $ScatlingPooter
+@onready var railgunPooter = $RailgunPooter
 
-onready var pooterDict = {
+@onready var pooterDict = {
 	FireMode.values.Shovel: shovelPooter,
 	FireMode.values.Pistol: pistolPooter,
 	FireMode.values.Shatgun: shatgunPooter,
@@ -46,10 +46,10 @@ onready var pooterDict = {
 	FireMode.values.Railgun: railgunPooter
 }
 
-onready var silo_subItem = $PlayerSprite/SpeechBubble/Silo
+@onready var silo_subItem = $PlayerSprite/SpeechBubble/Silo
 
-onready var goboSpeech = $PlayerSprite/GoboSpeechBubble
-onready var goboArrowHandle = $PlayerSprite/GoboSpeechBubble/ArrowHandle
+@onready var goboSpeech = $PlayerSprite/GoboSpeechBubble
+@onready var goboArrowHandle = $PlayerSprite/GoboSpeechBubble/ArrowHandle
 var gobodarOverride = false
 
 var subItems = [silo_subItem]
@@ -107,7 +107,8 @@ func _physics_process(_delta):
 		$PlayerSprite.stop()
 	
 	# Move the player
-	move_and_slide(velocity * _delta)
+	set_velocity(velocity * _delta)
+	move_and_slide()
 	
 	var goboCount = goboSpawner.get_enemy_count()
 	var threshold = ceil(goboSpawner.current_population / 10.0)
@@ -144,7 +145,7 @@ func _on_Area2D_area_entered(body):
 				var goblins = get_tree().get_nodes_in_group("goblin")
 				for node in goblins:
 					var goblin = node as Goblin
-					goblin.removePooFromTargets(body, false)
+					goblin.removePooFromTargets(body)
 				poo.destroy()
 		
 	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)

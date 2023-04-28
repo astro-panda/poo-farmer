@@ -1,10 +1,10 @@
 extends Node2D
 
-onready var chicken_audio_ctrl = $ChickenAudioController
-onready var cow_audio_ctrl = $CowAudioController
-onready var goat_audio_ctrl = $GoatAudioController 
-onready var llama_audio_ctrl = $LlamaAudioController
-onready var unicorn_audio_ctrl = $UnicornAudioController
+@onready var chicken_audio_ctrl = $ChickenAudioController
+@onready var cow_audio_ctrl = $CowAudioController
+@onready var goat_audio_ctrl = $GoatAudioController 
+@onready var llama_audio_ctrl = $LlamaAudioController
+@onready var unicorn_audio_ctrl = $UnicornAudioController
 
 var audio_controllers:Dictionary
 var target_controller: MobAudioController

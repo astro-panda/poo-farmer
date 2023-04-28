@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export(float) var poo_speed = 10.0
+@export var poo_speed: float = 10.0
 var damage
 var distance
 var direction := Vector2.ZERO
@@ -17,9 +17,9 @@ func _ready():
 	if isRailShot:
 		scale.x = 0.5
 		scale.y = 100
-		$AnimatedSprite.position.y += -5
+		$AnimatedSprite2D.position.y += -5
 		$CollisionShape2D.position.y += -5
-		rotation_degrees = rad2deg(rotateAngle - (PI / 2))
+		rotation_degrees = rad_to_deg(rotateAngle - (PI / 2))
 		$RailShotTimer.start()
 
 func _physics_process(_delta: float) -> void:

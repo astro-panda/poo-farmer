@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Unicorn 2.wav-754061d8fd46ac7ea451aac4f6fa74d7.sample"
+type="AudioStreamWAV"
+uid="uid://ccyt21xi1fcrx"
+path="res://.godot/imported/Poo Farmer Unicorn 2.wav-754061d8fd46ac7ea451aac4f6fa74d7.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Unicorn 2.wav"
-dest_files=[ "res://.import/Poo Farmer Unicorn 2.wav-754061d8fd46ac7ea451aac4f6fa74d7.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Unicorn 2.wav-754061d8fd46ac7ea451aac4f6fa74d7.sample"]
 
 [params]
 

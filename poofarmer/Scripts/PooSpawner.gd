@@ -1,5 +1,5 @@
 extends Node
-export(PackedScene) var poo_scene
+@export var poo_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +11,7 @@ func _ready():
 #	pass
 
 func do_poo(animal):	
-	var poo = poo_scene.instance()
+	var poo = poo_scene.instantiate()
 	poo.position = animal.position
 	poo.set_type(animal._type)
 	add_child(poo)

@@ -1,125 +1,126 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://bh4cw67c01cc8"]
 
-[ext_resource path="res://Images/TitleScreen.png" type="Texture" id=1]
-[ext_resource path="res://Images/HUD.Button.Pressed.png" type="Texture" id=2]
-[ext_resource path="res://Images/HUD.Button.png" type="Texture" id=3]
-[ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=4]
-[ext_resource path="res://Scenes/Animal/Animal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/UI/StartScreen.gd" type="Script" id=6]
-[ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=7]
+[ext_resource type="Texture2D" uid="uid://by7omalxedwvv" path="res://Images/TitleScreen.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://chq0x217cc6y2" path="res://Images/HUD.Button.Pressed.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dvs682kkxgcb1" path="res://Images/HUD.Button.png" id="3"]
+[ext_resource type="Theme" uid="uid://bev8s04hvds01" path="res://Themes/UI Theme.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://dwdcl8ubfbkl4" path="res://Scenes/Animal/Animal.tscn" id="5"]
+[ext_resource type="Script" path="res://Scripts/UI/StartScreen.gd" id="6"]
+[ext_resource type="AudioStream" uid="uid://er2d5vg4qmck" path="res://Audio/UI/Click.wav" id="7"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
 [node name="StartScreen" type="Control"]
-pause_mode = 2
+process_mode = 2
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_horizontal_guides_": [ -77.0 ]
-}
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-pause_mode = 2
+process_mode = 2
 layer = 2
 
-[node name="Background" type="AnimatedSprite" parent="CanvasLayer"]
-scale = Vector2( 4, 3.83 )
-frames = SubResource( 1 )
+[node name="Background" type="AnimatedSprite2D" parent="CanvasLayer"]
+texture_filter = 1
+scale = Vector2(4, 3.83)
+sprite_frames = SubResource("1")
 centered = false
 
 [node name="How to Play" type="TextureButton" parent="CanvasLayer"]
-margin_left = 16.0
-margin_top = 192.0
-margin_right = 208.0
-margin_bottom = 235.0
-rect_pivot_offset = Vector2( 138, 22 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 2 )
-expand = true
-__meta__ = {
-"_edit_group_": true
-}
+texture_filter = 1
+offset_left = 16.0
+offset_top = 192.0
+offset_right = 208.0
+offset_bottom = 235.0
+pivot_offset = Vector2(138, 22)
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("2")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/How to Play"]
-margin_left = 25.0
-margin_top = 11.0
-margin_right = 164.0
-margin_bottom = 30.0
+layout_mode = 0
+offset_left = 25.0
+offset_top = 11.0
+offset_right = 164.0
+offset_bottom = 30.0
 grow_horizontal = 0
 grow_vertical = 0
-theme = ExtResource( 4 )
+theme = ExtResource("4")
 text = "How to Play"
-align = 1
-valign = 1
 
 [node name="Start" type="TextureButton" parent="CanvasLayer"]
-margin_left = 16.0
-margin_top = 248.0
-margin_right = 208.0
-margin_bottom = 291.0
-rect_pivot_offset = Vector2( 138, 22 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 2 )
-expand = true
-__meta__ = {
-"_edit_group_": true
-}
+texture_filter = 1
+offset_left = 16.0
+offset_top = 248.0
+offset_right = 208.0
+offset_bottom = 291.0
+pivot_offset = Vector2(138, 22)
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("2")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/Start"]
-margin_left = 25.0
-margin_top = 11.0
-margin_right = 164.0
-margin_bottom = 30.0
+layout_mode = 0
+offset_left = 25.0
+offset_top = 11.0
+offset_right = 164.0
+offset_bottom = 30.0
 grow_horizontal = 0
 grow_vertical = 0
-theme = ExtResource( 4 )
+theme = ExtResource("4")
 text = "Start"
-align = 1
-valign = 1
+horizontal_alignment = 1
 
-[node name="Chicken" parent="." groups=["start_animal"] instance=ExtResource( 5 )]
-pause_mode = 2
-position = Vector2( 1350, 1619 )
+[node name="Chicken" parent="." groups=["start_animal"] instance=ExtResource("5")]
+process_mode = 2
+position = Vector2(1350, 1619)
 speed = 0
 corked = true
 _type = 0
 
-[node name="Goat" parent="." groups=["start_animal"] instance=ExtResource( 5 )]
-pause_mode = 2
-position = Vector2( 1480, 1680 )
+[node name="Goat" parent="." groups=["start_animal"] instance=ExtResource("5")]
+process_mode = 2
+position = Vector2(1480, 1680)
 speed = 0
 corked = true
 
-[node name="Cow" parent="." groups=["start_animal"] instance=ExtResource( 5 )]
-pause_mode = 2
-position = Vector2( 1260, 1700 )
+[node name="Cow" parent="." groups=["start_animal"] instance=ExtResource("5")]
+process_mode = 2
+position = Vector2(1260, 1700)
 speed = 0
 corked = true
 _type = 2
 
-[node name="Llama" parent="." groups=["start_animal"] instance=ExtResource( 5 )]
-pause_mode = 2
-position = Vector2( 1406, 1820 )
+[node name="Llama" parent="." groups=["start_animal"] instance=ExtResource("5")]
+process_mode = 2
+position = Vector2(1406, 1820)
 speed = 0
 corked = true
 _type = 3
 
-[node name="Unicorn" parent="." groups=["start_animal"] instance=ExtResource( 5 )]
-pause_mode = 2
-position = Vector2( 1420, 1609 )
+[node name="Unicorn" parent="." groups=["start_animal"] instance=ExtResource("5")]
+process_mode = 2
+position = Vector2(1420, 1609)
 speed = 0
 corked = true
 _type = 4
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource("7")
 volume_db = -10.0
 
 [connection signal="pressed" from="CanvasLayer/How to Play" to="." method="_on_How_to_Play_pressed"]

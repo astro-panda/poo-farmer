@@ -3,18 +3,18 @@ extends Control
 signal close_store
 signal open_store
 
-onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var camera = get_tree().get_nodes_in_group("camera")[0]
-onready var hud = get_tree().get_nodes_in_group("hud")[0]
-onready var click_player = $ClickPlayer
-onready var canvas = $CanvasLayer
-onready var pooCount = $CanvasLayer/TotalPooContainer/TotalPooCount
-onready var pistolButton = $CanvasLayer/Pistol
-onready var shatgunButton = $CanvasLayer/Shotgun
-onready var rocketLauncherButton = $CanvasLayer/RocketLauncher
-onready var scatlingButton = $CanvasLayer/Scatling
-onready var railgunButton = $CanvasLayer/Railgun
-onready var listOfButtons = [pistolButton, shatgunButton, rocketLauncherButton, scatlingButton, railgunButton]
+@onready var player = get_tree().get_nodes_in_group("player")[0]
+@onready var camera = get_tree().get_nodes_in_group("camera")[0]
+@onready var hud = get_tree().get_nodes_in_group("hud")[0]
+@onready var click_player = $ClickPlayer
+@onready var canvas = $CanvasLayer
+@onready var pooCount = $CanvasLayer/TotalPooContainer/TotalPooCount
+@onready var pistolButton = $CanvasLayer/Pistol
+@onready var shatgunButton = $CanvasLayer/Shotgun
+@onready var rocketLauncherButton = $CanvasLayer/RocketLauncher
+@onready var scatlingButton = $CanvasLayer/Scatling
+@onready var railgunButton = $CanvasLayer/Railgun
+@onready var listOfButtons = [pistolButton, shatgunButton, rocketLauncherButton, scatlingButton, railgunButton]
 const listOfCosts = [30, 75, 200, 300, 125]
 const grayedOutColor = Color(0.305882, 0.305882, 0.305882)
 const normalColor = Color(1, 1, 1)
@@ -45,7 +45,7 @@ func check_btns():
 func change_button_state(idx: int, disabled: bool, hideLabel: bool):
 	click()
 	var btnNode = listOfButtons[idx].get_node("Button")
-	listOfButtons[idx].get_node("AnimatedSprite").modulate = grayedOutColor if disabled else normalColor
+	listOfButtons[idx].get_node("AnimatedSprite2D").modulate = grayedOutColor if disabled else normalColor
 	btnNode.modulate = grayedOutColor if disabled else normalColor
 	btnNode.disabled = disabled
 	listOfButtons[idx].get_node("Label").visible = hideLabel
@@ -78,10 +78,10 @@ func buy_item(fireMode):
 func _on_ExitButton_button_down():
 	$CloseStoreBuffer.start()
 	
-func show_store(show: bool):
+func show_store(doShow: bool):
 	click()
-	canvas.visible = show
-	get_tree().paused = show
+	canvas.visible = doShow
+	get_tree().paused = doShow
 	if show:
 		emit_signal("open_store")
 

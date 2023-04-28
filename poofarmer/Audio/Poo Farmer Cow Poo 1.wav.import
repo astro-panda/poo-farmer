@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Cow Poo 1.wav-1908ba0c37666b673b36d11e560aeab0.sample"
+type="AudioStreamWAV"
+uid="uid://ckb75y3x2hi26"
+path="res://.godot/imported/Poo Farmer Cow Poo 1.wav-1908ba0c37666b673b36d11e560aeab0.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Cow Poo 1.wav"
-dest_files=[ "res://.import/Poo Farmer Cow Poo 1.wav-1908ba0c37666b673b36d11e560aeab0.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Cow Poo 1.wav-1908ba0c37666b673b36d11e560aeab0.sample"]
 
 [params]
 

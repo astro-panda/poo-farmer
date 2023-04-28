@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Chicken Bok.wav-96f1e842fdd7042870f5fdaa71b2a981.sample"
+type="AudioStreamWAV"
+uid="uid://dwn1vqatcx7s7"
+path="res://.godot/imported/Poo Farmer Chicken Bok.wav-96f1e842fdd7042870f5fdaa71b2a981.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Chicken Bok.wav"
-dest_files=[ "res://.import/Poo Farmer Chicken Bok.wav-96f1e842fdd7042870f5fdaa71b2a981.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Chicken Bok.wav-96f1e842fdd7042870f5fdaa71b2a981.sample"]
 
 [params]
 

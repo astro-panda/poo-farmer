@@ -1,59 +1,69 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://br4kitn03gec5"]
 
-[ext_resource path="res://Images/Crap.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Poo.gd" type="Script" id=2]
-[ext_resource path="res://Images/Crap.Rainbow.png" type="Texture" id=3]
+[ext_resource type="Texture2D" uid="uid://buevuwfnht5xy" path="res://Images/Crap.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/Poo.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://u7r2me5dch5y" path="res://Images/Crap.Rainbow.png" id="3"]
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 16, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("3")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("3")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 48, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("3")
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}],
 "loop": true,
-"name": "Normal",
+"name": &"Normal",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}],
 "loop": true,
-"name": "Unicorn",
+"name": &"Unicorn",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id="2"]
 radius = 12.0416
 
 [node name="Poo" type="Area2D" groups=["poo"]]
-scale = Vector2( 0.5, 0.5 )
 z_index = -1
+scale = Vector2(0.5, 0.5)
 collision_layer = 16
 collision_mask = 9
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 1 )
-animation = "Unicorn"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("1")
+animation = &"Unicorn"
 frame = 3
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
-shape = SubResource( 2 )
+position = Vector2(0, 2)
+shape = SubResource("2")

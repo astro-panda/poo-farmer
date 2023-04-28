@@ -1,6 +1,6 @@
 extends Node
 
-onready var hud = get_tree().get_nodes_in_group("hud")[0]
+@onready var hud = get_tree().get_nodes_in_group("hud")[0]
 var num_enemies_killed = 0
 
 func _ready():

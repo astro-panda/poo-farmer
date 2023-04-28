@@ -2,9 +2,9 @@ extends Path2D
 
 
 # Declare member variables here. Examples:
-onready var gnome = $PathFollow2D/Gnome as Gnome
-onready var pathFollow = $PathFollow2D
-export var speed = 20
+@onready var gnome = $PathFollow2D/Gnome as Gnome
+@onready var pathFollow = $PathFollow2D
+@export var speed = 20
 var isMoving = true
 var previousPosition: Vector2
 

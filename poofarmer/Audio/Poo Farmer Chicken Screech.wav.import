@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Chicken Screech.wav-55d76cbad171c5a51a256800d6f97432.sample"
+type="AudioStreamWAV"
+uid="uid://fjrqcefvukq4"
+path="res://.godot/imported/Poo Farmer Chicken Screech.wav-55d76cbad171c5a51a256800d6f97432.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Chicken Screech.wav"
-dest_files=[ "res://.import/Poo Farmer Chicken Screech.wav-55d76cbad171c5a51a256800d6f97432.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Chicken Screech.wav-55d76cbad171c5a51a256800d6f97432.sample"]
 
 [params]
 

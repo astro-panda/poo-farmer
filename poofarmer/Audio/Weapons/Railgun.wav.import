@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Railgun.wav-b0a3c2d90eb3cf49e7f7cc3b47d060c9.sample"
+type="AudioStreamWAV"
+uid="uid://c85nyybf4jxo3"
+path="res://.godot/imported/Railgun.wav-b0a3c2d90eb3cf49e7f7cc3b47d060c9.sample"
 
 [deps]
 
 source_file="res://Audio/Weapons/Railgun.wav"
-dest_files=[ "res://.import/Railgun.wav-b0a3c2d90eb3cf49e7f7cc3b47d060c9.sample" ]
+dest_files=["res://.godot/imported/Railgun.wav-b0a3c2d90eb3cf49e7f7cc3b47d060c9.sample"]
 
 [params]
 

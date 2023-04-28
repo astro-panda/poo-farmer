@@ -5,14 +5,14 @@ signal game_quit
 signal game_paused
 signal game_resumed
 
-onready var canvas = $CanvasLayer
-onready var poosed = $CanvasLayer/Poosed
-onready var how_to_play = $CanvasLayer/HowToPlay
-onready var game_over = $CanvasLayer/GameOver
-onready var click_player = $ClickPlayer
+@onready var canvas = $CanvasLayer
+@onready var poosed = $CanvasLayer/Poosed
+@onready var how_to_play = $CanvasLayer/HowToPlay
+@onready var game_over = $CanvasLayer/GameOver
+@onready var click_player = $ClickPlayer
 
-onready var wave_banner = $"CanvasLayer/GameOver/Wave Banner"
-onready var poo_banner = $"CanvasLayer/GameOver/Poo Banner"
+@onready var wave_banner = $"CanvasLayer/GameOver/Wave Banner"
+@onready var poo_banner = $"CanvasLayer/GameOver/Poo Banner"
 
 var game_started = false
 var is_paused = false

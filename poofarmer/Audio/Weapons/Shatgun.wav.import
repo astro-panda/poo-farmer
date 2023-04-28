@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Shatgun.wav-3afa69a2496a775e9a6941b948721dd5.sample"
+type="AudioStreamWAV"
+uid="uid://d0c8jrps2rd6u"
+path="res://.godot/imported/Shatgun.wav-3afa69a2496a775e9a6941b948721dd5.sample"
 
 [deps]
 
 source_file="res://Audio/Weapons/Shatgun.wav"
-dest_files=[ "res://.import/Shatgun.wav-3afa69a2496a775e9a6941b948721dd5.sample" ]
+dest_files=["res://.godot/imported/Shatgun.wav-3afa69a2496a775e9a6941b948721dd5.sample"]
 
 [params]
 

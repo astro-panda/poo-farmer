@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Shovel 2.wav-23728a553e2099c6bdfbbb30fc2930f5.sample"
+type="AudioStreamWAV"
+uid="uid://b67exwfuvqe11"
+path="res://.godot/imported/Shovel 2.wav-23728a553e2099c6bdfbbb30fc2930f5.sample"
 
 [deps]
 
 source_file="res://Audio/Weapons/Shovel 2.wav"
-dest_files=[ "res://.import/Shovel 2.wav-23728a553e2099c6bdfbbb30fc2930f5.sample" ]
+dest_files=["res://.godot/imported/Shovel 2.wav-23728a553e2099c6bdfbbb30fc2930f5.sample"]
 
 [params]
 

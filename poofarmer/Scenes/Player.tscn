@@ -1,281 +1,340 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=45 format=3 uid="uid://851w632ae2dk"]
 
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Images/Farmer.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/MobAudioController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Audio/Poo Farmer Poo Drop.wav" type="AudioStream" id=5]
-[ext_resource path="res://Audio/Poo Farmer Poo Pickup.wav" type="AudioStream" id=6]
-[ext_resource path="res://Images/Speechbox.png" type="Texture" id=7]
-[ext_resource path="res://Images/HUD.Silo.png" type="Texture" id=8]
-[ext_resource path="res://Images/Arrow.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Pooter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Audio/Weapons/Shovel 2.wav" type="AudioStream" id=11]
-[ext_resource path="res://Audio/Weapons/Shovel 1.wav" type="AudioStream" id=12]
-[ext_resource path="res://Audio/Weapons/Pistol.wav" type="AudioStream" id=13]
-[ext_resource path="res://Audio/Weapons/Shatgun.wav" type="AudioStream" id=14]
-[ext_resource path="res://Audio/Weapons/Rocket Launch.wav" type="AudioStream" id=15]
-[ext_resource path="res://Audio/Weapons/Rocket Explode.wav" type="AudioStream" id=16]
-[ext_resource path="res://Audio/Weapons/Scatling 2.wav" type="AudioStream" id=17]
-[ext_resource path="res://Audio/Weapons/Scatling 1.wav" type="AudioStream" id=18]
-[ext_resource path="res://Audio/Weapons/Railgun.wav" type="AudioStream" id=19]
-[ext_resource path="res://Images/Goblin.png" type="Texture" id=20]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d08prrqcx51cf" path="res://Images/Farmer.png" id="2"]
+[ext_resource type="PackedScene" path="res://Scenes/PooPellets.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bvrmf2ave4myr" path="res://Scenes/MobAudioController.tscn" id="4"]
+[ext_resource type="AudioStream" uid="uid://6fptwickf3eb" path="res://Audio/Poo Farmer Poo Drop.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://cr6eyshxupbyb" path="res://Audio/Poo Farmer Poo Pickup.wav" id="6"]
+[ext_resource type="Texture2D" uid="uid://bced3w11kl5bn" path="res://Images/Speechbox.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dlekocjf4h2yp" path="res://Images/HUD.Silo.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://hb3sbe6dr1br" path="res://Images/Arrow.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://bdckc5x381ymg" path="res://Scenes/Pooter.tscn" id="10"]
+[ext_resource type="AudioStream" uid="uid://b67exwfuvqe11" path="res://Audio/Weapons/Shovel 2.wav" id="11"]
+[ext_resource type="AudioStream" uid="uid://be1pj86iaqy7h" path="res://Audio/Weapons/Shovel 1.wav" id="12"]
+[ext_resource type="AudioStream" uid="uid://dgrovekr4m7ry" path="res://Audio/Weapons/Pistol.wav" id="13"]
+[ext_resource type="AudioStream" uid="uid://d0c8jrps2rd6u" path="res://Audio/Weapons/Shatgun.wav" id="14"]
+[ext_resource type="AudioStream" uid="uid://1hlwt4a8l2ln" path="res://Audio/Weapons/Rocket Launch.wav" id="15"]
+[ext_resource type="AudioStream" uid="uid://b2xw27offl2eq" path="res://Audio/Weapons/Rocket Explode.wav" id="16"]
+[ext_resource type="AudioStream" uid="uid://ddrpxo4vovctp" path="res://Audio/Weapons/Scatling 2.wav" id="17"]
+[ext_resource type="AudioStream" uid="uid://hrnqaleekxd7" path="res://Audio/Weapons/Scatling 1.wav" id="18"]
+[ext_resource type="AudioStream" uid="uid://c85nyybf4jxo3" path="res://Audio/Weapons/Railgun.wav" id="19"]
+[ext_resource type="Texture2D" uid="uid://m3cmx0jnub14" path="res://Images/Goblin.png" id="20"]
 
-[sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 10, 4 )
+[sub_resource type="RectangleShape2D" id="22"]
+size = Vector2(10, 4)
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 23.5 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(12, 23.5)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("2")
+region = Rect2(16, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("2")
+region = Rect2(32, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("2")
+region = Rect2(48, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 96, 16, 32 )
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("2")
+region = Rect2(0, 96, 16, 32)
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 96, 16, 32 )
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("2")
+region = Rect2(16, 96, 16, 32)
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 96, 16, 32 )
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("2")
+region = Rect2(32, 96, 16, 32)
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 96, 16, 32 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("2")
+region = Rect2(48, 96, 16, 32)
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 32, 16, 32 )
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("2")
+region = Rect2(0, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 32, 16, 32 )
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("2")
+region = Rect2(16, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 32, 16, 32 )
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("2")
+region = Rect2(32, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 32, 16, 32 )
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("2")
+region = Rect2(48, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 64, 16, 32 )
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("2")
+region = Rect2(0, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 64, 16, 32 )
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource("2")
+region = Rect2(16, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 64, 16, 32 )
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource("2")
+region = Rect2(32, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 64, 16, 32 )
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource("2")
+region = Rect2(48, 64, 16, 32)
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}],
 "loop": true,
-"name": "down",
+"name": &"down",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}],
 "loop": true,
-"name": "left",
+"name": &"left",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}],
 "loop": true,
-"name": "right",
+"name": &"right",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("15")
+}, {
+"duration": 1.0,
+"texture": SubResource("16")
+}, {
+"duration": 1.0,
+"texture": SubResource("17")
+}, {
+"duration": 1.0,
+"texture": SubResource("18")
+}],
 "loop": true,
-"name": "up",
+"name": &"up",
 "speed": 6.0
-} ]
+}]
 
-[sub_resource type="SpriteFrames" id=19]
-animations = [ {
-"frames": [ ExtResource( 7 ) ],
+[sub_resource type="SpriteFrames" id="19"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="SpriteFrames" id=20]
-animations = [ {
-"frames": [ ExtResource( 8 ) ],
+[sub_resource type="SpriteFrames" id="20"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="SpriteFrames" id=21]
-animations = [ {
-"frames": [ ExtResource( 9 ) ],
+[sub_resource type="SpriteFrames" id="21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 20 )
-region = Rect2( 0, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="23"]
+atlas = ExtResource("20")
+region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="SpriteFrames" id=24]
-animations = [ {
-"frames": [ SubResource( 23 ) ],
+[sub_resource type="SpriteFrames" id="24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("23")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[node name="Player" type="KinematicBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 20
-script = ExtResource( 1 )
-poo_pellets = ExtResource( 3 )
+script = ExtResource("1")
+poo_pellets = ExtResource("3")
 speed = 18000
 
 [node name="FootCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 19.5 )
-shape = SubResource( 22 )
+position = Vector2(0, 19.5)
+shape = SubResource("22")
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0, 0.5 )
-shape = SubResource( 1 )
+position = Vector2(0, 0.5)
+shape = SubResource("1")
 
-[node name="PlayerSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 2 )
-animation = "down"
-frame = 3
-playing = true
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("2")
+animation = &"down"
 
-[node name="SpeechBubble" type="AnimatedSprite" parent="PlayerSprite"]
+[node name="SpeechBubble" type="AnimatedSprite2D" parent="PlayerSprite"]
 visible = false
-position = Vector2( -14.244, -9.074 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 19 )
+position = Vector2(-14.244, -9.074)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("19")
 
-[node name="Silo" type="AnimatedSprite" parent="PlayerSprite/SpeechBubble"]
-position = Vector2( -2.549, 0 )
-frames = SubResource( 20 )
+[node name="Silo" type="AnimatedSprite2D" parent="PlayerSprite/SpeechBubble"]
+position = Vector2(-2.549, 0)
+sprite_frames = SubResource("20")
 
-[node name="ArrowHandle" type="Sprite" parent="PlayerSprite/SpeechBubble"]
-position = Vector2( -2.17867, 0.814667 )
+[node name="ArrowHandle" type="Sprite2D" parent="PlayerSprite/SpeechBubble"]
+position = Vector2(-2.17867, 0.814667)
 
-[node name="Arrow" type="AnimatedSprite" parent="PlayerSprite/SpeechBubble/ArrowHandle"]
-position = Vector2( -24.794, 0 )
+[node name="Arrow" type="AnimatedSprite2D" parent="PlayerSprite/SpeechBubble/ArrowHandle"]
+position = Vector2(-24.794, 0)
 rotation = -1.5708
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 21 )
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("21")
 
-[node name="GoboSpeechBubble" type="AnimatedSprite" parent="PlayerSprite"]
+[node name="GoboSpeechBubble" type="AnimatedSprite2D" parent="PlayerSprite"]
 visible = false
-position = Vector2( 14, -9.33333 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 19 )
+texture_filter = 1
+position = Vector2(14, -9.33333)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("19")
 flip_h = true
 
-[node name="Goblin" type="AnimatedSprite" parent="PlayerSprite/GoboSpeechBubble"]
-position = Vector2( 2.66667, -6.66667 )
-frames = SubResource( 24 )
+[node name="Goblin" type="AnimatedSprite2D" parent="PlayerSprite/GoboSpeechBubble"]
+texture_filter = 1
+position = Vector2(2.66667, -6.66667)
+sprite_frames = SubResource("24")
 
 [node name="ArrowHandle" type="Node2D" parent="PlayerSprite/GoboSpeechBubble"]
-position = Vector2( 2.66667, -7.39098e-06 )
+position = Vector2(2.66667, -7.39098e-06)
 
-[node name="Arrow" type="AnimatedSprite" parent="PlayerSprite/GoboSpeechBubble/ArrowHandle"]
-position = Vector2( -24.794, 0 )
+[node name="Arrow" type="AnimatedSprite2D" parent="PlayerSprite/GoboSpeechBubble/ArrowHandle"]
+position = Vector2(-24.794, 0)
 rotation = -1.5708
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 21 )
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("21")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
-current = true
-process_mode = 0
 limit_left = 0
 limit_top = 0
 limit_right = 3072
 limit_bottom = 3072
 limit_smoothed = true
-smoothing_enabled = true
-drag_margin_left = 0.4
-drag_margin_top = 0.3
-drag_margin_right = 0.4
-drag_margin_bottom = 0.3
+position_smoothing_enabled = true
+drag_left_margin = 0.4
+drag_top_margin = 0.3
+drag_right_margin = 0.4
+drag_bottom_margin = 0.3
 editor_draw_drag_margin = true
 
-[node name="ShovelPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
-poot_sounds = [ ExtResource( 12 ), ExtResource( 11 ) ]
+[node name="ShovelPooter" parent="." instance=ExtResource("10")]
+poo_pellets = ExtResource("3")
+poot_sounds = Array[AudioStream]([ExtResource("12"), ExtResource("11")])
 
 [node name="Poot" type="AudioStreamPlayer" parent="ShovelPooter"]
-bus = "Poots"
+bus = &"Poots"
 
-[node name="PistolPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
+[node name="PistolPooter" parent="." instance=ExtResource("10")]
+poo_pellets = ExtResource("3")
 currentFireMode = 1
-poot_sounds = [ ExtResource( 13 ) ]
+poot_sounds = Array[AudioStream]([ExtResource("13")])
 
 [node name="Poot" type="AudioStreamPlayer" parent="PistolPooter"]
-bus = "Poots"
+bus = &"Poots"
 
-[node name="ShatgunPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
+[node name="ShatgunPooter" parent="." instance=ExtResource("10")]
+poo_pellets = ExtResource("3")
 currentFireMode = 2
-poot_sounds = [ ExtResource( 14 ) ]
+poot_sounds = Array[AudioStream]([ExtResource("14")])
 
 [node name="Poot" type="AudioStreamPlayer" parent="ShatgunPooter"]
-bus = "Poots"
+bus = &"Poots"
 
-[node name="RocketLauncherPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
+[node name="RocketLauncherPooter" parent="." instance=ExtResource("10")]
+poo_pellets = ExtResource("3")
 currentFireMode = 3
-poot_sounds = [ ExtResource( 15 ), ExtResource( 16 ) ]
+poot_sounds = Array[AudioStream]([ExtResource("15"), ExtResource("16")])
 
 [node name="Poot" type="AudioStreamPlayer" parent="RocketLauncherPooter"]
-bus = "Poots"
+bus = &"Poots"
 
-[node name="ScatlingPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
+[node name="ScatlingPooter" parent="." instance=ExtResource("10")]
+poo_pellets = ExtResource("3")
 currentFireMode = 4
-poot_sounds = [ ExtResource( 18 ), ExtResource( 17 ) ]
+poot_sounds = Array[AudioStream]([ExtResource("18"), ExtResource("17")])
 
 [node name="Poot" type="AudioStreamPlayer" parent="ScatlingPooter"]
-bus = "Poots"
+bus = &"Poots"
 
-[node name="RailgunPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
+[node name="RailgunPooter" parent="." instance=ExtResource("10")]
+poo_pellets = ExtResource("3")
 currentFireMode = 5
-poot_sounds = [ ExtResource( 19 ) ]
+poot_sounds = Array[AudioStream]([ExtResource("19")])
 
 [node name="Poot" type="AudioStreamPlayer" parent="RailgunPooter"]
-bus = "Poots"
+bus = &"Poots"
 
-[node name="MobAudioController" parent="." instance=ExtResource( 4 )]
-actions = [ ExtResource( 6 ), ExtResource( 5 ) ]
+[node name="MobAudioController" parent="." instance=ExtResource("4")]
+actions = Array[AudioStream]([ExtResource("6"), ExtResource("5")])
 
 [node name="GameOnTimer" type="Timer" parent="."]
 wait_time = 0.1

@@ -3,8 +3,8 @@ extends Control
 signal game_started
 signal how_to_play_requested
 
-onready var canvas = $CanvasLayer
-onready var click_player = $ClickPlayer
+@onready var canvas = $CanvasLayer
+@onready var click_player = $ClickPlayer
 
 func _ready():
 	begin()

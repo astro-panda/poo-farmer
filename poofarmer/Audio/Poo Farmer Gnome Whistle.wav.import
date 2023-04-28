@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Gnome Whistle.wav-e6fcb8e4cd92d2530910768ad4d4e6fa.sample"
+type="AudioStreamWAV"
+uid="uid://cswmm3dmxooos"
+path="res://.godot/imported/Poo Farmer Gnome Whistle.wav-e6fcb8e4cd92d2530910768ad4d4e6fa.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Gnome Whistle.wav"
-dest_files=[ "res://.import/Poo Farmer Gnome Whistle.wav-e6fcb8e4cd92d2530910768ad4d4e6fa.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Gnome Whistle.wav-e6fcb8e4cd92d2530910768ad4d4e6fa.sample"]
 
 [params]
 

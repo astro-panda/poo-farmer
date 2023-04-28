@@ -1,16 +1,16 @@
 extends Node2D
 
 
-export (PackedScene) var poo_pellets
+@export (PackedScene) var poo_pellets
 
 
 func _on_Player_firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
 	if fireMode == FireMode.values.Shatgun:
-		var leftPellet = poo_pellets.instance()
+		var leftPellet = poo_pellets.instantiate()
 		leftPellet.damage = pelletInstance.damage
 		leftPellet.poo_speed = pelletInstance.poo_speed
 		leftPellet.distance = pelletInstance.distance
-		var rightPellet = poo_pellets.instance()
+		var rightPellet = poo_pellets.instantiate()
 		rightPellet.damage = pelletInstance.damage
 		rightPellet.poo_speed = pelletInstance.poo_speed
 		rightPellet.distance = pelletInstance.distance

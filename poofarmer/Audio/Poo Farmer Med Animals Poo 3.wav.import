@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Med Animals Poo 3.wav-1d5e1511ef3887f8eebf2a0d4a94b802.sample"
+type="AudioStreamWAV"
+uid="uid://cfufit3opfp2u"
+path="res://.godot/imported/Poo Farmer Med Animals Poo 3.wav-1d5e1511ef3887f8eebf2a0d4a94b802.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Med Animals Poo 3.wav"
-dest_files=[ "res://.import/Poo Farmer Med Animals Poo 3.wav-1d5e1511ef3887f8eebf2a0d4a94b802.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Med Animals Poo 3.wav-1d5e1511ef3887f8eebf2a0d4a94b802.sample"]
 
 [params]
 

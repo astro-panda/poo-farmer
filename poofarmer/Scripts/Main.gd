@@ -1,9 +1,9 @@
 extends Node
 
-onready var start_screen = $StartScreen
-onready var poo_pellets_manager = $PooPelletsManager
-onready var hud = $HUD
-onready var player  = get_tree().get_nodes_in_group("player")[0]
+@onready var start_screen = $StartScreen
+@onready var poo_pellets_manager = $PooPelletsManager
+@onready var hud = $HUD
+@onready var player = get_tree().get_nodes_in_group("player")[0]
 
 var animal_spawner_scene = preload("res://Scenes/Animal/AnimalSpawner.tscn")
 var enemy_spawner_scene = preload("res://Scenes/EnemySpawner.tscn")
@@ -32,10 +32,10 @@ func reset():
 		enemy_spawner = null
 	
 	if animal_spawner == null:
-		animal_spawner = animal_spawner_scene.instance()
+		animal_spawner = animal_spawner_scene.instantiate()
 	
 	if enemy_spawner == null:
-		enemy_spawner = enemy_spawner_scene.instance()
+		enemy_spawner = enemy_spawner_scene.instantiate()
 	
 	enemy_spawner.started = false
 	animal_spawner.spawn_animals = false
@@ -43,7 +43,7 @@ func reset():
 	add_child(enemy_spawner)
 	player.goboSpawner = enemy_spawner
 
-	var _player = player as Player
+	var _player = player
 	if game_started:
 		player.reset()
 		hud.reset()

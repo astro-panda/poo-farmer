@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Pistol.wav-91f6b51593418002a09f16eb974467aa.sample"
+type="AudioStreamWAV"
+uid="uid://dgrovekr4m7ry"
+path="res://.godot/imported/Pistol.wav-91f6b51593418002a09f16eb974467aa.sample"
 
 [deps]
 
 source_file="res://Audio/Weapons/Pistol.wav"
-dest_files=[ "res://.import/Pistol.wav-91f6b51593418002a09f16eb974467aa.sample" ]
+dest_files=["res://.godot/imported/Pistol.wav-91f6b51593418002a09f16eb974467aa.sample"]
 
 [params]
 

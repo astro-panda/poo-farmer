@@ -2,16 +2,16 @@ extends Node2D
 
 signal firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
 
-export (PackedScene) var poo_pellets
-export (FireMode.values) var currentFireMode = FireMode.values.Shovel
-export(Array, AudioStream) var poot_sounds
-export var cooldown: float = 0.25
-export var damage: int = 2
-export var pooSpeed: int = 7
-export var pooDistance: int = 300 
-export var cost: float = 1
-onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var poot_player = $Poot
+@export var poo_pellets: PackedScene
+@export var currentFireMode: FireMode.values = FireMode.values.Shovel
+@export var poot_sounds: Array[AudioStream]
+@export var cooldown: float = 0.25
+@export var damage: int = 2
+@export var pooSpeed: int = 7
+@export var pooDistance: int = 300 
+@export var cost: float = 1
+@onready var player = get_tree().get_nodes_in_group("player")[0]
+@onready var poot_player = $Poot
 var canFire = true
 
 
@@ -76,7 +76,7 @@ func shoot():
 	if canFire && (player.currentHoldAmount >= cost || player.disable_ammo):
 		if !player.disable_ammo:
 			player.currentHoldAmount -= cost
-		var poo_pellets_instance = poo_pellets.instance()
+		var poo_pellets_instance = poo_pellets.instantiate()
 		poo_pellets_instance.damage = damage
 		poo_pellets_instance.poo_speed = pooSpeed
 		poo_pellets_instance.distance = pooDistance

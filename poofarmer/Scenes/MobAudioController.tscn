@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bvrmf2ave4myr"]
 
-[ext_resource path="res://Scenes/MobAudioController.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Scenes/MobAudioController.gd" id="1"]
 
 [node name="MobAudioController" type="Node2D"]
-pause_mode = 1
+process_mode = 1
 visible = false
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="ActionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 max_distance = 500.0
-bus = "Animals"
+bus = &"Animals"
 
 [node name="BehaviorAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 max_distance = 500.0
-bus = "Animals"
+bus = &"Animals"
 
 [node name="BehaviorTimer" type="Timer" parent="."]
 

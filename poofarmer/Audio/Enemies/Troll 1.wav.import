@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Troll 1.wav-da6b6f62a5a234eca5cc8e4a9b889403.sample"
+type="AudioStreamWAV"
+uid="uid://cakg1lodxx8bl"
+path="res://.godot/imported/Troll 1.wav-da6b6f62a5a234eca5cc8e4a9b889403.sample"
 
 [deps]
 
 source_file="res://Audio/Enemies/Troll 1.wav"
-dest_files=[ "res://.import/Troll 1.wav-da6b6f62a5a234eca5cc8e4a9b889403.sample" ]
+dest_files=["res://.godot/imported/Troll 1.wav-da6b6f62a5a234eca5cc8e4a9b889403.sample"]
 
 [params]
 

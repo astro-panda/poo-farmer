@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export(float) var poo_speed = 4
+@export var poo_speed: float = 4
 var damage
 var fire_rate
 var attack_area

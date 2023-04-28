@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Rocket Explode.wav-09605efea6ba2040af22f1c8c9e54b84.sample"
+type="AudioStreamWAV"
+uid="uid://b2xw27offl2eq"
+path="res://.godot/imported/Rocket Explode.wav-09605efea6ba2040af22f1c8c9e54b84.sample"
 
 [deps]
 
 source_file="res://Audio/Weapons/Rocket Explode.wav"
-dest_files=[ "res://.import/Rocket Explode.wav-09605efea6ba2040af22f1c8c9e54b84.sample" ]
+dest_files=["res://.godot/imported/Rocket Explode.wav-09605efea6ba2040af22f1c8c9e54b84.sample"]
 
 [params]
 

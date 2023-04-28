@@ -1,171 +1,220 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=3 uid="uid://r6p1x51hmv01"]
 
-[ext_resource path="res://Themes/UI Theme.tres" type="Theme" id=1]
-[ext_resource path="res://Fonts/Silkscreen/slkscrb.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Images/HUD.ScatlingGun.png" type="Texture" id=3]
-[ext_resource path="res://Images/Crap-export.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/UI/Hud.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/UI/PocketCountContainer.gd" type="Script" id=6]
-[ext_resource path="res://Fonts/Silkscreen/slkscre.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Images/HUD.Silo.png" type="Texture" id=8]
-[ext_resource path="res://Images/HUD.SquareFrame.1.png" type="Texture" id=9]
-[ext_resource path="res://Images/HUD.Shovel.png" type="Texture" id=10]
-[ext_resource path="res://Images/HUD.Shotgun.png" type="Texture" id=11]
-[ext_resource path="res://Images/HUD.RocketLauncher.png" type="Texture" id=12]
-[ext_resource path="res://Images/HUD.RailGun.png" type="Texture" id=13]
-[ext_resource path="res://Images/HUD.Pistol.png" type="Texture" id=14]
-[ext_resource path="res://Images/Goblin.png" type="Texture" id=15]
-[ext_resource path="res://Audio/UI/Click.wav" type="AudioStream" id=16]
-[ext_resource path="res://Images/GoblinColorSwatch.png" type="Texture" id=17]
+[ext_resource type="Theme" uid="uid://bev8s04hvds01" path="res://Themes/UI Theme.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://ddvv3rqspw0h3" path="res://Fonts/Silkscreen/slkscrb.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://cfsopj4wqo48i" path="res://Images/HUD.ScatlingGun.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bgyl5xcjfxyjp" path="res://Images/Crap-export.png" id="4"]
+[ext_resource type="Script" path="res://Scripts/UI/Hud.gd" id="5"]
+[ext_resource type="Script" path="res://Scripts/UI/PocketCountContainer.gd" id="6"]
+[ext_resource type="FontFile" uid="uid://bx21eaoy7hrte" path="res://Fonts/Silkscreen/slkscre.ttf" id="7"]
+[ext_resource type="Texture2D" uid="uid://dlekocjf4h2yp" path="res://Images/HUD.Silo.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://d5xijwvbfe48" path="res://Images/HUD.SquareFrame.1.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://c1d2pdc6cds73" path="res://Images/HUD.Shovel.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://dw2tkcthulm4n" path="res://Images/HUD.Shotgun.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://bbxabnsn633wd" path="res://Images/HUD.RocketLauncher.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://b87tr5ugueh8x" path="res://Images/HUD.RailGun.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://b8o31l6s35llr" path="res://Images/HUD.Pistol.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://m3cmx0jnub14" path="res://Images/Goblin.png" id="15"]
+[ext_resource type="AudioStream" uid="uid://er2d5vg4qmck" path="res://Audio/UI/Click.wav" id="16"]
+[ext_resource type="Texture2D" uid="uid://b1rvokumhmqfm" path="res://Images/GoblinColorSwatch.png" id="17"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 18
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+[sub_resource type="FontFile" id="1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+fallbacks = Array[Font]([ExtResource("2"), ExtResource("2")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=6]
-size = 15
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_char = -3
-font_data = ExtResource( 7 )
+[sub_resource type="FontFile" id="6"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+fallbacks = Array[Font]([ExtResource("7"), ExtResource("7")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 resource_name = "arsenal_close"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 4.28709, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 4.28709, 1),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0, 0 ) ]
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "arsenal_open"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 0.287175, 1 ),
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 0.287175, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
 }
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 14 ) ],
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v4861"]
+_data = {
+"RESET": SubResource("5"),
+"arsenal_close": SubResource("3"),
+"arsenal_open": SubResource("4")
+}
+
+[sub_resource type="SpriteFrames" id="7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14")
+}],
 "loop": true,
-"name": "pistol",
+"name": &"pistol",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13")
+}],
 "loop": true,
-"name": "railgun",
+"name": &"railgun",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12")
+}],
 "loop": true,
-"name": "rocketlauncher",
+"name": &"rocketlauncher",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
 "loop": true,
-"name": "scatling",
+"name": &"scatling",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11")
+}],
 "loop": true,
-"name": "shatgun",
+"name": &"shatgun",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10")
+}],
 "loop": true,
-"name": "shovel",
+"name": &"shovel",
 "speed": 5.0
-} ]
+}]
 
 [node name="HUD" type="Control" groups=["hud"]]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_vertical_guides_": [ 142.0, 8.0 ]
-}
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SiloCountContainer" type="NinePatchRect" parent="CanvasLayer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 264.0
-margin_bottom = 48.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 264.0
+offset_bottom = 48.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-texture = ExtResource( 9 )
+texture = ExtResource("9")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="SiloCrudIcon" type="TextureRect" parent="CanvasLayer/SiloCountContainer"]
-margin_top = -8.0
-margin_right = 40.0
-margin_bottom = 32.0
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 1
+texture_filter = 1
+layout_mode = 0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 32.0
+texture = ExtResource("8")
+expand_mode = 1
 
 [node name="SiloCrudPoints" type="Label" parent="CanvasLayer/SiloCountContainer"]
+texture_filter = 1
+layout_mode = 0
 anchor_left = 0.156
 anchor_top = 0.5
 anchor_right = 0.156
 anchor_bottom = 0.5
-margin_left = 0.0639992
-margin_top = -20.0
-margin_right = 208.064
-margin_bottom = 20.0
-theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 1 )
+offset_left = 0.0639992
+offset_top = -20.0
+offset_right = 208.064
+offset_bottom = 20.0
+theme = ExtResource("1")
+theme_override_fonts/font = SubResource("1")
 text = "0"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PocketCountContainer" type="NinePatchRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = -1
 anchor_left = 0.012
 anchor_top = 0.128
 anchor_right = 0.012
 anchor_bottom = 0.128
-margin_left = 0.32
-margin_top = 9.92
-margin_right = 128.32
-margin_bottom = 35.92
+offset_left = 0.32
+offset_top = 9.92
+offset_right = 128.32
+offset_bottom = 35.92
 grow_horizontal = 2
 size_flags_horizontal = 3
 draw_center = false
@@ -173,215 +222,224 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-script = ExtResource( 6 )
+script = ExtResource("6")
 
 [node name="PocketCrudProgressBar" type="ProgressBar" parent="CanvasLayer/PocketCountContainer"]
-margin_left = 3.0
-margin_top = 2.0
-margin_right = 131.0
-margin_bottom = 25.0
-theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 6 )
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 131.0
+offset_bottom = 25.0
+theme = ExtResource("1")
+theme_override_fonts/font = SubResource("6")
 max_value = 10.0
 
 [node name="PocketCrudIcon" type="TextureRect" parent="CanvasLayer/PocketCountContainer"]
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 16.0
-margin_bottom = 16.0
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("4")
+expand_mode = 1
 
 [node name="GoblinCountContainer" type="NinePatchRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = -1
 anchor_left = 0.012
 anchor_top = 0.128
 anchor_right = 0.012
 anchor_bottom = 0.128
-margin_left = 395.32
-margin_top = -38.08
-margin_right = 626.32
-margin_bottom = -12.08
+offset_left = 395.32
+offset_top = -38.08
+offset_right = 626.32
+offset_bottom = -12.08
 grow_horizontal = 2
 size_flags_horizontal = 3
-texture = ExtResource( 9 )
+texture = ExtResource("9")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="GoblinWaveProgress" type="TextureProgress" parent="CanvasLayer/GoblinCountContainer"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 228.0
-margin_bottom = 23.0
+[node name="GoblinWaveProgress" type="TextureProgressBar" parent="CanvasLayer/GoblinCountContainer"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 228.0
+offset_bottom = 23.0
 value = 100.0
-texture_progress = ExtResource( 17 )
 fill_mode = 1
 nine_patch_stretch = true
+texture_progress = ExtResource("17")
 
 [node name="GoblinCountLabel" type="Label" parent="CanvasLayer/GoblinCountContainer"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 227.0
-margin_bottom = 23.0
-theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 227.0
+offset_bottom = 23.0
+theme = ExtResource("1")
+theme_override_fonts/font = SubResource("6")
 text = "0"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GoblinIcon" type="TextureRect" parent="CanvasLayer/GoblinCountContainer"]
-margin_left = 221.0
-margin_top = -18.0
-margin_right = 237.0
-margin_bottom = 18.0
-texture = ExtResource( 15 )
-expand = true
+clip_contents = true
+layout_mode = 0
+offset_left = 221.0
+offset_top = -18.0
+offset_right = 237.0
+offset_bottom = 18.0
+texture = ExtResource("15")
+expand_mode = 1
 stretch_mode = 2
 
 [node name="Arsenal Wheel" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = 4.5
-margin_bottom = 4.5
+offset_top = 4.5
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Shovel" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = -32.0
-margin_top = 47.5
-margin_right = 32.0
-margin_bottom = 111.5
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-expand = true
+layout_mode = 0
+offset_left = -32.0
+offset_top = 47.5
+offset_right = 32.0
+offset_bottom = 111.5
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("9")
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Shovel"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 52.0
-margin_bottom = 52.0
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("10")
+expand_mode = 1
 
 [node name="Pistol" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = 40.0
-margin_top = 7.5
-margin_right = 104.0
-margin_bottom = 71.5
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-expand = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 7.5
+offset_right = 104.0
+offset_bottom = 71.5
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("9")
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Pistol"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 52.0
-margin_bottom = 52.0
-texture = ExtResource( 14 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("14")
+expand_mode = 1
 
 [node name="Shatgun" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = 40.0
-margin_top = -72.5
-margin_right = 104.0
-margin_bottom = -8.5
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-expand = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = -72.5
+offset_right = 104.0
+offset_bottom = -8.5
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("9")
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Shatgun"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 52.0
-margin_bottom = 52.0
-texture = ExtResource( 11 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("11")
+expand_mode = 1
 
 [node name="ScatlingGun" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = -32.0
-margin_top = -112.5
-margin_right = 32.0
-margin_bottom = -48.5
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-expand = true
+layout_mode = 0
+offset_left = -32.0
+offset_top = -112.5
+offset_right = 32.0
+offset_bottom = -48.5
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("9")
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/ScatlingGun"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 52.0
-margin_bottom = 52.0
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("3")
+expand_mode = 1
 
 [node name="RocketLauncher" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = -104.0
-margin_top = -72.5
-margin_right = -40.0
-margin_bottom = -8.5
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-expand = true
+texture_filter = 1
+layout_mode = 0
+offset_left = -104.0
+offset_top = -72.5
+offset_right = -40.0
+offset_bottom = -8.5
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("9")
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/RocketLauncher"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 52.0
-margin_bottom = 52.0
-texture = ExtResource( 12 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("12")
+expand_mode = 1
 
 [node name="Railgun" type="TextureButton" parent="CanvasLayer/Arsenal Wheel"]
-margin_left = -104.0
-margin_top = 7.5
-margin_right = -40.0
-margin_bottom = 71.5
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-expand = true
+layout_mode = 0
+offset_left = -104.0
+offset_top = 7.5
+offset_right = -40.0
+offset_bottom = 71.5
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("9")
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Arsenal Wheel/Railgun"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 52.0
-margin_bottom = 52.0
-texture = ExtResource( 13 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("13")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Arsenal Wheel"]
-pause_mode = 2
-anims/RESET = SubResource( 5 )
-anims/arsenal_close = SubResource( 3 )
-anims/arsenal_open = SubResource( 4 )
+process_mode = 2
+libraries = {
+"": SubResource("AnimationLibrary_v4861")
+}
 
-[node name="EquippedIcon" type="AnimatedSprite" parent="CanvasLayer"]
-position = Vector2( 608, 328 )
-scale = Vector2( 2.5, 2.5 )
-frames = SubResource( 7 )
-animation = "shovel"
+[node name="EquippedIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(608, 328)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("7")
+animation = &"shovel"
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 16 )
+stream = ExtResource("16")
 volume_db = -10.0
 
 [connection signal="pressed" from="CanvasLayer/Arsenal Wheel/Shovel" to="." method="_on_Shovel_pressed"]

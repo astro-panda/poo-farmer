@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://v4pu84gypt3e"]
 
-[ext_resource path="res://Scripts/EnemySpawner.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Goblin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/GoblinsGeneration.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Troll.tscn" type="PackedScene" id=4]
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://djbxm66ad3ocs" path="res://Scenes/Goblin.tscn" id="2"]
+[ext_resource type="Script" path="res://Scripts/GoblinsGeneration.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://wixj88qmc85l" path="res://Scenes/Troll.tscn" id="4"]
 
 [node name="EnemySpawner" type="Node" groups=["spawner_enemy"]]
-script = ExtResource( 1 )
-goblin_enemy_scene = ExtResource( 2 )
-troll_enemy_scene = ExtResource( 4 )
+script = ExtResource("1")
+goblin_enemy_scene = ExtResource("2")
+troll_enemy_scene = ExtResource("4")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
@@ -19,7 +19,7 @@ one_shot = true
 [node name="HudUpdateTimer" type="Timer" parent="."]
 
 [node name="Goblins" type="Node" parent="." groups=["gobo_population"]]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="Trolls" type="Node" parent="." groups=["troll_population"]]
 

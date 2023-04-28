@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poo Farmer Gnome Speech 1.wav-aba23249921a755edefcd02a9d0f6f8a.sample"
+type="AudioStreamWAV"
+uid="uid://61uehd6hyhaw"
+path="res://.godot/imported/Poo Farmer Gnome Speech 1.wav-aba23249921a755edefcd02a9d0f6f8a.sample"
 
 [deps]
 
 source_file="res://Audio/Poo Farmer Gnome Speech 1.wav"
-dest_files=[ "res://.import/Poo Farmer Gnome Speech 1.wav-aba23249921a755edefcd02a9d0f6f8a.sample" ]
+dest_files=["res://.godot/imported/Poo Farmer Gnome Speech 1.wav-aba23249921a755edefcd02a9d0f6f8a.sample"]
 
 [params]
 
