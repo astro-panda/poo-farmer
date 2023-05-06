@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Pooters/PistolPooter.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Audio/Weapons/Pistol.wav" type="AudioStream" id=3]
+
+[node name="PistolPooter" type="Node2D"]
+script = ExtResource( 1 )
+poo_pellets = ExtResource( 2 )
+currentFireMode = 1
+poot_sounds = [ ExtResource( 3 ) ]
+cooldown = 0.2
+damage = 4
+pooSpeed = 10
+pooDistance = 200
+cost = 0.1
+
+[node name="FireCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="PootSound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="FireCooldown" to="." method="_on_FireCooldown_timeout"]
