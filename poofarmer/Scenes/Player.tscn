@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Images/Farmer.png" type="Texture" id=2]
@@ -9,16 +9,7 @@
 [ext_resource path="res://Images/Speechbox.png" type="Texture" id=7]
 [ext_resource path="res://Images/HUD.Silo.png" type="Texture" id=8]
 [ext_resource path="res://Images/Arrow.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Pooter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Audio/Weapons/Shovel 2.wav" type="AudioStream" id=11]
-[ext_resource path="res://Audio/Weapons/Shovel 1.wav" type="AudioStream" id=12]
-[ext_resource path="res://Audio/Weapons/Pistol.wav" type="AudioStream" id=13]
-[ext_resource path="res://Audio/Weapons/Shatgun.wav" type="AudioStream" id=14]
-[ext_resource path="res://Audio/Weapons/Rocket Launch.wav" type="AudioStream" id=15]
-[ext_resource path="res://Audio/Weapons/Rocket Explode.wav" type="AudioStream" id=16]
-[ext_resource path="res://Audio/Weapons/Scatling 2.wav" type="AudioStream" id=17]
-[ext_resource path="res://Audio/Weapons/Scatling 1.wav" type="AudioStream" id=18]
-[ext_resource path="res://Audio/Weapons/Railgun.wav" type="AudioStream" id=19]
+[ext_resource path="res://Scenes/Pooters/Pooter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Images/Goblin.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=22]
@@ -228,48 +219,31 @@ drag_margin_bottom = 0.3
 editor_draw_drag_margin = true
 
 [node name="ShovelPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
-poot_sounds = [ ExtResource( 12 ), ExtResource( 11 ) ]
 
 [node name="Poot" type="AudioStreamPlayer" parent="ShovelPooter"]
 bus = "Poots"
 
 [node name="PistolPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
-currentFireMode = 1
-poot_sounds = [ ExtResource( 13 ) ]
 
 [node name="Poot" type="AudioStreamPlayer" parent="PistolPooter"]
 bus = "Poots"
 
 [node name="ShatgunPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
-currentFireMode = 2
-poot_sounds = [ ExtResource( 14 ) ]
 
 [node name="Poot" type="AudioStreamPlayer" parent="ShatgunPooter"]
 bus = "Poots"
 
 [node name="RocketLauncherPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
-currentFireMode = 3
-poot_sounds = [ ExtResource( 15 ), ExtResource( 16 ) ]
 
 [node name="Poot" type="AudioStreamPlayer" parent="RocketLauncherPooter"]
 bus = "Poots"
 
 [node name="ScatlingPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
-currentFireMode = 4
-poot_sounds = [ ExtResource( 18 ), ExtResource( 17 ) ]
 
 [node name="Poot" type="AudioStreamPlayer" parent="ScatlingPooter"]
 bus = "Poots"
 
 [node name="RailgunPooter" parent="." instance=ExtResource( 10 )]
-poo_pellets = ExtResource( 3 )
-currentFireMode = 5
-poot_sounds = [ ExtResource( 19 ) ]
 
 [node name="Poot" type="AudioStreamPlayer" parent="RailgunPooter"]
 bus = "Poots"
@@ -281,10 +255,4 @@ actions = [ ExtResource( 6 ), ExtResource( 5 ) ]
 wait_time = 0.1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="firePoo" from="ShovelPooter" to="." method="_firePoo"]
-[connection signal="firePoo" from="PistolPooter" to="." method="_firePoo"]
-[connection signal="firePoo" from="ShatgunPooter" to="." method="_firePoo"]
-[connection signal="firePoo" from="RocketLauncherPooter" to="." method="_firePoo"]
-[connection signal="firePoo" from="ScatlingPooter" to="." method="_firePoo"]
-[connection signal="firePoo" from="RailgunPooter" to="." method="_firePoo"]
 [connection signal="timeout" from="GameOnTimer" to="." method="_on_GameOnTimer_timeout"]
