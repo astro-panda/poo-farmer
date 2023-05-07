@@ -58,7 +58,7 @@ func _on_Visibility_area_entered(area):
 			if(is_instance_valid(area) && !currentPooTargets.has(area)):
 				currentPooTargets.push_back(area)
 		if (area.is_in_group("player")):
-			playerHasPoo = player.currentHoldAmount > 0
+			playerHasPoo = GlobalState.player_current_hold_amount > 0
 			playerNearby = true
 
 func _on_Visibility_area_exited(area):
@@ -87,7 +87,7 @@ func start_StealTimer():
 func _on_StealTimer_timeout():
 	player.steal_poo(stealAmount)
 	audio_ctrl.act(0)
-	if(player.currentHoldAmount == 0):
+	if(GlobalState.player_current_hold_amount == 0):
 		playerNearby = false
 
 func handle_hit(damage, poo):

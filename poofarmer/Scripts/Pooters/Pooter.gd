@@ -2,6 +2,7 @@ extends Node2D
 class_name Pooter
 
 signal firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
+signal on_ammo_used(used_amount)
 
 export(PackedScene) var poo_pellets
 export(FireMode.values) var currentFireMode = FireMode.values.Shovel
@@ -10,23 +11,24 @@ export var enabled: bool = true
 export var cooldown: float = 0.25
 export var damage: int = 2
 export var pooSpeed: int = 7
-export var pooDistance: int = 300 
+export var pooDistance: int = 300
 export var cost: float = 1
+export var ammo_max: float = 10
 
-onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var poot_player = $PootSound
 onready var poo_pellets_manager = get_tree().get_nodes_in_group("poo_pellets_manager")[0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cost *= player.holdCapacity
+	cost *= ammo_max
 	$FireCooldown.wait_time = cooldown
-	connect("firePoo", poo_pellets_manager, "_on_Player_firePoo")
+	connect("firePoo", poo_pellets_manager, "_on_firePoo")
 
 func shoot(target: Vector2, currentAmmo: float, inifite_ammo: bool):
 	if enabled && (currentAmmo >= cost || inifite_ammo):
 		if !inifite_ammo:
 			currentAmmo -= cost
+			emit_signal("on_ammo_used", cost)
 		
 		var poo_pellets_instance = poo_pellets.instance()
 		poo_pellets_instance.damage = damage

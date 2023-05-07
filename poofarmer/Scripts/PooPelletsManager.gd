@@ -4,7 +4,7 @@ extends Node2D
 export (PackedScene) var poo_pellets
 
 
-func _on_Player_firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
+func _on_firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
 	if fireMode == FireMode.values.Shatgun:
 		var leftPellet = poo_pellets.instance()
 		leftPellet.damage = pelletInstance.damage

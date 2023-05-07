@@ -9,12 +9,7 @@ signal game_on()
 # Declare member variables here. Examples:
 export (PackedScene) var poo_pellets
 export var speed = 250
-export var holdCapacity = 10
-export var goblinStealAmount = 5
-export var currentHoldAmount = 0
-export var totalPooAmount = 0
 var screen_size
-var gross_poo_harvested = 0
 var shoot_enabled = false
 
 var fireModes = [FireMode.values.Shovel]
@@ -62,21 +57,19 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("deep_pockets"):
 			arsenal.infinite_ammo = !arsenal.infinite_ammo
 		if Input.is_action_just_pressed("shovel"):
-			equippedFireMode = FireMode.values.Shovel
+			arsenal.select_weapon(FireMode.values.Shovel)
 		if Input.is_action_just_pressed("pistol"):
-			equippedFireMode = FireMode.values.Pistol
+			arsenal.select_weapon(FireMode.values.Pistol)
 		if Input.is_action_just_pressed("shatgun"):
-			equippedFireMode = FireMode.values.Shatgun
+			arsenal.select_weapon(FireMode.values.Shatgun)
 		if Input.is_action_just_pressed("scatling"):
-			equippedFireMode = FireMode.values.Scatling
+			arsenal.select_weapon(FireMode.values.Scatling)
 		if Input.is_action_just_pressed("launcher"):
-			equippedFireMode = FireMode.values.RocketLauncher
+			arsenal.select_weapon(FireMode.values.RocketLauncher)
 		if Input.is_action_just_pressed("railgun"):
-			equippedFireMode = FireMode.values.Railgun
+			arsenal.select_weapon(FireMode.values.Railgun)
 		if Input.is_action_just_pressed("gobodar"):
 			gobodarOverride = !gobodarOverride
-		
-		arsenal.select_weapon(equippedFireMode)
 		
 	if velocity.x > 0:
 		$PlayerSprite.animation = "right"
@@ -112,7 +105,7 @@ func _physics_process(_delta):
 	else:
 		goboSpeech.visible = false
 		
-	if (currentHoldAmount == holdCapacity):
+	if (GlobalState.player_current_hold_amount >= GlobalState.player_hold_Capacity):
 		show_speech(silo_subItem, silo)
 	else:
 		speech.visible = false
@@ -120,10 +113,10 @@ func _physics_process(_delta):
 
 func _on_Area2D_area_entered(body):
 	if (body.is_in_group("poo")):
-		if (currentHoldAmount < holdCapacity):
+		if (GlobalState.player_current_hold_amount < GlobalState.player_hold_Capacity):
 			var poo = body as Poo
-			var pooToAdd = clamp(poo.pooValue, 0, holdCapacity - currentHoldAmount)
-			currentHoldAmount += pooToAdd		
+			var pooToAdd = clamp(poo.pooValue, 0, GlobalState.player_hold_Capacity - GlobalState.player_current_hold_amount)
+			GlobalState.player_current_hold_amount += pooToAdd		
 			audio_ctrl.act(0) # the Poo pick up sound
 			if(pooToAdd != poo.pooValue):
 				poo.pooValue -= pooToAdd
@@ -134,18 +127,18 @@ func _on_Area2D_area_entered(body):
 					goblin.removePooFromTargets(body, false)
 				poo.destroy()
 		
-	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
+	emit_signal("playerSendCurrentHoldAmount", GlobalState.player_current_hold_amount)
 	
 func dump_poo_in_silo():	
-	if currentHoldAmount > 0:
+	if GlobalState.player_current_hold_amount > 0:
 		audio_ctrl.act(1) # the Poo drop sound
 	
-	gross_poo_harvested += currentHoldAmount
+	GlobalState.total_poo_collected += GlobalState.player_current_hold_amount
 	
-	totalPooAmount += currentHoldAmount
-	currentHoldAmount = 0
-	hud.update_global_poo_label(totalPooAmount)
-	if totalPooAmount > 0:
+	GlobalState.total_poo_amount += GlobalState.player_current_hold_amount
+	GlobalState.player_current_hold_amount
+	hud.update_global_poo_label(GlobalState.total_poo_amount)
+	if GlobalState.total_poo_amount > 0:
 		$GameOnTimer.start()
 
 func _on_Player_body_entered(body):
@@ -154,13 +147,12 @@ func _on_Player_body_entered(body):
 		body.start_StealTimer()
 
 func steal_poo(stealAmount: int):
-	currentHoldAmount = clamp(currentHoldAmount - stealAmount, 0, currentHoldAmount)	
-	emit_signal("playerSendCurrentHoldAmount", currentHoldAmount)
+	GlobalState.player_current_hold_amount = clamp(GlobalState.player_current_hold_amount - GlobalState.goblin_steal_amount, 0, GlobalState.player_current_hold_amount)	
+	emit_signal("playerSendCurrentHoldAmount", GlobalState.player_current_hold_amount)
 
 
 func _on_Goblin_global_poo_stolen(stealAmount):
-	totalPooAmount = max(0, totalPooAmount - stealAmount)
-	hud.update_global_poo_label(totalPooAmount)
+	GlobalState.total_poo_amount = max(0, GlobalState.total_poo_amount - GlobalState.goblin_steal_amount)
 
 func show_speech(subitem, target):
 	for item in subItems:
@@ -178,18 +170,15 @@ func game_over():
 	get_tree().paused = true
 	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 	var wave_count = "Waves survived: " + str(clamp(enemy_spawner.wave_count - 1, 0, enemy_spawner.wave_count)) + ", nice!"
-	var gross_poo = "You harvested " + str(gross_poo_harvested) + " poo with your hands.... gross..."
+	var gross_poo = "You harvested " + str(GlobalState.total_poo_collected) + " poo with your hands.... gross..."
 	$ModalWindow.display_game_over(wave_count, gross_poo)
 
 func _on_GameOnTimer_timeout():
-	if totalPooAmount <= 0:
+	if GlobalState.total_poo_amount <= 0:
 		game_over()
 
-
 func reset():
-	position = Vector2(1406, 1619)
-	currentHoldAmount = 0
-	totalPooAmount = 0
+	position = Vector2(1406, 1619)	
 	fireModes = [FireMode.values.Shovel]
 	equippedFireMode = FireMode.values.Shovel
 	$GameOnTimer.stop()
