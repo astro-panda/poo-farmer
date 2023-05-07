@@ -11,27 +11,32 @@ func _ready():
 	$Head/TurretHead.texture = turret_head_texture	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	if !current_target:
-		acquire_target()
-	else:
-		fire()
+func _physics_process(delta):	
+	acquire_target()
+	fire()
 
 func fire():
-	$Head/Pooter.poot()
+	if current_target:
+		$Head/Pooter.shoot(current_target.global_position, ammo, false)
 
 func acquire_target():
+	var closest_enemy
+	var enemies = []
+	var overlaps = $Visibility.get_overlapping_bodies()
+
+	for overlap in overlaps:
+		if overlap.is_in_group("enemy"):
+			enemies.push_back(overlap)
+			
+	var target_in_range = enemies.find(current_target)	
+
+	if target_in_range < 0:
+		current_target = null
+
 	if !current_target:
-		var enemies = []
-		var overlaps = get_overlapping_bodies()
-
-		for overlap in overlaps:
-			if overlap.is_in_group("enemy"):
-				enemies.push_back(overlap)
-
 		if enemies.size() > 0:
 			# Assuming the first is the closest only to validate in a moment
-			var closest_enemy = enemies[0];
+			closest_enemy = enemies[0];
 			var assumed_closest_distance = 0;
 			var current_enemy_distance = 0;
 
@@ -42,6 +47,9 @@ func acquire_target():
 				if current_enemy_distance < assumed_closest_distance:
 					closest_enemy = enemy
 
-			global_rotation = global_position.angle_to_point(closest_enemy.global_position) + 1.5708
-			
 			current_target = closest_enemy
+	else:
+		closest_enemy = current_target
+	
+	if closest_enemy:		
+		$Head.global_rotation = $Head.global_position.angle_to_point(closest_enemy.global_position) - 1.5708

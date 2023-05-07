@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/PooFarmerMap.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Scripts/GnomePath.gd" type="Script" id=17]
 [ext_resource path="res://Scripts/PooPelletsManager.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/UI/StartScreen.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Goblin.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1536, 1536 )
@@ -139,7 +140,7 @@ centered = false
 
 [node name="PooSpawner" parent="." instance=ExtResource( 15 )]
 
-[node name="PooPelletsManager" type="Node2D" parent="."]
+[node name="PooPelletsManager" type="Node2D" parent="." groups=["poo_pellets_manager"]]
 script = ExtResource( 18 )
 poo_pellets = ExtResource( 11 )
 
@@ -195,6 +196,7 @@ position = Vector2( 1406, 1619 )
 __meta__ = {
 "_edit_group_": true
 }
+currentHoldAmount = 10
 
 [node name="ModalWindow" parent="Player" instance=ExtResource( 9 )]
 visible = false
@@ -225,6 +227,18 @@ one_shot = true
 
 [node name="Turret" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1697, 1702 )
+
+[node name="Goblin" parent="Turret" instance=ExtResource( 20 )]
+position = Vector2( -231, 298 )
+
+[node name="Goblin2" parent="Turret" instance=ExtResource( 20 )]
+position = Vector2( 222, 168 )
+
+[node name="Goblin3" parent="Turret" instance=ExtResource( 20 )]
+position = Vector2( 148, -152 )
+
+[node name="Goblin4" parent="Turret" instance=ExtResource( 20 )]
+position = Vector2( 148, -152 )
 
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Store" method="_on_Gnome_store_opened"]
 [connection signal="firePoo" from="Player" to="PooPelletsManager" method="_on_Player_firePoo"]

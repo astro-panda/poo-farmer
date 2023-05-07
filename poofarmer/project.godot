@@ -89,6 +89,7 @@ _global_script_class_icons={
 config/name="Poo Farmer"
 run/main_scene="res://Scenes/Main.tscn"
 boot_splash/image="res://Images/TitleScreen.png"
+boot_splash/use_filter=false
 config/icon="res://Images/Crap-export.png"
 
 [display]
