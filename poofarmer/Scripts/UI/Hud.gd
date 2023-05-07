@@ -43,7 +43,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			Engine.time_scale = 1
 		
 	emit_signal("arsenal_state_changed", arsenal_pressed)
-
+	
+func _process(delta):
+	update_global_poo_label(GlobalState.total_poo_amount)
 
 func update_global_poo_label(totalPooAmount):
 	silo_crud_points.text = str(totalPooAmount)

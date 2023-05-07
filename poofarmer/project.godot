@@ -92,6 +92,10 @@ boot_splash/image="res://Images/TitleScreen.png"
 boot_splash/use_filter=false
 config/icon="res://Images/Crap-export.png"
 
+[autoload]
+
+GlobalState="*res://Scenes/GlobalState.tscn"
+
 [display]
 
 window/size/width=640

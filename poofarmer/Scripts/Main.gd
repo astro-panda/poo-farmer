@@ -45,9 +45,9 @@ func reset():
 
 	var _player = player as Player
 	if game_started:
+		GlobalState.reset()
 		player.reset()
 		hud.reset()
-		
 		enemy_spawner.started = true
 		animal_spawner.spawn_animals = true
 
