@@ -9,7 +9,7 @@
 [ext_resource path="res://Images/Speechbox.png" type="Texture" id=7]
 [ext_resource path="res://Images/HUD.Silo.png" type="Texture" id=8]
 [ext_resource path="res://Images/Arrow.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Pooters/Pooter.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Pooters/PooterArsenal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Images/Goblin.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=22]
@@ -161,7 +161,7 @@ shape = SubResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "down"
-frame = 3
+frame = 2
 playing = true
 
 [node name="SpeechBubble" type="AnimatedSprite" parent="PlayerSprite"]
@@ -218,35 +218,7 @@ drag_margin_right = 0.4
 drag_margin_bottom = 0.3
 editor_draw_drag_margin = true
 
-[node name="ShovelPooter" parent="." instance=ExtResource( 10 )]
-
-[node name="Poot" type="AudioStreamPlayer" parent="ShovelPooter"]
-bus = "Poots"
-
-[node name="PistolPooter" parent="." instance=ExtResource( 10 )]
-
-[node name="Poot" type="AudioStreamPlayer" parent="PistolPooter"]
-bus = "Poots"
-
-[node name="ShatgunPooter" parent="." instance=ExtResource( 10 )]
-
-[node name="Poot" type="AudioStreamPlayer" parent="ShatgunPooter"]
-bus = "Poots"
-
-[node name="RocketLauncherPooter" parent="." instance=ExtResource( 10 )]
-
-[node name="Poot" type="AudioStreamPlayer" parent="RocketLauncherPooter"]
-bus = "Poots"
-
-[node name="ScatlingPooter" parent="." instance=ExtResource( 10 )]
-
-[node name="Poot" type="AudioStreamPlayer" parent="ScatlingPooter"]
-bus = "Poots"
-
-[node name="RailgunPooter" parent="." instance=ExtResource( 10 )]
-
-[node name="Poot" type="AudioStreamPlayer" parent="RailgunPooter"]
-bus = "Poots"
+[node name="PooterArsenal" parent="." instance=ExtResource( 10 )]
 
 [node name="MobAudioController" parent="." instance=ExtResource( 4 )]
 actions = [ ExtResource( 6 ), ExtResource( 5 ) ]

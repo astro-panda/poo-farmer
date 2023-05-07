@@ -49,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/MobAudioController.gd"
 }, {
-"base": "Pooter",
-"class": "PistolPooter",
-"language": "GDScript",
-"path": "res://Scripts/Pooters/PistolPooter.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -73,31 +68,6 @@ _global_script_classes=[ {
 "class": "PooterArsenal",
 "language": "GDScript",
 "path": "res://Scripts/Pooters/PooterArsenal.gd"
-}, {
-"base": "Pooter",
-"class": "RailgunPooter",
-"language": "GDScript",
-"path": "res://Scripts/Pooters/RailgunPooter.gd"
-}, {
-"base": "Pooter",
-"class": "RocketPooter",
-"language": "GDScript",
-"path": "res://Scripts/Pooters/RocketPooter.gd"
-}, {
-"base": "Pooter",
-"class": "ScatlingPooter",
-"language": "GDScript",
-"path": "res://Scripts/Pooters/ScatlingPooter.gd"
-}, {
-"base": "Pooter",
-"class": "ShatgunPooter",
-"language": "GDScript",
-"path": "res://Scripts/Pooters/ShatgunPooter.gd"
-}, {
-"base": "Pooter",
-"class": "ShovelPooter",
-"language": "GDScript",
-"path": "res://Scripts/Pooters/ShovelPooter.gd"
 } ]
 _global_script_class_icons={
 "AnimalType": "",
@@ -108,16 +78,10 @@ _global_script_class_icons={
 "HitBox": "",
 "HurtBox": "",
 "MobAudioController": "",
-"PistolPooter": "",
 "Player": "",
 "Poo": "",
 "Pooter": "",
-"PooterArsenal": "",
-"RailgunPooter": "",
-"RocketPooter": "",
-"ScatlingPooter": "",
-"ShatgunPooter": "",
-"ShovelPooter": ""
+"PooterArsenal": ""
 }
 
 [application]
