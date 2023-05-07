@@ -1,6 +1,9 @@
 extends Node2D
 class_name PooterArsenal
 
+export var ammo: int = 0
+export var infinite_ammo: bool = false
+
 onready var shovel = $ShovelPooter
 onready var pistol = $PistolPooter
 onready var shatgun = $ShatgunPooter
@@ -28,3 +31,6 @@ func _ready():
 
 func select_weapon(type: FireMode):
 	currentWeapon = pooters[type]
+	
+func fire():
+	currentWeapon.shoot(ammo, infinite_ammo)

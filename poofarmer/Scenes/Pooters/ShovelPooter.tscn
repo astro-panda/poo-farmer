@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/Pooters/ShovelPooter.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Pooters/Pooter.gd" type="Script" id=1]
 
 [node name="ShovelPooter" type="Node2D"]
 script = ExtResource( 1 )
-poo_pellets = ExtResource( 4 )
+pooDistance = 100
+cost = 0.1
 
 [node name="FireCooldown" type="Timer" parent="."]
 one_shot = true

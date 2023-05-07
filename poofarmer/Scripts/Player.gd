@@ -16,7 +16,6 @@ export var totalPooAmount = 0
 var screen_size
 var gross_poo_harvested = 0
 var shoot_enabled = false
-var disable_ammo = false
 
 var fireModes = [FireMode.values.Shovel]
 export(FireMode.values) var equippedFireMode = FireMode.values.Shovel
@@ -30,21 +29,7 @@ onready var game_on_timer = $GameOnTimer
 onready var audio_ctrl = $MobAudioController
 onready var speech = $PlayerSprite/SpeechBubble
 onready var arrow_handle = $PlayerSprite/SpeechBubble/ArrowHandle
-onready var shovelPooter = $ShovelPooter
-onready var pistolPooter = $PistolPooter
-onready var shatgunPooter = $ShatgunPooter
-onready var rocketLauncherPooter = $RocketLauncherPooter
-onready var scatlingPooter = $ScatlingPooter
-onready var railgunPooter = $RailgunPooter
-
-onready var pooterDict = {
-	FireMode.values.Shovel: shovelPooter,
-	FireMode.values.Pistol: pistolPooter,
-	FireMode.values.Shatgun: shatgunPooter,
-	FireMode.values.RocketLauncher: rocketLauncherPooter,
-	FireMode.values.Scatling: scatlingPooter,
-	FireMode.values.Railgun: railgunPooter
-}
+onready var arsenal = $PooterArsenal
 
 onready var silo_subItem = $PlayerSprite/SpeechBubble/Silo
 
@@ -58,9 +43,9 @@ var subItems = [silo_subItem]
 func _ready():
 	screen_size = Vector2(3072, 3072)
 
-func _physics_process(_delta):
+func _physics_process(_delta):	
 	if shoot_enabled && Input.is_action_pressed("player_fire"):
-		pooterDict[equippedFireMode].shoot()
+		arsenal.shoot()
 		
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
@@ -75,7 +60,7 @@ func _physics_process(_delta):
 	# shhhhh our little secret
 	if Input.is_action_pressed("modifier"):
 		if Input.is_action_just_pressed("deep_pockets"):
-			disable_ammo = !disable_ammo
+			arsenal.infinite_ammo = !arsenal.infinite_ammo
 		if Input.is_action_just_pressed("shovel"):
 			equippedFireMode = FireMode.values.Shovel
 		if Input.is_action_just_pressed("pistol"):
@@ -90,6 +75,8 @@ func _physics_process(_delta):
 			equippedFireMode = FireMode.values.Railgun
 		if Input.is_action_just_pressed("gobodar"):
 			gobodarOverride = !gobodarOverride
+		
+		arsenal.select_weapon(equippedFireMode)
 		
 	if velocity.x > 0:
 		$PlayerSprite.animation = "right"
@@ -206,8 +193,6 @@ func reset():
 	fireModes = [FireMode.values.Shovel]
 	equippedFireMode = FireMode.values.Shovel
 	$GameOnTimer.stop()
-	
-
 
 func _firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
 	emit_signal("firePoo", pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
