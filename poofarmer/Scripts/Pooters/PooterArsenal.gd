@@ -30,7 +30,8 @@ func _ready():
 
 
 func select_weapon(type: FireMode):
-	currentWeapon = pooters[type]
+	currentWeapon = pooters[type]	
+
 	
-func fire():
-	currentWeapon.shoot(ammo, infinite_ammo)
+func shoot():
+	currentWeapon.shoot(get_global_mouse_position(), ammo, infinite_ammo)

@@ -21,7 +21,7 @@ func _ready():
 	
 func reset():
 	get_tree().call_group("poo", "queue_free")
-	get_tree().call_group("goblin", "queue_free")	
+	#get_tree().call_group("goblin", "queue_free")
 	
 	if animal_spawner != null:
 		animal_spawner.queue_free()

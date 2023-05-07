@@ -14,14 +14,16 @@ export var pooDistance: int = 300
 export var cost: float = 1
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var poot_player = $Poot
+onready var poot_player = $PootSound
+onready var poo_pellets_manager = get_tree().get_nodes_in_group("poo_pellets_manager")[0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	cost *= player.holdCapacity
 	$FireCooldown.wait_time = cooldown
+	connect("firePoo", poo_pellets_manager, "_on_Player_firePoo")
 
-func shoot(currentAmmo: float, inifite_ammo: bool):
+func shoot(target: Vector2, currentAmmo: float, inifite_ammo: bool):
 	if enabled && (currentAmmo >= cost || inifite_ammo):
 		if !inifite_ammo:
 			currentAmmo -= cost
@@ -31,7 +33,6 @@ func shoot(currentAmmo: float, inifite_ammo: bool):
 		poo_pellets_instance.poo_speed = pooSpeed
 		poo_pellets_instance.distance = pooDistance
 		
-		var target = get_global_mouse_position()
 		var direction_to_mouse = global_position.direction_to(target).normalized()
 		emit_signal("firePoo", poo_pellets_instance, global_position, direction_to_mouse, target, currentFireMode)
 		enabled = false
