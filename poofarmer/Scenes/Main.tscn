@@ -229,31 +229,19 @@ one_shot = true
 position = Vector2( 1697, 1702 )
 
 [node name="Goblin" parent="Turret" instance=ExtResource( 20 )]
-position = Vector2( -231, 298 )
+position = Vector2( -140, -53 )
 
 [node name="Goblin2" parent="Turret" instance=ExtResource( 20 )]
-position = Vector2( 222, 168 )
+position = Vector2( -103, -70 )
 
 [node name="Goblin3" parent="Turret" instance=ExtResource( 20 )]
-position = Vector2( 148, -152 )
+position = Vector2( -139, -26 )
 
 [node name="Goblin4" parent="Turret" instance=ExtResource( 20 )]
-position = Vector2( 148, -152 )
+position = Vector2( -103, -35 )
 
 [node name="RocketTurret" parent="Turret" instance=ExtResource( 24 )]
 position = Vector2( 10, -127 )
-infinite_ammo = true
-
-[node name="RocketTurret2" parent="Turret" instance=ExtResource( 24 )]
-position = Vector2( -25, 84 )
-infinite_ammo = true
-
-[node name="RocketTurret3" parent="Turret" instance=ExtResource( 24 )]
-position = Vector2( -313, 20 )
-infinite_ammo = true
-
-[node name="RocketTurret4" parent="Turret" instance=ExtResource( 24 )]
-position = Vector2( -332, -159 )
 infinite_ammo = true
 
 [connection signal="store_opened" from="GnomePath/PathFollow2D/Gnome" to="Store" method="_on_Gnome_store_opened"]
