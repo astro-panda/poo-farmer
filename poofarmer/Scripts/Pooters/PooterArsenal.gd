@@ -1,7 +1,6 @@
 extends Node2D
 class_name PooterArsenal
 
-export var ammo: int = 0
 export var infinite_ammo: bool = false
 
 onready var shovel = $ShovelPooter
@@ -28,10 +27,11 @@ func _ready():
 	
 	currentWeapon = pooters[FireMode.values.Shovel]
 
-
-func select_weapon(type: FireMode):
-	currentWeapon = pooters[type]	
-
+func select_weapon(type):
+	var the_pooter = pooters[type]
 	
+	if the_pooter && the_pooter.enabled:
+		currentWeapon = pooters[type]
+
 func shoot():
-	currentWeapon.shoot(get_global_mouse_position(), ammo, infinite_ammo)
+	currentWeapon.shoot(get_global_mouse_position(), GlobalState.player_current_hold_amount, infinite_ammo)

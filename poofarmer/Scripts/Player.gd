@@ -10,7 +10,7 @@ signal game_on()
 export (PackedScene) var poo_pellets
 export var speed = 250
 var screen_size
-var shoot_enabled = false
+var shoot_enabled = true
 
 var fireModes = [FireMode.values.Shovel]
 export(FireMode.values) var equippedFireMode = FireMode.values.Shovel
@@ -166,7 +166,7 @@ func show_speech(subitem, target):
 		var angle = arrow_handle.global_position.angle_to_point(target.global_position)
 		arrow_handle.rotation = angle
 
-func game_over():	
+func game_over():
 	get_tree().paused = true
 	var enemy_spawner = get_tree().get_nodes_in_group("spawner_enemy")[0]
 	var wave_count = "Waves survived: " + str(clamp(enemy_spawner.wave_count - 1, 0, enemy_spawner.wave_count)) + ", nice!"
@@ -178,7 +178,7 @@ func _on_GameOnTimer_timeout():
 		game_over()
 
 func reset():
-	position = Vector2(1406, 1619)	
+	position = Vector2(1406, 1619)
 	fireModes = [FireMode.values.Shovel]
 	equippedFireMode = FireMode.values.Shovel
 	$GameOnTimer.stop()

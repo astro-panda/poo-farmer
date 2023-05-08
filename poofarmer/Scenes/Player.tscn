@@ -161,7 +161,7 @@ shape = SubResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "down"
-frame = 2
+frame = 1
 playing = true
 
 [node name="SpeechBubble" type="AnimatedSprite" parent="PlayerSprite"]
@@ -219,6 +219,7 @@ drag_margin_bottom = 0.3
 editor_draw_drag_margin = true
 
 [node name="PooterArsenal" parent="." instance=ExtResource( 10 )]
+infinite_ammo = false
 
 [node name="MobAudioController" parent="." instance=ExtResource( 4 )]
 actions = [ ExtResource( 6 ), ExtResource( 5 ) ]

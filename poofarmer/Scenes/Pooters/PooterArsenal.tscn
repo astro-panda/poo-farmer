@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Pooters/ShovelPooter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Pooters/PistolPooter.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Scenes/Pooters/ScatlingPooter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Pooters/ShatgunPooter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Pooters/PooterArsenal.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/PooPellets.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Audio/Weapons/Shovel 1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/Weapons/Shovel 2.wav" type="AudioStream" id=10]
 
 [node name="PooterArsenal" type="Node2D"]
 script = ExtResource( 7 )
@@ -22,3 +25,5 @@ script = ExtResource( 7 )
 [node name="ShatgunPooter" parent="." instance=ExtResource( 6 )]
 
 [node name="ShovelPooter" parent="." instance=ExtResource( 1 )]
+poo_pellets = ExtResource( 8 )
+poot_sounds = [ ExtResource( 9 ), ExtResource( 10 ) ]
