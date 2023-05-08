@@ -12,8 +12,7 @@ export var speed = 250
 var screen_size
 var shoot_enabled = true
 
-var fireModes = [FireMode.values.Shovel]
-export(FireMode.values) var equippedFireMode = FireMode.values.Shovel
+export(FireMode.values) var equipped_fire_mode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
@@ -37,6 +36,7 @@ var subItems = [silo_subItem]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = Vector2(3072, 3072)
+	arsenal.select_weapon(equipped_fire_mode)
 
 func _physics_process(_delta):	
 	if shoot_enabled && Input.is_action_pressed("player_fire"):
@@ -178,14 +178,15 @@ func _on_GameOnTimer_timeout():
 		game_over()
 
 func reset():
-	position = Vector2(1406, 1619)
-	fireModes = [FireMode.values.Shovel]
-	equippedFireMode = FireMode.values.Shovel
+	position = Vector2(1406, 1619)		
 	$GameOnTimer.stop()
 
 func _firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
 	emit_signal("firePoo", pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode)
 
-
 func _on_shoot_enabled_changed(open):
 	shoot_enabled = !open
+	
+func enable_weapon(type):
+	arsenal.enable_weapon(type)	
+
