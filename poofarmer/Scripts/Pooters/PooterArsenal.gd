@@ -32,6 +32,24 @@ func select_weapon(type):
 	
 	if the_pooter && the_pooter.enabled:
 		currentWeapon = pooters[type]
+		
+func enable_weapon(type):
+	var the_pooter = pooters[type]
+	
+	if the_pooter:
+		the_pooter.enabled = true
 
+func disable_weapon(type):
+	var the_pooter = pooters[type]
+	
+	if the_pooter:
+		the_pooter.enabled = false
+		
+		
+
+
+	
+
+	
 func shoot():
 	currentWeapon.shoot(get_global_mouse_position(), GlobalState.player_current_hold_amount, infinite_ammo)

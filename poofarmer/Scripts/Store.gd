@@ -31,14 +31,14 @@ func _unhandled_input(event):
 
 func _on_Gnome_store_opened(opened):
 	if opened:
-		check_btns()		
-		pooCount.text = str(player.totalPooAmount)
+		check_btns()
+		pooCount.text = str(GlobalState.total_poo_amount)
 		show_store(true)
 		
 func check_btns():
 	for j in listOfButtons.size():
-		change_button_state(j, player.totalPooAmount <= listOfCosts[j], true)
-	for fireMode in player.fireModes:
+		change_button_state(j, GlobalState.total_poo_amount <= listOfCosts[j], true)
+	for fireMode in player.arsenal.pooters.filter:
 		if fireMode != FireMode.values.Shovel:
 			change_button_state(int(fireMode) - 1, true, false)
 
@@ -67,11 +67,10 @@ func _on_RailgunButton_button_down():
 
 func buy_item(fireMode):
 	var cost = listOfCosts[int(fireMode) - 1]
-	if player.totalPooAmount > cost:
-		player.fireModes.append(fireMode)
-		player.totalPooAmount -= cost
-		pooCount.text = str(player.totalPooAmount)
-		hud.update_global_poo_label(player.totalPooAmount)
+	if GlobalState.total_poo_amount > cost:
+		player.enable_weapon(fireMode)
+		GlobalState.total_poo_amount -= cost
+		pooCount.text = str(GlobalState.total_poo_amount)
 		change_button_state(int(fireMode) - 1, true, false)
 		check_btns()
 
