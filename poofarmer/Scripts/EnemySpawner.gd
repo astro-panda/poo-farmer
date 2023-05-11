@@ -1,5 +1,8 @@
 extends Node
 
+signal toggle_enemy_indicator(closestEnemy, show)
+
+
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var goblins = $Goblins
 onready var trolls = $Trolls
@@ -35,13 +38,28 @@ func _ready():
 	population_countdown = current_population
 	Timers.spawn.start()
 	Timers.hud.start()
-	Timers.generation.stop()
+	Timers.generation.stop()	
 
+func _physics_process(delta):
+	update_population_count()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func update_population_count():
+	var goboCount = get_enemy_count()
+	var threshold = ceil(current_population / 10.0)
+	if (current_population > 0) && (doneSpawning && current_population <= threshold):
+		var enemies = get_enemy_list()
+		var closest_enemy = enemies[0]
+		var closest_enemy_dist = player.global_position.distance_to(closest_enemy.global_position)
+		
+		for enemy in enemies:
+			var dist_to_this_enemy = player.global_position.distance_to(enemy.global_position)
+			if dist_to_this_enemy < closest_enemy_dist:
+				closest_enemy = enemy
+				closest_enemy_dist = dist_to_this_enemy
+		
+		player.on_goblin_detector_toggle(closest_enemy, true)
+	else:
+		player.on_goblin_detector_toggle(null, false)
 
 func _on_SpawnTimer_timeout():
 	if (get_enemy_count() < maxEnemies) && started:
