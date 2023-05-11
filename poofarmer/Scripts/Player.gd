@@ -87,29 +87,25 @@ func _physics_process(_delta):
 		$PlayerSprite.stop()
 	
 	# Move the player
-	move_and_slide(velocity * _delta)
-	
-	var goboCount = goboSpawner.get_enemy_count()
-	var threshold = ceil(goboSpawner.current_population / 10.0)
-	if (goboCount > 0) && (goboSpawner.doneSpawning && goboCount <= threshold || gobodarOverride):
-		goboSpeech.visible = true
-		var closestGoblin = goboSpawner.get_enemy_list()[0]
-		var distToClosestGoblin = global_position.distance_to(closestGoblin.global_position)
-		for goblin in goboSpawner.get_enemy_list():
-			var distToGoblin = global_position.distance_to(goblin.global_position)
-			if distToGoblin < distToClosestGoblin:
-				closestGoblin = goblin
-				distToClosestGoblin = distToGoblin
-		var angle = goboArrowHandle.global_position.angle_to_point(closestGoblin.global_position)
+	move_and_slide(velocity * _delta)	
+	try_show_full_alert()
+
+func on_goblin_detector_toggle(closest_enemy: Enemy, show: bool) -> void:
+	if closest_enemy :
+		var angle = goboArrowHandle.global_position.angle_to_point(closest_enemy.global_position)
 		goboArrowHandle.rotation = angle
 	else:
 		goboSpeech.visible = false
+	
+	goboSpeech.visible = show
 		
+	
+		
+func try_show_full_alert() -> void:
 	if (GlobalState.player_current_hold_amount >= GlobalState.player_hold_Capacity):
 		show_speech(silo_subItem, silo)
 	else:
 		speech.visible = false
-
 
 func _on_Area2D_area_entered(body):
 	if (body.is_in_group("poo")):

@@ -34,7 +34,7 @@ func detected_something(area, player_steal):
 			emit_signal("global_poo_stolen", siloStealAmount)
 			isFleeing = true
 			
-		if area.is_in_group("player") && player.currentHoldAmount > 0 && player_steal:
+		if area.is_in_group("player") && GlobalState.player_current_hold_amount > 0 && player_steal:
 			isFleeing = true
 			player.steal_poo(stealAmount)
 			audio_ctrl.act(0)
