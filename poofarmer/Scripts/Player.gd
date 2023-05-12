@@ -16,10 +16,7 @@ export(FireMode.values) var equipped_fire_mode = FireMode.values.Shovel
 
 onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
-var goboSpawner
 
-onready var modal_window = $ModalWindow
-onready var game_on_timer = $GameOnTimer
 onready var audio_ctrl = $MobAudioController
 onready var speech = $PlayerSprite/SpeechBubble
 onready var arrow_handle = $PlayerSprite/SpeechBubble/ArrowHandle

@@ -21,7 +21,7 @@ func _ready():
 	
 func reset():
 	get_tree().call_group("poo", "queue_free")
-	#get_tree().call_group("goblin", "queue_free")
+	
 	
 	if animal_spawner != null:
 		animal_spawner.queue_free()
@@ -41,7 +41,6 @@ func reset():
 	animal_spawner.spawn_animals = false
 	add_child(animal_spawner)
 	add_child(enemy_spawner)
-	player.goboSpawner = enemy_spawner
 
 	var _player = player as Player
 	if game_started:
