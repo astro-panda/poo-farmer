@@ -95,6 +95,7 @@ config/icon="res://Images/Crap-export.png"
 [autoload]
 
 GlobalState="*res://Scenes/GlobalState.tscn"
+PooPelletsManager="*res://Scripts/PooPelletsManager.gd"
 
 [display]
 

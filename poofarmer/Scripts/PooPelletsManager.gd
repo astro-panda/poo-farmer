@@ -1,8 +1,6 @@
 extends Node2D
 
-
-export (PackedScene) var poo_pellets
-
+onready var poo_pellets = preload("res://Scenes/PooPellets.tscn")
 
 func _on_firePoo(pelletInstance, spawnPosition, angleToMouse, mouseClick, fireMode):
 	if fireMode == FireMode.values.Shatgun:

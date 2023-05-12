@@ -48,9 +48,9 @@ func _physics_process(delta):
 		gobodar_override = !gobodar_override
 
 func update_population_count():
-	var goboCount = get_enemy_count()
+	var enemy_count = get_enemy_count()
 	var threshold = ceil(current_population / 10.0)
-	if (current_population > 0) && (doneSpawning && current_population <= threshold || gobodar_override):
+	if (enemy_count > 0) && (doneSpawning && enemy_count <= threshold || gobodar_override):
 		var enemies = get_enemy_list()
 		var closest_enemy = enemies[0]
 		var closest_enemy_dist = player.global_position.distance_to(closest_enemy.global_position)
