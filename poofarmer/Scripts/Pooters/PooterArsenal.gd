@@ -12,7 +12,7 @@ onready var railgun = $RailgunPooter
 
 var pooters
 
-var currentWeapon: Pooter
+var current_pooter: Pooter
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,13 +25,22 @@ func _ready():
 		FireMode.values.Railgun: railgun
 	}
 	
-	currentWeapon = pooters[FireMode.values.Shovel]
+	for mode in pooters.keys():
+		var the_pooter = pooters[mode]
+		the_pooter.connect("on_ammo_used", self, "on_shot_spent")
+		the_pooter.fire_mode = mode
+	
+	current_pooter = pooters[FireMode.values.Shovel]
+	
+func _physics_process(delta):
+	if current_pooter:
+		current_pooter.current_ammo = GlobalState.player_current_hold_amount
 
 func select_weapon(type):
 	var the_pooter = pooters[type]
 	
 	if the_pooter && the_pooter.enabled:
-		currentWeapon = pooters[type]
+		current_pooter = pooters[type]
 		
 func enable_weapon(type):
 	var the_pooter = pooters[type]
@@ -44,6 +53,17 @@ func disable_weapon(type):
 	
 	if the_pooter:
 		the_pooter.enabled = false
+		
+func is_weapon_enabled(type) -> bool:
+	var the_pooter = pooters[type]
+	
+	if the_pooter:
+		return the_pooter.enabled
+		
+	return false
+		
+func on_shot_spent(shot_cost: float) -> void:
+	GlobalState.player_current_hold_amount -= shot_cost
 
 func shoot():
-	currentWeapon.shoot(get_global_mouse_position(), GlobalState.player_current_hold_amount, infinite_ammo)
+	current_pooter.shoot(get_global_mouse_position(), infinite_ammo)

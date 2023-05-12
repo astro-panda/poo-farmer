@@ -14,7 +14,6 @@ var shoot_enabled = true
 
 export(FireMode.values) var equipped_fire_mode = FireMode.values.Shovel
 
-onready var hud = get_tree().get_nodes_in_group("hud")[0]
 onready var silo = get_tree().get_nodes_in_group("silo")[0]
 
 onready var audio_ctrl = $MobAudioController
@@ -120,15 +119,14 @@ func _on_Area2D_area_entered(body):
 		
 	emit_signal("playerSendCurrentHoldAmount", GlobalState.player_current_hold_amount)
 	
-func dump_poo_in_silo():	
+func dump_poo_in_silo():
 	if GlobalState.player_current_hold_amount > 0:
 		audio_ctrl.act(1) # the Poo drop sound
 	
-	GlobalState.total_poo_collected += GlobalState.player_current_hold_amount
-	
+	GlobalState.total_poo_collected += GlobalState.player_current_hold_amount	
 	GlobalState.total_poo_amount += GlobalState.player_current_hold_amount
-	GlobalState.player_current_hold_amount
-	hud.update_global_poo_label(GlobalState.total_poo_amount)
+	GlobalState.player_current_hold_amount = 0
+		
 	if GlobalState.total_poo_amount > 0:
 		$GameOnTimer.start()
 
@@ -179,5 +177,5 @@ func _on_shoot_enabled_changed(open):
 	shoot_enabled = !open
 	
 func enable_weapon(type):
-	arsenal.enable_weapon(type)	
+	arsenal.enable_weapon(type)
 

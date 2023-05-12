@@ -15,19 +15,14 @@
 script = ExtResource( 7 )
 
 [node name="PistolPooter" parent="." instance=ExtResource( 2 )]
-enabled = false
 
 [node name="RailgunPooter" parent="." instance=ExtResource( 3 )]
-enabled = false
 
 [node name="RocketPooter" parent="." instance=ExtResource( 4 )]
-enabled = false
 
 [node name="ScatlingPooter" parent="." instance=ExtResource( 5 )]
-enabled = false
 
 [node name="ShatgunPooter" parent="." instance=ExtResource( 6 )]
-enabled = false
 
 [node name="ShovelPooter" parent="." instance=ExtResource( 1 )]
 poo_pellets = ExtResource( 8 )

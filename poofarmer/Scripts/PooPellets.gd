@@ -2,6 +2,7 @@ extends Area2D
 
 
 export(float) var poo_speed = 10.0
+export(FireMode.values) var fire_mode
 var damage
 var distance
 var direction := Vector2.ZERO

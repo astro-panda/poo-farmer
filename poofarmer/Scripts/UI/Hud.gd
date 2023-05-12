@@ -70,9 +70,10 @@ func check_weapons():
 		btn.disabled = true
 		btn.get_node("TextureRect").modulate = grayedOutColor
 	for i in listOfButtons.size():
-		for fireMode in player.fireModes:
-			listOfButtons[int(fireMode)].disabled = false
-			listOfButtons[int(fireMode)].get_node("TextureRect").modulate = normalColor
+		for pooter in player.arsenal.pooters.values():
+			if pooter.enabled:
+				listOfButtons[pooter.fire_mode].disabled = false
+				listOfButtons[pooter.fire_mode].get_node("TextureRect").modulate = normalColor
 
 func _on_Shovel_pressed():
 	cycle_selected_fireMode(FireMode.values.Shovel)
@@ -93,10 +94,9 @@ func _on_Railgun_pressed():
 	cycle_selected_fireMode(FireMode.values.Railgun)	
 
 func cycle_selected_fireMode(value):
-	if player.fireModes.has(value):
-		player.equippedFireMode = value
-		equippedIcon.animation = FireMode.values.keys()[value].to_lower()
-		click()
+	player.arsenal.select_weapon(value)
+	equippedIcon.animation = FireMode.values.keys()[value].to_lower()
+	click()
 
 func click():
 	click_player.play()
