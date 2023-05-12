@@ -95,9 +95,7 @@ func on_goblin_detector_toggle(closest_enemy: Enemy, show: bool) -> void:
 		goboSpeech.visible = false
 	
 	goboSpeech.visible = show
-		
-	
-		
+
 func try_show_full_alert() -> void:
 	if (GlobalState.player_current_hold_amount >= GlobalState.player_hold_Capacity):
 		show_speech(silo_subItem, silo)

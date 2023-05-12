@@ -16,13 +16,14 @@ export var cost: float = 1
 export var ammo_max: float = 10
 
 onready var poot_player = $PootSound
-onready var poo_pellets_manager = get_tree().get_nodes_in_group("poo_pellets_manager")[0]
+onready var cooldown_timer = $FireCooldown
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	cost *= ammo_max
-	$FireCooldown.wait_time = cooldown
-	connect("firePoo", poo_pellets_manager, "_on_firePoo")
+	cooldown_timer.wait_time = cooldown
+	connect("firePoo", PooPelletsManager, "_on_firePoo")
+	cooldown_timer.connect("timeout", self, "_on_FireCooldown_timeout")
 
 func shoot(target: Vector2, currentAmmo: float, inifite_ammo: bool):
 	if enabled && (currentAmmo >= cost || inifite_ammo):
@@ -36,13 +37,14 @@ func shoot(target: Vector2, currentAmmo: float, inifite_ammo: bool):
 		poo_pellets_instance.distance = pooDistance
 		
 		var direction_to_mouse = global_position.direction_to(target).normalized()
+		print("fire pellet")
 		emit_signal("firePoo", poo_pellets_instance, global_position, direction_to_mouse, target, currentFireMode)
 		enabled = false
 		$FireCooldown.start()
 		poot()
 
-
 func _on_FireCooldown_timeout():
+	print("fire cooldown")
 	enabled = true
 	
 func poot():

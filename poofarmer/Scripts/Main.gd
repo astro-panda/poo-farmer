@@ -1,7 +1,6 @@
 extends Node
 
 onready var start_screen = $StartScreen
-onready var poo_pellets_manager = $PooPelletsManager
 onready var hud = $HUD
 onready var player  = get_tree().get_nodes_in_group("player")[0]
 
@@ -16,12 +15,11 @@ var game_started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize()	
+	randomize()
 	reset()
 	
 func reset():
-	get_tree().call_group("poo", "queue_free")
-	
+	get_tree().call_group("poo", "queue_free")	
 	
 	if animal_spawner != null:
 		animal_spawner.queue_free()
@@ -57,7 +55,6 @@ func quit():
 	enemy_spawner.started = true
 	animal_spawner.spawn_animals = true
 	reset()
-
 
 func _on_StartScreen_game_started():
 	enemy_spawner.started = true

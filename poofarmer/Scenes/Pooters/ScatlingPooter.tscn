@@ -21,5 +21,3 @@ one_shot = true
 autostart = true
 
 [node name="PootSound" type="AudioStreamPlayer2D" parent="."]
-
-[connection signal="timeout" from="FireCooldown" to="." method="_on_FireCooldown_timeout"]
