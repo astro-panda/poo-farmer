@@ -44,12 +44,6 @@ func disable_weapon(type):
 	
 	if the_pooter:
 		the_pooter.enabled = false
-		
-		
 
-
-	
-
-	
 func shoot():
 	currentWeapon.shoot(get_global_mouse_position(), GlobalState.player_current_hold_amount, infinite_ammo)
