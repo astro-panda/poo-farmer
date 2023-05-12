@@ -30,6 +30,7 @@ var num_enemies_killed = 0
 var troll_spawn_numbers = []
 var spawning_troll = false
 var started = false
+var gobodar_override = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,11 +43,14 @@ func _ready():
 
 func _physics_process(delta):
 	update_population_count()
+	
+	if Input.is_action_just_pressed("gobodar"):
+		gobodar_override = !gobodar_override
 
 func update_population_count():
 	var goboCount = get_enemy_count()
 	var threshold = ceil(current_population / 10.0)
-	if (current_population > 0) && (doneSpawning && current_population <= threshold):
+	if (current_population > 0) && (doneSpawning && current_population <= threshold || gobodar_override):
 		var enemies = get_enemy_list()
 		var closest_enemy = enemies[0]
 		var closest_enemy_dist = player.global_position.distance_to(closest_enemy.global_position)
@@ -56,7 +60,7 @@ func update_population_count():
 			if dist_to_this_enemy < closest_enemy_dist:
 				closest_enemy = enemy
 				closest_enemy_dist = dist_to_this_enemy
-		
+
 		player.on_goblin_detector_toggle(closest_enemy, true)
 	else:
 		player.on_goblin_detector_toggle(null, false)
